@@ -133,5 +133,9 @@
   });
 
   client.auth.getSession().then(({ data }) => refreshMember(data.session?.user || null));
-  client.auth.onAuthStateChange((_event, session) => refreshMember(session?.user || null));
+  client.auth.onAuthStateChange((_event, session) => {
+  window.setTimeout(() => {
+    refreshMember(session?.user || null);
+  }, 0);
+});
 })();
