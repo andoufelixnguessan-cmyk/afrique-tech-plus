@@ -69,11 +69,15 @@
 function refreshMember(user) {
   const connected = Boolean(user);
 
-  authForms.hidden = connected;
-  authForms.style.display = connected ? "none" : "block";
+  if (authForms) {
+    authForms.hidden = connected;
+    authForms.style.display = connected ? "none" : "";
+  }
 
-  memberPanel.hidden = !connected;
-  memberPanel.style.display = connected ? "block" : "none";
+  if (memberPanel) {
+    memberPanel.hidden = !connected;
+    memberPanel.style.display = connected ? "block" : "none";
+  }
 
   const navButton = document.querySelector(".nav-cta");
 
@@ -93,6 +97,7 @@ function refreshMember(user) {
     "Bienvenue " + [first, last].filter(Boolean).join(" ") + " !";
 
   message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
+}
 }$("logout-button")?.addEventListener("click", async () => {
     if (!client) return;
 
