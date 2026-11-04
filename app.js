@@ -98,7 +98,8 @@ function refreshMember(user) {
 
   message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
 }
-}$("logout-button")?.addEventListener("click", async () => {
+
+$("logout-button")?.addEventListener("click", async () => {
     if (!client) return;
 
     const { error } = await client.auth.signOut();
