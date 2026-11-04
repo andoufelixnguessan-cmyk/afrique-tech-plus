@@ -66,22 +66,30 @@
   };
   switchButton.addEventListener("click", () => setMode(!showingLogin));
 
-  async function refreshMember(user) {
-    if (!user) {
-      authForms.hidden = false;
-      memberPanel.hidden = true;
-      setMode(showingLogin);
-      return;
-    }
-    const { data: profile } = await client.from("profiles").select("nom, prenom").eq("id", user.id).maybeSingle();
-    const first = profile?.prenom || user.user_metadata?.prenom || "";
-    const last = profile?.nom || user.user_metadata?.nom || "";
-    $("member-greeting").textContent = (currentLanguage === "fr" ? "Bienvenue " : "Welcome ") + [first, last].filter(Boolean).join(" ") + " !";
-    authForms.hidden = true;
-    memberPanel.hidden = false;
-    message(currentLanguage === "fr" ? "Connexion réussie." : "Successfully logged in.", "success");
+ async function refreshMember(user) {
+  if (!user) {
+    authForms.hidden = false;
+    memberPanel.hidden = true;
+    return;
   }
 
+  const first = user.user_metadata?.prenom || "";
+  const last = user.user_metadata?.nom || "";
+
+  $("member-greeting").textContent =
+    (currentLanguage === "fr" ? "Bienvenue " : "Welcome ") +
+    [first, last].filter(Boolean).join(" ") + " !";
+
+  authForms.hidden = true;
+  memberPanel.hidden = false;
+
+  message(
+    currentLanguage === "fr"
+      ? "Connexion réussie."
+      : "Successfully logged in.",
+    "success"
+  );
+}
   $("logout-button").addEventListener("click", async () => {
     if (!client) return;
     const { error } = await client.auth.signOut();
