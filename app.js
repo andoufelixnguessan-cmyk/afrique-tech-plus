@@ -126,19 +126,19 @@ function refreshMember(user) {
   message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
 }
 
-$("logout-button")?.addEventListener("click", async () => {
-    if (!client) return;
+menuLogout?.addEventListener("click", async () => {
+  if (!client) return;
 
-    const { error } = await client.auth.signOut();
+  const { error } = await client.auth.signOut();
 
-    if (error) {
-      message(error.message, "error");
-      return;
-    }
+  if (error) {
+    message(error.message, "error");
+    return;
+  }
 
-    refreshMember(null);
-    message("Tu es déconnecté.", "success");
-  });
+  nav?.classList.remove("open");
+  refreshMember(null);
+});
 
   if (!window.supabase?.createClient || !window.ATP_CONFIG?.supabaseUrl || !window.ATP_CONFIG?.supabasePublishableKey) {
     message("Le module de connexion ne s'est pas chargé. Vérifie la connexion Internet et la configuration.", "error");
