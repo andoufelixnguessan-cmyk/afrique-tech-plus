@@ -93,19 +93,17 @@ function refreshMember(user) {
     "Bienvenue " + [first, last].filter(Boolean).join(" ") + " !";
 
   message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
-}
- $("logout-button").addEventListener("click", async () => {
+}$("logout-button")?.addEventListener("click", async () => {
     if (!client) return;
 
     const { error } = await client.auth.signOut();
 
     if (error) {
-      return message(error.message, "error");
+      message(error.message, "error");
+      return;
     }
 
     refreshMember(null);
-    setMode(true);
-
     message("Tu es déconnecté.", "success");
   });
 
