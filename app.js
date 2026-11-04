@@ -100,11 +100,9 @@ function refreshMember(user) {
   }
 
   // Masquer le bouton de création de compte du hero
-  const heroAccount = document.querySelector('a[href="#account"]');
-
-  if (heroAccount) {
-    heroAccount.hidden = connected;
-  }
+  document.querySelectorAll('a[href="#account"]').forEach(button => {
+  button.hidden = connected;
+});
 
   if (!connected) {
     setMode(true);
