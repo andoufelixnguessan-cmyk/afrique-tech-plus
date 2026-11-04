@@ -143,15 +143,40 @@ $("logout-button")?.addEventListener("click", async () => {
     }
   });
 
-  loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const email = $("login-email").value.trim();
-    const password = $("login-password").value;
-    message("Connexion en cours…");
-    const { data, error } = await client.auth.signInWithPassword({ email, password });
-    if (error) return message(error.message, "error");
-    await refreshMember(data.user);
-  });
+ loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = $("login-email").value.trim();
+  const password = $("login-password").value;
+  const button = loginForm.querySelector('button[type="submit"]');
+
+  button.disabled = true;
+  button.textContent = "Connexion en cours…";
+  message("Connexion en cours…");
+
+  try {
+    const { data, error } = await client.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      message(error.message, "error");
+      return;
+    }
+
+    refreshMember(data.user);
+
+  } catch (error) {
+    message("Erreur de connexion : " + error.message, "error");
+
+  } finally {
+    button.disabled = false;
+    button.textContent = currentLanguage === "fr"
+      ? "Se connecter →"
+      : "Log in →";
+  }
+});
 
   client.auth.getSession().then(({ data }) => refreshMember(data.session?.user || null));
   client.auth.onAuthStateChange((_event, session) => {
