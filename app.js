@@ -117,6 +117,18 @@ function refreshMember(user) {
 
   $("member-greeting").textContent = greeting;
 
+  // Informations du profil membre
+const profileName = $("profile-name");
+const profileEmail = $("profile-email");
+
+if (profileName) {
+  profileName.textContent = fullName || "Nom non renseigné";
+}
+
+if (profileEmail) {
+  profileEmail.textContent = user.email || "E-mail non disponible";
+}
+  
   if ($("dashboard-greeting")) {
     $("dashboard-greeting").textContent = greeting;
   }
