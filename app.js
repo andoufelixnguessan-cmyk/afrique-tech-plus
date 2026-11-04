@@ -82,7 +82,7 @@ function refreshMember(user) {
   }
 
   if (!connected) {
-    setMode(showingLogin);
+    setMode(true);
     return;
   }
 
