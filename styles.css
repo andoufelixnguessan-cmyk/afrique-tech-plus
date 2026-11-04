@@ -16,3 +16,33 @@
 #member-panel[hidden] {
   display: none !important;
 }
+/* ESPACE MEMBRE */
+.member-dashboard {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.member-dashboard .account-shell {
+  align-items: center;
+}
+
+/* Bouton de déconnexion dans le menu */
+.menu-logout {
+  border: 1px solid rgba(255,255,255,.2);
+  background: transparent;
+  color: #ff7777;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-logout:hover {
+  background: rgba(255, 100, 100, .12);
+}
+
+/* Respecter l'attribut hidden */
+[hidden] {
+  display: none !important;
+}
