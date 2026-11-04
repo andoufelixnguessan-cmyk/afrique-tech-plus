@@ -72,20 +72,38 @@ const switchButton = $("switch-auth");
 function refreshMember(user) {
   const connected = Boolean(user);
 
+  // Masquer ou afficher la section d'inscription
+  if (accountSection) {
+    accountSection.hidden = connected;
+  }
+
+  // Afficher ou masquer le tableau de bord
+  if (memberDashboard) {
+    memberDashboard.hidden = !connected;
+  }
+
+  // Afficher ou masquer les formulaires
   if (authForms) {
     authForms.hidden = connected;
-    authForms.style.display = connected ? "none" : "";
   }
 
-  if (memberPanel) {
-    memberPanel.hidden = !connected;
-    memberPanel.style.display = connected ? "block" : "none";
+  // Gérer le bouton de déconnexion du menu
+  if (menuLogout) {
+    menuLogout.hidden = !connected;
   }
 
+  // Gérer le bouton Rejoindre du haut
   const navButton = document.querySelector(".nav-cta");
 
   if (navButton) {
-    navButton.textContent = connected ? "Mon espace" : "Rejoindre";
+    navButton.hidden = connected;
+  }
+
+  // Masquer le bouton de création de compte du hero
+  const heroAccount = document.querySelector('a[href="#account"]');
+
+  if (heroAccount) {
+    heroAccount.hidden = connected;
   }
 
   if (!connected) {
@@ -95,9 +113,15 @@ function refreshMember(user) {
 
   const first = user.user_metadata?.prenom || "";
   const last = user.user_metadata?.nom || "";
+  const fullName = [first, last].filter(Boolean).join(" ");
 
-  $("member-greeting").textContent =
-    "Bienvenue " + [first, last].filter(Boolean).join(" ") + " !";
+  const greeting = "Bienvenue " + (fullName || "sur AFRIQUE TECH PLUS") + " !";
+
+  $("member-greeting").textContent = greeting;
+
+  if ($("dashboard-greeting")) {
+    $("dashboard-greeting").textContent = greeting;
+  }
 
   message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
 }
