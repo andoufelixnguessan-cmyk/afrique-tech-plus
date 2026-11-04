@@ -66,10 +66,23 @@
   };
   switchButton.addEventListener("click", () => setMode(!showingLogin));
 
- async function refreshMember(user) {
-  if (!user) {
-    authForms.hidden = false;
-    memberPanel.hidden = true;
+function refreshMember(user) {
+  const connected = Boolean(user);
+
+  authForms.hidden = connected;
+  authForms.style.display = connected ? "none" : "block";
+
+  memberPanel.hidden = !connected;
+  memberPanel.style.display = connected ? "block" : "none";
+
+  const navButton = document.querySelector(".nav-cta");
+
+  if (navButton) {
+    navButton.textContent = connected ? "Mon espace" : "Rejoindre";
+  }
+
+  if (!connected) {
+    setMode(showingLogin);
     return;
   }
 
@@ -77,18 +90,9 @@
   const last = user.user_metadata?.nom || "";
 
   $("member-greeting").textContent =
-    (currentLanguage === "fr" ? "Bienvenue " : "Welcome ") +
-    [first, last].filter(Boolean).join(" ") + " !";
+    "Bienvenue " + [first, last].filter(Boolean).join(" ") + " !";
 
-  authForms.hidden = true;
-  memberPanel.hidden = false;
-
-  message(
-    currentLanguage === "fr"
-      ? "Connexion réussie."
-      : "Successfully logged in.",
-    "success"
-  );
+  message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
 }
   $("logout-button").addEventListener("click", async () => {
     if (!client) return;
