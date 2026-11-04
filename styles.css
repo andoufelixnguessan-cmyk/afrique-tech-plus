@@ -71,5 +71,169 @@
   color: #36d99a;
   font-weight: 600;
   font-size: 13px;
+ /* =================================
+   TABLEAU DE BORD MEMBRE
+================================= */
+
+.member-dashboard {
+  padding-top: 70px;
+  padding-bottom: 90px;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.dashboard-header h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 18px 0;
+  color: #fff;
+}
+
+.dashboard-header p,
+.dashboard-heading p {
+  color: #aeb6d0;
+  line-height: 1.7;
+}
+
+/* PROFIL */
+
+.dashboard-profile {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  max-width: 750px;
+  margin: 0 auto 75px;
+  padding: 28px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+}
+
+.dashboard-profile h3 {
+  margin-top: 0;
+  color: #fff;
+}
+
+.dashboard-profile p {
+  color: #c5cbe0;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.dashboard-profile strong {
+  color: #9d91ff;
+}
+
+/* TITRE DES ESPACES */
+
+.dashboard-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-heading h2 {
+  color: #fff;
+  font-size: 30px;
+  margin: 12px 0;
+}
+
+/* CARTES */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  padding: 25px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(145deg, #171d3d, #10152c);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  border-color: #8b7cff;
+}
+
+.dashboard-icon {
+  font-size: 30px;
+  margin-bottom: 18px;
+  color: #a99cff;
+}
+
+.dashboard-tag {
+  color: #9d91ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.dashboard-card h3 {
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+.dashboard-card p {
+  color: #b5bdd5;
+  font-size: 14px;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.dashboard-link {
+  color: #a99cff;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+/* PIED DU TABLEAU DE BORD */
+
+.dashboard-footer {
+  text-align: center;
+  margin-top: 65px;
+  color: #a99cff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.dashboard-footer p {
+  color: #9da7c4;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+/* ADAPTATION MOBILE */
+
+@media (max-width: 850px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-profile {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .dashboard-header {
+    margin-bottom: 40px;
+  }
+}
 }
 }
