@@ -94,14 +94,19 @@ function refreshMember(user) {
 
   message("Connexion réussie à AFRIQUE TECH PLUS.", "success");
 }
-  $("logout-button").addEventListener("click", async () => {
+ $("logout-button").addEventListener("click", async () => {
     if (!client) return;
+
     const { error } = await client.auth.signOut();
-    if (error) return message(error.message, "error");
-    memberPanel.hidden = true;
-    authForms.hidden = false;
+
+    if (error) {
+      return message(error.message, "error");
+    }
+
+    refreshMember(null);
     setMode(true);
-    message(currentLanguage === "fr" ? "Tu es déconnecté." : "You are logged out.", "success");
+
+    message("Tu es déconnecté.", "success");
   });
 
   if (!window.supabase?.createClient || !window.ATP_CONFIG?.supabaseUrl || !window.ATP_CONFIG?.supabasePublishableKey) {
