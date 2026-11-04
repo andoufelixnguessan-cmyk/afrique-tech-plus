@@ -45,9 +45,12 @@
   const authMessage = $("auth-message");
   const signupForm = $("signup-form");
   const loginForm = $("login-form");
-  const memberPanel = $("member-panel");
-  const authForms = $("auth-forms");
-  const switchButton = $("switch-auth");
+ const memberPanel = $("member-panel");
+const authForms = $("auth-forms");
+const accountSection = $("account");
+const memberDashboard = $("member-dashboard");
+const menuLogout = $("menu-logout");
+const switchButton = $("switch-auth");
   let showingLogin = false;
   let client = null;
   const message = (text, type = "") => {
