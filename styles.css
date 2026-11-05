@@ -686,3 +686,65 @@ h2,
 .text-link {
   color: #6248db;
 }
+
+/* =====================================
+   CORRECTION GÉNÉRALE DE LISIBILITÉ
+===================================== */
+
+/* Textes sur les arrière-plans clairs */
+body {
+  color: #10152f;
+}
+
+.section:not(.hero):not(.account-section) h2,
+.section:not(.hero):not(.account-section) h3 {
+  color: #10152f;
+}
+
+.section:not(.hero):not(.account-section) p {
+  color: #424b68;
+}
+
+/* Textes des sections sombres */
+.hero,
+.account-section,
+.site-footer {
+  color: #ffffff;
+}
+
+.hero h1,
+.account-section h2,
+.site-footer h3 {
+  color: #ffffff;
+}
+
+.hero p,
+.account-section p,
+.site-footer p {
+  color: #e0e6f5;
+}
+
+/* Textes des cartes blanches */
+.domain-card h3,
+.mini-feature h3 {
+  color: #10152f;
+}
+
+.domain-card p,
+.mini-feature p {
+  color: #424b68;
+}
+
+/* Liens */
+a {
+  text-decoration-color: currentColor;
+}
+
+/* Champs de connexion */
+.auth-card {
+  color: #10152f;
+}
+
+.auth-card label {
+  color: #303a59;
+}
