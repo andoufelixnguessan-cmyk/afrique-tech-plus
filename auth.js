@@ -132,8 +132,21 @@
     }
 
 const accountLink = document.createElement("a");
-accountLink.href = "#academy-dashboard";
+const dashboard = document.getElementById("academy-dashboard");
+
+accountLink.href = dashboard
+  ? "#academy-dashboard"
+  : "index.html#member-dashboard";
+
 accountLink.textContent = "Mon espace";
+
+if (dashboard) {
+  accountLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    dashboard.hidden = false;
+    dashboard.scrollIntoView({ behavior: "smooth" });
+  });
+}
 
 accountLink.addEventListener("click", (event) => {
   const dashboard = document.getElementById("academy-dashboard");
