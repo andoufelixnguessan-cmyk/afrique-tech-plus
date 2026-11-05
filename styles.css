@@ -654,3 +654,35 @@ h2,
 }
   }
 }
+
+/* Lisibilité des éléments scolaires */
+.class-pills span {
+  background: #ffffff;
+  color: #10152f;
+  border-color: #dce1ed;
+}
+
+/* Boutique */
+.store-card {
+  background: #ffffff;
+  border-color: #e3e6f0;
+}
+
+.store-info h3 {
+  color: #10152f;
+}
+
+.store-info p {
+  color: #424b68;
+}
+
+/* Éléments temporaires */
+.coming-soon {
+  color: #424b68;
+  border-color: #dce1ed;
+}
+
+/* Liens et boutons */
+.text-link {
+  color: #6248db;
+}
