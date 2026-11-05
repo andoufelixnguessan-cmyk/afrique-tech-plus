@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10152f">
+  <meta name="description" content="AFRIQUE TECH PLUS SERVICES : des solutions numériques pour accompagner tes projets.">
+  <title>SERVICES — AFRIQUE TECH PLUS</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .services-page {
+      min-height: 100vh;
+      background: #10152f;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .services-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 22px 7%;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .services-logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .services-logo span { color: #38bdf8; }
+
+    .services-back {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .services-hero {
+      padding: 90px 7% 75px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #174766, #10152f 65%);
+    }
+
+    .services-label {
+      color: #38bdf8;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .services-hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      margin: 20px 0;
+    }
+
+    .services-hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #c3ccdf;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .services-content {
+      max-width: 1150px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .services-content h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .services-intro {
+      color: #aebbd2;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .services-card {
+      padding: 27px;
+      background: #1a2343;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .services-card:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+
+    .services-icon { font-size: 40px; }
+
+    .services-card h3 {
+      margin: 17px 0 10px;
+      font-size: 21px;
+    }
+
+    .services-card p {
+      color: #b8c3d9;
+      line-height: 1.7;
+    }
+
+    .services-status {
+      display: inline-block;
+      margin-top: 12px;
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .services-banner {
+      padding: 30px;
+      background: #1a2343;
+      border: 1px solid rgba(56,189,248,.25);
+      border-radius: 20px;
+      line-height: 1.8;
+    }
+
+    .services-footer {
+      padding: 30px 7%;
+      text-align: center;
+      color: #9ba8c2;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .services-footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px) {
+      .services-topbar { padding: 18px 5%; }
+      .services-content { padding: 40px 5%; }
+      .services-hero { padding: 65px 5% 50px; }
+    }
+  </style>
+</head>
+
+<body class="services-page">
+
+  <header class="services-topbar">
+    <a class="services-logo" href="index.html">
+      AFRIQUE TECH <span>PLUS</span>
+    </a>
+    <a class="services-back" href="index.html">← Accueil</a>
+  </header>
+
+  <main>
+    <section class="services-hero">
+      <div class="services-label">AFRIQUE TECH PLUS SERVICES</div>
+      <h1>Des solutions pour tes projets.</h1>
+      <p>
+        Nous préparons des services numériques destinés
+        aux particuliers, étudiants, entrepreneurs et organisations
+        qui souhaitent développer leur présence et leurs activités.
+      </p>
+    </section>
+
+    <section class="services-content">
+      <h2>Nos domaines d'intervention</h2>
+      <p class="services-intro">
+        Découvre les services que nous souhaitons progressivement
+        proposer à notre communauté.
+      </p>
+
+      <div class="services-grid">
+
+        <article class="services-card">
+          <div class="services-icon">🌐</div>
+          <h3>Présence en ligne</h3>
+          <p>
+            Création de sites web et accompagnement
+            pour développer une présence numérique.
+          </p>
+          <span class="services-status">SERVICE EN PRÉPARATION</span>
+        </article>
+
+        <article class="services-card">
+          <div class="services-icon">🎨</div>
+          <h3>Création numérique</h3>
+          <p>
+            Conception de supports visuels,
+            présentations et contenus numériques.
+          </p>
+          <span class="services-status">SERVICE EN PRÉPARATION</span>
+        </article>
+
+        <article class="services-card">
+          <div class="services-icon">📄</div>
+          <h3>Documents et outils</h3>
+          <p>
+            Préparation de documents numériques,
+            modèles et outils pratiques.
+          </p>
+          <span class="services-status">SERVICE EN PRÉPARATION</span>
+        </article>
+
+        <article class="services-card">
+          <div class="services-icon">💡</div>
+          <h3>Conseils numériques</h3>
+          <p>
+            Accompagnement et conseils pour mieux
+            utiliser les technologies numériques.
+          </p>
+          <span class="services-status">SERVICE EN PRÉPARATION</span>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="services-content">
+      <div class="services-banner">
+        <h2>Construisons tes idées ensemble.</h2>
+        <p>
+          Notre espace SERVICES sera progressivement développé
+          pour proposer des solutions adaptées aux besoins
+          de notre communauté.
+        </p>
+        <p>
+          Les prestations ne sont pas encore ouvertes aux commandes.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="services-footer">
+    © <span id="services-year"></span> AFRIQUE TECH PLUS —
+    <a href="index.html">Retour à l'accueil</a>
+  </footer>
+
+  <script>
+    document.getElementById("services-year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
