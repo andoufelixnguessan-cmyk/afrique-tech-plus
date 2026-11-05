@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10152f">
+  <meta name="description" content="AFRIQUE TECH PLUS COMMUNITY : un espace pour apprendre, partager et progresser ensemble.">
+  <title>COMMUNITY — AFRIQUE TECH PLUS</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .community-page {
+      min-height: 100vh;
+      background: #10152f;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .community-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 22px 7%;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .community-logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .community-logo span { color: #4ade80; }
+
+    .community-back {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .community-hero {
+      padding: 90px 7% 75px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #18543d, #10152f 65%);
+    }
+
+    .community-label {
+      color: #4ade80;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .community-hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      margin: 20px 0;
+    }
+
+    .community-hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #c3ccdf;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .community-content {
+      max-width: 1150px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .community-content h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .community-intro {
+      color: #aebbd2;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .community-card {
+      padding: 27px;
+      background: #1a2343;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .community-card:hover {
+      transform: translateY(-5px);
+      border-color: #4ade80;
+    }
+
+    .community-icon { font-size: 40px; }
+
+    .community-card h3 {
+      margin: 17px 0 10px;
+      font-size: 21px;
+    }
+
+    .community-card p {
+      color: #b8c3d9;
+      line-height: 1.7;
+    }
+
+    .community-status {
+      display: inline-block;
+      margin-top: 12px;
+      color: #4ade80;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .community-banner {
+      padding: 30px;
+      background: #1a2343;
+      border: 1px solid rgba(74,222,128,.25);
+      border-radius: 20px;
+      line-height: 1.8;
+    }
+
+    .community-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 13px 22px;
+      background: #4ade80;
+      color: #10152f;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .community-footer {
+      padding: 30px 7%;
+      text-align: center;
+      color: #9ba8c2;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .community-footer a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px) {
+      .community-topbar { padding: 18px 5%; }
+      .community-content { padding: 40px 5%; }
+      .community-hero { padding: 65px 5% 50px; }
+    }
+  </style>
+</head>
+
+<body class="community-page">
+
+  <header class="community-topbar">
+    <a class="community-logo" href="index.html">
+      AFRIQUE TECH <span>PLUS</span>
+    </a>
+    <a class="community-back" href="index.html">← Accueil</a>
+  </header>
+
+  <main>
+    <section class="community-hero">
+      <div class="community-label">AFRIQUE TECH PLUS COMMUNITY</div>
+      <h1>Ensemble, allons plus loin.</h1>
+      <p>
+        Un espace pour réunir les passionnés de technologie,
+        les étudiants, les créateurs et tous ceux qui souhaitent
+        apprendre, partager et progresser.
+      </p>
+    </section>
+
+    <section class="community-content">
+      <h2>Notre communauté</h2>
+      <p class="community-intro">
+        Nous souhaitons construire un environnement
+        où chacun pourra apprendre et contribuer.
+      </p>
+
+      <div class="community-grid">
+
+        <article class="community-card">
+          <div class="community-icon">🤝</div>
+          <h3>Entraide</h3>
+          <p>
+            Partager ses connaissances, poser des questions
+            et aider les autres à progresser.
+          </p>
+          <span class="community-status">ESPACE EN PRÉPARATION</span>
+        </article>
+
+        <article class="community-card">
+          <div class="community-icon">📚</div>
+          <h3>Apprentissage</h3>
+          <p>
+            Découvrir de nouvelles compétences
+            et apprendre ensemble.
+          </p>
+          <span class="community-status">ESPACE EN PRÉPARATION</span>
+        </article>
+
+        <article class="community-card">
+          <div class="community-icon">💻</div>
+          <h3>Technologie</h3>
+          <p>
+            Échanger autour de l'informatique,
+            du numérique et de l'intelligence artificielle.
+          </p>
+          <span class="community-status">ESPACE EN PRÉPARATION</span>
+        </article>
+
+        <article class="community-card">
+          <div class="community-icon">🚀</div>
+          <h3>Projets</h3>
+          <p>
+            Présenter ses idées, découvrir des initiatives
+            et développer des projets.
+          </p>
+          <span class="community-status">ESPACE EN PRÉPARATION</span>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="community-content">
+      <div class="community-banner">
+        <h2>Une communauté qui grandit ensemble.</h2>
+        <p>
+          Les fonctionnalités de discussion, de partage
+          et de participation seront ajoutées progressivement.
+        </p>
+        <p>
+          En attendant, tu peux découvrir AFRIQUE TECH PLUS
+          et créer ton compte sur notre plateforme.
+        </p>
+        <a class="community-button" href="index.html#account">
+          Rejoindre AFRIQUE TECH PLUS →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="community-footer">
+    © <span id="community-year"></span> AFRIQUE TECH PLUS —
+    <a href="index.html">Retour à l'accueil</a>
+  </footer>
+
+  <script>
+    document.getElementById("community-year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
