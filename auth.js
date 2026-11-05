@@ -131,9 +131,19 @@
       info.appendChild(admin);
     }
 
-    const accountLink = document.createElement("a");
-    accountLink.href = "index.html#member-dashboard";
-    accountLink.textContent = "Mon espace";
+const accountLink = document.createElement("a");
+accountLink.href = "#academy-dashboard";
+accountLink.textContent = "Mon espace";
+
+accountLink.addEventListener("click", (event) => {
+  const dashboard = document.getElementById("academy-dashboard");
+
+  if (dashboard) {
+    event.preventDefault();
+    dashboard.hidden = false;
+    dashboard.scrollIntoView({ behavior: "smooth" });
+  }
+});
 
     const logout = document.createElement("button");
     logout.type = "button";
