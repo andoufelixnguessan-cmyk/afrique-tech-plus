@@ -3,7 +3,11 @@
 
   const config = window.ATP_CONFIG;
 
-  if (!window.supabase || !config?.supabaseUrl || !config?.supabasePublishableKey) {
+  if (
+    !window.supabase ||
+    !config?.supabaseUrl ||
+    !config?.supabasePublishableKey
+  ) {
     console.error("AFRIQUE TECH PLUS : configuration Supabase introuvable.");
     return;
   }
@@ -28,42 +32,102 @@
     })[char]);
 
   function addStyles() {
-    if ($("atp-dashboard-styles")) return;
+    if ($("atp-academy-auth-styles")) return;
 
     const style = document.createElement("style");
-    style.id = "atp-dashboard-styles";
+    style.id = "atp-academy-auth-styles";
+
     style.textContent = `
-      #atp-dashboard-content {
-        width: 100%;
-        margin-top: 28px;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
+      #atp-academy-access {
+        padding: 35px 0;
       }
 
-      .atp-dashboard-card {
-        background: var(--card, #fff);
-        border: 1px solid rgba(100,116,139,.18);
+      .atp-auth-panel {
+        max-width: 650px;
+        margin: auto;
+        padding: 28px;
+        background: #171e3d;
+        border: 1px solid rgba(255,255,255,.12);
         border-radius: 18px;
-        padding: 22px;
-        min-width: 0;
-        box-shadow: 0 8px 25px rgba(15,23,42,.05);
       }
 
-      .atp-dashboard-card h3 {
-        margin: 0 0 16px;
-        font-size: 19px;
+      .atp-auth-panel h2 {
+        margin-bottom: 8px;
       }
 
-      .atp-dashboard-muted {
-        color: #64748b;
+      .atp-auth-description {
+        color: #c0c8df;
+        margin-bottom: 20px;
         font-size: 14px;
-        line-height: 1.6;
+      }
+
+      .atp-auth-tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .atp-auth-tabs button,
+      .atp-auth-submit {
+        border: 0;
+        border-radius: 9px;
+        padding: 11px 16px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .atp-auth-tabs button {
+        background: #252e55;
+        color: white;
+      }
+
+      .atp-auth-tabs button.active,
+      .atp-auth-submit {
+        background: #7c5cff;
+        color: white;
+      }
+
+      .atp-auth-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .atp-auth-form input {
+        width: 100%;
+        padding: 13px;
+        border-radius: 9px;
+        border: 1px solid rgba(255,255,255,.15);
+        background: #10152f;
+        color: white;
+        outline: none;
+      }
+
+      .atp-auth-form input:focus {
+        border-color: #7c5cff;
+      }
+
+      .atp-auth-message {
+        margin-top: 15px;
+        color: #c0c8df;
+        font-size: 14px;
+      }
+
+      #academy-dashboard {
+        padding-top: 45px;
+      }
+
+      #academy-dashboard .benefits {
+        padding-top: 15px;
+      }
+
+      #academy-dashboard .benefit {
+        min-width: 0;
+        overflow-wrap: anywhere;
       }
 
       .atp-dashboard-item {
         padding: 13px 0;
-        border-bottom: 1px solid rgba(100,116,139,.15);
+        border-bottom: 1px solid rgba(255,255,255,.12);
       }
 
       .atp-dashboard-item:last-child {
@@ -75,14 +139,26 @@
         margin-bottom: 5px;
       }
 
-      .atp-dashboard-item small {
-        color: #64748b;
-        line-height: 1.5;
+      .atp-dashboard-muted {
+        color: #c0c8df;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .atp-dashboard-tag {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 4px 9px;
+        border-radius: 20px;
+        background: rgba(124,92,255,.18);
+        color: #c9bcff;
+        font-size: 12px;
+        font-weight: 700;
       }
 
       .atp-progress-track {
         height: 9px;
-        background: #e2e8f0;
+        background: rgba(255,255,255,.12);
         border-radius: 20px;
         overflow: hidden;
         margin: 10px 0 6px;
@@ -90,114 +166,294 @@
 
       .atp-progress-fill {
         height: 100%;
-        background: linear-gradient(90deg, #2563eb, #14b8a6);
+        background: linear-gradient(90deg,#7c5cff,#14b8a6);
         border-radius: 20px;
-        transition: width .3s ease;
       }
 
-      .atp-dashboard-tag {
-        display: inline-block;
-        padding: 4px 9px;
-        border-radius: 20px;
-        background: #eff6ff;
-        color: #1d4ed8;
-        font-size: 12px;
-        font-weight: 700;
+      #atp-academy-member-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 15px 18px;
+        margin-bottom: 25px;
+        background: rgba(124,92,255,.12);
+        border: 1px solid rgba(124,92,255,.25);
+        border-radius: 12px;
       }
 
-      @media(max-width:700px) {
-        #atp-dashboard-content {
-          grid-template-columns: 1fr;
+      #atp-academy-member-info button {
+        padding: 9px 14px;
+        border: 1px solid rgba(255,255,255,.3);
+        border-radius: 8px;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+      }
+
+      @media(max-width:600px) {
+        .atp-auth-panel {
+          padding: 20px;
         }
       }
     `;
+
     document.head.appendChild(style);
   }
 
-  function prepareDashboard() {
-    const dashboard = $("member-dashboard");
-    if (!dashboard) {
-      console.error("AFRIQUE TECH PLUS : section member-dashboard introuvable.");
-      return false;
+  function createAuthPanel() {
+    if ($("atp-academy-access")) return;
+
+    const catalogue = $("formations");
+    if (!catalogue) {
+      console.error("Section formations introuvable dans la page Académie.");
+      return;
     }
 
-    if (!$("atp-dashboard-content")) {
-      const container = document.createElement("div");
-      container.id = "atp-dashboard-content";
+    const section = document.createElement("section");
+    section.id = "atp-academy-access";
+    section.className = "container";
 
-      container.innerHTML = `
-        <section class="atp-dashboard-card">
-          <h3>🎓 Mes formations</h3>
-          <div id="academy-enrollments">
-            <p class="atp-dashboard-muted">Chargement...</p>
-          </div>
-        </section>
+    section.innerHTML = `
+      <div class="atp-auth-panel">
+        <h2>Mon espace Academy</h2>
+        <p class="atp-auth-description">
+          Connecte-toi pour retrouver tes formations et suivre ta progression.
+        </p>
 
-        <section class="atp-dashboard-card">
-          <h3>📈 Ma progression</h3>
-          <div id="academy-progress">
-            <p class="atp-dashboard-muted">Chargement...</p>
-          </div>
-        </section>
+        <div class="atp-auth-tabs">
+          <button type="button" id="atp-login-tab" class="active">
+            Connexion
+          </button>
+          <button type="button" id="atp-signup-tab">
+            Inscription
+          </button>
+        </div>
 
-        <section class="atp-dashboard-card">
-          <h3>📚 Mes cours</h3>
-          <div id="academy-courses-list">
-            <p class="atp-dashboard-muted">Chargement...</p>
-          </div>
-        </section>
+        <form id="atp-login-form" class="atp-auth-form">
+          <input
+            type="email"
+            id="atp-login-email"
+            placeholder="Adresse e-mail"
+            autocomplete="email"
+            required
+          >
+          <input
+            type="password"
+            id="atp-login-password"
+            placeholder="Mot de passe"
+            autocomplete="current-password"
+            required
+          >
+          <button class="atp-auth-submit" type="submit">
+            Se connecter
+          </button>
+        </form>
 
-        <section class="atp-dashboard-card">
-          <h3>📝 Mes évaluations</h3>
-          <div id="academy-evaluations">
-            <p class="atp-dashboard-muted">Chargement...</p>
-          </div>
-        </section>
+        <form id="atp-signup-form" class="atp-auth-form" hidden>
+          <input
+            type="text"
+            id="atp-signup-prenom"
+            placeholder="Prénom"
+            autocomplete="given-name"
+            required
+          >
+          <input
+            type="text"
+            id="atp-signup-nom"
+            placeholder="Nom"
+            autocomplete="family-name"
+            required
+          >
+          <input
+            type="email"
+            id="atp-signup-email"
+            placeholder="Adresse e-mail"
+            autocomplete="email"
+            required
+          >
+          <input
+            type="password"
+            id="atp-signup-password"
+            placeholder="Mot de passe (6 caractères minimum)"
+            autocomplete="new-password"
+            minlength="6"
+            required
+          >
+          <button class="atp-auth-submit" type="submit">
+            Créer mon compte
+          </button>
+        </form>
 
-        <section class="atp-dashboard-card">
-          <h3>🏆 Mes attestations</h3>
-          <div id="academy-certificates">
-            <p class="atp-dashboard-muted">Chargement...</p>
-          </div>
-        </section>
-      `;
+        <p id="atp-auth-message" class="atp-auth-message" role="status"></p>
+      </div>
+    `;
 
-      dashboard.querySelector(".container")?.appendChild(container);
-    }
+    catalogue.before(section);
 
-    return true;
+    $("atp-login-tab").addEventListener("click", () => {
+      $("atp-login-form").hidden = false;
+      $("atp-signup-form").hidden = true;
+      $("atp-login-tab").classList.add("active");
+      $("atp-signup-tab").classList.remove("active");
+      setMessage("");
+    });
+
+    $("atp-signup-tab").addEventListener("click", () => {
+      $("atp-login-form").hidden = true;
+      $("atp-signup-form").hidden = false;
+      $("atp-login-tab").classList.remove("active");
+      $("atp-signup-tab").classList.add("active");
+      setMessage("");
+    });
+
+    $("atp-login-form").addEventListener("submit", login);
+    $("atp-signup-form").addEventListener("submit", signup);
   }
 
-  function setContent(id, html) {
-    const element = $(id);
-    if (element) element.innerHTML = html;
+  function setMessage(message, error = false) {
+    const element = $("atp-auth-message");
+    if (!element) return;
+
+    element.textContent = message;
+    element.style.color = error ? "#ff9b9b" : "#c0c8df";
+  }
+
+  async function login(event) {
+    event.preventDefault();
+
+    const button = $("atp-login-form").querySelector("button");
+    button.disabled = true;
+    button.textContent = "Connexion...";
+
+    const email = $("atp-login-email").value.trim();
+    const password = $("atp-login-password").value;
+
+    const { data, error } = await db.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    button.disabled = false;
+    button.textContent = "Se connecter";
+
+    if (error) {
+      setMessage("Connexion impossible : " + error.message, true);
+      return;
+    }
+
+    if (data.user) {
+      setMessage("Connexion réussie. Chargement de ton espace...");
+      await showMember(data.user);
+    }
+  }
+
+  async function signup(event) {
+    event.preventDefault();
+
+    const button = $("atp-signup-form").querySelector("button");
+    button.disabled = true;
+    button.textContent = "Création du compte...";
+
+    const prenom = $("atp-signup-prenom").value.trim();
+    const nom = $("atp-signup-nom").value.trim();
+    const email = $("atp-signup-email").value.trim();
+    const password = $("atp-signup-password").value;
+
+    const { data, error } = await db.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { prenom, nom }
+      }
+    });
+
+    button.disabled = false;
+    button.textContent = "Créer mon compte";
+
+    if (error) {
+      setMessage("Inscription impossible : " + error.message, true);
+      return;
+    }
+
+    if (data.session?.user) {
+      setMessage("Compte créé avec succès. Bienvenue !");
+      await showMember(data.session.user);
+    } else {
+      setMessage(
+        "Compte créé. Vérifie ta boîte e-mail pour confirmer ton adresse avant de te connecter."
+      );
+    }
+  }
+
+  function getDashboardTargets() {
+    const dashboard = $("academy-dashboard");
+    if (!dashboard) return null;
+
+    const cards = [...dashboard.querySelectorAll(".benefit")];
+
+    function findCard(title) {
+      return cards.find((card) =>
+        card.querySelector("h3")?.textContent.trim().toLowerCase() ===
+        title.toLowerCase()
+      );
+    }
+
+    function getTarget(card, id) {
+      if (!card) return null;
+
+      let target = $(id);
+
+      if (!target) {
+        target = document.createElement("div");
+        target.id = id;
+
+        const description = card.querySelector("p");
+        if (description) {
+          description.replaceWith(target);
+        } else {
+          card.appendChild(target);
+        }
+      }
+
+      return target;
+    }
+
+    return {
+      enrollments: getTarget(findCard("Mes formations"), "academy-enrollments"),
+      progress: getTarget(findCard("Ma progression"), "academy-progress"),
+      courses: getTarget(findCard("Mes cours"), "academy-courses-list"),
+      evaluations: getTarget(findCard("Mes évaluations"), "academy-evaluations"),
+      certificates: getTarget(findCard("Mes attestations"), "academy-certificates")
+    };
+  }
+
+  function setContent(target, html) {
+    if (target) target.innerHTML = html;
   }
 
   function showDisconnected() {
     currentUserId = null;
     loadingUserId = null;
 
-    const dashboard = $("member-dashboard");
+    const dashboard = $("academy-dashboard");
     if (dashboard) dashboard.hidden = true;
 
-    const bar = $("atp-member-bar");
-    if (bar) bar.remove();
+    const access = $("atp-academy-access");
+    if (access) access.hidden = false;
   }
 
   async function loadAcademyData(user) {
-    if (!prepareDashboard()) return;
+    const targets = getDashboardTargets();
+    if (!targets) return;
 
-    const ids = [
-      "academy-enrollments",
-      "academy-progress",
-      "academy-courses-list",
-      "academy-evaluations",
-      "academy-certificates"
-    ];
-
-    ids.forEach((id) =>
-      setContent(id, '<p class="atp-dashboard-muted">Chargement des données...</p>')
-    );
+    Object.values(targets).forEach((target) => {
+      setContent(
+        target,
+        '<p class="atp-dashboard-muted">Chargement des données...</p>'
+      );
+    });
 
     const { data: enrollments, error: enrollmentError } = await db
       .from("academy_enrollments")
@@ -220,48 +476,68 @@
 
     if (enrollmentError) {
       console.error("Erreur inscriptions Academy :", enrollmentError);
-      ids.forEach((id) =>
-        setContent(id, '<p class="atp-dashboard-muted">Impossible de charger ces informations. Réessaie plus tard.</p>')
-      );
+
+      Object.values(targets).forEach((target) => {
+        setContent(
+          target,
+          '<p class="atp-dashboard-muted">Impossible de charger ces informations. Réessaie plus tard.</p>'
+        );
+      });
+
       return;
     }
 
-    const courses = (enrollments || []).map((enrollment) => {
-      const course = Array.isArray(enrollment.academy_courses)
-        ? enrollment.academy_courses[0]
-        : enrollment.academy_courses;
+    const courses = (enrollments || [])
+      .map((enrollment) => {
+        const course = Array.isArray(enrollment.academy_courses)
+          ? enrollment.academy_courses[0]
+          : enrollment.academy_courses;
 
-      return { ...enrollment, course };
-    }).filter((item) => item.course);
+        return { ...enrollment, course };
+      })
+      .filter((item) => item.course);
 
     if (!courses.length) {
-      setContent("academy-enrollments",
+      setContent(
+        targets.enrollments,
         '<p class="atp-dashboard-muted">Tu n’es inscrit à aucune formation pour le moment.</p>'
       );
-      setContent("academy-progress",
-        '<p class="atp-dashboard-muted">Ta progression apparaîtra après ton inscription à une formation et la réalisation de tes leçons.</p>'
+      setContent(
+        targets.progress,
+        '<p class="atp-dashboard-muted">Ta progression apparaîtra après ton inscription et la réalisation de tes leçons.</p>'
       );
-      setContent("academy-courses-list",
+      setContent(
+        targets.courses,
         '<p class="atp-dashboard-muted">Inscris-toi à une formation pour retrouver tes cours ici.</p>'
       );
-      setContent("academy-evaluations",
-        '<p class="atp-dashboard-muted">Les évaluations de tes formations apparaîtront ici.</p>'
+      setContent(
+        targets.evaluations,
+        '<p class="atp-dashboard-muted">Les évaluations apparaîtront ici lorsque tu seras inscrit à une formation.</p>'
       );
-      setContent("academy-certificates",
+      setContent(
+        targets.certificates,
         '<p class="atp-dashboard-muted">Aucune attestation disponible pour le moment.</p>'
       );
       return;
     }
 
-    const courseIds = courses.map((item) => item.course_id);
+    setContent(
+      targets.enrollments,
+      courses.map((item) => `
+        <div class="atp-dashboard-item">
+          <strong>${escapeHTML(item.course.title)}</strong>
+          <small class="atp-dashboard-muted">
+            ${escapeHTML(item.course.description || "Formation AFRIQUE TECH PLUS")}
+          </small>
+          <br>
+          <span class="atp-dashboard-tag">
+            ${escapeHTML(item.enrollment_status || "Inscrit")}
+          </span>
+        </div>
+      `).join("")
+    );
 
-    setContent("academy-enrollments", courses.map((item) => `
-      <div class="atp-dashboard-item">
-        <strong>${escapeHTML(item.course.title)}</strong>
-        <small>${escapeHTML(item.course.description || "Formation AFRIQUE TECH PLUS")}</small>
-        <p><span class="atp-dashboard-tag">${escapeHTML(item.enrollment_status || "Inscrit")}</span></p>
-      </div>
-    `).join(""));
+    const courseIds = courses.map((item) => item.course_id);
 
     const { data: modules, error: modulesError } = await db
       .from("academy_modules")
@@ -271,36 +547,21 @@
 
     if (modulesError) {
       console.error("Erreur modules Academy :", modulesError);
-      setContent("academy-progress",
-        '<p class="atp-dashboard-muted">Impossible de récupérer les modules pour calculer ta progression.</p>'
-      );
-      setContent("academy-courses-list",
-        '<p class="atp-dashboard-muted">Impossible de charger les cours pour le moment.</p>'
-      );
-      setContent("academy-evaluations",
-        '<p class="atp-dashboard-muted">Les données des évaluations ne sont pas disponibles.</p>'
-      );
-      setContent("academy-certificates",
-        '<p class="atp-dashboard-muted">Aucune attestation disponible pour le moment.</p>'
-      );
+      setContent(targets.progress, '<p class="atp-dashboard-muted">Impossible de charger les modules.</p>');
+      setContent(targets.courses, '<p class="atp-dashboard-muted">Impossible de charger les cours.</p>');
+      setContent(targets.evaluations, '<p class="atp-dashboard-muted">Évaluations indisponibles.</p>');
+      setContent(targets.certificates, '<p class="atp-dashboard-muted">Aucune attestation disponible.</p>');
       return;
     }
 
-    const moduleIds = (modules || []).map((module) => module.id);
+    const moduleRows = modules || [];
+    const moduleIds = moduleRows.map((module) => module.id);
 
     if (!moduleIds.length) {
-      setContent("academy-progress",
-        '<p class="atp-dashboard-muted">Les modules de tes formations ne sont pas encore disponibles.</p>'
-      );
-      setContent("academy-courses-list",
-        '<p class="atp-dashboard-muted">Aucun cours disponible pour le moment.</p>'
-      );
-      setContent("academy-evaluations",
-        '<p class="atp-dashboard-muted">Aucun quiz disponible pour le moment.</p>'
-      );
-      setContent("academy-certificates",
-        '<p class="atp-dashboard-muted">Aucune attestation disponible pour le moment.</p>'
-      );
+      setContent(targets.progress, '<p class="atp-dashboard-muted">Les modules ne sont pas encore disponibles.</p>');
+      setContent(targets.courses, '<p class="atp-dashboard-muted">Aucun cours disponible.</p>');
+      setContent(targets.evaluations, '<p class="atp-dashboard-muted">Aucun quiz disponible.</p>');
+      setContent(targets.certificates, '<p class="atp-dashboard-muted">Aucune attestation disponible.</p>');
       return;
     }
 
@@ -312,23 +573,15 @@
 
     if (lessonsError) {
       console.error("Erreur leçons Academy :", lessonsError);
-      setContent("academy-progress",
-        '<p class="atp-dashboard-muted">Impossible de charger les leçons pour calculer ta progression.</p>'
-      );
-      setContent("academy-courses-list",
-        '<p class="atp-dashboard-muted">Impossible de charger les cours pour le moment.</p>'
-      );
-      setContent("academy-evaluations",
-        '<p class="atp-dashboard-muted">Les évaluations ne sont pas disponibles.</p>'
-      );
-      setContent("academy-certificates",
-        '<p class="atp-dashboard-muted">Aucune attestation disponible pour le moment.</p>'
-      );
+      setContent(targets.progress, '<p class="atp-dashboard-muted">Impossible de calculer la progression.</p>');
+      setContent(targets.courses, '<p class="atp-dashboard-muted">Impossible de charger les leçons.</p>');
+      setContent(targets.evaluations, '<p class="atp-dashboard-muted">Évaluations indisponibles.</p>');
+      setContent(targets.certificates, '<p class="atp-dashboard-muted">Aucune attestation disponible.</p>');
       return;
     }
 
-    const allLessons = lessons || [];
-    const lessonIds = allLessons.map((lesson) => lesson.id);
+    const lessonRows = lessons || [];
+    const lessonIds = lessonRows.map((lesson) => lesson.id);
 
     let progressRows = [];
     let quizRows = [];
@@ -366,23 +619,27 @@
     );
 
     const courseStats = courses.map((enrollment) => {
-      const courseModules = (modules || []).filter(
+      const courseModules = moduleRows.filter(
         (module) => module.course_id === enrollment.course_id
       );
+
       const ids = new Set(courseModules.map((module) => module.id));
-      const courseLessons = allLessons.filter((lesson) =>
+
+      const courseLessons = lessonRows.filter((lesson) =>
         ids.has(lesson.module_id)
       );
+
       const completed = courseLessons.filter((lesson) =>
         completedIds.has(lesson.id)
       ).length;
 
       const total = courseLessons.length;
-      const percent = total ? Math.round((completed / total) * 100) : 0;
+      const percent = total
+        ? Math.round((completed / total) * 100)
+        : 0;
 
       return {
         title: enrollment.course.title,
-        modules: courseModules,
         lessons: courseLessons,
         completed,
         total,
@@ -390,92 +647,141 @@
       };
     });
 
-    const totalLessons = courseStats.reduce((sum, item) => sum + item.total, 0);
-    const totalCompleted = courseStats.reduce((sum, item) => sum + item.completed, 0);
+    const totalLessons = courseStats.reduce(
+      (sum, item) => sum + item.total,
+      0
+    );
+
+    const totalCompleted = courseStats.reduce(
+      (sum, item) => sum + item.completed,
+      0
+    );
+
     const globalPercent = totalLessons
       ? Math.round((totalCompleted / totalLessons) * 100)
       : 0;
 
-    setContent("academy-progress", `
+    setContent(targets.progress, `
       <div class="atp-dashboard-item">
         <strong>Progression générale : ${globalPercent} %</strong>
         <div class="atp-progress-track">
           <div class="atp-progress-fill" style="width:${globalPercent}%"></div>
         </div>
-        <small>${totalCompleted} leçon(s) terminée(s) sur ${totalLessons}</small>
+        <small class="atp-dashboard-muted">
+          ${totalCompleted} leçon(s) terminée(s) sur ${totalLessons}
+        </small>
       </div>
+
       ${courseStats.map((item) => `
         <div class="atp-dashboard-item">
           <strong>${escapeHTML(item.title)}</strong>
           <div class="atp-progress-track">
             <div class="atp-progress-fill" style="width:${item.percent}%"></div>
           </div>
-          <small>${item.completed}/${item.total} leçon(s) · ${item.percent} %</small>
+          <small class="atp-dashboard-muted">
+            ${item.completed}/${item.total} leçon(s) · ${item.percent} %
+          </small>
         </div>
       `).join("")}
     `);
 
-    const lessonCourseMap = new Map();
+    const moduleById = new Map(
+      moduleRows.map((module) => [module.id, module])
+    );
+
+    const courseByModule = new Map();
+
     courseStats.forEach((course) => {
       course.lessons.forEach((lesson) => {
-        lessonCourseMap.set(lesson.id, course.title);
+        courseByModule.set(lesson.module_id, course.title);
       });
     });
 
-    setContent("academy-courses-list",
-      allLessons.length
-        ? allLessons.map((lesson) => {
+    setContent(
+      targets.courses,
+      lessonRows.length
+        ? lessonRows.map((lesson) => {
             const done = completedIds.has(lesson.id);
-            const module = (modules || []).find(
-              (item) => item.id === lesson.module_id
-            );
+            const module = moduleById.get(lesson.module_id);
 
             return `
               <div class="atp-dashboard-item">
                 <strong>${escapeHTML(lesson.title)}</strong>
-                <small>
-                  ${escapeHTML(lessonCourseMap.get(lesson.id) || "")}
+                <small class="atp-dashboard-muted">
+                  ${escapeHTML(courseByModule.get(lesson.module_id) || "")}
                   ${module ? " · " + escapeHTML(module.title) : ""}
                 </small>
-                <p>
-                  <span class="atp-dashboard-tag">
-                    ${done ? "Leçon terminée ✓" : "À suivre"}
-                  </span>
-                </p>
+                <br>
+                <span class="atp-dashboard-tag">
+                  ${done ? "Leçon terminée ✓" : "À suivre"}
+                </span>
               </div>
             `;
           }).join("")
         : '<p class="atp-dashboard-muted">Aucune leçon disponible dans tes formations.</p>'
     );
 
-    setContent("academy-evaluations",
+    setContent(
+      targets.evaluations,
       quizRows.length
         ? `
-          <p class="atp-dashboard-muted">${quizRows.length} question(s) de quiz disponible(s) dans tes formations.</p>
-          <p class="atp-dashboard-muted">Les résultats et l'historique de tes tentatives ne sont pas encore enregistrés dans un tableau dédié.</p>
+          <p class="atp-dashboard-muted">
+            ${quizRows.length} question(s) de quiz disponibles dans tes formations.
+          </p>
+          <p class="atp-dashboard-muted">
+            L'historique des tentatives et les résultats détaillés ne sont pas encore enregistrés.
+          </p>
         `
-        : '<p class="atp-dashboard-muted">Aucun quiz disponible dans tes formations pour le moment.</p>'
+        : '<p class="atp-dashboard-muted">Aucun quiz disponible pour le moment.</p>'
     );
 
-    setContent("academy-certificates",
+    setContent(
+      targets.certificates,
       `
-        <p class="atp-dashboard-muted">Aucune attestation n'a encore été délivrée.</p>
-        <p class="atp-dashboard-muted">Le système de validation et de délivrance des attestations reste à mettre en place.</p>
+        <p class="atp-dashboard-muted">
+          Aucune attestation n'a encore été délivrée.
+        </p>
+        <p class="atp-dashboard-muted">
+          Le système de validation et de délivrance des attestations reste à mettre en place.
+        </p>
       `
     );
+
+    const status = $("academy-dashboard-status");
+
+    if (status) {
+      status.textContent =
+        `Tu suis ${courses.length} formation(s) et tu as terminé ${totalCompleted} leçon(s) sur ${totalLessons}. Progression générale : ${globalPercent} %.`;
+    }
   }
 
   async function showMember(user) {
-    if (!user || currentUserId === user.id || loadingUserId === user.id) return;
+    if (!user) return;
+
+    if (currentUserId === user.id && loadingUserId === user.id) return;
+
+    if (currentUserId === user.id && !loadingUserId) {
+      const dashboard = $("academy-dashboard");
+      if (dashboard) dashboard.hidden = false;
+      return;
+    }
 
     currentUserId = user.id;
     loadingUserId = user.id;
 
-    const dashboard = $("member-dashboard");
+    const access = $("atp-academy-access");
+    if (access) access.hidden = true;
+
+    const dashboard = $("academy-dashboard");
     if (dashboard) dashboard.hidden = false;
 
-    addStyles();
-    prepareDashboard();
+    const targets = getDashboardTargets();
+
+    if (targets) {
+      Object.values(targets).forEach((target) => {
+        setContent(target, '<p class="atp-dashboard-muted">Chargement...</p>');
+      });
+    }
 
     const { data: profile, error } = await db
       .from("profiles")
@@ -489,72 +795,85 @@
 
     const fullName = [profile?.prenom, profile?.nom]
       .filter(Boolean)
-      .join(" ") || user.email || "Membre";
+      .join(" ") || user.user_metadata?.prenom && user.user_metadata?.nom
+        ? [user.user_metadata?.prenom, user.user_metadata?.nom].filter(Boolean).join(" ")
+        : user.email || "Membre";
 
-    if ($("dashboard-greeting")) {
-      $("dashboard-greeting").textContent = `Bienvenue, ${fullName} !`;
-    }
+    const dashboardSection = $("academy-dashboard");
 
-    if ($("profile-name")) $("profile-name").textContent = fullName;
-    if ($("profile-email")) $("profile-email").textContent = user.email || "Non renseigné";
+    if (dashboardSection && !$("atp-academy-member-info")) {
+      const info = document.createElement("div");
+      info.id = "atp-academy-member-info";
 
-    let bar = $("atp-member-bar");
-
-    if (!bar) {
-      bar = document.createElement("div");
-      bar.id = "atp-member-bar";
-      bar.style.cssText = `
-        background:#10152f;
-        color:white;
-        padding:12px 20px;
-        text-align:center;
-        font-size:14px;
+      info.innerHTML = `
+        <div>
+          <strong id="atp-academy-member-name"></strong>
+          <div class="atp-dashboard-muted">
+            Connecté à AFRIQUE TECH PLUS ACADEMY
+          </div>
+        </div>
+        <button type="button" id="atp-academy-logout">
+          Se déconnecter
+        </button>
       `;
 
-      document.querySelector(".site-header")?.after(bar);
+      const heading = dashboardSection.querySelector(".section-heading");
+      if (heading) heading.after(info);
+      else dashboardSection.prepend(info);
+
+      $("atp-academy-logout").addEventListener("click", async () => {
+        const { error: logoutError } = await db.auth.signOut();
+        if (logoutError) {
+          console.error("Erreur déconnexion :", logoutError);
+        }
+      });
     }
 
-    bar.innerHTML = `
-      Connecté : <strong>${escapeHTML(fullName)}</strong>
-      · ${escapeHTML(profile?.membership_plan || "free").toUpperCase()}
-      <button id="atp-logout-button" type="button"
-        style="margin-left:12px;padding:6px 12px;border:1px solid #64748b;border-radius:8px;background:transparent;color:white;cursor:pointer">
-        Se déconnecter
-      </button>
-    `;
-
-    $("atp-logout-button")?.addEventListener("click", async () => {
-      const { error: logoutError } = await db.auth.signOut();
-      if (logoutError) console.error("Erreur déconnexion :", logoutError);
-    });
-
-    $("menu-logout")?.addEventListener("click", async () => {
-      await db.auth.signOut();
-    });
+    if ($("atp-academy-member-name")) {
+      $("atp-academy-member-name").textContent =
+        `Bienvenue, ${fullName} !`;
+    }
 
     await loadAcademyData(user);
 
-    if (currentUserId === user.id) loadingUserId = null;
+    if (currentUserId === user.id) {
+      loadingUserId = null;
+    }
   }
 
-  db.auth.getSession().then(({ data, error }) => {
-    if (error) console.error("Erreur session :", error);
+  async function initialize() {
+    addStyles();
+    createAuthPanel();
+
+    const dashboard = $("academy-dashboard");
+    if (dashboard) dashboard.hidden = true;
+
+    const { data, error } = await db.auth.getSession();
+
+    if (error) {
+      console.error("Erreur session :", error);
+    }
 
     if (data?.session?.user) {
-      showMember(data.session.user);
+      await showMember(data.session.user);
     } else {
       showDisconnected();
     }
-  });
 
-  db.auth.onAuthStateChange((event, session) => {
-    if (session?.user) {
-      if (session.user.id !== currentUserId) {
-        showMember(session.user);
+    db.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        if (session.user.id !== currentUserId) {
+          showMember(session.user);
+        }
+      } else {
+        showDisconnected();
       }
-    } else {
-      showDisconnected();
-    }
-  });
+    });
+  }
 
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialize);
+  } else {
+    initialize();
+  }
 })();
