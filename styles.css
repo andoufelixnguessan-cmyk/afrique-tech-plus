@@ -237,3 +237,270 @@
 }
 }
 }
+/* =====================================
+   AFRIQUE TECH PLUS ACADEMY
+===================================== */
+
+.academy-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.academy-header {
+  max-width: 800px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.academy-header h2 {
+  font-size: clamp(30px, 5vw, 46px);
+  color: #fff;
+  line-height: 1.2;
+  margin: 18px 0;
+}
+
+.academy-header h2 span {
+  color: #9d91ff;
+}
+
+.academy-header p,
+.academy-catalog-heading p {
+  color: #aeb6d0;
+  line-height: 1.8;
+}
+
+/* AVANTAGES */
+
+.academy-benefits {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 85px;
+}
+
+.academy-benefit {
+  padding: 25px 20px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+}
+
+.academy-benefit > span {
+  display: inline-block;
+  color: #a99cff;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.academy-benefit h3 {
+  color: #fff;
+  font-size: 17px;
+  margin: 8px 0;
+}
+
+.academy-benefit p {
+  color: #aeb6d0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* CATALOGUE */
+
+.academy-catalog {
+  margin-bottom: 65px;
+}
+
+.academy-catalog-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.academy-catalog-heading h2 {
+  color: #fff;
+  font-size: 30px;
+  margin: 12px 0;
+}
+
+.academy-count {
+  color: #a99cff;
+  border: 1px solid rgba(169,156,255,.35);
+  padding: 9px 15px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.academy-courses {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* CARTES FORMATIONS */
+
+.academy-course {
+  overflow: hidden;
+  background: #141a35;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 18px;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.academy-course:hover {
+  transform: translateY(-6px);
+  border-color: #9d91ff;
+}
+
+.course-cover {
+  min-height: 175px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.course-ai {
+  background: linear-gradient(135deg, #29205d, #5141a0);
+}
+
+.course-office {
+  background: linear-gradient(135deg, #123c55, #226c91);
+}
+
+.course-data {
+  background: linear-gradient(135deg, #183e39, #287e68);
+}
+
+.course-category,
+.course-level {
+  position: absolute;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: rgba(0,0,0,.25);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .7px;
+}
+
+.course-category {
+  top: 15px;
+  left: 15px;
+}
+
+.course-level {
+  bottom: 15px;
+  right: 15px;
+}
+
+.course-symbol {
+  font-size: 65px;
+  color: rgba(255,255,255,.9);
+}
+
+.course-content {
+  padding: 23px;
+}
+
+.course-content h3 {
+  color: #fff;
+  font-size: 19px;
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+
+.course-content > p {
+  color: #aeb6d0;
+  font-size: 13px;
+  line-height: 1.8;
+  min-height: 92px;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+  color: #a99cff;
+  font-size: 12px;
+}
+
+.course-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* ATTESTATION */
+
+.academy-certification {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 30px;
+  background: rgba(169,156,255,.07);
+  border: 1px solid rgba(169,156,255,.2);
+  border-radius: 18px;
+}
+
+.certification-icon {
+  font-size: 42px;
+}
+
+.academy-certification h3 {
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+.academy-certification p {
+  color: #b5bdd5;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .academy-benefits {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .academy-courses {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .academy-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .academy-benefits,
+  .academy-courses {
+    grid-template-columns: 1fr;
+  }
+
+  .academy-catalog-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .academy-certification {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  .course-content > p {
+    min-height: auto;
+  }
+}
