@@ -19,7 +19,7 @@
     window.ATP_CONFIG.supabasePublishableKey
   );
 
-  const catalogue = document.querySelector("#formations");
+ const catalogue = document.querySelector("#academy-dynamic-catalogue");
 
   if (!catalogue) return;
 
