@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10152f">
+  <meta name="description" content="AFRIQUE TECH PLUS AI : découvre les possibilités de l'intelligence artificielle.">
+  <title>AI — AFRIQUE TECH PLUS</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .ai-page {
+      min-height: 100vh;
+      background: #10152f;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .ai-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 22px 7%;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .ai-logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .ai-logo span { color: #a78bfa; }
+
+    .ai-back {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .ai-hero {
+      padding: 90px 7% 75px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #38276d, #10152f 65%);
+    }
+
+    .ai-label {
+      color: #a78bfa;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .ai-hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      margin: 20px 0;
+    }
+
+    .ai-hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #c3ccdf;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .ai-content {
+      max-width: 1150px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .ai-content h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .ai-intro {
+      color: #aebbd2;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .ai-card {
+      padding: 27px;
+      background: #1a2343;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .ai-card:hover {
+      transform: translateY(-5px);
+      border-color: #a78bfa;
+    }
+
+    .ai-icon { font-size: 40px; }
+
+    .ai-card h3 {
+      margin: 17px 0 10px;
+      font-size: 21px;
+    }
+
+    .ai-card p {
+      color: #b8c3d9;
+      line-height: 1.7;
+    }
+
+    .ai-status {
+      display: inline-block;
+      margin-top: 12px;
+      color: #a78bfa;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .ai-banner {
+      padding: 30px;
+      background: linear-gradient(135deg, #29204e, #1a2343);
+      border: 1px solid rgba(167,139,250,.3);
+      border-radius: 20px;
+      line-height: 1.8;
+    }
+
+    .ai-footer {
+      padding: 30px 7%;
+      text-align: center;
+      color: #9ba8c2;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .ai-footer a {
+      color: #a78bfa;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px) {
+      .ai-topbar { padding: 18px 5%; }
+      .ai-content { padding: 40px 5%; }
+      .ai-hero { padding: 65px 5% 50px; }
+    }
+  </style>
+</head>
+
+<body class="ai-page">
+
+  <header class="ai-topbar">
+    <a class="ai-logo" href="index.html">
+      AFRIQUE TECH <span>PLUS</span>
+    </a>
+    <a class="ai-back" href="index.html">← Accueil</a>
+  </header>
+
+  <main>
+    <section class="ai-hero">
+      <div class="ai-label">AFRIQUE TECH PLUS AI</div>
+      <h1>L'intelligence artificielle à ta portée.</h1>
+      <p>
+        Découvre comment l'intelligence artificielle peut t'aider
+        à apprendre, travailler, créer et développer tes idées.
+      </p>
+    </section>
+
+    <section class="ai-content">
+      <h2>Explore les possibilités de l'IA</h2>
+      <p class="ai-intro">
+        L'intelligence artificielle offre de nombreuses possibilités.
+        Voici quelques domaines dans lesquels elle peut t'accompagner.
+      </p>
+
+      <div class="ai-grid">
+        <article class="ai-card">
+          <div class="ai-icon">✍️</div>
+          <h3>Écriture et rédaction</h3>
+          <p>
+            Préparer des textes, améliorer des documents,
+            organiser ses idées et apprendre à mieux rédiger.
+          </p>
+        </article>
+
+        <article class="ai-card">
+          <div class="ai-icon">🎓</div>
+          <h3>Apprentissage</h3>
+          <p>
+            Comprendre des notions, réviser ses cours,
+            obtenir des explications et s'entraîner.
+          </p>
+        </article>
+
+        <article class="ai-card">
+          <div class="ai-icon">⚡</div>
+          <h3>Productivité</h3>
+          <p>
+            Organiser son travail, planifier ses tâches
+            et gagner du temps au quotidien.
+          </p>
+        </article>
+
+        <article class="ai-card">
+          <div class="ai-icon">🎨</div>
+          <h3>Créativité</h3>
+          <p>
+            Explorer de nouvelles idées et préparer
+            des projets créatifs et numériques.
+          </p>
+        </article>
+
+        <article class="ai-card">
+          <div class="ai-icon">💻</div>
+          <h3>Programmation</h3>
+          <p>
+            Découvrir le code, comprendre des erreurs
+            et progresser dans ses projets informatiques.
+          </p>
+        </article>
+
+        <article class="ai-card">
+          <div class="ai-icon">🚀</div>
+          <h3>Entrepreneuriat</h3>
+          <p>
+            Structurer un projet, étudier des idées
+            et préparer des activités professionnelles.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ai-content">
+      <div class="ai-banner">
+        <h2>Un espace intelligent en préparation.</h2>
+        <p>
+          AFRIQUE TECH PLUS AI accueillera progressivement
+          des outils et assistants destinés à faciliter
+          l'apprentissage, la création et le travail.
+        </p>
+        <span class="ai-status">ASSISTANTS INTERACTIFS EN PRÉPARATION</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ai-footer">
+    © <span id="ai-year"></span> AFRIQUE TECH PLUS —
+    <a href="index.html">Retour à l'accueil</a>
+  </footer>
+
+  <script>
+    document.getElementById("ai-year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
