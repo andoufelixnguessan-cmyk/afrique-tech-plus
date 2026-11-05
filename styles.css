@@ -44,7 +44,7 @@
 
 /* Respecter l'attribut hidden */
 [hidden] {
-  display: none !important;
+  display: none !important;}
  /* PROFIL MEMBRE */
 .profile-details {
   margin: 25px 0;
@@ -70,7 +70,7 @@
   background: rgba(40, 190, 120, 0.12);
   color: #36d99a;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 13px;}
  /* =================================
    TABLEAU DE BORD MEMBRE
 ================================= */
@@ -502,5 +502,151 @@
 
   .course-content > p {
     min-height: auto;
+   /* =====================================
+   AFRIQUE TECH PLUS — IDENTITÉ VISUELLE
+===================================== */
+
+:root {
+  --navy: #10152f;
+  --navy2: #171e3d;
+  --purple: #7c5cff;
+  --cyan: #22d3ee;
+  --lime: #c8fa72;
+  --ink: #f5f7ff;
+  --muted: #c0c8df;
+  --bg: #10152f;
+  --line: rgba(255,255,255,.12);
+  --white: #ffffff;
+}
+
+/* Fond général */
+body {
+  background: var(--navy);
+  color: #f5f7ff;
+}
+
+/* Navigation */
+.site-header {
+  background: rgba(16,21,47,.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-name,
+.main-nav a {
+  color: #f5f7ff;
+}
+
+.brand-name small {
+  color: #b8c2df;
+}
+
+.main-nav a:hover,
+.footer-links a:hover {
+  color: var(--cyan);
+}
+
+.mobile-menu {
+  background: var(--navy2);
+  color: #fff;
+}
+
+/* Sections */
+.feature-section,
+.store-section,
+.about-section {
+  background: var(--navy);
+}
+
+.school-section,
+.compact-section {
+  background: #141b38;
+}
+
+/* Titres et descriptions */
+h2,
+.feature-copy h2,
+.store-info h3,
+.mini-feature h2,
+.about-inner h2 {
+  color: #ffffff;
+}
+
+.section-heading > p,
+.feature-copy > p,
+.mini-feature > p,
+.store-info p,
+.about-inner p {
+  color: #c0c8df;
+}
+
+/* Cartes des espaces */
+.domain-card,
+.mini-feature {
+  background: #171e3d;
+  border-color: rgba(255,255,255,.12);
+  color: #ffffff;
+}
+
+.domain-card h3,
+.mini-feature h3 {
+  color: #ffffff;
+}
+
+.domain-card p {
+  color: #c0c8df;
+}
+
+.domain-number {
+  color: #c0c8df;
+}
+
+/* Éléments de formation */
+.check-list li {
+  color: #d0d7eb;
+}
+
+.text-link {
+  color: #a99cff;
+}
+
+/* Éléments scolaires */
+.class-pills span {
+  background: #20294b;
+  color: #ffffff;
+  border-color: rgba(255,255,255,.15);
+}
+
+/* Boutique */
+.store-card {
+  background: #171e3d;
+  border-color: var(--line);
+}
+
+.store-info p {
+  color: #c0c8df;
+}
+
+/* Éléments temporaires */
+.coming-soon {
+  color: #d1d8eb;
+  border-color: rgba(255,255,255,.2);
+}
+
+/* Pied de page */
+.site-footer {
+  background: #090e24;
+}
+
+/* Menu mobile */
+@media (max-width: 700px) {
+  .main-nav {
+    background: #10152f;
+    border-color: rgba(255,255,255,.15);
+  }
+
+  .main-nav a {
+    color: #ffffff;
+  }
+}
   }
 }
