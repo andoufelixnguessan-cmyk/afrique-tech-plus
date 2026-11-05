@@ -582,24 +582,28 @@ h2,
 /* Cartes des espaces */
 .domain-card,
 .mini-feature {
-  background: #171e3d;
-  border-color: rgba(255,255,255,.12);
-  color: #ffffff;
+  background: #ffffff;
+  border-color: #e3e6f0;
+  color: #10152f;
 }
 
 .domain-card h3,
 .mini-feature h3 {
-  color: #ffffff;
+  color: #10152f;
 }
 
 .domain-card p {
-  color: #c0c8df;
+  color: #424b68;
 }
 
 .domain-number {
-  color: #c0c8df;
+  color: #59617c;
 }
 
+/* Liens des cartes */
+.domain-link {
+  color: #6248db;
+}
 /* Éléments de formation */
 .check-list li {
   color: #d0d7eb;
