@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10152f">
+  <meta name="description" content="AFRIQUE TECH PLUS STORE : découvre nos ressources et produits numériques.">
+  <title>STORE — AFRIQUE TECH PLUS</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .store-page {
+      min-height: 100vh;
+      background: #10152f;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .store-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 22px 7%;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .store-logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .store-logo span { color: #f4b942; }
+
+    .store-back {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .store-hero {
+      padding: 85px 7% 70px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #59401b, #10152f 65%);
+    }
+
+    .store-label {
+      color: #f4b942;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .store-hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      margin: 20px 0;
+    }
+
+    .store-hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #c3ccdf;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .store-content {
+      max-width: 1150px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .store-content h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .store-intro {
+      color: #aebbd2;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    .store-card {
+      background: #1a2343;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .store-card:hover {
+      transform: translateY(-5px);
+      border-color: #f4b942;
+    }
+
+    .store-visual {
+      min-height: 165px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #62491f, #24294a);
+      font-size: 65px;
+    }
+
+    .store-card-body { padding: 24px; }
+
+    .store-card h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+    }
+
+    .store-card p {
+      color: #b8c3d9;
+      line-height: 1.7;
+    }
+
+    .store-price {
+      color: #f4b942;
+      font-size: 23px;
+      font-weight: bold;
+      margin: 18px 0;
+    }
+
+    .store-button {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 30px;
+      background: #f4b942;
+      color: #10152f;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .store-button:hover { opacity: .9; }
+
+    .store-coming {
+      display: inline-block;
+      margin-top: 12px;
+      color: #f4b942;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .store-info {
+      margin-top: 35px;
+      padding: 25px;
+      background: #1a2343;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      color: #b8c3d9;
+      line-height: 1.8;
+    }
+
+    .store-footer {
+      padding: 30px 7%;
+      text-align: center;
+      color: #9ba8c2;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .store-footer a {
+      color: #f4b942;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px) {
+      .store-topbar { padding: 18px 5%; }
+      .store-content { padding: 40px 5%; }
+      .store-hero { padding: 65px 5% 50px; }
+    }
+  </style>
+</head>
+
+<body class="store-page">
+
+  <header class="store-topbar">
+    <a class="store-logo" href="index.html">
+      AFRIQUE TECH <span>PLUS</span>
+    </a>
+    <a class="store-back" href="index.html">← Accueil</a>
+  </header>
+
+  <main>
+    <section class="store-hero">
+      <div class="store-label">AFRIQUE TECH PLUS STORE</div>
+      <h1>Les bonnes ressources au bon endroit.</h1>
+      <p>
+        Découvre une sélection de guides, de ressources numériques
+        et de produits conçus pour t'aider à apprendre, créer
+        et développer tes compétences.
+      </p>
+    </section>
+
+    <section class="store-content">
+      <h2>Nos produits disponibles</h2>
+      <p class="store-intro">
+        Retrouve ici les ressources numériques actuellement proposées
+        par AFRIQUE TECH PLUS.
+      </p>
+
+      <div class="store-grid">
+
+        <article class="store-card">
+          <div class="store-visual">🤖</div>
+          <div class="store-card-body">
+            <h3>Guide pratique de l'intelligence artificielle</h3>
+            <p>
+              Une ressource numérique pour découvrir et apprendre
+              à mieux utiliser les outils d'intelligence artificielle.
+            </p>
+            <div class="store-price">1 000 FCFA</div>
+            <a
+              class="store-button"
+              href="https://afrique-tech-plus.myficsell.com/x6nx8kk4e"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Découvrir le produit →
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="store-content">
+      <h2>Prochainement dans la boutique</h2>
+      <p class="store-intro">
+        De nouvelles ressources seront ajoutées progressivement.
+      </p>
+
+      <div class="store-grid">
+
+        <article class="store-card">
+          <div class="store-visual">💻</div>
+          <div class="store-card-body">
+            <h3>Guides informatiques</h3>
+            <p>
+              Des guides pratiques pour développer tes compétences
+              numériques et informatiques.
+            </p>
+            <span class="store-coming">BIENTÔT DISPONIBLE</span>
+          </div>
+        </article>
+
+        <article class="store-card">
+          <div class="store-visual">📚</div>
+          <div class="store-card-body">
+            <h3>Ressources éducatives</h3>
+            <p>
+              Des supports de formation, fiches pratiques
+              et documents d'apprentissage.
+            </p>
+            <span class="store-coming">BIENTÔT DISPONIBLE</span>
+          </div>
+        </article>
+
+        <article class="store-card">
+          <div class="store-visual">🎨</div>
+          <div class="store-card-body">
+            <h3>Création numérique</h3>
+            <p>
+              Des modèles et ressources pour faciliter
+              tes projets de création.
+            </p>
+            <span class="store-coming">BIENTÔT DISPONIBLE</span>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="store-info">
+        <strong>Notre engagement :</strong>
+        proposer progressivement des ressources utiles,
+        accessibles et adaptées aux besoins de notre communauté.
+      </div>
+    </section>
+  </main>
+
+  <footer class="store-footer">
+    © <span id="store-year"></span> AFRIQUE TECH PLUS —
+    <a href="index.html">Retour à l'accueil</a>
+  </footer>
+
+  <script>
+    document.getElementById("store-year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
