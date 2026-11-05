@@ -2,7 +2,7 @@
   "use strict";
 
   // ==========================================
-  // CONFIGURATION ET CONNEXION SUPABASE
+  // CONFIGURATION SUPABASE
   // ==========================================
 
   if (
@@ -19,13 +19,17 @@
     window.ATP_CONFIG.supabasePublishableKey
   );
 
- const catalogue = document.querySelector("#academy-dynamic-catalogue");
-
+  const catalogue = document.querySelector("#academy-dynamic-catalogue");
   if (!catalogue) return;
 
   let currentUser = null;
   let enrolledCourseIds = new Set();
   let activeCourseId = null;
+  let activeCourse = null;
+  let progressByLesson = new Map();
+  let progressByCourse = new Map();
+  let authInitialized = false;
+  let authVersion = 0;
 
   // ==========================================
   // STYLES
@@ -155,6 +159,36 @@
       font-weight: bold;
     }
 
+    .atp-progress {
+      margin: 18px 0;
+      padding: 16px;
+      background: #171e3d;
+      border: 1px solid rgba(124,92,255,.35);
+      border-radius: 12px;
+      color: #f5f7ff;
+    }
+
+    .atp-progress-track {
+      height: 10px;
+      background: rgba(255,255,255,.12);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .atp-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #c8fa72;
+      transition: width .3s ease;
+    }
+
+    .atp-completed {
+      color: #c8fa72;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
     @media(max-width:600px) {
       .atp-course-player {
         padding: 15px;
@@ -165,7 +199,7 @@
   document.head.appendChild(style);
 
   // ==========================================
-  // ZONE D'AFFICHAGE DES FORMATIONS
+  // ZONES D'AFFICHAGE
   // ==========================================
 
   const liveCourses = document.createElement("div");
@@ -201,7 +235,171 @@
   }
 
   // ==========================================
-  // CHARGER LES FORMATIONS PUBLIÉES
+  // PROGRESSION
+  // ==========================================
+
+  function isLessonCompleted(lessonId) {
+    return progressByLesson.get(lessonId) === true;
+  }
+
+  function getCourseLessonsCount() {
+    return progressByCourse.get(activeCourseId)?.total || 0;
+  }
+
+  function getCourseCompletedCount() {
+    return progressByCourse.get(activeCourseId)?.completed || 0;
+  }
+
+  function updateProgressDisplay() {
+    if (!activeCourseId || !activeCourse) return;
+
+    const total = getCourseLessonsCount();
+    const completed = getCourseCompletedCount();
+    const percentage = total
+      ? Math.round((completed / total) * 100)
+      : 0;
+
+    const label = player.querySelector("#atp-progress-label");
+    const fill = player.querySelector("#atp-progress-fill");
+
+    if (label) {
+      label.textContent =
+        completed + " / " + total + " leçons terminées — " +
+        percentage + "%";
+    }
+
+    if (fill) {
+      fill.style.width = percentage + "%";
+    }
+  }
+
+  async function loadCourseProgress(courseId, lessons) {
+    progressByCourse.set(courseId, {
+      total: lessons.length,
+      completed: 0
+    });
+
+    if (!currentUser || !enrolledCourseIds.has(courseId)) {
+      return;
+    }
+
+    const lessonIds = lessons.map((lesson) => lesson.id);
+
+    if (!lessonIds.length) return;
+
+    const { data, error } = await client
+      .from("academy_lesson_progress")
+      .select("lesson_id, is_completed")
+      .eq("member_id", currentUser.id)
+      .in("lesson_id", lessonIds);
+
+    if (error) {
+      console.error("Erreur chargement progression :", error);
+      return;
+    }
+
+    for (const item of data || []) {
+      progressByLesson.set(item.lesson_id, item.is_completed === true);
+    }
+
+    const completed = lessons.filter(
+      (lesson) => isLessonCompleted(lesson.id)
+    ).length;
+
+    progressByCourse.set(courseId, {
+      total: lessons.length,
+      completed
+    });
+
+    updateProgressDisplay();
+  }
+
+  async function saveLessonProgress(lesson, button, status) {
+    if (!currentUser) {
+      status.textContent =
+        "Connecte-toi pour enregistrer ta progression.";
+      return;
+    }
+
+    if (!activeCourseId || !enrolledCourseIds.has(activeCourseId)) {
+      status.textContent =
+        "Inscris-toi à la formation pour enregistrer ta progression.";
+      return;
+    }
+
+    if (isLessonCompleted(lesson.id)) {
+      status.textContent = "Cette leçon est déjà terminée.";
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Enregistrement...";
+
+    const { error } = await client
+      .from("academy_lesson_progress")
+      .upsert(
+        {
+          member_id: currentUser.id,
+          lesson_id: lesson.id,
+          is_completed: true,
+          completed_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          onConflict: "member_id,lesson_id"
+        }
+      );
+
+    if (error) {
+      console.error("Erreur sauvegarde progression :", error);
+      button.disabled = false;
+      button.textContent = "Marquer comme terminée";
+      status.textContent =
+        "Impossible d'enregistrer. Vérifie ta connexion et réessaie.";
+      return;
+    }
+
+    progressByLesson.set(lesson.id, true);
+
+    const progress = progressByCourse.get(activeCourseId) || {
+      total: 0,
+      completed: 0
+    };
+
+    progress.completed = Math.min(
+      progress.total,
+      progress.completed + 1
+    );
+
+    progressByCourse.set(activeCourseId, progress);
+
+    const percentage = progress.total
+      ? Math.round((progress.completed / progress.total) * 100)
+      : 0;
+
+    const { error: enrollmentError } = await client
+      .from("academy_enrollments")
+      .update({
+        progress_percent: percentage
+      })
+      .eq("member_id", currentUser.id)
+      .eq("course_id", activeCourseId)
+      .eq("enrollment_status", "active");
+
+    if (enrollmentError) {
+      console.error("Erreur mise à jour inscription :", enrollmentError);
+    }
+
+    button.disabled = true;
+    button.textContent = "✓ Leçon terminée";
+
+    status.textContent = "Progression enregistrée avec succès !";
+
+    updateProgressDisplay();
+  }
+
+  // ==========================================
+  // CHARGER LES FORMATIONS
   // ==========================================
 
   async function loadCourses() {
@@ -240,7 +438,9 @@
       const category = makeElement(
         "span",
         "atp-course-tag",
-        course.access_type === "free" ? "FORMATION GRATUITE" : "FORMATION PAYANTE"
+        course.access_type === "free"
+          ? "FORMATION GRATUITE"
+          : "FORMATION PAYANTE"
       );
 
       const title = makeElement("h3", "", course.title);
@@ -248,14 +448,15 @@
       const description = makeElement(
         "p",
         "",
-        course.description || "Découvre cette formation sur AFRIQUE TECH PLUS Academy."
+        course.description ||
+          "Découvre cette formation sur AFRIQUE TECH PLUS Academy."
       );
 
       const details = makeElement(
         "p",
         "atp-status",
         (course.modules_count || 0) + " modules · " +
-        (course.level || "Tous niveaux")
+          (course.level || "Tous niveaux")
       );
 
       const button = makeElement(
@@ -265,28 +466,10 @@
       );
 
       button.type = "button";
-
-      button.addEventListener("click", () => {
-        openCourse(course);
-      });
+      button.addEventListener("click", () => openCourse(course));
 
       card.append(category, title, description, details, button);
       liveCourses.appendChild(card);
-
-      // Retirer l'ancien emplacement statique correspondant
-      const oldCards = catalogue.querySelectorAll(".course");
-
-      oldCards.forEach((oldCard) => {
-        const oldTitle = oldCard.querySelector("h3");
-
-        if (
-          oldTitle &&
-          oldTitle.textContent.trim().toLowerCase() ===
-          course.title.trim().toLowerCase()
-        ) {
-          oldCard.remove();
-        }
-      });
     }
   }
 
@@ -296,6 +479,9 @@
 
   async function openCourse(course) {
     activeCourseId = course.id;
+    activeCourse = course;
+    progressByLesson.clear();
+
     player.hidden = false;
     player.replaceChildren();
 
@@ -305,6 +491,7 @@
     });
 
     const title = makeElement("h2", "", course.title);
+
     const description = makeElement(
       "p",
       "atp-status",
@@ -356,7 +543,11 @@
         player.appendChild(enrollButton);
       } else {
         player.appendChild(
-          makeElement("p", "atp-course-tag", "✓ Tu es inscrit à cette formation")
+          makeElement(
+            "p",
+            "atp-course-tag",
+            "✓ Tu es inscrit à cette formation"
+          )
         );
       }
     } else if (!currentUser) {
@@ -378,6 +569,24 @@
       );
     }
 
+    const progressBox = makeElement("div", "atp-progress");
+    const progressLabel = makeElement(
+      "p",
+      "",
+      "Chargement de ta progression..."
+    );
+    progressLabel.id = "atp-progress-label";
+
+    const progressTrack = makeElement("div", "atp-progress-track");
+    const progressFill = makeElement("div", "atp-progress-fill");
+    progressFill.id = "atp-progress-fill";
+
+    progressTrack.appendChild(progressFill);
+    progressBox.append(progressLabel, progressTrack);
+    player.appendChild(progressBox);
+
+    const allLessons = [];
+
     for (const module of modules) {
       const moduleElement = makeElement("details", "atp-module");
 
@@ -398,12 +607,17 @@
       moduleElement.append(summary, moduleDescription, lessonsContainer);
       player.appendChild(moduleElement);
 
-      await loadLessons(module, lessonsContainer);
+      const lessons = await loadLessons(module, lessonsContainer);
+
+      if (lessons) allLessons.push(...lessons);
     }
+
+    await loadCourseProgress(course.id, allLessons);
+    updateProgressDisplay();
   }
 
   // ==========================================
-  // INSCRIPTION À UNE FORMATION GRATUITE
+  // INSCRIPTION
   // ==========================================
 
   async function enrollInCourse(course, button) {
@@ -427,14 +641,14 @@
     if (error) {
       console.error("Erreur inscription :", error);
 
-      button.disabled = false;
-      button.textContent = "Réessayer";
-
       if (error.code === "23505") {
-        button.textContent = "Déjà inscrit";
         enrolledCourseIds.add(course.id);
+        button.remove();
         return;
       }
+
+      button.disabled = false;
+      button.textContent = "Réessayer";
 
       alert(
         "L'inscription n'a pas abouti. Vérifie que tu es connecté et que la formation est bien publiée."
@@ -443,7 +657,6 @@
     }
 
     enrolledCourseIds.add(course.id);
-
     button.remove();
 
     const confirmation = makeElement(
@@ -469,12 +682,12 @@
     if (error) {
       console.error("Erreur leçons :", error);
       container.textContent = "Impossible de charger les leçons.";
-      return;
+      return [];
     }
 
     if (!lessons || lessons.length === 0) {
       container.textContent = "Aucune leçon disponible.";
-      return;
+      return [];
     }
 
     for (const lesson of lessons) {
@@ -489,7 +702,9 @@
       const duration = makeElement(
         "p",
         "atp-status",
-        "Durée estimée : " + (lesson.duration_minutes || 10) + " minutes"
+        "Durée estimée : " +
+          (lesson.duration_minutes || 10) +
+          " minutes"
       );
 
       const toggle = makeElement(
@@ -502,8 +717,6 @@
 
       const content = makeElement("div", "atp-lesson-content");
       content.hidden = true;
-
-      // Le contenu est affiché comme du texte, sans interpréter du HTML.
       content.textContent = lesson.content || "Contenu en préparation.";
 
       toggle.addEventListener("click", () => {
@@ -513,15 +726,49 @@
           : "Masquer la leçon";
       });
 
-      lessonCard.append(lessonTitle, duration, toggle, content);
+      const completionButton = makeElement(
+        "button",
+        "atp-live-button",
+        "Marquer comme terminée"
+      );
+
+      completionButton.type = "button";
+
+      const completionStatus = makeElement(
+        "p",
+        "atp-completed",
+        ""
+      );
+
+      completionButton.addEventListener("click", () => {
+        saveLessonProgress(lesson, completionButton, completionStatus);
+      });
+
+      lessonCard.append(
+        lessonTitle,
+        duration,
+        toggle,
+        content,
+        completionButton,
+        completionStatus
+      );
+
       container.appendChild(lessonCard);
+
+      if (isLessonCompleted(lesson.id)) {
+        completionButton.disabled = true;
+        completionButton.textContent = "✓ Leçon terminée";
+        completionStatus.textContent = "Déjà enregistrée dans ta progression.";
+      }
 
       await loadQuizzes(lesson, lessonCard);
     }
+
+    return lessons;
   }
 
   // ==========================================
-  // CHARGER ET CORRIGER LES QUIZ
+  // QUIZ
   // ==========================================
 
   async function loadQuizzes(lesson, container) {
@@ -560,8 +807,8 @@
 
       options.forEach((option, index) => {
         const label = makeElement("label", "");
-
         const input = document.createElement("input");
+
         input.type = "radio";
         input.name = "quiz-" + quiz.id;
         input.value = String(index);
@@ -578,7 +825,6 @@
       );
 
       submit.type = "submit";
-
       form.appendChild(submit);
 
       form.addEventListener("submit", async (event) => {
@@ -636,10 +882,13 @@
         }
 
         result.textContent =
-          (correction.is_correct ? "✓ Bonne réponse ! " : "✗ Réponse incorrecte. ") +
+          (correction.is_correct
+            ? "✓ Bonne réponse ! "
+            : "✗ Réponse incorrecte. ") +
           (correction.explanation || "");
 
         submit.textContent = "Réponse corrigée";
+
         form.querySelectorAll("input").forEach((input) => {
           input.disabled = true;
         });
@@ -655,13 +904,20 @@
   // ==========================================
 
   async function initialize() {
+    const version = ++authVersion;
+
     const { data, error } = await client.auth.getSession();
+
+    if (version !== authVersion) return;
 
     if (error) {
       console.error("Session Academy :", error);
     }
 
     currentUser = data?.session?.user || null;
+    enrolledCourseIds.clear();
+    progressByLesson.clear();
+    progressByCourse.clear();
 
     if (currentUser) {
       const { data: enrollments, error: enrollmentError } = await client
@@ -669,6 +925,8 @@
         .select("course_id")
         .eq("member_id", currentUser.id)
         .eq("enrollment_status", "active");
+
+      if (version !== authVersion) return;
 
       if (enrollmentError) {
         console.error("Inscriptions Academy :", enrollmentError);
@@ -679,6 +937,7 @@
       }
     }
 
+    authInitialized = true;
     await loadCourses();
   }
 
@@ -687,7 +946,13 @@
   client.auth.onAuthStateChange((_event, session) => {
     currentUser = session?.user || null;
     enrolledCourseIds.clear();
-    initialize();
+    progressByLesson.clear();
+    progressByCourse.clear();
+
+    // Laisse Supabase terminer son traitement d'authentification.
+    setTimeout(() => {
+      initialize();
+    }, 0);
   });
 
 })();
