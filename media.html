@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10152f">
+  <meta name="description" content="AFRIQUE TECH PLUS MEDIA : actualités, découvertes et conseils sur le numérique et la technologie.">
+  <title>MEDIA — AFRIQUE TECH PLUS</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .media-page {
+      min-height: 100vh;
+      background: #10152f;
+      color: #f5f7ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .media-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 22px 7%;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .media-logo {
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .media-logo span { color: #fb7185; }
+
+    .media-back {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.2);
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .media-hero {
+      padding: 90px 7% 75px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #602b45, #10152f 65%);
+    }
+
+    .media-label {
+      color: #fb7185;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .media-hero h1 {
+      font-size: clamp(38px, 7vw, 68px);
+      margin: 20px 0;
+    }
+
+    .media-hero p {
+      max-width: 720px;
+      margin: auto;
+      color: #c3ccdf;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .media-content {
+      max-width: 1150px;
+      margin: auto;
+      padding: 55px 7%;
+    }
+
+    .media-content h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .media-intro {
+      color: #aebbd2;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .media-card {
+      background: #1a2343;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .media-card:hover {
+      transform: translateY(-5px);
+      border-color: #fb7185;
+    }
+
+    .media-visual {
+      min-height: 165px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #612b45, #24294a);
+      font-size: 60px;
+    }
+
+    .media-card-body { padding: 24px; }
+
+    .media-card h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+    }
+
+    .media-card p {
+      color: #b8c3d9;
+      line-height: 1.7;
+    }
+
+    .media-status {
+      display: inline-block;
+      margin-top: 12px;
+      color: #fb7185;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .media-banner {
+      padding: 30px;
+      background: #1a2343;
+      border: 1px solid rgba(251,113,133,.25);
+      border-radius: 20px;
+      line-height: 1.8;
+    }
+
+    .media-footer {
+      padding: 30px 7%;
+      text-align: center;
+      color: #9ba8c2;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .media-footer a {
+      color: #fb7185;
+      text-decoration: none;
+    }
+
+    @media(max-width:600px) {
+      .media-topbar { padding: 18px 5%; }
+      .media-content { padding: 40px 5%; }
+      .media-hero { padding: 65px 5% 50px; }
+    }
+  </style>
+</head>
+
+<body class="media-page">
+
+  <header class="media-topbar">
+    <a class="media-logo" href="index.html">
+      AFRIQUE TECH <span>PLUS</span>
+    </a>
+    <a class="media-back" href="index.html">← Accueil</a>
+  </header>
+
+  <main>
+    <section class="media-hero">
+      <div class="media-label">AFRIQUE TECH PLUS MEDIA</div>
+      <h1>Le numérique en mouvement.</h1>
+      <p>
+        Un espace pour découvrir les tendances technologiques,
+        comprendre les innovations et développer sa culture numérique.
+      </p>
+    </section>
+
+    <section class="media-content">
+      <h2>Nos rubriques</h2>
+      <p class="media-intro">
+        Des contenus accessibles pour rester informé,
+        apprendre et mieux comprendre le monde numérique.
+      </p>
+
+      <div class="media-grid">
+
+        <article class="media-card">
+          <div class="media-visual">🌐</div>
+          <div class="media-card-body">
+            <h3>Technologie</h3>
+            <p>
+              Découvre les innovations, les outils numériques
+              et les nouvelles tendances technologiques.
+            </p>
+            <span class="media-status">ARTICLES EN PRÉPARATION</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <div class="media-visual">🤖</div>
+          <div class="media-card-body">
+            <h3>Intelligence artificielle</h3>
+            <p>
+              Comprends l'évolution de l'IA et ses applications
+              dans les études, le travail et la vie quotidienne.
+            </p>
+            <span class="media-status">ARTICLES EN PRÉPARATION</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <div class="media-visual">💡</div>
+          <div class="media-card-body">
+            <h3>Compétences numériques</h3>
+            <p>
+              Des conseils et tutoriels pour mieux utiliser
+              les outils informatiques et Internet.
+            </p>
+            <span class="media-status">TUTORIELS EN PRÉPARATION</span>
+          </div>
+        </article>
+
+        <article class="media-card">
+          <div class="media-visual">📱</div>
+          <div class="media-card-body">
+            <h3>Vie digitale</h3>
+            <p>
+              Découvre les usages du numérique,
+              les bonnes pratiques et les astuces du quotidien.
+            </p>
+            <span class="media-status">CONTENU EN PRÉPARATION</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="media-content">
+      <div class="media-banner">
+        <h2>Bienvenue dans notre univers média.</h2>
+        <p>
+          Les publications, actualités et tutoriels seront ajoutés
+          progressivement afin de construire une véritable bibliothèque
+          de contenus numériques.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="media-footer">
+    © <span id="media-year"></span> AFRIQUE TECH PLUS —
+    <a href="index.html">Retour à l'accueil</a>
+  </footer>
+
+  <script>
+    document.getElementById("media-year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
