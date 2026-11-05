@@ -8,14 +8,14 @@
   <title>ACADEMY | AFRIQUE TECH PLUS</title>
 
   <style>
-  :root {
-  --bg: #10152f;
-  --panel: #171e3d;
-  --purple: #7c5cff;
-  --text: #f5f7ff;
-  --muted: #c0c8df;
-  --border: rgba(255,255,255,.12);
-}
+    :root {
+      --bg: #10152f;
+      --panel: #171e3d;
+      --purple: #7c5cff;
+      --text: #f5f7ff;
+      --muted: #c0c8df;
+      --border: rgba(255,255,255,.12);
+    }
 
     * {
       box-sizing: border-box;
@@ -85,18 +85,17 @@
       transition: .2s;
     }
 
-   .nav-links a:hover {
-  color: var(--purple);
-}
+    .nav-links a:hover {
+      color: var(--purple);
+    }
 
-  .nav-button {
-  padding: 11px 17px;
-  border-radius: 9px;
-  background: var(--purple);
-  color: #ffffff !important;
-  font-weight: 700;
-}
-    
+    .nav-button {
+      padding: 11px 17px;
+      border-radius: 9px;
+      background: var(--purple);
+      color: #ffffff !important;
+      font-weight: 700;
+    }
 
     /* HERO */
 
@@ -150,7 +149,7 @@
       filter: brightness(1.1);
     }
 
-    /* BENEFICES */
+    /* AVANTAGES */
 
     .benefits {
       display: grid;
@@ -212,105 +211,6 @@
       letter-spacing: 1.5px;
     }
 
-    .courses {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .course {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      overflow: hidden;
-      transition: .25s;
-    }
-
-    .course:hover {
-      transform: translateY(-6px);
-      border-color: var(--purple);
-    }
-
-    .course-cover {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      font-size: 65px;
-    }
-
-    .ai-cover {
-      background: linear-gradient(135deg,#32236f,#7659cc);
-    }
-
-    .office-cover {
-      background: linear-gradient(135deg,#16455c,#237fa1);
-    }
-
-    .data-cover {
-      background: linear-gradient(135deg,#174b3e,#328b70);
-    }
-
-    .course-category {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      padding: 6px 10px;
-      border-radius: 20px;
-      background: rgba(0,0,0,.25);
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .course-content {
-      padding: 23px;
-    }
-
-    .course-content h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-
-    .course-content p {
-      color: var(--muted);
-      font-size: 13px;
-      min-height: 65px;
-    }
-
-    .course-info {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-      color: var(--purple);
-      font-size: 12px;
-    }
-
-    .course-button {
-      display: block;
-      padding: 12px;
-      text-align: center;
-      border: 1px solid var(--purple);
-      color: var(--purple);
-      border-radius: 9px;
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-.course-button:hover {
-  background: var(--purple);
-  color: #ffffff;
-}
-
-    .coming {
-      display: inline-block;
-      margin-bottom: 13px;
-      color: #f5c66b;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
     /* CERTIFICATION */
 
     .certification {
@@ -358,10 +258,6 @@
       .benefits {
         grid-template-columns: repeat(2,1fr);
       }
-
-      .courses {
-        grid-template-columns: repeat(2,1fr);
-      }
     }
 
     @media(max-width: 600px) {
@@ -380,8 +276,7 @@
         padding: 65px 0;
       }
 
-      .benefits,
-      .courses {
+      .benefits {
         grid-template-columns: 1fr;
       }
 
@@ -411,7 +306,6 @@
         <a href="index.html">Accueil</a>
         <a href="#formations">Formations</a>
         <a href="#avantages">Pourquoi nous ?</a>
-      
       </nav>
     </div>
   </header>
@@ -480,152 +374,79 @@
         </div>
       </div>
 
-      <div class="courses">
+      <!-- CATALOGUE DYNAMIQUE SUPABASE -->
+      <div id="academy-dynamic-catalogue"></div>
 
-        <article class="course">
-          <div class="course-cover ai-cover">
-            <span class="course-category">TECHNOLOGIE</span>
-            ✦
-          </div>
-
-          <div class="course-content">
-            <span class="coming">FORMATION EN PRÉPARATION</span>
-            <h3>Découvrir l'intelligence artificielle</h3>
-            <p>
-              Comprends les bases de l'IA et découvre comment
-              utiliser les outils intelligents.
-            </p>
-
-            <div class="course-info">
-              <span>4 modules prévus</span>
-              <span>Débutant</span>
-            </div>
-
-            <a href="index.html#account" class="course-button">
-              Créer mon compte →
-            </a>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="course-cover office-cover">
-            <span class="course-category">BUREAUTIQUE</span>
-            ▤
-          </div>
-
-          <div class="course-content">
-            <span class="coming">BIENTÔT DISPONIBLE</span>
-            <h3>Maîtriser les outils bureautiques</h3>
-            <p>
-              Découvre les bases du traitement de texte,
-              des tableurs et des présentations.
-            </p>
-
-            <div class="course-info">
-              <span>Débutant</span>
-            </div>
-
-            <a href="index.html#account" class="course-button">
-              Créer mon compte →
-            </a>
-          </div>
-        </article>
-
-        <article class="course">
-          <div class="course-cover data-cover">
-            <span class="course-category">INFORMATIQUE</span>
-            ⌘
-          </div>
-
-          <div class="course-content">
-            <span class="coming">BIENTÔT DISPONIBLE</span>
-            <h3>Initiation aux bases de données</h3>
-            <p>
-              Apprends les tables, les relations et les
-              premières requêtes SQL.
-            </p>
-
-            <div class="course-info">
-              <span>Débutant</span>
-            </div>
-
-            <a href="index.html#account" class="course-button">
-              Créer mon compte →
-            </a>
-          </div>
-        </article>
-
-      </div>
     </section>
 
     <!-- ESPACE PERSONNEL ACADEMY -->
-<section class="container catalogue" id="academy-dashboard" hidden>
+    <section class="container catalogue" id="academy-dashboard" hidden>
 
-  <div class="section-heading">
-    <div>
-      <span class="catalogue-label">MON ESPACE PERSONNEL</span>
-      <h2>Bienvenue dans ton Academy</h2>
-      <p>Retrouve tes formations, tes cours et ta progression.</p>
-    </div>
-  </div>
+      <div class="section-heading">
+        <div>
+          <span class="catalogue-label">MON ESPACE PERSONNEL</span>
+          <h2>Bienvenue dans ton Academy</h2>
+          <p>Retrouve tes formations, tes cours et ta progression.</p>
+        </div>
+      </div>
 
-  <div class="benefits">
+      <div class="benefits">
 
-    <article class="benefit">
-      <span class="benefit-icon">📚</span>
-      <h3>Mes formations</h3>
-      <div id="academy-enrollments">
-  <p>Chargement de tes formations...</p>
-</div>
-    </article>
+        <article class="benefit">
+          <span class="benefit-icon">📚</span>
+          <h3>Mes formations</h3>
+          <div id="academy-enrollments">
+            <p>Chargement de tes formations...</p>
+          </div>
+        </article>
 
-    <article class="benefit">
-      <span class="benefit-icon">📈</span>
-      <h3>Ma progression</h3>
-      <div id="academy-progress">
-  <p>Ta progression apparaîtra ici.</p>
-</div>
-    </article>
+        <article class="benefit">
+          <span class="benefit-icon">📈</span>
+          <h3>Ma progression</h3>
+          <div id="academy-progress">
+            <p>Ta progression apparaîtra ici.</p>
+          </div>
+        </article>
 
-    <article class="benefit">
-      <span class="benefit-icon">🎓</span>
-      <h3>Mes cours</h3>
-      <p>Accède aux leçons et aux modules auxquels tu es inscrit.</p>
-    </article>
+        <article class="benefit">
+          <span class="benefit-icon">🎓</span>
+          <h3>Mes cours</h3>
+          <p>Accède aux leçons et aux modules auxquels tu es inscrit.</p>
+        </article>
 
-    <article class="benefit">
-      <span class="benefit-icon">📝</span>
-      <h3>Mes évaluations</h3>
-      <p>Consulte tes quiz et tes résultats.</p>
-    </article>
+        <article class="benefit">
+          <span class="benefit-icon">📝</span>
+          <h3>Mes évaluations</h3>
+          <p>Consulte tes quiz et tes résultats.</p>
+        </article>
 
-    <article class="benefit">
-      <span class="benefit-icon">🏆</span>
-      <h3>Mes attestations</h3>
-      <p>Retrouve les attestations obtenues.</p>
-    </article>
+        <article class="benefit">
+          <span class="benefit-icon">🏆</span>
+          <h3>Mes attestations</h3>
+          <p>Retrouve les attestations obtenues.</p>
+        </article>
 
-    <article class="benefit">
-      <span class="benefit-icon">🔎</span>
-      <h3>Découvrir les formations</h3>
-      <p>Explore les parcours disponibles sur Academy.</p>
-      <a href="#formations" class="course-button">Voir le catalogue →</a>
-    </article>
+        <article class="benefit">
+          <span class="benefit-icon">🔎</span>
+          <h3>Découvrir les formations</h3>
+          <p>Explore les parcours disponibles sur Academy.</p>
+          <a href="#formations" class="primary-button">Voir le catalogue →</a>
+        </article>
 
-  </div>
+      </div>
 
-  <div class="certification">
-    <div>
-      <h3>Ton parcours d'apprentissage</h3>
-      <p id="academy-dashboard-status">
-        Tes inscriptions et ta progression seront affichées ici.
-      </p>
-    </div>
-  </div>
+      <div class="certification">
+        <div>
+          <h3>Ton parcours d'apprentissage</h3>
+          <p id="academy-dashboard-status">
+            Tes inscriptions et ta progression seront affichées ici.
+          </p>
+        </div>
+      </div>
 
-</section>
-<!-- FIN ESPACE PERSONNEL ACADEMY -->
-    
+    </section>
+    <!-- FIN ESPACE PERSONNEL ACADEMY -->
+
     <!-- ATTESTATIONS -->
     <section class="container certification">
       <span class="certification-icon">🏆</span>
@@ -652,8 +473,9 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-<script src="auth.js"></script>
-  
+  <script src="config.js"></script>
+  <script src="auth.js"></script>
+  <script src="academy.js"></script>
+
 </body>
 </html>
