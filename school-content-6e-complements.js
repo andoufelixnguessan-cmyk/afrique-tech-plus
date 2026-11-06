@@ -353,6 +353,20 @@
     )]
   ];
 
+  const SVT = [
+    ["influence des aliments sur la croissance des vertebres", make(
+      "L'alimentation fournit aux vertébrés la matière et l'énergie nécessaires à leur croissance et au fonctionnement de leur organisme.",
+      ["Relier alimentation et croissance chez le poulet.", "Identifier les besoins alimentaires d'un jeune vertébré.", "Comprendre le principe d'une comparaison expérimentale."],
+      ["Un jeune poulet a besoin d'une alimentation suffisante et équilibrée pour grandir et rester en bonne santé.", "Les aliments apportent des nutriments qui fournissent de l'énergie et des matériaux nécessaires à la construction du corps.", "La quantité et la qualité de l'alimentation influencent la croissance ; l'eau propre est également indispensable.", "Pour comparer deux aliments, on utilise des groupes de poussins comparables, élevés dans des conditions identiques, en ne faisant varier que l'alimentation étudiée.", "On observe régulièrement la masse, la taille, l'état général et la consommation, sans maltraiter les animaux."],
+      "Deux lots comparables de poussins reçoivent une alimentation différente tandis que l'eau, l'espace, l'hygiène et les conditions d'élevage restent identiques ; on compare ensuite leur croissance.",
+      ["Formuler une hypothèse sur l'effet de l'aliment.", "Constituer des groupes comparables avec un encadrement adapté.", "Maintenir les mêmes conditions d'élevage.", "Noter les mesures à intervalles réguliers.", "Comparer les résultats et formuler une conclusion prudente."],
+      ["Vertébré","Poulet","Aliment","Nutriment","Croissance","Lot témoin","Variable expérimentale"],
+      "Pour étudier l'effet d'un aliment, on ne change que l'alimentation et on maintient les autres conditions identiques.",
+      [{level:"Raisonnement",instruction:"Pourquoi faut-il garder les mêmes conditions d'élevage pour les deux lots de poussins ?",correction:"Pour que la différence de croissance observée puisse être reliée à l'alimentation plutôt qu'à l'eau, à l'espace, à l'hygiène ou à la température."},{level:"Conclusion",instruction:"Un lot de poussins grandit davantage que l'autre. Que faut-il vérifier avant de conclure que l'aliment est responsable ?",correction:"Vérifier que les lots étaient comparables et que toutes les autres conditions d'élevage étaient identiques."}],
+      [{question:"Quel animal sert d'exemple dans cette leçon du programme de 6e ?",answer:"Le poulet, un vertébré.",explanation:"Le programme étudie l'influence des aliments sur la croissance des vertébrés, cas du poulet."}]
+    )]
+  ];
+
   function apply(target, course) {
     if (!target || !course) return;
     target.contentStatus = "Cours spécifique rédigé — complément disciplinaire 6e";
@@ -397,6 +411,9 @@
         } else if (subject === "EPS") {
           const item = EPS.find(([key]) => title.includes(norm(key)));
           if (item) { course = item[1]; stats.eps++; }
+        } else if (subject === "SVT") {
+          const item = SVT.find(([key]) => title.includes(norm(key)));
+          if (item) course = item[1];
         }
         if (course) {
           apply(lesson, course);
