@@ -520,7 +520,7 @@ function addSection(parent, title, content) {
       const normalizeTitle = value => String(value || "")
         .trim()
         .toLocaleLowerCase("fr")
-        .replace(/\\s+/g, " ");
+        .replace(/\s+/g, " ");
 
       const wantedTitle = normalizeTitle(displayedLesson.title);
       const wantedSection = normalizeTitle(displayedLesson.section);
@@ -714,48 +714,30 @@ function addSection(parent, title, content) {
   }
 
   function renderCourse(parent, session) {
-    const course = session && session.course ? session.course : {};
+    // Les anciens contenus rangent les notions dans session.course.
+    // Certaines fiches récentes les placent directement dans session.
+    const nested = session && session.course && typeof session.course === "object"
+      ? session.course
+      : {};
+    const course = {
+      ...session,
+      ...nested
+    };
 
-    // L'introduction est fournie à la racine de la séance.
     if (session && session.introduction) {
       addSection(parent, "Introduction", session.introduction);
     }
-
-    // La définition est une partie essentielle du cours.
-    if (course.definition) {
-      addSection(parent, "Définition", course.definition);
-    }
-
-    if (course.explanation) {
-      addSection(parent, "Explication du cours", course.explanation);
-    }
-
-    if (course.example) {
-      addSection(parent, "Exemple pratique", course.example);
-    }
-
-    if (course.vocabulary) {
-      addSection(parent, "Vocabulaire essentiel", course.vocabulary);
-    }
-
-    if (course.method) {
-      addSection(parent, "Méthode de travail", course.method);
-    }
-
-    if (course.essential) {
-      addSection(parent, "À retenir", course.essential);
-    }
-
-    if (course.conclusion) {
-      addSection(parent, "Conclusion", course.conclusion);
-    }
+    if (course.definition) addSection(parent, "Définition", course.definition);
+    if (course.explanation) addSection(parent, "Explication du cours", course.explanation);
+    if (course.example) addSection(parent, "Exemple pratique", course.example);
+    if (course.vocabulary) addSection(parent, "Vocabulaire essentiel", course.vocabulary);
+    if (course.method) addSection(parent, "Méthode de travail", course.method);
+    if (course.essential) addSection(parent, "À retenir", course.essential);
+    if (course.conclusion) addSection(parent, "Conclusion", course.conclusion);
 
     if (!parent.querySelector(".atp-learning-section")) {
-      addSection(
-        parent,
-        "Contenu du cours",
-        "Le contenu détaillé de cette séance sera bientôt disponible."
-      );
+      addSection(parent, "Contenu du cours",
+        "Cette séance ne contient pas encore de fiche détaillée. Consulte les objectifs et les activités ci-dessous.");
     }
   }
 
