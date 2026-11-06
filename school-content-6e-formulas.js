@@ -259,7 +259,7 @@
             lesson.formulaBlocks = blocks;
             audit.mathLessonsWithFormulaBlocks++;
             audit.subjects[subject].formulaLessons++;
-            (lesson.sessions || []).forEach(session => { session.formulaBlocks = blocks; });
+            (lesson.sessions || []).forEach((session, index) => { if (index === 0) session.formulaBlocks = blocks; else delete session.formulaBlocks; });
           }
         }
         if (subject === "Physique-Chimie") {
@@ -291,7 +291,7 @@
 
             if (formulas.length) {
               lesson.formulaBlocks = formulas;
-              (lesson.sessions || []).forEach(session => { session.formulaBlocks = formulas; });
+              (lesson.sessions || []).forEach((session, index) => { if (index === 0) session.formulaBlocks = formulas; else delete session.formulaBlocks; });
             }
             audit.physicsSpecificLessons++;
             audit.subjects[subject].physicsSpecific++;
