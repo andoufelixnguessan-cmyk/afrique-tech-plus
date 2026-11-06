@@ -65,6 +65,15 @@
     target.vocabulary = course.vocabulary.slice();
     target.essential = course.essential;
     target.conclusion = "Tu maîtrises cette leçon lorsque tu peux expliquer la définition avec tes propres mots, justifier les étapes de la méthode et résoudre un exercice nouveau.";
+    target.course = {
+      definition: course.definition,
+      explanation: course.explanation.slice(),
+      example: course.example,
+      method: course.method.slice(),
+      vocabulary: course.vocabulary.slice(),
+      essential: course.essential,
+      conclusion: target.conclusion
+    };
     target.exercises = course.exercises.map((pair, index) => ({
       level: ["Compréhension", "Application", "Approfondissement", "Transfert"][index] || "Application",
       instruction: pair[0],
