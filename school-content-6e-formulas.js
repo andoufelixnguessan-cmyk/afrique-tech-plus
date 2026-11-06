@@ -171,23 +171,35 @@
     math("Milieu d'un segment", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AI</mi><mo>=</mo><mi>IB</mi><mo>=</mo><mfrac><mi>AB</mi><mn>2</mn></mfrac></mrow></math>', "I est le milieu de [AB] si I appartient au segment et si AI = IB.")
   ];
   F.circle = [
-    math("Diamètre et rayon", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mn>2</mn><mi>r</mi><mspace width="1em"/><mi>r</mi><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac></mrow></math>', "Le diamètre est deux fois le rayon.")
+    math("Rayon et diamètre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mn>2</mn><mi>r</mi><mspace width="1em"/><mi>r</mi><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac></mrow></math>', "Le diamètre est deux fois le rayon."),
+    math("Périmètre d'un cercle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>=</mo><mi>π</mi><mi>d</mi></mrow></math>', "P est la longueur du cercle ; d est le diamètre."),
+    math("Aire d'un disque", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>', "L'aire du disque s'exprime en unités carrées.")
   ];
   F.angles = [
-    math("Angle droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mes</mi><mo>(</mo><mi>angle droit</mi><mo>)</mo><mo>=</mo><mn>90</mn><mo>°</mo></mrow></math>', "Un angle droit mesure 90 degrés."),
-    math("Angle plat", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mes</mi><mo>(</mo><mi>angle plat</mi><mo>)</mo><mo>=</mo><mn>180</mn><mo>°</mo></mrow></math>', "Un angle plat mesure 180 degrés.")
+    math("Angle nul", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mesure</mi><mo>=</mo><mn>0</mn><mo>°</mo></mrow></math>', "Les deux côtés sont confondus."),
+    math("Angle droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mesure</mi><mo>=</mo><mn>90</mn><mo>°</mo></mrow></math>', "Un angle droit mesure 90 degrés."),
+    math("Angle plat", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mesure</mi><mo>=</mo><mn>180</mn><mo>°</mo></mrow></math>', "Un angle plat mesure 180 degrés."),
+    math("Bissectrice d'un angle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mes</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>mes</mi><mo>(</mo><mi>y</mi><mo>)</mo></mrow></math>', "La bissectrice partage un angle en deux angles de même mesure.")
   ];
   F.triangle = [
-    math("Somme des angles d'un triangle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>+</mo><mi>B</mi><mo>+</mo><mi>C</mi><mo>=</mo><mn>180</mn><mo>°</mo></mrow></math>', "La somme des trois angles intérieurs d'un triangle vaut 180 degrés."),
-    math("Périmètre d'un triangle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow></math>', "Le périmètre est la somme des trois côtés.")
+    math("Périmètre d'un triangle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow></math>', "Additionner les longueurs des trois côtés."),
+    math("Aire d'un triangle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><mi>b</mi><mo>×</mo><mi>h</mi></mrow><mn>2</mn></mfrac></mrow></math>', "b est la base choisie et h la hauteur correspondante.")
   ];
   F.parallelogram = [
-    math("Côtés opposés", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AB</mi><mo>=</mo><mi>CD</mi><mspace width="1em"/><mi>AD</mi><mo>=</mo><mi>BC</mi></mrow></math>', "Les côtés opposés d'un parallélogramme sont de même longueur."),
-    math("Diagonales", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AO</mi><mo>=</mo><mi>OC</mi><mspace width="1em"/><mi>BO</mi><mo>=</mo><mi>OD</mi></mrow></math>', "Les diagonales se coupent en leur milieu O.")
+    math("Périmètre d'un parallélogramme", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mo>(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>)</mo></mrow></math>', "a et b sont les longueurs de deux côtés consécutifs."),
+    math("Aire d'un parallélogramme", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mi>b</mi><mo>×</mo><mi>h</mi></mrow></math>', "b est la base et h la hauteur perpendiculaire à cette base."),
+    math("Propriété des diagonales", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AO</mi><mo>=</mo><mi>OC</mi><mspace width="1em"/><mi>BO</mi><mo>=</mo><mi>OD</mi></mrow></math>', "Les diagonales se coupent en leur milieu O.")
   ];
   F.solid = [
-    math("Volume d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>×</mo><mi>l</mi><mo>×</mo><mi>h</mi></mrow></math>', "Les trois dimensions doivent être exprimées dans la même unité."),
-    math("Volume d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>π</mi><mo>×</mo><msup><mi>r</mi><mn>2</mn></msup><mo>×</mo><mi>h</mi></mrow></math>', "r est le rayon de la base et h la hauteur.")
+    math("Volume d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>×</mo><mi>l</mi><mo>×</mo><mi>h</mi></mrow></math>', "Multiplier longueur, largeur et hauteur."),
+    math("Aire totale d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mn>2</mn><mo>(</mo><mi>L</mi><mi>l</mi><mo>+</mo><mi>L</mi><mi>h</mi><mo>+</mo><mi>l</mi><mi>h</mi><mo>)</mo></mrow></math>', "Aire des six faces réunies."),
+    math("Volume d'un cube", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><msup><mi>a</mi><mn>3</mn></msup></mrow></math>', "a est la longueur d'une arête."),
+    math("Aire totale d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>(</mo><mi>r</mi><mo>+</mo><mi>h</mi><mo>)</mo></mrow></math>', "Elle comprend les deux bases circulaires et la surface latérale."),
+    math("Volume d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow></math>', "r est le rayon de la base et h la hauteur.")
+  ];
+  F.symmetry = [
+    math("Définition de la symétrie centrale", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mtext> est le milieu de </mtext><mo>[</mo><mi>AA′</mi><mo>]</mo></mrow></math>', "A et A′ sont alignés avec le centre O et OA = OA′."),
+    math("Conservation des longueurs", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AB</mi><mo>=</mo><mi>A′B′</mi></mrow></math>', "La symétrie centrale conserve les longueurs, les angles, l'alignement et le parallélisme.")
   ];
   function normalize(value) {
     return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
@@ -205,6 +217,7 @@
     if (t.includes("angle")) return F.angles;
     if (t.includes("triangle")) return F.triangle;
     if (t.includes("parallelogramme")) return F.parallelogram;
+    if (t.includes("symetr")) return F.symmetry;
     if (t.includes("pave") || t.includes("cylindre")) return F.solid;
     return [];
   }
