@@ -124,6 +124,8 @@
       overflow: visible;
     }
 
+    body.atp-reading-active { overflow: hidden !important; }
+    .atp-fullscreen-lesson { box-sizing: border-box !important; }
     .atp-fullscreen-lesson {
       z-index: 999999 !important;
     }
