@@ -174,6 +174,9 @@
     math("Non-appartenance d'un point à une droite", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mo>∉</mo><mi>(d)</mi></mrow></math>', "B n'appartient pas à la droite (d)."),
     math("Parallélisme et perpendicularité", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mi>(d)</mi><mo>∥</mo><mi>(d′)</mi></mtd><mtd><mtext>droites parallèles</mtext></mtd></mtr><mtr><mtd><mi>(d)</mi><mo>⊥</mo><mi>(d′)</mi></mtd><mtd><mtext>droites perpendiculaires</mtext></mtd></mtr></mtable></math>', "Les droites perpendiculaires forment un angle droit.")
   ];
+  F.statistics.push(
+    math("Retrouver un effectif", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mtext>Effectif</mtext><mo>=</mo><mi>f</mi><mo>×</mo><mi>N</mi></mrow></math>', "Multiplier la fréquence par l'effectif total.")
+  );
   F.segment = [
     math("Milieu d'un segment", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AI</mi><mo>=</mo><mi>IB</mi><mo>=</mo><mfrac><mi>AB</mi><mn>2</mn></mfrac></mrow></math>', "I est le milieu de [AB] si I appartient au segment et si AI = IB.")
   ];
@@ -275,6 +278,9 @@
             applyCourse(lesson, PC[key]);
             (lesson.sessions || []).forEach(session => applyCourse(session, PC[key]));
             const formulas = [];
+            if (key === "Température d’un corps") formulas.push(
+              math("Repères de l'échelle Celsius", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mi>T</mi><mo>(</mo><mtext>glace fondante</mtext><mo>)</mo></mtd><mtd><mo>=</mo></mtd><mtd><mn>0</mn><mo>°C</mo></mtd></mtr><mtr><mtd><mi>T</mi><mo>(</mo><mtext>eau bouillante</mtext><mo>)</mo></mtd><mtd><mo>≈</mo></mtd><mtd><mn>100</mn><mo>°C</mo></mtd></mtr><mtr><mtd><mi>T</mi><mo>(</mo><mtext>corps humain</mtext><mo>)</mo></mtd><mtd><mo>≈</mo></mtd><mtd><mn>37</mn><mo>°C</mo></mtd></mtr></mtable></math>', "Les valeurs sont des repères usuels ; l'ébullition dépend de la pression atmosphérique.")
+            );
             if (key === "Les constituants de l’air") formulas.push(
               math("Volume de dioxygène", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>V</mi><msub><mi>O</mi><mn>2</mn></msub></msub><mo>=</mo><mfrac><mn>21</mn><mn>100</mn></mfrac><mo>×</mo><msub><mi>V</mi><mtext>air</mtext></msub></mrow></math>', "Pour un volume d'air sec donné, le dioxygène représente environ 21 %."),
               math("Volume de diazote", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>V</mi><msub><mi>N</mi><mn>2</mn></msub></msub><mo>=</mo><mfrac><mn>78</mn><mn>100</mn></mfrac><mo>×</mo><msub><mi>V</mi><mtext>air</mtext></msub></mrow></math>', "Le diazote représente environ 78 % de l'air sec.")
