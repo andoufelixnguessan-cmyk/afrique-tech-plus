@@ -217,8 +217,9 @@
     math("Volume d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow></math>', "r est le rayon de la base et h la hauteur.")
   ];
   F.symmetry = [
-    math("Définition de la symétrie centrale", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mtext> est le milieu de </mtext><mo>[</mo><mi>AA′</mi><mo>]</mo></mrow></math>', "A et A′ sont alignés avec le centre O et OA = OA′."),
-    math("Conservation des longueurs", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AB</mi><mo>=</mo><mi>A′B′</mi></mrow></math>', "La symétrie centrale conserve les longueurs, les angles, l'alignement et le parallélisme.")
+    math("Centre de symétrie d'un segment", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mtext> est le milieu du segment </mtext><mo>[</mo><mi>AB</mi><mo>]</mo></mrow></math>', "Le milieu du segment est son centre de symétrie."),
+    math("Centre de symétrie d'un cercle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mo>=</mo><mtext>centre du cercle</mtext></mrow></math>', "Le centre du cercle est aussi le centre de symétrie du disque."),
+    math("Centre de symétrie d'un parallélogramme", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>O</mi><mo>=</mo><mtext>intersection des diagonales</mtext></mrow></math>', "Le point d'intersection des diagonales est le centre de symétrie du parallélogramme.")
   ];
   function normalize(value) {
     return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
