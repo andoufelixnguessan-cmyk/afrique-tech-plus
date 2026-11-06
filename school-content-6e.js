@@ -65,10 +65,18 @@
 
           if (Array.isArray(sectionItems)) {
             sectionItems.forEach(item => {
-              lessons.push({
-                title: getTitle(item),
-                section: section
-              });
+              if (typeof item === "string") {
+                lessons.push({
+                  title: item,
+                  section: section
+                });
+              } else if (item && typeof item === "object") {
+                lessons.push({
+                  title: getTitle(item),
+                  section: item.section || section,
+                  sessions: Array.isArray(item.sessions) ? item.sessions : []
+                });
+              }
             });
           } else if (sectionItems && typeof sectionItems === "object") {
             if (Array.isArray(sectionItems.sessions)) {
