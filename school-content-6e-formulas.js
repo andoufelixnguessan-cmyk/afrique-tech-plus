@@ -165,7 +165,7 @@
   F.lines = [
     math("Appartenance d'un point à une droite", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>∈</mo><mi>(d)</mi></mrow></math>', "A appartient à la droite (d)."),
     math("Non-appartenance d'un point à une droite", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mo>∉</mo><mi>(d)</mi></mrow></math>', "B n'appartient pas à la droite (d)."),
-    math("Parallélisme et perpendicularité", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mi>(d)</mi><mo>∥</mo><mi>(d′)</mi></mrow><mtd><mtext>droites parallèles</mtext></mtd></mtr><mtr><mtd><mi>(d)</mi><mo>⊥</mo><mi>(d′)</mi></mtd><mtd><mtext>droites perpendiculaires</mtext></mtd></mtr></mtable></math>', "Les droites perpendiculaires forment un angle droit.")
+    math("Parallélisme et perpendicularité", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mi>(d)</mi><mo>∥</mo><mi>(d′)</mi></mtd><mtd><mtext>droites parallèles</mtext></mtd></mtr><mtr><mtd><mi>(d)</mi><mo>⊥</mo><mi>(d′)</mi></mtd><mtd><mtext>droites perpendiculaires</mtext></mtd></mtr></mtable></math>', "Les droites perpendiculaires forment un angle droit.")
   ];
   F.segment = [
     math("Milieu d'un segment", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AI</mi><mo>=</mo><mi>IB</mi><mo>=</mo><mfrac><mi>AB</mi><mn>2</mn></mfrac></mrow></math>', "I est le milieu de [AB] si I appartient au segment et si AI = IB.")
