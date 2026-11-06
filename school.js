@@ -1,465 +1,560 @@
-(() => {
-  "use strict";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f7ff">
+  <title>ATP SCHOOL | AFRIQUE TECH PLUS</title>
+  <meta name="description" content="Ton espace scolaire numérique : cours, exercices corrigés, devoirs et préparation aux examens.">
 
-  const CLASS_GROUPS = {
-    "Collège": [
-      { id: "6e", label: "6e" },
-      { id: "5e", label: "5e" },
-      { id: "4e", label: "4e" },
-      { id: "3e", label: "3e" }
-    ],
-    "Seconde": [
-      { id: "2nde-A", label: "Seconde A" },
-      { id: "2nde-C", label: "Seconde C" }
-    ],
-    "Première": [
-      { id: "1ere-A1", label: "Première A1" },
-      { id: "1ere-A2", label: "Première A2" },
-      { id: "1ere-C", label: "Première C" },
-      { id: "1ere-D", label: "Première D" }
-    ],
-    "Terminale": [
-      { id: "tle-A1", label: "Terminale A1" },
-      { id: "tle-A2", label: "Terminale A2" },
-      { id: "tle-C", label: "Terminale C" },
-      { id: "tle-D", label: "Terminale D" }
-    ]
-  };
-
-  const COLLEGE = [
-    ["Français", "📖"],
-    ["Mathématiques", "➗"],
-    ["Anglais", "🇬🇧"],
-    ["Histoire-Géographie", "🌍"],
-    ["SVT", "🌱"],
-    ["Physique-Chimie", "🧪"],
-    ["EDHC", "🤝"],
-    ["Arts plastiques", "🎨"],
-    ["Éducation musicale", "🎵"],
-    ["EPS", "🏃"],
-    ["TICE", "💻"]
-  ];
-
-  const SUBJECTS = {
-    "6e": COLLEGE,
-    "5e": COLLEGE,
-    "4e": COLLEGE,
-    "3e": COLLEGE,
-
-    "2nde-A": [
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Langue vivante 2", "🌐"],
-      ["Histoire-Géographie", "🌍"],
-      ["SVT", "🌱"],
-      ["Physique-Chimie", "🧪"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "2nde-C": [
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Langue vivante 2", "🌐"],
-      ["Histoire-Géographie", "🌍"],
-      ["SVT", "🌱"],
-      ["Physique-Chimie", "🧪"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "1ere-A1": [
-      ["Français", "📖"],
-      ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "1ere-A2": [
-      ["Français", "📖"],
-      ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "1ere-C": [
-      ["Français", "📖"],
-      ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
-      ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "1ere-D": [
-      ["Français", "📖"],
-      ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
-      ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "tle-A1": [
-      ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "tle-A2": [
-      ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "tle-C": [
-      ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ],
-
-    "tle-D": [
-      ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EDHC", "🤝"],
-      ["EPS", "🏃"]
-    ]
-  };
-
-  const CATEGORIES = {
-    cours: ["Cours", "Leçons et fiches de cours"],
-    exercices: ["Exercices corrigés", "Entraînement et corrections"],
-    devoirs: ["Devoirs et évaluations", "Contrôles et devoirs"],
-    examens: ["Préparation aux examens", "Révisions et sujets types"]
-  };
-
-  const $ = id => document.getElementById(id);
-
-  function readArray(key) {
-    try {
-      const value = JSON.parse(localStorage.getItem(key));
-      return Array.isArray(value) ? value : [];
-    } catch {
-      return [];
-    }
-  }
-
-  function classLabel(id) {
-    for (const group of Object.values(CLASS_GROUPS)) {
-      const found = group.find(item => item.id === id);
-      if (found) return found.label;
-    }
-    return id;
-  }
-
-  let currentClass = localStorage.getItem("atp_school_class_v2");
-  if (!SUBJECTS[currentClass]) currentClass = "6e";
-
-  let currentSubject = null;
-  let currentCategory = "cours";
-  let favorites = readArray("atp_school_favorites_v2");
-  let completed = readArray("atp_school_completed_v2");
-  let favoritesOnly = false;
-
-  function save() {
-    localStorage.setItem("atp_school_class_v2", currentClass);
-    localStorage.setItem("atp_school_favorites_v2", JSON.stringify(favorites));
-    localStorage.setItem("atp_school_completed_v2", JSON.stringify(completed));
-  }
-
-  function updateStats() {
-    $("subjectCount").textContent = SUBJECTS[currentClass].length;
-    $("favoriteCount").textContent = favorites.length;
-    $("completedCount").textContent = completed.length;
-  }
-
-  function buildClassSelector() {
-    const select = $("schoolClassSelector");
-    select.innerHTML = "";
-
-    Object.entries(CLASS_GROUPS).forEach(([groupName, classes]) => {
-      const group = document.createElement("optgroup");
-      group.label = groupName;
-
-      classes.forEach(item => {
-        const option = document.createElement("option");
-        option.value = item.id;
-        option.textContent = item.label;
-        group.appendChild(option);
-      });
-
-      select.appendChild(group);
-    });
-
-    select.value = currentClass;
-  }
-
-  function renderSubjects() {
-    const search = $("subjectSearch").value
-      .trim()
-      .toLocaleLowerCase("fr");
-
-    const list = SUBJECTS[currentClass].filter(([name]) => {
-      const matches = name.toLocaleLowerCase("fr").includes(search);
-      const key = `${currentClass}::${name}`;
-      return matches && (!favoritesOnly || favorites.includes(key));
-    });
-
-    $("subjectHeading").textContent =
-      `Les matières de ${classLabel(currentClass)}`;
-
-    const grid = $("subjectGrid");
-    grid.innerHTML = "";
-
-    if (!list.length) {
-      grid.innerHTML =
-        '<div class="empty">Aucune matière trouvée.</div>';
+  <style>
+    :root {
+      --bg:#f3f7ff;
+      --panel:#ffffff;
+      --panel2:#edf3ff;
+      --blue:#2864d8;
+      --violet:#7951d5;
+      --text:#17233d;
+      --muted:#61708c;
+      --border:#dce5f4;
+      --radius:18px;
     }
 
-    list.forEach(([name, emoji]) => {
-      const key = `${currentClass}::${name}`;
-      const isFavorite = favorites.includes(key);
+    * {box-sizing:border-box}
+    html {scroll-behavior:smooth}
 
-      const card = document.createElement("article");
-      card.className = "subject-card";
-
-      const top = document.createElement("div");
-      top.style.cssText =
-        "display:flex;justify-content:space-between;align-items:center";
-
-      const icon = document.createElement("span");
-      icon.className = "subject-icon";
-      icon.textContent = emoji;
-
-      const favorite = document.createElement("button");
-      favorite.type = "button";
-      favorite.textContent = isFavorite ? "★" : "☆";
-      favorite.style.cssText =
-        "background:transparent;border:0;color:#f2c45a;font-size:25px";
-
-      top.append(icon, favorite);
-
-      const title = document.createElement("h3");
-      title.textContent = name;
-
-      const subtitle = document.createElement("p");
-      subtitle.textContent = classLabel(currentClass);
-
-      card.append(top, title, subtitle);
-
-      favorite.addEventListener("click", event => {
-        event.stopPropagation();
-
-        favorites = favorites.includes(key)
-          ? favorites.filter(item => item !== key)
-          : [...favorites, key];
-
-        save();
-        renderSubjects();
-      });
-
-      card.addEventListener("click", () => openSubject(name));
-      grid.appendChild(card);
-    });
-
-    updateStats();
-  }
-
-  function setClass(id) {
-    if (!SUBJECTS[id]) return;
-
-    currentClass = id;
-    favoritesOnly = false;
-    currentSubject = null;
-
-    $("viewFilter").value = "all";
-    $("subjectSearch").value = "";
-
-    $("subjectWorkspace").classList.add("hidden");
-
-    save();
-    $("schoolClassSelector").value = id;
-    renderSubjects();
-  }
-
-  function openSubject(name) {
-    currentSubject = name;
-    currentCategory = "cours";
-
-    $("workspaceTitle").textContent =
-      `${name} · ${classLabel(currentClass)}`;
-
-    $("subjectWorkspace").classList.remove("hidden");
-
-    renderResources();
-
-    $("subjectWorkspace").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  }
-
-  function renderResources() {
-    const [title, description] = CATEGORIES[currentCategory];
-    const key = `${currentClass}::${currentSubject}::${currentCategory}`;
-    const isDone = completed.includes(key);
-
-    $("workspaceDescription").textContent = description;
-
-    const wrapper = document.createElement("div");
-    wrapper.style.cssText = "display:grid;gap:15px;width:100%";
-
-    const resource = document.createElement("div");
-    resource.className = "resource-item";
-
-    const heading = document.createElement("h3");
-    heading.textContent = `${title} de ${currentSubject}`;
-
-    const subtitle = document.createElement("p");
-    subtitle.textContent =
-      `${classLabel(currentClass)} · Contenu en préparation`;
-
-    const notice = document.createElement("div");
-    notice.className = "empty";
-    notice.textContent =
-      "Les ressources pédagogiques seront publiées après vérification des programmes officiels ivoiriens. Aucun document fictif n'est présenté comme disponible.";
-
-    resource.append(heading, subtitle);
-
-    const tracking = document.createElement("div");
-    tracking.className = "resource-item";
-
-    const trackingTitle = document.createElement("h3");
-    trackingTitle.textContent = "Suivi personnel";
-
-    const trackingText = document.createElement("p");
-    trackingText.textContent =
-      "Tu pourras marquer cette rubrique comme travaillée.";
-
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "action-btn";
-    button.textContent = isDone
-      ? "✓ Activité terminée"
-      : "Marquer comme terminée";
-
-    button.addEventListener("click", () => {
-      completed = completed.includes(key)
-        ? completed.filter(item => item !== key)
-        : [...completed, key];
-
-      save();
-      renderResources();
-      updateStats();
-    });
-
-    tracking.append(trackingTitle, trackingText, button);
-    wrapper.append(resource, notice, tracking);
-
-    $("resourceList").replaceChildren(wrapper);
-  }
-
-  function showCategory(category) {
-    if (!CATEGORIES[category] || !currentSubject) return;
-    currentCategory = category;
-    renderResources();
-  }
-
-  function showFavorites() {
-    favoritesOnly = true;
-    $("viewFilter").value = "favorites";
-    $("subjectSearch").value = "";
-    renderSubjects();
-
-    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
-  }
-
-  $("schoolClassSelector").addEventListener("change", event => {
-    setClass(event.target.value);
-  });
-
-  $("subjectSearch").addEventListener("input", renderSubjects);
-
-  $("viewFilter").addEventListener("change", event => {
-    favoritesOnly = event.target.value === "favorites";
-    renderSubjects();
-  });
-
-  $("categoryGrid").addEventListener("click", event => {
-    const button = event.target.closest("[data-category]");
-    if (!button) return;
-
-    if (!currentSubject) {
-      openSubject(SUBJECTS[currentClass][0][0]);
+    body {
+      margin:0;
+      background:linear-gradient(135deg,#f4f8ff,#edf3ff 55%,#f5f0ff);
+      color:var(--text);
+      font-family:Arial,sans-serif;
+      min-height:100vh;
     }
 
-    showCategory(button.dataset.category);
-  });
+    button,input,select {font:inherit}
+    button,a {cursor:pointer}
 
-  $("categoryGridWorkspace").addEventListener("click", event => {
-    const button = event.target.closest("[data-category]");
-    if (button) showCategory(button.dataset.category);
-  });
+    .layout {
+      display:grid;
+      grid-template-columns:245px 1fr;
+      min-height:100vh;
+    }
 
-  $("backSubjects").addEventListener("click", () => {
-    $("subjectWorkspace").classList.add("hidden");
-    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
-  });
+    aside {
+      background:#ffffff;
+      border-right:1px solid var(--border);
+      padding:25px 17px;
+      position:sticky;
+      top:0;
+      height:100vh;
+      box-shadow:3px 0 15px rgba(35,65,110,.04);
+    }
 
-  $("showFavorites").addEventListener("click", showFavorites);
+    .brand {
+      font-size:21px;
+      font-weight:900;
+      letter-spacing:.5px;
+      color:#1b2c4d;
+    }
 
-  $("openCours").addEventListener("click", () => {
-    openSubject(SUBJECTS[currentClass][0][0]);
-  });
+    .brand span {color:var(--blue)}
 
-  $("openExos").addEventListener("click", () => {
-    openSubject(SUBJECTS[currentClass][0][0]);
-    showCategory("exercices");
-  });
+    .brand small {
+      display:block;
+      color:var(--muted);
+      font-size:10px;
+      letter-spacing:3px;
+      margin-top:6px;
+    }
 
-  $("showSubjects").addEventListener("click", () => {
-    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
-  });
+    .nav-title {
+      font-size:11px;
+      color:#8190aa;
+      margin:35px 10px 12px;
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+    }
 
-  buildClassSelector();
-  renderSubjects();
-  save();
+    .nav button {
+      width:100%;
+      border:0;
+      background:transparent;
+      color:#465673;
+      text-align:left;
+      padding:13px 12px;
+      border-radius:12px;
+      margin:3px 0;
+      font-weight:600;
+    }
 
-})();
+    .nav button:hover,.nav button.active {
+      background:#eaf1ff;
+      color:#245bc1;
+    }
+
+    .side-note {
+      margin-top:35px;
+      padding:15px;
+      background:#f5f8ff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    main {
+      padding:30px;
+      max-width:1400px;
+      width:100%;
+      margin:auto;
+    }
+
+    .topbar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      margin-bottom:25px;
+      flex-wrap:wrap;
+    }
+
+    .topbar p {
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .top-label {
+      color:var(--blue);
+      font-size:12px;
+      font-weight:bold;
+      letter-spacing:2px;
+    }
+
+    .home-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:11px 16px;
+      border-radius:12px;
+      background:#2864d8;
+      color:white;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:bold;
+      box-shadow:0 5px 12px rgba(40,100,216,.16);
+    }
+
+    .home-btn:hover {background:#1e50b4}
+
+    .hero {
+      padding:35px;
+      border:1px solid #dce5fa;
+      border-radius:25px;
+      background:linear-gradient(115deg,#e4efff,#eee7ff);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero h1 {
+      font-size:clamp(28px,4vw,43px);
+      margin:12px 0;
+      color:#192c50;
+    }
+
+    .hero p {
+      color:#536582;
+      line-height:1.7;
+      max-width:650px;
+    }
+
+    .hero-tag {
+      display:inline-block;
+      background:#ffffff;
+      color:#365c9c;
+      padding:8px 12px;
+      border-radius:30px;
+      font-size:11px;
+      font-weight:bold;
+      border:1px solid #dce6f8;
+    }
+
+    .section {margin-top:35px}
+
+    .section-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:12px;
+      margin-bottom:17px;
+    }
+
+    .section-head h2 {
+      margin:0;
+      font-size:22px;
+      color:#1c2d4c;
+    }
+
+    .section-head p {
+      margin:7px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .picker-panel,.toolbar,.workspace,.stat {
+      background:#ffffff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:0 4px 14px rgba(36,65,110,.04);
+    }
+
+    .picker-panel {
+      padding:20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .picker-panel p {
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .school-select,.search {
+      background:#f7f9ff;
+      color:#263754;
+      border:1px solid #cbd8ed;
+      border-radius:12px;
+      padding:13px 15px;
+      outline:none;
+    }
+
+    .school-select {min-width:230px}
+    .school-select option {background:white;color:#263754}
+
+    .school-select:focus,.search:focus,.filter:focus {
+      border-color:var(--blue);
+      box-shadow:0 0 0 3px rgba(40,100,216,.10);
+    }
+
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .stat {padding:18px}
+    .stat strong {
+      display:block;
+      font-size:25px;
+      margin-bottom:5px;
+      color:#245bc1;
+    }
+
+    .stat span {
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .toolbar {
+      padding:13px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .search {flex:1;min-width:190px}
+
+    .filter {
+      background:#f7f9ff;
+      color:#263754;
+      border:1px solid #cbd8ed;
+      border-radius:12px;
+      padding:12px;
+    }
+
+    .subject-grid,.category-grid,.resource-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:15px;
+    }
+
+    .subject-card {
+      background:#ffffff;
+      border:1px solid var(--border);
+      padding:20px;
+      border-radius:17px;
+      min-height:145px;
+      transition:.2s;
+      box-shadow:0 4px 12px rgba(36,65,110,.04);
+    }
+
+    .subject-card:hover {
+      transform:translateY(-3px);
+      border-color:#8bb1f5;
+      box-shadow:0 8px 20px rgba(36,65,110,.09);
+    }
+
+    .subject-icon {font-size:25px}
+
+    .subject-card h3 {
+      margin:14px 0 6px;
+      font-size:16px;
+      color:#203452;
+    }
+
+    .subject-card p {
+      color:var(--muted);
+      font-size:12px;
+      margin:0;
+    }
+
+    .subject-card button,.action-btn {
+      margin-top:14px;
+      border:0;
+      border-radius:9px;
+      padding:9px 12px;
+      background:#2864d8;
+      color:white;
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    .subject-card button:hover,.action-btn:hover {background:#1e50b4}
+
+    .category-card {
+      padding:19px;
+      background:#ffffff;
+      border:1px solid var(--border);
+      border-radius:15px;
+      color:#263754;
+      text-align:left;
+      box-shadow:0 4px 12px rgba(36,65,110,.04);
+    }
+
+    .category-card:hover {
+      border-color:#9ab8f2;
+      background:#f1f6ff;
+    }
+
+    .category-card strong {
+      display:block;
+      margin:10px 0 5px;
+      color:#203452;
+    }
+
+    .category-card span {
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .workspace {padding:22px}
+    .workspace h2 {margin-top:0;color:#203452}
+    .workspace p {color:var(--muted);line-height:1.6}
+
+    .resource-item {
+      background:#f7f9ff;
+      border:1px solid var(--border);
+      padding:16px;
+      border-radius:13px;
+    }
+
+    .resource-item h3 {
+      font-size:15px;
+      margin:0 0 8px;
+      color:#203452;
+    }
+
+    .resource-item p {
+      font-size:12px;
+      margin:0;
+    }
+
+    .empty {
+      padding:25px;
+      text-align:center;
+      color:var(--muted);
+      background:#f8faff;
+      border:1px dashed #bdcce4;
+      border-radius:14px;
+      grid-column:1/-1;
+    }
+
+    .hidden {display:none!important}
+    .muted {color:var(--muted)}
+
+    footer {
+      margin:45px 0 15px;
+      text-align:center;
+      color:#7b89a2;
+      font-size:12px;
+    }
+
+    @media(max-width:900px) {
+      .layout {grid-template-columns:1fr}
+      aside {
+        position:relative;
+        height:auto;
+        padding:17px;
+      }
+      .nav {
+        display:flex;
+        gap:5px;
+        overflow-x:auto;
+        margin-top:15px;
+      }
+      .nav-title,.side-note {display:none}
+      .nav button {white-space:nowrap;width:auto}
+      main {padding:20px}
+    }
+
+    @media(max-width:600px) {
+      main {padding:14px}
+      .hero {padding:23px}
+      .stats {grid-template-columns:1fr}
+      .subject-grid,.category-grid,.resource-grid {grid-template-columns:1fr}
+      .picker-panel {align-items:stretch}
+      .school-select {width:100%}
+      .section-head {
+        align-items:start;
+        flex-direction:column;
+      }
+      .home-btn {width:100%;justify-content:center}
+    }
+  </style>
+</head>
+
+<body>
+<div class="layout">
+  <aside>
+    <div class="brand">AFRIQUE <span>TECH PLUS</span><small>ATP SCHOOL</small></div>
+    <div class="nav-title">Espace scolaire</div>
+
+    <nav class="nav">
+      <button class="active" type="button" onclick="document.getElementById('dashboard').scrollIntoView()">🏠 Accueil SCHOOL</button>
+      <button type="button" id="showSubjects">📚 Matières</button>
+      <button type="button" id="openCours">📖 Cours</button>
+      <button type="button" id="openExos">✍️ Exercices corrigés</button>
+      <button type="button" id="showFavorites">⭐ Favoris</button>
+    </nav>
+
+    <div class="side-note">
+      Apprends à ton rythme. Retrouve tes matières, révise tes cours et entraîne-toi toute l'année.
+    </div>
+  </aside>
+
+  <main>
+    <div class="topbar">
+      <div>
+        <div class="top-label">TON ESPACE D'APPRENTISSAGE</div>
+        <p>Une école numérique à portée de main.</p>
+      </div>
+
+      <a class="home-btn" href="./index.html">← Retour à l'accueil principal</a>
+    </div>
+
+    <section class="hero" id="dashboard">
+      <span class="hero-tag">BIENVENUE SUR ATP SCHOOL</span>
+      <h1>Réussis chaque étape de ton parcours scolaire.</h1>
+      <p>
+        Accède à tes cours, exercices corrigés, devoirs et ressources de préparation aux examens dans un espace organisé selon ta classe.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Mon espace de classe</h2>
+          <p>Choisis ta classe exacte pour afficher les matières adaptées.</p>
+        </div>
+      </div>
+
+      <div class="picker-panel">
+        <div>
+          <strong>🎓 Ma classe</strong>
+          <p>Ton choix sera conservé sur cet appareil.</p>
+        </div>
+
+        <select class="school-select" id="schoolClassSelector" aria-label="Choisir ma classe">
+          <option value="">Chargement des classes...</option>
+        </select>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><strong id="subjectCount">0</strong><span>Matières disponibles</span></div>
+        <div class="stat"><strong id="favoriteCount">0</strong><span>Matières favorites</span></div>
+        <div class="stat"><strong id="completedCount">0</strong><span>Activités terminées</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="subjectsSection">
+      <div class="section-head">
+        <div>
+          <h2 id="subjectHeading">Mes matières</h2>
+          <p>Choisis une matière pour découvrir ses ressources.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input class="search" id="subjectSearch" type="search" placeholder="Rechercher une matière...">
+        <select class="filter" id="viewFilter">
+          <option value="all">Toutes les matières</option>
+          <option value="favorites">Mes favoris</option>
+        </select>
+      </div>
+
+      <div class="subject-grid" id="subjectGrid">
+        <div class="empty">Chargement des matières...</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Bibliothèque pédagogique</h2>
+          <p>Retrouve les ressources par type de contenu.</p>
+        </div>
+      </div>
+
+      <div class="category-grid" id="categoryGrid">
+        <button class="category-card" type="button" data-category="cours"><div>📘</div><strong>Cours</strong><span>Leçons et fiches de cours</span></button>
+        <button class="category-card" type="button" data-category="exercices"><div>✍️</div><strong>Exercices corrigés</strong><span>Entraînement et corrections</span></button>
+        <button class="category-card" type="button" data-category="devoirs"><div>📝</div><strong>Devoirs et évaluations</strong><span>Contrôles et évaluations</span></button>
+        <button class="category-card" type="button" data-category="examens"><div>🎯</div><strong>Préparation aux examens</strong><span>Révisions et examens</span></button>
+      </div>
+    </section>
+
+    <section class="section workspace hidden" id="subjectWorkspace">
+      <div class="section-head">
+        <div>
+          <div class="top-label">ESPACE MATIÈRE</div>
+          <h2 id="workspaceTitle">Ressources</h2>
+          <p id="workspaceDescription">Sélectionne une catégorie.</p>
+        </div>
+        <button class="action-btn" type="button" id="backSubjects">← Retour aux matières</button>
+      </div>
+
+      <div class="category-grid" id="categoryGridWorkspace">
+        <button class="category-card" type="button" data-category="cours"><div>📘</div><strong>Cours</strong><span>Leçons et fiches</span></button>
+        <button class="category-card" type="button" data-category="exercices"><div>✍️</div><strong>Exercices corrigés</strong><span>Entraînement</span></button>
+        <button class="category-card" type="button" data-category="devoirs"><div>📝</div><strong>Devoirs et évaluations</strong><span>Contrôles</span></button>
+        <button class="category-card" type="button" data-category="examens"><div>🎯</div><strong>Préparation aux examens</strong><span>Révisions</span></button>
+      </div>
+
+      <div class="resource-grid" id="resourceList" style="margin-top:18px">
+        <div class="empty">Sélectionne une catégorie pour afficher les ressources.</div>
+      </div>
+    </section>
+
+    <footer>© AFRIQUE TECH PLUS — ATP SCHOOL · Apprendre, progresser, réussir.</footer>
+  </main>
+</div>
+
+<script src="school.js"></script>
+</body>
+</html>
