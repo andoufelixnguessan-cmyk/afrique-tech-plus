@@ -1451,79 +1451,90 @@
     };
   }
 
-  function buildLesson(subject, item, index) {
-    const title = item.title;
-    const course = getCourse(subject, title);
+ function buildLesson(subject, item, index) {
+  const title = item.title;
+  const course = getCourse(subject, title);
 
-    let sessionTitles = [];
+  let sessionTitles = [];
 
-    if (Array.isArray(item.sessions) && item.sessions.length) {
-      sessionTitles = item.sessions.map(getTitle).filter(Boolean);
-    }
-
-    if (!sessionTitles.length) {
-      sessionTitles = [
-        "Découverte et compréhension",
-        "Approfondissement et application",
-        "Exercices et évaluation"
-      ];
-    }
-
-    const sessions = sessionTitles.map((sessionTitle, i) =>
-      buildSession(subject, sessionTitle, i)
-    );
-
-    return {
-      title: title,
-      section: item.section || "",
-      number: index + 1,
-      introduction: "Cette leçon de " + subject + " porte sur « " + title + " ». Elle permet à l'élève de découvrir les connaissances essentielles, de comprendre les explications et de mettre en pratique ce qu'il a appris.",
-      objectives: course.objectives,
-      explanation: course.explanation,
-      example: course.example,
-      vocabulary: course.vocabulary,
-      method: course.method,
-      essential: course.revision,
-      conclusion: "La maîtrise de cette leçon repose sur la compréhension de la définition, la connaissance des éléments importants et la réalisation régulière des exercices.",
-      sessions: sessions,
-      exercises: buildExercises(subject, title),
-      quiz: buildQuiz(subject, title, course),
-      revision: [
-        "Définition : " + course.definition,
-        "À retenir : " + course.revision,
-        "Exemple : " + course.example
-      ],
-      finalAssessment: {
-        instructions: [
-          "Lis attentivement chaque question.",
-          "Réponds en utilisant les connaissances de la leçon.",
-          "Rédige des phrases claires et complètes."
-        ],
-        questions: [
-          {
-            question: "Donne la définition de la notion principale de cette leçon.",
-            points: 4,
-            expected: course.definition
-          },
-          {
-            question: "Cite deux caractéristiques importantes de cette leçon.",
-            points: 4,
-            expected: course.objectives.slice(0, 2).join(" ")
-          },
-          {
-            question: "Explique la méthode à suivre pour appliquer cette notion.",
-            points: 6,
-            expected: course.method.join(" ")
-          },
-          {
-            question: "Donne un exemple concret et explique-le.",
-            points: 6,
-            expected: course.example
-          }
-        ]
-      }
-    };
+  if (Array.isArray(item.sessions) && item.sessions.length) {
+    sessionTitles = item.sessions.map(getTitle).filter(Boolean);
   }
+
+  // Si le programme ne contient pas de séances détaillées,
+  // utiliser le véritable intitulé de la leçon.
+  if (!sessionTitles.length) {
+    sessionTitles = [title];
+  }
+
+  const sessions = sessionTitles.map((sessionTitle, i) =>
+    buildSession(subject, sessionTitle, i)
+  );
+
+  return {
+    title: title,
+    section: item.section || "",
+    number: index + 1,
+
+    introduction:
+      "Cette leçon de " + subject +
+      " porte sur « " + title +
+      " ». Elle permet de découvrir les connaissances essentielles, " +
+      "de comprendre les explications et de mettre en pratique les acquis.",
+
+    objectives: course.objectives,
+    explanation: course.explanation,
+    example: course.example,
+    vocabulary: course.vocabulary,
+    method: course.method,
+    essential: course.revision,
+
+    conclusion:
+      "La maîtrise de cette leçon repose sur la compréhension des notions, " +
+      "la connaissance des éléments importants et la réalisation des exercices.",
+
+    sessions: sessions,
+    exercises: buildExercises(subject, title),
+    quiz: buildQuiz(subject, title, course),
+
+    revision: [
+      "Définition : " + course.definition,
+      "À retenir : " + course.revision,
+      "Exemple : " + course.example
+    ],
+
+    finalAssessment: {
+      instructions: [
+        "Lis attentivement chaque question.",
+        "Réponds en utilisant les connaissances de la leçon.",
+        "Rédige des phrases claires et complètes."
+      ],
+
+      questions: [
+        {
+          question: "Donne la définition de la notion principale de cette leçon.",
+          points: 4,
+          expected: course.definition
+        },
+        {
+          question: "Cite deux caractéristiques importantes de cette leçon.",
+          points: 4,
+          expected: course.objectives.slice(0, 2).join(" ")
+        },
+        {
+          question: "Explique la méthode à suivre pour appliquer cette notion.",
+          points: 6,
+          expected: course.method.join(" ")
+        },
+        {
+          question: "Donne un exemple concret et explique-le.",
+          points: 6,
+          expected: course.example
+        }
+      ]
+    }
+  };
+}
 
   function buildAll(raw) {
     const curriculum = normalizeCurriculum(raw);
