@@ -481,20 +481,32 @@ function addSection(parent, title, content) {
     return normalizeLessons(RAW_CURRICULUM[curriculumName(subject)]);
   }
 
+  // Le programme complet est construit une seule fois.
+  // Avant cette correction, buildAll() était relancé pour chaque leçon,
+  // ce qui pouvait ralentir fortement l'affichage sur mobile.
+  let learningContentCache = null;
+  let learningContentCacheReady = false;
+
   function getLearningSubject(subject) {
     if (!CONTENT || typeof CONTENT.buildAll !== "function") {
       return null;
     }
 
-    try {
-      const all = CONTENT.buildAll(RAW_CURRICULUM);
-      return all && all[curriculumName(subject)]
-        ? all[curriculumName(subject)]
-        : null;
-    } catch (error) {
-      console.error("Erreur du moteur pédagogique :", error);
-      return null;
+    if (!learningContentCacheReady) {
+      try {
+        learningContentCache = CONTENT.buildAll(RAW_CURRICULUM);
+        learningContentCacheReady = true;
+      } catch (error) {
+        console.error("Erreur du moteur pédagogique :", error);
+        learningContentCache = null;
+        learningContentCacheReady = true;
+      }
     }
+
+    return learningContentCache &&
+      learningContentCache[curriculumName(subject)]
+      ? learningContentCache[curriculumName(subject)]
+      : null;
   }
 
   function getLessonContent(subject, index) {
@@ -654,8 +666,14 @@ function addSection(parent, title, content) {
   function renderCourse(parent, session) {
     const course = session && session.course ? session.course : {};
 
-    if (course.introduction) {
-      addSection(parent, "Introduction", course.introduction);
+    // L'introduction est fournie à la racine de la séance.
+    if (session && session.introduction) {
+      addSection(parent, "Introduction", session.introduction);
+    }
+
+    // La définition est une partie essentielle du cours.
+    if (course.definition) {
+      addSection(parent, "Définition", course.definition);
     }
 
     if (course.explanation) {
@@ -667,7 +685,7 @@ function addSection(parent, title, content) {
     }
 
     if (course.vocabulary) {
-      addSection(parent, "Vocabulaire essentiel", makeList(course.vocabulary));
+      addSection(parent, "Vocabulaire essentiel", course.vocabulary);
     }
 
     if (course.method) {
@@ -680,6 +698,14 @@ function addSection(parent, title, content) {
 
     if (course.conclusion) {
       addSection(parent, "Conclusion", course.conclusion);
+    }
+
+    if (!parent.querySelector(".atp-learning-section")) {
+      addSection(
+        parent,
+        "Contenu du cours",
+        "Le contenu détaillé de cette séance sera bientôt disponible."
+      );
     }
   }
 
