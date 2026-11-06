@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10152f">
+  <meta name="theme-color" content="#f3f7ff">
   <meta name="description" content="AFRIQUE TECH PLUS ACADEMY : découvre des formations numériques accessibles à tous.">
   <title>ACADEMY | AFRIQUE TECH PLUS</title>
 
   <style>
     :root {
-      --bg: #10152f;
-      --panel: #171e3d;
-      --purple: #7c5cff;
-      --text: #f5f7ff;
-      --muted: #c0c8df;
-      --border: rgba(255,255,255,.12);
+      --bg: #f3f7ff;
+      --panel: #ffffff;
+      --blue: #2864d8;
+      --blue-dark: #1d4fae;
+      --indigo: #6557c8;
+      --text: #17233d;
+      --muted: #61708c;
+      --border: #dce5f4;
+      --shadow: 0 12px 30px rgba(36,65,110,.08);
     }
 
     * {
@@ -25,6 +28,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
@@ -50,9 +54,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11,16,36,.95);
+      background: rgba(255,255,255,.96);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 18px rgba(35,65,110,.05);
     }
 
     .navigation {
@@ -67,10 +72,11 @@
       font-size: 19px;
       font-weight: 800;
       letter-spacing: 1px;
+      color: #203452;
     }
 
     .brand span {
-      color: var(--purple);
+      color: var(--blue);
     }
 
     .nav-links {
@@ -82,17 +88,18 @@
     .nav-links a {
       color: var(--muted);
       font-size: 14px;
+      font-weight: 700;
       transition: .2s;
     }
 
     .nav-links a:hover {
-      color: var(--purple);
+      color: var(--blue);
     }
 
     .nav-button {
       padding: 11px 17px;
       border-radius: 9px;
-      background: var(--purple);
+      background: var(--blue);
       color: #ffffff !important;
       font-weight: 700;
     }
@@ -102,8 +109,9 @@
     .hero {
       padding: 95px 0 85px;
       background:
-        radial-gradient(ellipse at 80% 20%, rgba(119,91,255,.19), transparent 45%),
-        radial-gradient(ellipse at 10% 90%, rgba(29,120,180,.12), transparent 40%);
+        radial-gradient(ellipse at 80% 20%, rgba(101,87,200,.13), transparent 45%),
+        radial-gradient(ellipse at 10% 90%, rgba(40,100,216,.13), transparent 40%),
+        linear-gradient(135deg,#f4f8ff,#eaf1ff 58%,#f1efff);
     }
 
     .hero-content {
@@ -111,20 +119,21 @@
     }
 
     .eyebrow {
-      color: var(--purple);
+      color: var(--blue);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 2px;
     }
 
     .hero h1 {
+      color: #192c50;
       font-size: clamp(38px, 6vw, 65px);
       line-height: 1.12;
       margin: 22px 0;
     }
 
     .hero h1 span {
-      color: var(--purple);
+      color: var(--indigo);
     }
 
     .hero p {
@@ -137,40 +146,45 @@
     .primary-button {
       display: inline-block;
       padding: 14px 22px;
-      background: var(--purple);
+      background: linear-gradient(135deg,var(--blue),var(--indigo));
       color: #ffffff;
       border-radius: 10px;
       font-weight: 800;
       transition: .2s;
+      box-shadow: 0 8px 20px rgba(40,100,216,.16);
     }
 
     .primary-button:hover {
       transform: translateY(-3px);
-      filter: brightness(1.1);
+      filter: brightness(1.05);
     }
 
     /* AVANTAGES */
 
     .benefits {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
       padding: 20px 0 85px;
     }
 
     .benefit {
+      display: flex;
+      flex-direction: column;
       padding: 23px;
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(36,65,110,.045);
     }
 
     .benefit-icon {
       font-size: 27px;
-      color: var(--purple);
+      color: var(--blue);
     }
 
     .benefit h3 {
+      color: #203452;
       margin: 12px 0 7px;
       font-size: 16px;
     }
@@ -195,6 +209,7 @@
     }
 
     .section-heading h2 {
+      color: #1b2c4d;
       font-size: 32px;
       margin-top: 10px;
     }
@@ -205,7 +220,7 @@
     }
 
     .catalogue-label {
-      color: var(--purple);
+      color: var(--blue);
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 1.5px;
@@ -219,13 +234,17 @@
       gap: 25px;
       padding: 30px;
       margin-bottom: 85px;
-      background: rgba(153,136,255,.08);
-      border: 1px solid rgba(153,136,255,.2);
+      background: #edf2ff;
+      border: 1px solid #d9e3fa;
       border-radius: 18px;
     }
 
     .certification-icon {
       font-size: 45px;
+    }
+
+    .certification h3 {
+      color: #203452;
     }
 
     .certification p {
@@ -234,29 +253,214 @@
       margin-top: 8px;
     }
 
+    /* ESPACE PERSONNEL : CARTES ALIGNÉES */
+
+    #academy-dashboard {
+      padding-top: 55px;
+      padding-bottom: 75px;
+    }
+
+    #academy-dashboard .section-heading {
+      padding: 25px;
+      margin-bottom: 28px;
+      background: linear-gradient(120deg,#eaf1ff,#f0edff);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    #academy-dashboard .section-heading h2 {
+      color: #203452;
+    }
+
+    #academy-dashboard .section-heading p {
+      color: var(--muted);
+    }
+
+    #academy-dashboard .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 22px;
+      padding: 0;
+      margin: 0;
+    }
+
+    #academy-dashboard .benefit {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 0;
+      min-height: 245px;
+      height: 100%;
+      padding: 25px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      box-shadow: 0 6px 20px rgba(36,65,110,.055);
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    #academy-dashboard .benefit:hover {
+      transform: translateY(-4px);
+      border-color: #b9cbed;
+      box-shadow: var(--shadow);
+    }
+
+    #academy-dashboard .benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      border-radius: 14px;
+      background: #eaf1ff;
+      color: var(--blue);
+      font-size: 25px;
+    }
+
+    #academy-dashboard .benefit:nth-child(2) .benefit-icon,
+    #academy-dashboard .benefit:nth-child(5) .benefit-icon {
+      background: #f0edff;
+      color: var(--indigo);
+    }
+
+    #academy-dashboard .benefit:nth-child(3) .benefit-icon,
+    #academy-dashboard .benefit:nth-child(6) .benefit-icon {
+      background: #e8f7fa;
+      color: #247e91;
+    }
+
+    #academy-dashboard .benefit h3 {
+      color: #203452;
+      font-size: 17px;
+      margin: 5px 0 10px;
+    }
+
+    #academy-dashboard .benefit p,
+    #academy-dashboard .benefit div p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    #academy-dashboard .benefit > div {
+      width: 100%;
+    }
+
+    #academy-dashboard .benefit .primary-button {
+      margin-top: auto;
+      padding: 11px 15px;
+      font-size: 12px;
+    }
+
+    #academy-dashboard .certification {
+      margin: 30px 0 0;
+      padding: 25px;
+      background: linear-gradient(120deg,#eaf1ff,#f0edff);
+      border-color: #d9e3fa;
+    }
+
+    #academy-dashboard .certification h3 {
+      color: #203452;
+    }
+
+    #academy-dashboard .certification p {
+      color: var(--muted);
+    }
+
+    /* CATALOGUE DYNAMIQUE */
+
+    #academy-dynamic-catalogue {
+      width: 100%;
+    }
+
+    #academy-dynamic-catalogue .atp-live-courses {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    #academy-dynamic-catalogue .atp-live-card,
+    #academy-dynamic-catalogue .atp-module,
+    #academy-dynamic-catalogue .atp-lesson,
+    #academy-dynamic-catalogue .atp-quiz,
+    #academy-dynamic-catalogue .atp-progress {
+      background: #ffffff !important;
+      color: #17233d !important;
+      border: 1px solid #dce5f4 !important;
+      border-radius: 16px !important;
+      box-shadow: 0 6px 20px rgba(36,65,110,.055);
+    }
+
+    #academy-dynamic-catalogue .atp-live-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #academy-dynamic-catalogue .atp-live-card h2,
+    #academy-dynamic-catalogue .atp-live-card h3,
+    #academy-dynamic-catalogue .atp-module h3,
+    #academy-dynamic-catalogue .atp-lesson h3 {
+      color: #203452 !important;
+    }
+
+    #academy-dynamic-catalogue .atp-live-card p,
+    #academy-dynamic-catalogue .atp-module p,
+    #academy-dynamic-catalogue .atp-lesson p,
+    #academy-dynamic-catalogue .atp-quiz p {
+      color: #61708c !important;
+    }
+
+    #academy-dynamic-catalogue button,
+    #academy-dynamic-catalogue .atp-button {
+      background: linear-gradient(135deg,#2864d8,#6557c8) !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      border-radius: 10px !important;
+    }
+
+    #academy-dynamic-catalogue .atp-progress-bar,
+    #academy-dynamic-catalogue progress {
+      accent-color: #2864d8;
+    }
+
     /* FOOTER */
 
     footer {
       padding: 35px 0;
-      border-top: 1px solid var(--border);
+      background: #142849;
+      border-top: 1px solid #dce5f4;
       text-align: center;
+      color: #ffffff;
     }
 
     footer p {
-      color: var(--muted);
+      color: #dce7fa;
       font-size: 13px;
       margin-top: 8px;
     }
 
     footer a {
-      color: var(--purple);
+      color: #a9c5ff;
     }
 
-    /* MOBILE */
+    /* RESPONSIVE */
 
-    @media(max-width: 850px) {
+    @media(max-width: 900px) {
       .benefits {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      #academy-dashboard .benefits {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      #academy-dynamic-catalogue .atp-live-courses {
+        grid-template-columns: repeat(2,minmax(0,1fr));
       }
     }
 
@@ -276,8 +480,14 @@
         padding: 65px 0;
       }
 
-      .benefits {
+      .benefits,
+      #academy-dashboard .benefits,
+      #academy-dynamic-catalogue .atp-live-courses {
         grid-template-columns: 1fr;
+      }
+
+      #academy-dashboard .benefit {
+        min-height: 210px;
       }
 
       .section-heading {
@@ -289,6 +499,14 @@
         align-items: flex-start;
         flex-direction: column;
       }
+
+      #academy-dashboard .section-heading {
+        padding: 20px;
+      }
+    }
+
+    [hidden] {
+      display: none !important;
     }
   </style>
 </head>
