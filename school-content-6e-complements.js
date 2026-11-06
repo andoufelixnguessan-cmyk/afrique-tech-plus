@@ -34,7 +34,7 @@
       [{level:"Atelier",instruction:"Crée une composition en utilisant uniquement des points, des lignes et des formes.",correction:"La production doit montrer clairement les trois agents et une organisation volontaire de l'espace."}],
       [{question:"Cite quatre agents graphiques.",answer:"Le point, la ligne, la tache et la forme.",explanation:"Ils servent à construire une image."}]
     )],
-    ["couleurs et matieres", make(
+    ["couleurs et des matieres", make(
       "La couleur est une perception visuelle liée à la lumière ; la matière désigne l'aspect et la texture de la surface d'un support ou d'un matériau.",
       ["Reconnaître les couleurs primaires et secondaires en peinture.", "Observer les contrastes et les nuances.", "Décrire la texture d'une matière."],
       ["Dans le mélange traditionnel des pigments enseigné au collège, on présente généralement le rouge, le jaune et le bleu comme couleurs primaires.", "Le mélange de deux couleurs primaires permet d'obtenir une couleur secondaire : orange, vert ou violet selon les mélanges.", "Une couleur peut être claire ou foncée ; on peut obtenir des nuances en modifiant les mélanges.", "Le contraste oppose des couleurs ou des valeurs pour rendre un élément plus visible.", "Une matière peut être lisse, rugueuse, granuleuse, brillante, mate, souple ou rigide."],
@@ -180,7 +180,7 @@
       [{level:"Application",instruction:"Cite trois règles qui rendent une élection juste.",correction:"Vote libre, secret du vote et dépouillement transparent, par exemple."}],
       [{question:"Une majorité peut-elle supprimer les droits d'une minorité ?",answer:"Non.",explanation:"Les droits fondamentaux doivent être respectés par tous."}]
     )],
-    ["activites agro pastorales", make(
+    ["activites du secteur primaire", make(
       "Les activités agro-pastorales regroupent les activités agricoles et d'élevage qui produisent des aliments et des matières premières.",
       ["Identifier des activités agricoles et pastorales.", "Expliquer leur contribution à la vie économique.", "Repérer des possibilités d'initiative et d'emploi."],
       ["L'agriculture comprend la culture de plantes comme le manioc, l'igname, le riz, le maïs, le cacao ou le café.", "L'élevage concerne notamment les volailles, les bovins, les caprins, les ovins et les porcins.", "Ces activités fournissent des aliments, des matières premières et des revenus.", "Elles demandent des connaissances, de l'organisation, de l'eau, des soins, des outils et le respect de l'environnement.", "La transformation et la commercialisation créent aussi des activités économiques."],
