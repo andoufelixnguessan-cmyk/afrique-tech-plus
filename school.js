@@ -509,11 +509,61 @@ function addSection(parent, title, content) {
       : null;
   }
 
-  function getLessonContent(subject, index) {
+  function getLessonContent(subject, index, displayedLesson) {
     const data = getLearningSubject(subject);
-    return data && Array.isArray(data.lessons)
-      ? data.lessons[index] || null
-      : null;
+    const lessons = data && Array.isArray(data.lessons) ? data.lessons : [];
+
+    // La correspondance par intitulé est plus sûre qu'un simple index :
+    // les matières organisées par thèmes ou sections peuvent être normalisées
+    // différemment entre la liste affichée et le moteur pédagogique.
+    if (displayedLesson && displayedLesson.title) {
+      const normalizeTitle = value => String(value || "")
+        .trim()
+        .toLocaleLowerCase("fr")
+        .replace(/\\s+/g, " ");
+
+      const wantedTitle = normalizeTitle(displayedLesson.title);
+      const wantedSection = normalizeTitle(displayedLesson.section);
+
+      const exactMatch = lessons.find(item =>
+        normalizeTitle(item.title) === wantedTitle &&
+        normalizeTitle(item.section) === wantedSection
+      );
+
+      if (exactMatch) return exactMatch;
+
+      const titleMatch = lessons.find(item =>
+        normalizeTitle(item.title) === wantedTitle
+      );
+
+      if (titleMatch) return titleMatch;
+    }
+
+    if (lessons[index]) return lessons[index];
+
+    // Dernier recours : reconstruire la leçon demandée seule.
+    // Cela évite d'afficher une rubrique vide si le cache global est incomplet.
+    if (CONTENT && typeof CONTENT.buildAll === "function" && displayedLesson) {
+      try {
+        const name = curriculumName(subject);
+        const rebuilt = CONTENT.buildAll({
+          [name]: [{
+            title: displayedLesson.title,
+            section: displayedLesson.section || "",
+            sessions: Array.isArray(displayedLesson.sessions)
+              ? displayedLesson.sessions
+              : []
+          }]
+        });
+        return rebuilt && rebuilt[name] && rebuilt[name].lessons
+          ? rebuilt[name].lessons[0] || null
+          : null;
+      } catch (error) {
+        console.error("Impossible de reconstruire la leçon :", subject, displayedLesson.title, error);
+      }
+    }
+
+    return null;
   }
 
   function lessonKey(subject, lesson, index) {
@@ -1061,7 +1111,7 @@ function addSection(parent, title, content) {
   });
 
 function renderLesson(parent, lesson, lessonIndex) {
-    const content = getLessonContent(currentSubject, lessonIndex);
+    const content = getLessonContent(currentSubject, lessonIndex, lesson);
 
     const key = lessonKey(currentSubject, lesson, lessonIndex);
 
