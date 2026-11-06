@@ -713,7 +713,29 @@ function addSection(parent, title, content) {
     }
   }
 
+  function renderFormulaBlocks(parent, blocks) {
+    if (!Array.isArray(blocks) || !blocks.length) return;
+    const panel = el("section", "", "atp-learning-section atp-formula-panel");
+    panel.appendChild(el("h4", "∑ Formules, relations et symboles à connaître"));
+    blocks.forEach((block, index) => {
+      const card = el("div", "", "atp-formula-card");
+      card.appendChild(el("strong", (index + 1) + ". " + (block.label || "Formule")));
+      if (block.mathml) {
+        const holder = el("div", "", "atp-mathml");
+        const template = document.createElement("template");
+        template.innerHTML = block.mathml;
+        holder.appendChild(template.content.cloneNode(true));
+        card.appendChild(holder);
+      }
+      if (block.note) card.appendChild(el("p", block.note, "atp-formula-note"));
+      panel.appendChild(card);
+    });
+    parent.appendChild(panel);
+  }
+
   function renderCourse(parent, session) {
+    // Les formules restent visibles même si le texte de la fiche doit encore être complété.
+    renderFormulaBlocks(parent, session && session.formulaBlocks);
     if (session && String(session.contentStatus || "").startsWith("Contenu à rédiger et vérifier")) {
       addSection(
         parent,
