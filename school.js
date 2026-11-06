@@ -26,7 +26,7 @@
     ]
   };
 
-  const COMMON_COLLEGE = [
+  const COLLEGE = [
     ["Français", "📖"],
     ["Mathématiques", "➗"],
     ["Anglais", "🇬🇧"],
@@ -41,16 +41,16 @@
   ];
 
   const SUBJECTS = {
-    "6e": COMMON_COLLEGE,
-    "5e": COMMON_COLLEGE,
-    "4e": COMMON_COLLEGE,
-    "3e": COMMON_COLLEGE,
+    "6e": COLLEGE,
+    "5e": COLLEGE,
+    "4e": COLLEGE,
+    "3e": COLLEGE,
 
     "2nde-A": [
       ["Français", "📖"],
       ["Mathématiques", "➗"],
       ["Anglais", "🇬🇧"],
-      ["Allemand / Espagnol", "🌐"],
+      ["Langue vivante 2", "🌐"],
       ["Histoire-Géographie", "🌍"],
       ["SVT", "🌱"],
       ["Physique-Chimie", "🧪"],
@@ -62,7 +62,7 @@
       ["Français", "📖"],
       ["Mathématiques", "➗"],
       ["Anglais", "🇬🇧"],
-      ["Allemand / Espagnol", "🌐"],
+      ["Langue vivante 2", "🌐"],
       ["Histoire-Géographie", "🌍"],
       ["SVT", "🌱"],
       ["Physique-Chimie", "🧪"],
@@ -172,7 +172,7 @@
 
   const $ = id => document.getElementById(id);
 
-  function readStorage(key) {
+  function readArray(key) {
     try {
       const value = JSON.parse(localStorage.getItem(key));
       return Array.isArray(value) ? value : [];
@@ -181,28 +181,22 @@
     }
   }
 
-  function readClass() {
-    const saved = localStorage.getItem("atp_school_class_v2");
-    return SUBJECTS[saved] ? saved : "6e";
-  }
-
-  let currentClass = readClass();
-  let currentSubject = null;
-  let currentCategory = "cours";
-  let favorites = readStorage("atp_school_favorites_v2");
-  let completed = readStorage("atp_school_completed_v2");
-  let favoritesOnly = false;
-
-  const className = id => {
+  function classLabel(id) {
     for (const group of Object.values(CLASS_GROUPS)) {
       const found = group.find(item => item.id === id);
       if (found) return found.label;
     }
     return id;
-  };
+  }
 
-  const itemKey = (subject, category) =>
-    `${currentClass}::${subject}::${category}`;
+  let currentClass = localStorage.getItem("atp_school_class_v2");
+  if (!SUBJECTS[currentClass]) currentClass = "6e";
+
+  let currentSubject = null;
+  let currentCategory = "cours";
+  let favorites = readArray("atp_school_favorites_v2");
+  let completed = readArray("atp_school_completed_v2");
+  let favoritesOnly = false;
 
   function save() {
     localStorage.setItem("atp_school_class_v2", currentClass);
@@ -218,106 +212,93 @@
 
   function buildClassSelector() {
     const select = $("schoolClassSelector");
-    if (!select) return;
-
     select.innerHTML = "";
 
-    Object.entries(CLASS_GROUPS).forEach(([group, classes]) => {
-      const optgroup = document.createElement("optgroup");
-      optgroup.label = group;
+    Object.entries(CLASS_GROUPS).forEach(([groupName, classes]) => {
+      const group = document.createElement("optgroup");
+      group.label = groupName;
 
       classes.forEach(item => {
         const option = document.createElement("option");
         option.value = item.id;
         option.textContent = item.label;
-        optgroup.appendChild(option);
+        group.appendChild(option);
       });
 
-      select.appendChild(optgroup);
+      select.appendChild(group);
     });
 
     select.value = currentClass;
   }
 
-  function renderClassHeading() {
-    $("subjectHeading").textContent =
-      `Les matières de ${className(currentClass)}`;
-  }
-
   function renderSubjects() {
-    const query = $("subjectSearch").value.trim().toLocaleLowerCase("fr");
+    const search = $("subjectSearch").value
+      .trim()
+      .toLocaleLowerCase("fr");
 
-    const subjects = SUBJECTS[currentClass].filter(([name]) => {
-      const matches = name.toLocaleLowerCase("fr").includes(query);
-      const favorite = favorites.includes(`${currentClass}::${name}`);
-
-      return matches && (!favoritesOnly || favorite);
+    const list = SUBJECTS[currentClass].filter(([name]) => {
+      const matches = name.toLocaleLowerCase("fr").includes(search);
+      const key = `${currentClass}::${name}`;
+      return matches && (!favoritesOnly || favorites.includes(key));
     });
 
-    $("subjectGrid").innerHTML = "";
+    $("subjectHeading").textContent =
+      `Les matières de ${classLabel(currentClass)}`;
 
-    if (!subjects.length) {
-      $("subjectGrid").innerHTML =
-        '<div class="empty" style="grid-column:1/-1">Aucune matière trouvée.</div>';
+    const grid = $("subjectGrid");
+    grid.innerHTML = "";
+
+    if (!list.length) {
+      grid.innerHTML =
+        '<div class="empty">Aucune matière trouvée.</div>';
     }
 
-    subjects.forEach(([name, emoji]) => {
-      const favoriteKey = `${currentClass}::${name}`;
-      const favorite = favorites.includes(favoriteKey);
+    list.forEach(([name, emoji]) => {
+      const key = `${currentClass}::${name}`;
+      const isFavorite = favorites.includes(key);
 
       const card = document.createElement("article");
       card.className = "subject-card";
-      card.tabIndex = 0;
-      card.setAttribute("role", "button");
 
       const top = document.createElement("div");
-      top.className = "subject-top";
+      top.style.cssText =
+        "display:flex;justify-content:space-between;align-items:center";
 
       const icon = document.createElement("span");
       icon.className = "subject-icon";
       icon.textContent = emoji;
 
-      const favoriteButton = document.createElement("button");
-      favoriteButton.type = "button";
-      favoriteButton.textContent = favorite ? "★" : "☆";
-      favoriteButton.setAttribute("aria-label", "Ajouter ou retirer des favoris");
-      favoriteButton.style.cssText =
-        `border:0;background:transparent;font-size:21px;cursor:pointer;color:${favorite ? "#e0a52a" : "#aab3c7"}`;
+      const favorite = document.createElement("button");
+      favorite.type = "button";
+      favorite.textContent = isFavorite ? "★" : "☆";
+      favorite.style.cssText =
+        "background:transparent;border:0;color:#f2c45a;font-size:25px";
 
-      top.append(icon, favoriteButton);
+      top.append(icon, favorite);
 
       const title = document.createElement("h3");
       title.textContent = name;
 
-      const description = document.createElement("p");
-      description.textContent = className(currentClass);
+      const subtitle = document.createElement("p");
+      subtitle.textContent = classLabel(currentClass);
 
-      card.append(top, title, description);
+      card.append(top, title, subtitle);
 
-      favoriteButton.addEventListener("click", event => {
+      favorite.addEventListener("click", event => {
         event.stopPropagation();
 
-        favorites = favorites.includes(favoriteKey)
-          ? favorites.filter(item => item !== favoriteKey)
-          : [...favorites, favoriteKey];
+        favorites = favorites.includes(key)
+          ? favorites.filter(item => item !== key)
+          : [...favorites, key];
 
         save();
         renderSubjects();
       });
 
       card.addEventListener("click", () => openSubject(name));
-
-      card.addEventListener("keydown", event => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openSubject(name);
-        }
-      });
-
-      $("subjectGrid").appendChild(card);
+      grid.appendChild(card);
     });
 
-    renderClassHeading();
     updateStats();
   }
 
@@ -326,11 +307,15 @@
 
     currentClass = id;
     favoritesOnly = false;
+    currentSubject = null;
+
     $("viewFilter").value = "all";
-    $("subjectWorkspace").classList.remove("show");
+    $("subjectSearch").value = "";
+
+    $("subjectWorkspace").classList.add("hidden");
 
     save();
-    buildClassSelector();
+    $("schoolClassSelector").value = id;
     renderSubjects();
   }
 
@@ -339,16 +324,9 @@
     currentCategory = "cours";
 
     $("workspaceTitle").textContent =
-      `${name} · ${className(currentClass)}`;
+      `${name} · ${classLabel(currentClass)}`;
 
-    $("subjectWorkspace").classList.add("show");
-
-    document.querySelectorAll("#categoryGrid .category").forEach(button => {
-      button.classList.toggle(
-        "active",
-        button.dataset.category === currentCategory
-      );
-    });
+    $("subjectWorkspace").classList.remove("hidden");
 
     renderResources();
 
@@ -360,69 +338,68 @@
 
   function renderResources() {
     const [title, description] = CATEGORIES[currentCategory];
-    const resourceKey = itemKey(currentSubject, currentCategory);
-    const done = completed.includes(resourceKey);
+    const key = `${currentClass}::${currentSubject}::${currentCategory}`;
+    const isDone = completed.includes(key);
 
     $("workspaceDescription").textContent = description;
 
     const wrapper = document.createElement("div");
+    wrapper.style.cssText = "display:grid;gap:15px;width:100%";
 
     const resource = document.createElement("div");
-    resource.className = "resource";
+    resource.className = "resource-item";
 
-    const info = document.createElement("div");
-
-    const heading = document.createElement("strong");
+    const heading = document.createElement("h3");
     heading.textContent = `${title} de ${currentSubject}`;
 
-    const subtitle = document.createElement("small");
+    const subtitle = document.createElement("p");
     subtitle.textContent =
-      `${className(currentClass)} · Contenu en préparation`;
+      `${classLabel(currentClass)} · Contenu en préparation`;
 
-    info.append(heading, subtitle);
+    const notice = document.createElement("div");
+    notice.className = "empty";
+    notice.textContent =
+      "Les ressources pédagogiques seront publiées après vérification des programmes officiels ivoiriens. Aucun document fictif n'est présenté comme disponible.";
 
-    const status = document.createElement("em");
-    status.textContent = "À publier";
-
-    resource.append(info, status);
-
-    const empty = document.createElement("div");
-    empty.className = "empty";
-    empty.textContent =
-      "Les ressources pédagogiques de cette classe seront publiées après vérification des programmes officiels ivoiriens. Aucun document fictif n'est présenté comme disponible.";
+    resource.append(heading, subtitle);
 
     const tracking = document.createElement("div");
-    tracking.className = "resource";
+    tracking.className = "resource-item";
 
-    const trackingInfo = document.createElement("div");
-    const trackingTitle = document.createElement("strong");
+    const trackingTitle = document.createElement("h3");
     trackingTitle.textContent = "Suivi personnel";
 
-    const trackingDescription = document.createElement("small");
-    trackingDescription.textContent =
-      "Marque cette rubrique comme travaillée après avoir étudié son contenu.";
-
-    trackingInfo.append(trackingTitle, trackingDescription);
+    const trackingText = document.createElement("p");
+    trackingText.textContent =
+      "Tu pourras marquer cette rubrique comme travaillée.";
 
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "back-btn";
-    button.textContent = done ? "✓ Terminée" : "Marquer comme terminée";
+    button.className = "action-btn";
+    button.textContent = isDone
+      ? "✓ Activité terminée"
+      : "Marquer comme terminée";
 
     button.addEventListener("click", () => {
-      completed = completed.includes(resourceKey)
-        ? completed.filter(item => item !== resourceKey)
-        : [...completed, resourceKey];
+      completed = completed.includes(key)
+        ? completed.filter(item => item !== key)
+        : [...completed, key];
 
       save();
       renderResources();
       updateStats();
     });
 
-    tracking.append(trackingInfo, button);
-    wrapper.append(resource, empty, tracking);
+    tracking.append(trackingTitle, trackingText, button);
+    wrapper.append(resource, notice, tracking);
 
     $("resourceList").replaceChildren(wrapper);
+  }
+
+  function showCategory(category) {
+    if (!CATEGORIES[category] || !currentSubject) return;
+    currentCategory = category;
+    renderResources();
   }
 
   function showFavorites() {
@@ -445,21 +422,25 @@
     renderSubjects();
   });
 
-  $("backSubjects").addEventListener("click", () => {
-    $("subjectWorkspace").classList.remove("show");
-  });
-
   $("categoryGrid").addEventListener("click", event => {
     const button = event.target.closest("[data-category]");
     if (!button) return;
 
-    currentCategory = button.dataset.category;
+    if (!currentSubject) {
+      openSubject(SUBJECTS[currentClass][0][0]);
+    }
 
-    document.querySelectorAll("#categoryGrid .category").forEach(item => {
-      item.classList.toggle("active", item === button);
-    });
+    showCategory(button.dataset.category);
+  });
 
-    renderResources();
+  $("categoryGridWorkspace").addEventListener("click", event => {
+    const button = event.target.closest("[data-category]");
+    if (button) showCategory(button.dataset.category);
+  });
+
+  $("backSubjects").addEventListener("click", () => {
+    $("subjectWorkspace").classList.add("hidden");
+    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
   });
 
   $("showFavorites").addEventListener("click", showFavorites);
@@ -470,33 +451,15 @@
 
   $("openExos").addEventListener("click", () => {
     openSubject(SUBJECTS[currentClass][0][0]);
-    currentCategory = "exercices";
-
-    document.querySelectorAll("#categoryGrid .category").forEach(item => {
-      item.classList.toggle(
-        "active",
-        item.dataset.category === "exercices"
-      );
-    });
-
-    renderResources();
+    showCategory("exercices");
   });
 
   $("showSubjects").addEventListener("click", () => {
     $("subjectsSection").scrollIntoView({ behavior: "smooth" });
   });
 
-  $("resetProgress").addEventListener("click", () => {
-    if (!confirm("Effacer les favoris et la progression enregistrés sur cet appareil ?")) return;
-
-    favorites = [];
-    completed = [];
-    save();
-    renderSubjects();
-
-    if (currentSubject) renderResources();
-  });
-
   buildClassSelector();
   renderSubjects();
+  save();
+
 })();
