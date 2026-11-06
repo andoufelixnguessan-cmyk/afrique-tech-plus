@@ -714,6 +714,14 @@ function addSection(parent, title, content) {
   }
 
   function renderCourse(parent, session) {
+    if (session && String(session.contentStatus || "").startsWith("Contenu à rédiger et vérifier")) {
+      addSection(
+        parent,
+        "⚠️ Leçon à compléter",
+        "Cette fiche ne contient pas encore un cours spécifique suffisamment développé. Nous préférons le signaler plutôt que de présenter un texte générique comme un véritable cours. Le contenu détaillé de cette leçon doit encore être rédigé et vérifié."
+      );
+      return;
+    }
     // Les anciens contenus rangent les notions dans session.course.
     // Certaines fiches récentes les placent directement dans session.
     const nested = session && session.course && typeof session.course === "object"
