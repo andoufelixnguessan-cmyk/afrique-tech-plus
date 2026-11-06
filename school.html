@@ -1,132 +1,714 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10152f">
-  <meta name="description" content="AFRIQUE TECH PLUS SCHOOL : cours, exercices et révisions pour les élèves.">
-  <title>SCHOOL — AFRIQUE TECH PLUS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b3c">
+  <title>SCHOOL | AFRIQUE TECH PLUS</title>
+  <meta name="description" content="Espace éducatif AFRIQUE TECH PLUS : cours, exercices corrigés, devoirs et préparation aux examens pour les élèves de Côte d'Ivoire.">
+
   <link rel="stylesheet" href="styles.css">
+
   <style>
-    .school-page { min-height: 100vh; }
-    .school-hero {
-      padding: 100px 0 80px;
-      background: radial-gradient(ellipse at 80% 20%, #263c78 0, transparent 45%), #10152f;
+    :root {
+      --school-bg: #f3f5fc;
+      --school-navy: #101b3c;
+      --school-blue: #3159d9;
+      --school-violet: #7654d8;
+      --school-text: #1b2542;
+      --school-muted: #78829c;
+      --school-border: #e5e9f4;
+      --school-white: #fff;
     }
-    .school-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); max-width: 750px; }
-    .school-hero h1 span { color: #8b9cff; }
-    .school-hero p { max-width: 650px; line-height: 1.8; color: #c5cbe0; }
-    .school-content { padding: 75px 0; }
-    .school-levels, .school-subjects {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-      gap: 20px; margin-top: 30px;
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--school-bg);
+      color: var(--school-text);
+      font-family: Inter, Arial, sans-serif;
     }
-    .school-box {
-      padding: 25px; border: 1px solid rgba(150,165,220,.2);
-      border-radius: 18px; background: rgba(255,255,255,.04);
+
+    button, input, select { font: inherit; }
+
+    .school-shell {
+      min-height: 100vh;
+      display: flex;
     }
-    .school-box h3 { margin: 10px 0; }
-    .school-box p { color: #aeb8d2; line-height: 1.7; }
-    .school-icon { font-size: 2rem; }
-    .school-note {
-      margin-top: 45px; padding: 25px; border-radius: 16px;
-      background: rgba(100,125,220,.12); line-height: 1.8;
+
+    .school-sidebar {
+      width: 245px;
+      flex-shrink: 0;
+      background: var(--school-navy);
+      color: white;
+      padding: 28px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
     }
+
+    .school-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      font-size: 17px;
+    }
+
+    .school-brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #4775ff, #9363e9);
+      font-size: 21px;
+    }
+
+    .school-brand small {
+      display: block;
+      color: #aeb9dc;
+      font-size: 10px;
+      margin-top: 4px;
+      letter-spacing: 1.5px;
+    }
+
+    .school-nav-label {
+      color: #8492ba;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin: 0 10px 10px;
+    }
+
+    .school-nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .school-nav button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #c4cce3;
+      text-align: left;
+      padding: 13px 12px;
+      border-radius: 11px;
+      cursor: pointer;
+    }
+
+    .school-nav button:hover,
+    .school-nav button.active {
+      background: #263761;
+      color: white;
+    }
+
+    .school-side-note {
+      margin-top: auto;
+      padding: 15px;
+      border: 1px solid #34436b;
+      border-radius: 14px;
+      color: #c3cce5;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .school-main {
+      min-width: 0;
+      flex: 1;
+      padding: 26px clamp(16px, 4vw, 48px) 50px;
+    }
+
     .school-topbar {
-      padding: 18px 0; background: #10152f;
-      border-bottom: 1px solid rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 27px;
     }
-    .school-topbar .container {
-      display: flex; justify-content: space-between;
-      align-items: center; gap: 15px; flex-wrap: wrap;
+
+    .school-breadcrumb {
+      color: var(--school-muted);
+      font-size: 13px;
     }
-    .school-topbar a { color: white; text-decoration: none; }
-    @media(max-width:600px) {
-      .school-hero { padding: 65px 0 55px; }
+
+    .school-breadcrumb strong { color: var(--school-text); }
+
+    .school-top-tag {
+      background: #e8edff;
+      color: #3159d9;
+      border-radius: 30px;
+      padding: 9px 13px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .school-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: 23px;
+      color: white;
+      background: linear-gradient(115deg, #152650, #3159d9 65%, #7654d8);
+      margin-bottom: 25px;
+    }
+
+    .school-hero:after {
+      content: "✦";
+      position: absolute;
+      right: 8%;
+      top: -45px;
+      font-size: 190px;
+      color: #ffffff12;
+      pointer-events: none;
+    }
+
+    .school-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 650px;
+    }
+
+    .school-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #d5ddff;
+      margin-bottom: 13px;
+    }
+
+    .school-hero h1 {
+      font-size: clamp(27px, 4vw, 39px);
+      line-height: 1.15;
+      margin: 0 0 13px;
+    }
+
+    .school-hero p {
+      color: #e1e7ff;
+      line-height: 1.7;
+      font-size: 14px;
+      margin: 0 0 23px;
+      max-width: 550px;
+    }
+
+    .school-primary-btn {
+      border: 0;
+      background: white;
+      color: #2348bb;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .school-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .school-stat {
+      background: white;
+      border: 1px solid var(--school-border);
+      padding: 19px;
+      border-radius: 16px;
+    }
+
+    .school-stat span {
+      display: block;
+      color: var(--school-muted);
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .school-stat strong {
+      font-size: 25px;
+      color: var(--school-navy);
+    }
+
+    .school-section { margin: 30px 0; }
+
+    .school-section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 17px;
+    }
+
+    .school-section-head h2 {
+      font-size: 20px;
+      margin: 0 0 5px;
+    }
+
+    .school-section-head p {
+      margin: 0;
+      color: var(--school-muted);
+      font-size: 12px;
+    }
+
+    .school-class-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .class-card {
+      border: 1px solid var(--school-border);
+      background: white;
+      border-radius: 13px;
+      min-height: 76px;
+      cursor: pointer;
+      color: var(--school-text);
+      font-weight: 800;
+      padding: 12px 6px;
+      transition: .2s;
+    }
+
+    .class-card:hover,
+    .class-card.active {
+      background: #eaf0ff;
+      border-color: #5576e8;
+      color: #294fc4;
+      transform: translateY(-2px);
+    }
+
+    .class-card small {
+      display: block;
+      margin-top: 6px;
+      color: var(--school-muted);
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .school-toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 17px;
+    }
+
+    .school-search {
+      flex: 1;
+      min-width: 190px;
+      border: 1px solid var(--school-border);
+      border-radius: 11px;
+      background: white;
+      padding: 13px 15px;
+      outline: none;
+      color: var(--school-text);
+    }
+
+    .school-search:focus {
+      border-color: var(--school-blue);
+      box-shadow: 0 0 0 3px #3159d91a;
+    }
+
+    .school-select {
+      border: 1px solid var(--school-border);
+      border-radius: 11px;
+      background: white;
+      padding: 12px;
+      color: var(--school-text);
+    }
+
+    .school-subject-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .subject-card {
+      background: white;
+      border: 1px solid var(--school-border);
+      border-radius: 16px;
+      padding: 18px;
+      cursor: pointer;
+      transition: .2s;
+      min-width: 0;
+    }
+
+    .subject-card:hover {
+      border-color: #8197ed;
+      transform: translateY(-3px);
+      box-shadow: 0 9px 25px #1c34710d;
+    }
+
+    .subject-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .subject-icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      background: #edf1ff;
+      border-radius: 13px;
+      font-size: 23px;
+    }
+
+    .subject-card h3 {
+      margin: 0 0 7px;
+      font-size: 15px;
+    }
+
+    .subject-card p {
+      margin: 0;
+      color: var(--school-muted);
+      font-size: 11px;
+    }
+
+    .school-workspace {
+      display: none;
+      background: white;
+      border: 1px solid var(--school-border);
+      border-radius: 19px;
+      padding: clamp(17px, 3vw, 27px);
+      margin-top: 28px;
+      scroll-margin-top: 20px;
+    }
+
+    .school-workspace.show { display: block; }
+
+    .workspace-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .workspace-head h2 {
+      margin: 0 0 5px;
+      font-size: 21px;
+    }
+
+    .workspace-head p {
+      color: var(--school-muted);
+      margin: 0;
+      font-size: 12px;
+    }
+
+    .back-btn {
+      border: 1px solid var(--school-border);
+      border-radius: 9px;
+      background: white;
+      color: var(--school-text);
+      padding: 10px 13px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .school-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .category {
+      border: 1px solid var(--school-border);
+      border-radius: 12px;
+      background: #fafbff;
+      padding: 15px 10px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--school-text);
+    }
+
+    .category strong {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+
+    .category small {
+      display: block;
+      font-size: 10px;
+      color: var(--school-muted);
+      line-height: 1.5;
+    }
+
+    .category.active {
+      border-color: #5576e8;
+      background: #edf1ff;
+      color: #294fc4;
+    }
+
+    .resource {
+      border: 1px solid var(--school-border);
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .resource strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .resource small {
+      display: block;
+      color: var(--school-muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .resource em {
+      color: #986b13;
+      background: #fff4d9;
+      border-radius: 20px;
+      padding: 7px 10px;
+      font-size: 10px;
+      font-style: normal;
+      white-space: nowrap;
+    }
+
+    .empty {
+      padding: 19px;
+      text-align: center;
+      border: 1px dashed #d7deef;
+      border-radius: 12px;
+      color: var(--school-muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 12px 0;
+    }
+
+    .school-footer {
+      color: var(--school-muted);
+      text-align: center;
+      padding: 30px 10px 5px;
+      font-size: 11px;
+    }
+
+    @media (max-width: 1050px) {
+      .school-class-grid { grid-template-columns: repeat(4, 1fr); }
+      .school-subject-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      .school-shell { display: block; }
+      .school-sidebar {
+        width: 100%;
+        padding: 13px 16px;
+        gap: 12px;
+      }
+      .school-brand { font-size: 15px; }
+      .school-nav-label, .school-side-note { display: none; }
+      .school-nav {
+        display: flex;
+        overflow-x: auto;
+        gap: 6px;
+        padding-bottom: 2px;
+      }
+      .school-nav button {
+        white-space: nowrap;
+        width: auto;
+        padding: 9px 12px;
+        font-size: 11px;
+      }
+      .school-main { padding: 18px 14px 35px; }
+      .school-topbar { margin-bottom: 17px; }
+      .school-stats { gap: 8px; }
+      .school-stat { padding: 13px 10px; }
+      .school-stat strong { font-size: 21px; }
+      .school-stat span { font-size: 10px; }
+      .school-class-grid { grid-template-columns: repeat(4, 1fr); }
+      .school-subject-grid { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+      .subject-card { padding: 13px; }
+      .subject-card h3 { font-size: 13px; }
+      .school-category-grid { grid-template-columns: repeat(2, 1fr); }
+      .workspace-head { align-items: flex-start; }
+    }
+
+    @media (max-width: 390px) {
+      .school-class-grid { grid-template-columns: repeat(2, 1fr); }
+      .school-subject-grid { grid-template-columns: 1fr; }
+      .school-top-tag { font-size: 9px; }
     }
   </style>
 </head>
-<body class="school-page">
 
-  <header class="school-topbar">
-    <div class="container">
-      <a class="brand" href="index.html">
-        <span class="brand-mark">A<span>+</span></span>
-        <span class="brand-name">AFRIQUE TECH PLUS
-          <small>APPRENDRE · CRÉER · ÉVOLUER</small>
-        </span>
-      </a>
-      <a href="index.html">← Retour à l'accueil</a>
-    </div>
-  </header>
+<body>
+  <div class="school-shell">
 
-  <main>
-    <section class="school-hero">
-      <div class="container">
-        <span class="section-label">AFRIQUE TECH PLUS SCHOOL</span>
-        <h1>Révise. Comprends. <span>Progresse.</span></h1>
-        <p>
-          Un espace dédié à ta réussite scolaire. Découvre des cours,
-          des fiches de révision, des exercices corrigés et des quiz
-          pour renforcer tes connaissances.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#classes">Explorer les classes ↓</a>
-          <a class="button button-ghost" href="index.html#account">Créer un compte</a>
+    <aside class="school-sidebar">
+      <div class="school-brand">
+        <div class="school-brand-icon">🎓</div>
+        <div>
+          ATP SCHOOL
+          <small>ESPACE ÉDUCATIF</small>
         </div>
       </div>
-    </section>
 
-    <section class="school-content" id="classes">
-      <div class="container">
-        <span class="section-label">TON PARCOURS SCOLAIRE</span>
-        <h2>Choisis ton niveau</h2>
-        <p>Des ressources organisées pour accompagner ton apprentissage.</p>
-
-        <div class="school-levels">
-          <article class="school-box"><span class="school-icon">📘</span><h3>Collège</h3><p>De la 6e à la 3e : cours, exercices et préparation au BEPC.</p></article>
-          <article class="school-box"><span class="school-icon">🎓</span><h3>Seconde</h3><p>Renforce tes bases et prépare la suite de ton parcours.</p></article>
-          <article class="school-box"><span class="school-icon">📚</span><h3>Première</h3><p>Approfondis les notions de ta série et entraîne-toi.</p></article>
-          <article class="school-box"><span class="school-icon">🏆</span><h3>Terminale</h3><p>Révise efficacement et prépare les épreuves du BAC.</p></article>
-        </div>
+      <div>
+        <p class="school-nav-label">ESPACE ÉLÈVE</p>
+        <nav class="school-nav">
+          <button class="active" type="button" onclick="document.getElementById('homeSection').scrollIntoView({behavior:'smooth'})">⌂ Tableau de bord</button>
+          <button type="button" onclick="document.getElementById('classesSection').scrollIntoView({behavior:'smooth'})">▦ Mes classes</button>
+          <button type="button" id="showFavorites">☆ Mes favoris</button>
+          <button type="button" id="openCours">▤ Cours</button>
+          <button type="button" id="openExos">✎ Exercices</button>
+        </nav>
       </div>
-    </section>
 
-    <section class="school-content" id="matieres">
-      <div class="container">
-        <span class="section-label">LES MATIÈRES</span>
-        <h2>Apprends matière par matière</h2>
-
-        <div class="school-subjects">
-          <article class="school-box"><span class="school-icon">∑</span><h3>Mathématiques</h3><p>Leçons, méthodes et exercices d'application.</p></article>
-          <article class="school-box"><span class="school-icon">⚗️</span><h3>Physique-Chimie</h3><p>Comprendre les notions et résoudre les exercices.</p></article>
-          <article class="school-box"><span class="school-icon">✍️</span><h3>Français</h3><p>Grammaire, rédaction et compréhension de textes.</p></article>
-          <article class="school-box"><span class="school-icon">🌍</span><h3>Histoire-Géographie</h3><p>Fiches, repères et connaissances essentielles.</p></article>
-        </div>
-
-        <div class="school-note">
-          <strong>Notre objectif :</strong> proposer progressivement des ressources
-          adaptées aux programmes scolaires de Côte d'Ivoire.
-          Les cours et exercices seront ajoutés au fur et à mesure de leur préparation.
-        </div>
+      <div class="school-side-note">
+        <strong>Apprendre autrement.</strong><br>
+        Retrouve tes matières, organise tes révisions et progresse à ton rythme.
       </div>
-    </section>
-  </main>
+    </aside>
 
-  <footer class="site-footer">
-    <div class="container footer-bottom">
-      <span>© <span id="school-year"></span> AFRIQUE TECH PLUS SCHOOL</span>
-      <a href="index.html">Retour à l'accueil ↑</a>
-    </div>
-  </footer>
+    <main class="school-main">
 
-  <script>
-    document.getElementById("school-year").textContent = new Date().getFullYear();
-  </script>
+      <div class="school-topbar">
+        <div class="school-breadcrumb">
+          AFRIQUE TECH PLUS / <strong>SCHOOL</strong>
+        </div>
+        <div class="school-top-tag">PROGRAMME SCOLAIRE IVOIRIEN</div>
+      </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-<script src="auth.js"></script>
-  
+      <section class="school-hero" id="homeSection">
+        <div class="school-hero-content">
+          <div class="school-eyebrow">TON ESPACE POUR RÉUSSIR</div>
+          <h1>Bienvenue dans SCHOOL.</h1>
+          <p>
+            Apprends, entraîne-toi et prépare tes examens avec un espace
+            éducatif organisé par classe et par matière.
+          </p>
+          <button class="school-primary-btn" id="showSubjects" type="button">
+            Explorer les matières →
+          </button>
+        </div>
+      </section>
+
+      <section class="school-stats">
+        <div class="school-stat">
+          <span>Matières de la classe</span>
+          <strong id="subjectCount">11</strong>
+        </div>
+        <div class="school-stat">
+          <span>Mes favoris</span>
+          <strong id="favoriteCount">0</strong>
+        </div>
+        <div class="school-stat">
+          <span>Rubriques travaillées</span>
+          <strong id="completedCount">0</strong>
+        </div>
+      </section>
+
+      <section class="school-section" id="classesSection">
+        <div class="school-section-head">
+          <div>
+            <h2>Choisis ta classe</h2>
+            <p>Accède directement aux matières de ton niveau.</p>
+          </div>
+        </div>
+
+        <div class="school-class-grid" id="classGrid">
+          <button class="class-card active" data-level="6e" type="button">6e<small>Collège</small></button>
+          <button class="class-card" data-level="5e" type="button">5e<small>Collège</small></button>
+          <button class="class-card" data-level="4e" type="button">4e<small>Collège</small></button>
+          <button class="class-card" data-level="3e" type="button">3e<small>BEPC</small></button>
+          <button class="class-card" data-level="2nde" type="button">Seconde<small>Lycée</small></button>
+          <button class="class-card" data-level="1ere" type="button">Première<small>Lycée</small></button>
+          <button class="class-card" data-level="tle" type="button">Terminale<small>BAC</small></button>
+        </div>
+      </section>
+
+      <section class="school-section" id="subjectsSection">
+        <div class="school-section-head">
+          <div>
+            <h2 id="subjectHeading">Les matières de 6e</h2>
+            <p>Choisis une matière pour accéder à ses ressources.</p>
+          </div>
+        </div>
+
+        <div class="school-toolbar">
+          <input
+            class="school-search"
+            id="subjectSearch"
+            type="search"
+            placeholder="Rechercher une matière..."
+            aria-label="Rechercher une matière"
+          >
+
+          <select class="school-select" id="schoolLevel" aria-label="Choisir une classe">
+            <option value="6e">6e</option>
+            <option value="5e">5e</option>
+            <option value="4e">4e</option>
+            <option value="3e">3e</option>
+            <option value="2nde">Seconde</option>
+            <option value="1ere">Première</option>
+            <option value="tle">Terminale</option>
+          </select>
+
+          <select class="school-select" id="viewFilter" aria-label="Filtrer les matières">
+            <option value="all">Toutes les matières</option>
+            <option value="favorites">Mes favoris</option>
+          </select>
+        </div>
+
+        <div class="school-subject-grid" id="subjectGrid"></div>
+      </section>
+
+      <section class="school-workspace" id="subjectWorkspace">
+        <div class="workspace-head">
+          <div>
+            <h2 id="workspaceTitle">Matière</h2>
+            <p id="workspaceDescription">Choisis une rubrique.</p>
+          </div>
+          <button class="back-btn" id="backSubjects" type="button">← Retour</button>
+        </div>
+
+        <div class="school-category-grid" id="categoryGrid">
+          <button class="category active" data-category="cours" type="button">
+            <strong>📘 Cours</strong>
+            <small>Leçons et fiches de cours</small>
+          </button>
+
+          <button class="category" data-category="exercices" type="button">
+            <strong>✏️ Exercices corrigés</strong>
+            <small>Entraînement et corrections</small>
+          </button>
+
+          <button class="category" data-category="devoirs" type="button">
+            <strong>📝 Devoirs et évaluations</strong>
+            <small>Contrôles et devoirs</small>
+          </button>
+
+          <button class="category" data-category="examens" type="button">
+            <strong>🏆 Préparation aux examens</strong>
+            <small>Révisions et sujets types</small>
+          </button>
+        </div>
+
+        <div id="resourceList"></div>
+      </section>
+
+      <div class="school-footer">
+        AFRIQUE TECH PLUS · SCHOOL · Apprendre, progresser et réussir.
+        <br>
+        <button class="back-btn" id="resetProgress" type="button" style="margin-top:12px">
+          Réinitialiser ma progression sur cet appareil
+        </button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="school.js"></script>
 </body>
 </html>
