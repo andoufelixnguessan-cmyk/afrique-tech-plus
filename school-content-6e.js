@@ -1,9 +1,3 @@
-/* =========================================================
-   AFRIQUE TECH PLUS — ATP SCHOOL
-   PROGRAMME DE 6e — MOTEUR PÉDAGOGIQUE
-   Version : 2.0
-   ========================================================= */
-
 (function () {
   "use strict";
 
@@ -21,1058 +15,1536 @@
     "TICE"
   ];
 
-  const SUBJECT_INFO = {
-    "Français": {
-      objective: "Maîtriser la langue française, comprendre des textes et communiquer correctement à l'oral comme à l'écrit.",
-      method: "Observer les exemples, identifier la règle, comprendre son fonctionnement, puis l'appliquer dans des phrases et des productions personnelles.",
-      vocabulary: "Définition, règle, phrase, texte, vocabulaire, expression."
-    },
-    "Mathématiques": {
-      objective: "Développer le raisonnement logique, calculer correctement et résoudre des problèmes de la vie courante.",
-      method: "Lire l'énoncé, identifier les données, choisir une propriété ou une opération, effectuer les calculs et vérifier le résultat.",
-      vocabulary: "Définition, propriété, opération, calcul, raisonnement, résultat."
-    },
-    "Anglais": {
-      objective: "Comprendre et utiliser des mots, expressions et structures simples en anglais dans des situations de communication.",
-      method: "Écouter ou lire le modèle, comprendre le sens, mémoriser le vocabulaire, répéter et réutiliser les expressions dans des phrases.",
-      vocabulary: "Word, sentence, question, answer, pronunciation, meaning."
-    },
-    "Histoire-Géographie": {
-      objective: "Comprendre les sociétés humaines, les événements historiques, les territoires et les relations entre les populations et leur environnement.",
-      method: "Observer un document, identifier son sujet, relever les informations importantes, les situer dans le temps ou dans l'espace et expliquer.",
-      vocabulary: "Document, date, période, territoire, population, événement, espace."
-    },
-    "SVT": {
-      objective: "Comprendre le vivant, le fonctionnement des organismes et leurs relations avec leur environnement.",
-      method: "Observer, poser un problème scientifique, formuler une hypothèse, réaliser ou étudier une expérience, interpréter les résultats et conclure.",
-      vocabulary: "Observation, hypothèse, expérience, résultat, interprétation, conclusion."
-    },
-    "Physique-Chimie": {
-      objective: "Observer les phénomènes physiques et chimiques, comprendre leurs propriétés et apprendre à réaliser des expériences simples en sécurité.",
-      method: "Décrire le phénomène, identifier le matériel, proposer une explication, réaliser l'expérience avec prudence et interpréter les résultats.",
-      vocabulary: "Matière, phénomène, mesure, expérience, observation, résultat."
-    },
-    "EDHC": {
-      objective: "Développer les comportements responsables, le respect des droits et devoirs, la solidarité et la participation à la vie collective.",
-      method: "Étudier une situation concrète, identifier les comportements, distinguer les droits et les devoirs et proposer une attitude responsable.",
-      vocabulary: "Droit, devoir, responsabilité, respect, solidarité, citoyenneté."
-    },
-    "Arts plastiques": {
-      objective: "Développer la créativité et apprendre à utiliser les formes, les couleurs, les lignes et les matières pour communiquer visuellement.",
-      method: "Observer une œuvre, identifier les éléments plastiques, expérimenter les techniques et réaliser une production personnelle.",
-      vocabulary: "Forme, ligne, couleur, texture, composition, contraste."
-    },
-    "Éducation musicale": {
-      objective: "Développer l'écoute, le sens du rythme, la voix et la compréhension des éléments du langage musical.",
-      method: "Écouter attentivement, repérer les sons, reproduire un rythme ou une mélodie et expliquer ce qui est entendu.",
-      vocabulary: "Son, rythme, mélodie, tempo, voix, instrument."
-    },
-    "EPS": {
-      objective: "Développer les capacités physiques, la coordination, l'endurance, l'esprit d'équipe et le respect des règles sportives.",
-      method: "Comprendre la consigne, s'échauffer, apprendre le geste technique, s'entraîner progressivement et respecter les règles de sécurité.",
-      vocabulary: "Effort, échauffement, coordination, endurance, règle, performance."
-    },
-    "TICE": {
-      objective: "Apprendre à utiliser les technologies de l'information et de la communication de manière efficace, responsable et sécurisée.",
-      method: "Identifier l'outil, comprendre son fonctionnement, suivre les étapes d'utilisation et appliquer les règles de sécurité numérique.",
-      vocabulary: "Ordinateur, logiciel, fichier, dossier, donnée, réseau, sécurité."
+  const clean = value => String(value || "").trim();
+
+  function toArray(value) {
+    if (Array.isArray(value)) return value;
+    if (value && typeof value === "object") {
+      if (Array.isArray(value.sessions)) return value.sessions;
+      return Object.values(value);
     }
-  };
-
-  /* =========================================================
-     BANQUE DE COURS SPÉCIFIQUES
-     Les notions sont sélectionnées selon le titre réel
-     de chaque leçon du programme.
-     ========================================================= */
-
-  const TOPICS = [
-
-    /* ---------------- MATHÉMATIQUES ---------------- */
-
-    {
-      subject: "Mathématiques",
-      keys: ["nombres entiers naturels"],
-      course: {
-        introduction: "Les nombres entiers naturels servent à compter, dénombrer et ranger des quantités. Ils sont utilisés dans la vie quotidienne pour compter des objets, des personnes ou des sommes d'argent.",
-        explanation: "L'ensemble des nombres entiers naturels est noté ℕ. Il comprend 0, 1, 2, 3, 4, 5 et ainsi de suite. Un nombre appartient à ℕ lorsqu'il est un entier naturel. Le symbole ∈ signifie « appartient à » et le symbole ∉ signifie « n'appartient pas à ». Deux entiers naturels qui se suivent sont appelés nombres consécutifs. Un nombre est pair lorsqu'il est divisible par 2 ; il est impair lorsqu'il ne l'est pas. Un nombre a est un multiple de b lorsque a peut s'écrire b × k avec k entier naturel. Dans ce cas, b est un diviseur de a. Les critères de divisibilité permettent de reconnaître rapidement certains diviseurs : par 2, le chiffre des unités est 0, 2, 4, 6 ou 8 ; par 5, il est 0 ou 5 ; par 10, il est 0 ; par 100, les deux derniers chiffres sont 00. Un nombre est divisible par 3 ou par 9 lorsque la somme de ses chiffres est respectivement divisible par 3 ou par 9.",
-        example: "Exemple : 246 appartient à ℕ. Il est pair car son chiffre des unités est 6. Il est divisible par 3 car 2 + 4 + 6 = 12 et 12 est divisible par 3. Il est divisible par 2 et par 3, donc aussi par 6. En revanche, 247 est impair.",
-        vocabulary: "ℕ : ensemble des entiers naturels ; ∈ : appartient à ; ∉ : n'appartient pas à ; multiple : résultat d'une multiplication ; diviseur : nombre qui divise exactement un autre nombre ; pair : divisible par 2 ; impair : non divisible par 2.",
-        method: "Pour déterminer si un nombre est divisible par 3 ou par 9, additionner ses chiffres. Pour trouver les diviseurs d'un nombre, rechercher les nombres qui le divisent sans reste. Pour vérifier un multiple, effectuer la division ou rechercher une multiplication exacte.",
-        essential: "À retenir : les entiers naturels servent à compter. Tout entier naturel est pair ou impair. Un nombre peut avoir plusieurs diviseurs et plusieurs multiples. Les critères de divisibilité facilitent les calculs.",
-        conclusion: "La maîtrise des nombres entiers naturels permet de compter, comparer, organiser des quantités et résoudre de nombreux problèmes."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["nombres décimaux"],
-      course: {
-        introduction: "Les nombres décimaux permettent d'exprimer des quantités qui ne sont pas nécessairement entières. Ils sont notamment utilisés pour les prix, les longueurs, les masses et les mesures.",
-        explanation: "Un nombre décimal possède une partie entière et une partie décimale séparées par une virgule. Dans 24,375, la partie entière est 24. Après la virgule, le premier chiffre indique les dixièmes, le deuxième les centièmes et le troisième les millièmes. On peut décomposer un nombre décimal en somme de ses différentes valeurs de position. Pour comparer deux nombres décimaux, on compare d'abord les parties entières. Si elles sont égales, on compare successivement les dixièmes, les centièmes puis les millièmes. Pour additionner ou soustraire des nombres décimaux, on aligne les virgules.",
-        example: "24,375 = 20 + 4 + 0,3 + 0,07 + 0,005. Pour calculer 12,5 + 3,25, on écrit 12,50 + 3,25 = 15,75.",
-        vocabulary: "Partie entière, partie décimale, virgule, dixième, centième, millième.",
-        method: "Toujours aligner les virgules pour effectuer une addition ou une soustraction. Pour comparer deux nombres, compléter éventuellement avec des zéros à droite de la partie décimale.",
-        essential: "Un zéro ajouté à droite de la partie décimale ne change pas la valeur du nombre : 3,5 = 3,50.",
-        conclusion: "Les nombres décimaux permettent d'effectuer des mesures et des calculs précis dans les situations quotidiennes."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["fractions"],
-      course: {
-        introduction: "Une fraction permet de représenter une partie d'une unité ou le quotient de deux nombres entiers.",
-        explanation: "Une fraction s'écrit a/b, avec a au numérateur et b au dénominateur. Le dénominateur indique en combien de parts égales l'unité est partagée. Le numérateur indique le nombre de parts considérées. Le dénominateur ne peut pas être nul. Deux fractions peuvent être équivalentes lorsqu'elles représentent la même quantité. On obtient une fraction équivalente en multipliant ou en divisant le numérateur et le dénominateur par un même nombre non nul.",
-        example: "Si une mangue est partagée en 4 parts égales et qu'on en prend 3, la quantité prise est 3/4. Les fractions 1/2 et 2/4 représentent la même quantité.",
-        vocabulary: "Fraction, numérateur, dénominateur, unité, fraction équivalente.",
-        method: "Identifier d'abord le nombre total de parts égales, puis le nombre de parts utilisées. Pour comparer des fractions simples, les ramener si possible au même dénominateur.",
-        essential: "Le dénominateur est toujours différent de zéro. Le numérateur compte les parts prises.",
-        conclusion: "Les fractions sont utiles pour partager équitablement, mesurer et représenter des quantités."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["proportionnalité", "tableau de proportionnalité"],
-      course: {
-        introduction: "Deux grandeurs sont proportionnelles lorsque l'on passe de l'une à l'autre en multipliant toujours par le même nombre.",
-        explanation: "Le nombre utilisé pour passer d'une grandeur à l'autre est appelé coefficient de proportionnalité. Dans un tableau de proportionnalité, les valeurs d'une ligne s'obtiennent en multipliant les valeurs correspondantes de l'autre ligne par un même coefficient. La règle de trois permet de calculer une valeur manquante.",
-        example: "Si 1 cahier coûte 250 F CFA, alors 2 cahiers coûtent 500 F CFA et 4 cahiers coûtent 1 000 F CFA. Le coefficient de proportionnalité est 250.",
-        vocabulary: "Grandeur, proportionnalité, coefficient, tableau, produit en croix.",
-        method: "Repérer les deux grandeurs, identifier le coefficient de proportionnalité et effectuer le calcul. Vérifier que les unités sont cohérentes.",
-        essential: "Dans une situation de proportionnalité, le rapport entre les deux grandeurs reste constant.",
-        conclusion: "La proportionnalité permet de résoudre des problèmes de prix, de recettes, de distances et de quantités."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["statistiques", "effectif", "fréquence"],
-      course: {
-        introduction: "Les statistiques permettent de recueillir, organiser, présenter et interpréter des informations concernant une population.",
-        explanation: "Une population est l'ensemble des éléments étudiés. Un caractère est la propriété observée. L'effectif d'une valeur est le nombre de fois où elle apparaît. L'effectif total est la somme des effectifs. La fréquence d'une valeur est le quotient de son effectif par l'effectif total. Les résultats peuvent être présentés dans un tableau ou un diagramme.",
-        example: "Dans une classe de 40 élèves, 10 portent des lunettes. La fréquence est 10/40 = 0,25, soit 25 %.",
-        vocabulary: "Population, caractère, effectif, effectif total, fréquence, diagramme.",
-        method: "Recueillir les données, compter les occurrences, construire le tableau, calculer les fréquences et interpréter les résultats.",
-        essential: "La somme des fréquences exprimées en pourcentage est égale à 100 %.",
-        conclusion: "Les statistiques aident à comprendre et comparer des données."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["cercle", "disque"],
-      course: {
-        introduction: "Le cercle et le disque sont des figures géométriques que l'on rencontre dans de nombreux objets : roues, pièces, assiettes ou cadrans.",
-        explanation: "Un cercle est l'ensemble des points situés à la même distance d'un point fixe appelé centre. Cette distance est le rayon. Un segment reliant deux points du cercle et passant par le centre est un diamètre. Le diamètre mesure deux fois le rayon. Le disque est la surface délimitée par un cercle.",
-        example: "Si le rayon d'un cercle mesure 4 cm, son diamètre mesure 8 cm.",
-        vocabulary: "Centre, rayon, diamètre, cercle, disque, corde.",
-        method: "Pour tracer un cercle, placer la pointe du compas au centre, régler l'ouverture à la longueur du rayon puis faire tourner le compas.",
-        essential: "Diamètre = 2 × rayon. Rayon = diamètre ÷ 2.",
-        conclusion: "La distinction entre cercle et disque est essentielle pour décrire et construire des figures."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["droite", "point", "segment"],
-      course: {
-        introduction: "La géométrie utilise des points, des droites et des segments pour représenter les formes et les positions.",
-        explanation: "Un point indique une position et se note généralement par une lettre majuscule. Une droite est illimitée dans les deux sens. Une demi-droite possède une origine et se prolonge dans un seul sens. Un segment est une portion de droite limitée par deux extrémités. La longueur d'un segment se mesure avec une règle graduée.",
-        example: "Le segment [AB] possède deux extrémités A et B. La droite (AB) passe par A et B et se prolonge des deux côtés.",
-        vocabulary: "Point, droite, demi-droite, segment, extrémité, longueur.",
-        method: "Utiliser une règle pour tracer une droite ou mesurer un segment. Respecter les notations géométriques.",
-        essential: "La droite est illimitée ; le segment est limité par deux extrémités.",
-        conclusion: "Les points, droites et segments constituent les bases des constructions géométriques."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["angle"],
-      course: {
-        introduction: "Un angle représente l'ouverture formée par deux demi-droites ayant la même origine.",
-        explanation: "Le point commun aux deux demi-droites est le sommet de l'angle. Les demi-droites sont les côtés de l'angle. Un angle se mesure en degrés avec un rapporteur. Un angle droit mesure 90°, un angle aigu mesure moins de 90° et un angle obtus mesure plus de 90° mais moins de 180°.",
-        example: "Un angle de 45° est aigu. Un angle de 90° est droit. Un angle de 120° est obtus.",
-        vocabulary: "Sommet, côté, angle aigu, angle droit, angle obtus, degré, rapporteur.",
-        method: "Placer le centre du rapporteur sur le sommet, aligner un côté sur la ligne de référence puis lire la graduation correspondant à l'autre côté.",
-        essential: "L'angle se mesure en degrés. L'angle droit mesure 90°.",
-        conclusion: "La mesure des angles permet de construire et de décrire précisément les figures géométriques."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["triangle"],
-      course: {
-        introduction: "Le triangle est un polygone formé de trois côtés, trois sommets et trois angles.",
-        explanation: "Un triangle est une figure fermée possédant trois côtés. Un triangle équilatéral possède trois côtés de même longueur. Un triangle isocèle possède au moins deux côtés de même longueur. Un triangle rectangle possède un angle droit. La somme des mesures des angles d'un triangle est égale à 180°.",
-        example: "Si deux angles d'un triangle mesurent 50° et 60°, le troisième mesure 180° - 50° - 60° = 70°.",
-        vocabulary: "Sommet, côté, angle, triangle équilatéral, isocèle, rectangle.",
-        method: "Pour construire un triangle, connaître les longueurs nécessaires et utiliser une règle, un compas ou un rapporteur selon la consigne.",
-        essential: "La somme des trois angles d'un triangle vaut 180°.",
-        conclusion: "Les propriétés des triangles facilitent les constructions et les raisonnements géométriques."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["parallélogramme"],
-      course: {
-        introduction: "Le parallélogramme est un quadrilatère dont les côtés opposés sont parallèles.",
-        explanation: "Un parallélogramme possède deux paires de côtés opposés parallèles. Ses côtés opposés ont la même longueur. Ses diagonales se coupent en leur milieu. Un rectangle, un losange et un carré sont des cas particuliers de parallélogrammes.",
-        example: "Dans un parallélogramme ABCD, les côtés AB et CD sont parallèles et de même longueur.",
-        vocabulary: "Quadrilatère, côté opposé, diagonale, parallèle, milieu.",
-        method: "Pour reconnaître un parallélogramme, vérifier le parallélisme des côtés opposés ou utiliser les propriétés de ses diagonales.",
-        essential: "Les diagonales d'un parallélogramme se coupent en leur milieu.",
-        conclusion: "Le parallélogramme possède des propriétés qui permettent de le construire et de le reconnaître."
-      }
-    },
-
-    {
-      subject: "Mathématiques",
-      keys: ["symétrie"],
-      course: {
-        introduction: "La symétrie permet de construire l'image d'une figure par rapport à un axe ou à un point.",
-        explanation: "Dans la symétrie axiale, l'axe est la médiatrice du segment qui relie un point à son image. Le point et son image sont situés de part et d'autre de l'axe, à la même distance. Dans la symétrie centrale, le centre de symétrie est le milieu du segment reliant le point à son image.",
-        example: "Si A' est le symétrique de A par rapport à une droite, alors cette droite est perpendiculaire à [AA'] et passe par son milieu.",
-        vocabulary: "Symétrie axiale, symétrie centrale, axe, centre, image, médiatrice.",
-        method: "Pour une symétrie axiale, tracer la perpendiculaire à l'axe passant par le point puis reporter la même distance de l'autre côté.",
-        essential: "Un point et son image sont à égale distance de l'axe de symétrie.",
-        conclusion: "La symétrie permet d'étudier les figures régulières et de réaliser des constructions précises."
-      }
-    },
-
-    /* ---------------- SVT ---------------- */
-
-    {
-      subject: "SVT",
-      keys: ["formation de la graine"],
-      course: {
-        introduction: "La graine est l'élément qui permet à de nombreuses plantes à fleurs de se reproduire. Sa formation se déroule après la reproduction de la fleur.",
-        explanation: "La fleur possède plusieurs organes. Les sépales protègent le bouton floral. Les pétales attirent souvent les insectes pollinisateurs. Les étamines sont les organes reproducteurs mâles et produisent les grains de pollen. Le pistil est l'organe reproducteur femelle ; il comprend notamment le stigmate, le style et l'ovaire qui contient les ovules. La pollinisation correspond au transport du pollen jusqu'au stigmate. Après la pollinisation, le grain de pollen peut germer et permettre la fécondation de l'ovule. Après la fécondation, l'ovule se transforme en graine et l'ovaire évolue généralement en fruit. La graine contient un embryon et des réserves nutritives qui aideront la jeune plante au début de son développement.",
-        example: "Chez le haricot, après la fécondation, les ovules contenus dans l'ovaire deviennent des graines. L'ovaire se développe pour former la gousse.",
-        vocabulary: "Sépale : pièce florale protectrice ; pétale : pièce souvent colorée ; étamine : organe mâle ; pistil : organe femelle ; pollen : élément reproducteur mâle ; ovule : structure qui devient la graine après fécondation ; pollinisation : transport du pollen ; fécondation : union des cellules reproductrices.",
-        method: "Pour étudier une fleur, observer sa structure, identifier les sépales, les pétales, les étamines et le pistil. Comparer une fleur avant et après la fécondation et rechercher les transformations de l'ovaire et des ovules.",
-        essential: "La pollinisation précède la fécondation. Après la fécondation, l'ovule devient une graine et l'ovaire devient généralement un fruit.",
-        conclusion: "La formation de la graine est une étape essentielle de la reproduction sexuée des plantes à fleurs."
-      }
-    },
-
-    {
-      subject: "SVT",
-      keys: ["germination d'une graine", "germination"],
-      course: {
-        introduction: "La germination est le début du développement d'une nouvelle plante à partir d'une graine.",
-        explanation: "Une graine viable contient un embryon vivant et des réserves nutritives. Lorsque les conditions favorables sont réunies, elle absorbe de l'eau, gonfle et son enveloppe se déchire. La première partie visible est généralement la radicule, qui donnera la racine. La tigelle et la gemmule se développent ensuite et formeront la tige et les premières feuilles. La germination nécessite principalement de l'eau, une température convenable et de l'air. La lumière n'est pas indispensable à la germination de toutes les graines, mais elle devient importante pour la croissance de la jeune plante verte. Une graine morte ou trop vieille peut ne pas germer.",
-        example: "Lorsqu'on place des graines de haricot sur du coton humide, dans un endroit aéré et à température convenable, la radicule apparaît d'abord, puis la jeune tige se développe.",
-        vocabulary: "Germination, graine viable, radicule, tigelle, gemmule, embryon, réserves nutritives.",
-        method: "Comparer plusieurs lots de graines en ne faisant varier qu'un seul facteur à la fois : présence d'eau, température ou accès à l'air. Observer et noter les résultats.",
-        essential: "L'eau, l'air et une température favorable sont nécessaires à la germination des graines étudiées. La graine doit être viable.",
-        conclusion: "La germination permet à l'embryon contenu dans la graine de reprendre son développement et de donner une jeune plante."
-      }
-    },
-
-    {
-      subject: "SVT",
-      keys: ["reproduction chez les mammifères", "mammifères"],
-      course: {
-        introduction: "Les mammifères sont des animaux vertébrés dont les femelles possèdent généralement des mamelles et allaitent leurs petits.",
-        explanation: "Chez la plupart des mammifères, la reproduction est sexuée. Le mâle produit les spermatozoïdes et la femelle produit les ovules. La fécondation est interne : elle se déroule dans l'appareil reproducteur de la femelle. Après la fécondation, l'embryon se développe dans l'utérus chez les mammifères placentaires. La durée de la gestation varie selon les espèces. À la naissance, les petits sont nourris par le lait maternel. Certains mammifères, comme l'ornithorynque, pondent des œufs : il existe donc des exceptions.",
-        example: "Chez la vache, la fécondation est interne, le petit se développe dans l'utérus pendant la gestation, puis le veau naît et est nourri par le lait de sa mère.",
-        vocabulary: "Mâle, femelle, spermatozoïde, ovule, fécondation, embryon, utérus, gestation, allaitement.",
-        method: "Comparer les étapes de la reproduction chez plusieurs mammifères : rencontre des cellules reproductrices, fécondation, développement, naissance et alimentation du petit.",
-        essential: "Chez les mammifères placentaires, le petit se développe dans l'utérus et est nourri par le lait maternel après la naissance.",
-        conclusion: "La reproduction assure la continuité des espèces de mammifères."
-      }
-    },
-
-    {
-      subject: "SVT",
-      keys: ["reproduction chez les oiseaux", "oiseaux"],
-      course: {
-        introduction: "Les oiseaux sont des vertébrés qui se reproduisent généralement par ponte d'œufs.",
-        explanation: "La reproduction des oiseaux est sexuée. Le mâle produit des spermatozoïdes et la femelle des ovules. Après l'accouplement, la fécondation est interne. L'œuf fécondé se forme dans l'appareil reproducteur de la femelle et reçoit des enveloppes protectrices ainsi que des réserves nutritives. La femelle pond l'œuf. Pendant la couvaison, la chaleur permet le développement de l'embryon. À la fin de l'incubation, le poussin sort de la coquille : c'est l'éclosion.",
-        example: "Chez la poule, après la fécondation, l'œuf est pondu. La poule le couve et, après une période d'incubation d'environ 21 jours, le poussin éclot.",
-        vocabulary: "Accouplement, fécondation interne, œuf, coquille, embryon, couvaison, incubation, éclosion.",
-        method: "Étudier le cycle de reproduction en respectant l'ordre : accouplement, fécondation, ponte, couvaison, développement embryonnaire et éclosion.",
-        essential: "Les oiseaux pondent des œufs. L'embryon se développe dans l'œuf grâce aux réserves nutritives et à une température favorable.",
-        conclusion: "La ponte et l'incubation permettent le développement du nouvel individu chez les oiseaux."
-      }
-    },
-
-    {
-      subject: "SVT",
-      keys: ["facteurs de croissance", "plantes à fleurs"],
-      course: {
-        introduction: "Après la germination, une jeune plante doit grandir et se développer. Sa croissance dépend de plusieurs facteurs du milieu.",
-        explanation: "La croissance d'une plante correspond à l'augmentation de sa taille et de sa masse. Elle dépend notamment de l'eau, de la lumière, des sels minéraux, de la température et de la qualité du sol. Les racines absorbent l'eau et les sels minéraux. Les feuilles captent la lumière et réalisent la photosynthèse, processus qui permet à la plante verte de fabriquer sa matière organique à partir de l'eau et du dioxyde de carbone. Une plante privée durablement d'eau ou de lumière se développe difficilement.",
-        example: "Deux jeunes plants identiques sont placés dans des conditions différentes. Celui qui reçoit de l'eau, de la lumière et des sels minéraux en quantité adaptée se développe généralement mieux que celui qui manque de ces facteurs.",
-        vocabulary: "Croissance, développement, eau, lumière, sels minéraux, photosynthèse, matière organique.",
-        method: "Comparer des plants en faisant varier un facteur à la fois. Mesurer leur taille à intervalles réguliers et noter les différences.",
-        essential: "L'eau, la lumière, les sels minéraux et une température favorable contribuent à la croissance des plantes.",
-        conclusion: "La croissance d'une plante dépend de ses caractéristiques propres et des conditions de son environnement."
-      }
-    },
-
-    {
-      subject: "SVT",
-      keys: ["aliments", "croissance des vertébrés", "croissance"],
-      course: {
-        introduction: "Les êtres vivants ont besoin de nourriture pour grandir, entretenir leur organisme et produire de l'énergie.",
-        explanation: "Les aliments apportent des nutriments nécessaires au fonctionnement du corps. Les protéines participent notamment à la construction et à la réparation des tissus. Les glucides et les lipides fournissent de l'énergie. Les vitamines, les sels minéraux et l'eau sont également indispensables. Les besoins alimentaires varient selon l'espèce, l'âge, l'activité et l'état de santé. Une alimentation insuffisante ou déséquilibrée peut ralentir la croissance.",
-        example: "Un jeune animal bien nourri et disposant d'eau propre se développe généralement mieux qu'un animal qui manque durablement de nourriture.",
-        vocabulary: "Aliment, nutriment, croissance, protéines, glucides, lipides, vitamines, sels minéraux.",
-        method: "Comparer les conditions alimentaires de plusieurs animaux, observer leur évolution et rechercher le lien entre alimentation et croissance.",
-        essential: "Une alimentation adaptée et équilibrée est nécessaire à la croissance et au bon fonctionnement de l'organisme.",
-        conclusion: "La nourriture constitue un facteur important de croissance chez les animaux vertébrés."
-      }
-    },
-
-    /* ---------------- PHYSIQUE-CHIMIE ---------------- */
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["circuit électrique", "circuit"],
-      course: {
-        introduction: "Un circuit électrique est un ensemble de composants reliés par des conducteurs et permettant le passage du courant électrique.",
-        explanation: "Un circuit simple peut comprendre une pile, des fils conducteurs et une lampe. La pile fournit l'énergie électrique. Les fils relient les composants. La lampe transforme l'énergie électrique en lumière et en chaleur. Pour que le courant circule dans un circuit simple, le circuit doit former une boucle fermée. Un circuit ouvert ne permet pas le passage du courant.",
-        example: "Une pile reliée à une lampe par deux fils forme un circuit fermé si toutes les connexions sont correctement réalisées. La lampe s'allume.",
-        vocabulary: "Circuit, pile, générateur, conducteur, récepteur, interrupteur, circuit ouvert, circuit fermé.",
-        method: "Identifier les composants, dessiner le schéma du circuit avec les symboles normalisés et vérifier que la boucle est fermée.",
-        essential: "Le courant circule dans un circuit fermé. Un circuit ouvert interrompt le courant.",
-        conclusion: "Comprendre les circuits électriques permet d'expliquer le fonctionnement de nombreux appareils."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["interrupteur", "commande d'un circuit"],
-      course: {
-        introduction: "L'interrupteur est un dispositif qui permet d'ouvrir ou de fermer un circuit électrique.",
-        explanation: "Lorsque l'interrupteur est fermé, le circuit est complet et le courant peut circuler. Lorsqu'il est ouvert, le circuit est interrompu et le courant ne circule plus dans le circuit simple étudié. L'interrupteur permet donc de commander un récepteur comme une lampe.",
-        example: "Dans une chambre, l'interrupteur permet d'allumer ou d'éteindre une lampe sans débrancher les fils.",
-        vocabulary: "Interrupteur, circuit ouvert, circuit fermé, commande, récepteur.",
-        method: "Observer les deux positions de l'interrupteur et représenter chacune d'elles sur un schéma électrique.",
-        essential: "Interrupteur fermé : circuit fermé. Interrupteur ouvert : circuit interrompu.",
-        conclusion: "L'interrupteur commande le fonctionnement d'un circuit électrique."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["court-circuit", "courts-circuits"],
-      course: {
-        introduction: "Un court-circuit est une situation dangereuse dans laquelle le courant emprunte un chemin de très faible résistance.",
-        explanation: "Dans une installation électrique, un court-circuit peut se produire lorsque deux conducteurs qui ne doivent pas être directement reliés entrent en contact. L'intensité du courant peut alors devenir très élevée, provoquer un échauffement et entraîner un incendie ou détériorer les appareils. Les fusibles et les disjoncteurs servent à protéger les installations en interrompant le courant lorsqu'il devient anormalement élevé.",
-        example: "Un fil électrique dont l'isolant est abîmé peut mettre deux conducteurs en contact et provoquer un court-circuit.",
-        vocabulary: "Court-circuit, conducteur, isolant, échauffement, fusible, disjoncteur.",
-        method: "Ne jamais provoquer volontairement un court-circuit. Étudier uniquement des schémas ou des dispositifs sécurisés sous la supervision d'un enseignant.",
-        essential: "Un court-circuit est dangereux. Il peut provoquer un échauffement et un incendie.",
-        conclusion: "La prévention des courts-circuits est essentielle pour la sécurité électrique."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["états physiques", "solides", "liquides", "gaz"],
-      course: {
-        introduction: "La matière existe sous différentes formes appelées états physiques.",
-        explanation: "Un solide possède généralement une forme propre et un volume propre. Un liquide possède un volume propre mais prend la forme du récipient qui le contient. Un gaz n'a ni forme propre ni volume propre : il occupe tout l'espace disponible. L'eau peut exister sous forme solide (glace), liquide (eau) ou gazeuse (vapeur d'eau).",
-        example: "Un glaçon est solide, l'eau d'un verre est liquide et la vapeur d'eau est un gaz.",
-        vocabulary: "Matière, solide, liquide, gaz, forme propre, volume propre.",
-        method: "Observer différentes substances, les placer dans des récipients adaptés et comparer leur forme et leur volume.",
-        essential: "Les trois états physiques étudiés sont l'état solide, l'état liquide et l'état gazeux.",
-        conclusion: "La connaissance des états physiques permet de comprendre les transformations de la matière."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["température", "thermomètre"],
-      course: {
-        introduction: "La température indique le niveau de chaleur ou de froid d'un corps. Elle se mesure avec un thermomètre.",
-        explanation: "La température est une grandeur physique. Dans la vie courante et à l'école, elle est souvent exprimée en degrés Celsius (°C). Le thermomètre doit être utilisé correctement : on attend la stabilisation de l'indication et on lit la graduation à hauteur des yeux. Il ne faut pas confondre température et quantité de matière.",
-        example: "Une température de 25 °C est supérieure à une température de 18 °C.",
-        vocabulary: "Température, thermomètre, degré Celsius, graduation, mesure.",
-        method: "Placer correctement le thermomètre, attendre que l'indication se stabilise puis lire la valeur sans toucher la partie sensible.",
-        essential: "La température se mesure avec un thermomètre et s'exprime notamment en degrés Celsius.",
-        conclusion: "Mesurer la température permet de comparer l'état thermique de différents corps."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["changement d'état", "fusion", "solidification", "vaporisation", "liquéfaction"],
-      course: {
-        introduction: "Un changement d'état est le passage d'une substance d'un état physique à un autre.",
-        explanation: "La fusion est le passage de l'état solide à l'état liquide. La solidification est le passage du liquide au solide. La vaporisation est le passage du liquide au gaz. La liquéfaction est le passage du gaz au liquide. Ces transformations peuvent être provoquées par un échange d'énergie thermique. Pour une substance pure, les changements d'état se produisent à des températures caractéristiques dans des conditions données.",
-        example: "Un glaçon qui fond subit une fusion. L'eau placée au congélateur se solidifie.",
-        vocabulary: "Fusion, solidification, vaporisation, liquéfaction, changement d'état.",
-        method: "Identifier l'état initial et l'état final, puis nommer le changement d'état correspondant.",
-        essential: "Fusion : solide vers liquide. Solidification : liquide vers solide. Vaporisation : liquide vers gaz. Liquéfaction : gaz vers liquide.",
-        conclusion: "Les changements d'état montrent que la matière peut changer de forme physique sans nécessairement changer de nature."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["masse", "balance"],
-      course: {
-        introduction: "La masse est une grandeur qui permet de mesurer la quantité de matière d'un objet.",
-        explanation: "La masse se mesure avec une balance. Les unités courantes sont le gramme (g) et le kilogramme (kg). Un kilogramme correspond à 1 000 grammes. Pour mesurer la masse d'un objet, on utilise une balance adaptée et on veille à ce qu'elle soit correctement réglée.",
-        example: "2 kg = 2 000 g. Un sac de riz de 5 kg possède une masse de 5 000 g.",
-        vocabulary: "Masse, balance, gramme, kilogramme, mesure, tare.",
-        method: "Placer la balance sur une surface stable, faire la tare si nécessaire, déposer l'objet et lire la valeur affichée.",
-        essential: "La masse se mesure avec une balance. 1 kg = 1 000 g.",
-        conclusion: "La mesure de la masse est utile dans les activités scientifiques et dans la vie quotidienne."
-      }
-    },
-
-    {
-      subject: "Physique-Chimie",
-      keys: ["volume", "éprouvette graduée"],
-      course: {
-        introduction: "Le volume représente l'espace occupé par un corps.",
-        explanation: "Le volume peut être exprimé en litre (L), millilitre (mL) ou centimètre cube (cm³). Pour mesurer le volume d'un liquide, on peut utiliser une éprouvette graduée. La lecture se fait à hauteur des yeux, au niveau approprié de la surface du liquide. Pour un solide régulier, le volume peut être calculé à partir de ses dimensions. Pour un solide de forme irrégulière, on peut utiliser le déplacement d'eau.",
-        example: "1 L = 1 000 mL. Si le niveau d'eau passe de 50 mL à 70 mL après immersion d'un objet, le volume de l'objet est de 20 mL, soit 20 cm³.",
-        vocabulary: "Volume, litre, millilitre, centimètre cube, éprouvette graduée, déplacement d'eau.",
-        method: "Choisir un instrument adapté, lire correctement les graduations et exprimer le résultat avec son unité.",
-        essential: "1 L = 1 000 mL et 1 mL = 1 cm³.",
-        conclusion: "La mesure du volume permet de connaître l'espace occupé par un liquide ou un solide."
-      }
-    },
-
-    /* ---------------- TICE ---------------- */
-
-    {
-      subject: "TICE",
-      keys: ["ordinateur", "composants", "matériel informatique"],
-      course: {
-        introduction: "L'ordinateur est une machine électronique qui permet de recevoir, traiter, stocker et restituer des informations.",
-        explanation: "Un ordinateur comporte plusieurs éléments matériels. L'unité centrale contient les composants qui assurent le traitement des informations. L'écran permet d'afficher les résultats. Le clavier sert à saisir du texte et des commandes. La souris permet de déplacer le pointeur et de sélectionner des éléments. Les périphériques peuvent être classés selon leur fonction : entrée, sortie ou stockage.",
-        example: "Le clavier est un périphérique d'entrée parce qu'il permet de saisir des informations. L'écran est un périphérique de sortie parce qu'il affiche les résultats.",
-        vocabulary: "Ordinateur, unité centrale, écran, clavier, souris, périphérique, entrée, sortie, stockage.",
-        method: "Identifier chaque composant, décrire sa fonction et le classer selon son rôle dans le traitement de l'information.",
-        essential: "Un ordinateur reçoit des données, les traite, les stocke éventuellement et restitue des résultats.",
-        conclusion: "Connaître les composants d'un ordinateur permet de mieux comprendre son fonctionnement."
-      }
-    },
-
-    {
-      subject: "TICE",
-      keys: ["fichier", "dossier", "répertoire"],
-      course: {
-        introduction: "Les fichiers et les dossiers permettent d'organiser les informations enregistrées sur un ordinateur.",
-        explanation: "Un fichier contient des informations : texte, image, son, vidéo ou programme. Un dossier sert à regrouper et organiser des fichiers et éventuellement d'autres dossiers. Le nom d'un fichier permet de le retrouver. Son extension indique généralement son type : .docx pour un document Word, .jpg pour une image ou .mp3 pour un fichier audio. Il est important d'enregistrer régulièrement son travail.",
-        example: "Un élève peut créer un dossier nommé « Cours de 6e », puis un sous-dossier « Mathématiques » pour y ranger ses exercices.",
-        vocabulary: "Fichier, dossier, répertoire, nom, extension, enregistrer, déplacer, copier.",
-        method: "Créer un dossier, lui donner un nom clair, enregistrer un fichier dedans et vérifier son emplacement.",
-        essential: "Un dossier organise les fichiers. Un fichier contient des données.",
-        conclusion: "Une bonne organisation des fichiers facilite la recherche et protège le travail scolaire."
-      }
-    },
-
-    {
-      subject: "TICE",
-      keys: ["internet", "réseau", "web"],
-      course: {
-        introduction: "Internet est un vaste réseau mondial qui permet à des ordinateurs et à d'autres appareils d'échanger des informations.",
-        explanation: "Internet permet notamment de consulter des pages web, d'envoyer des messages et de partager des fichiers. Un navigateur est un logiciel utilisé pour consulter les sites web. Un moteur de recherche aide à trouver des informations. Il faut vérifier la fiabilité des sources, éviter de communiquer ses informations personnelles et ne pas ouvrir des liens suspects.",
-        example: "Pour rechercher une définition, on peut utiliser un moteur de recherche, consulter plusieurs sources et comparer les informations avant de les retenir.",
-        vocabulary: "Internet, réseau, navigateur, site web, moteur de recherche, lien, source.",
-        method: "Formuler une recherche précise, consulter plusieurs résultats, identifier l'auteur ou l'organisme responsable et vérifier la date de publication.",
-        essential: "Toutes les informations trouvées sur Internet ne sont pas nécessairement exactes.",
-        conclusion: "Internet est un outil de recherche et de communication qui doit être utilisé avec esprit critique."
-      }
-    }
-  ];
-
-  /* =========================================================
-     OUTILS DE RECONNAISSANCE DES LEÇONS
-     ========================================================= */
-
-  function normalizeText(value) {
-    return String(value || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[_-]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
+    if (typeof value === "string") return [value];
+    return [];
   }
 
-  function findTopic(subject, title) {
-    const normalizedTitle = normalizeText(title);
-
-    return TOPICS.find(function (topic) {
-      if (topic.subject !== subject) return false;
-
-      return topic.keys.some(function (key) {
-        return normalizedTitle.includes(normalizeText(key));
-      });
-    });
+  function getTitle(item) {
+    if (typeof item === "string") return clean(item);
+    if (!item || typeof item !== "object") return "";
+    return clean(item.title || item.name || item.label || item.intitule);
   }
 
-  function getSubjectInfo(subject) {
-    return SUBJECT_INFO[subject] || SUBJECT_INFO["Français"];
-  }
+  function normalizeCurriculum(raw) {
+    const result = {};
 
-  /* =========================================================
-     CONSTRUCTION DU COURS
-     ========================================================= */
+    Object.keys(raw || {}).forEach(subject => {
+      const source = raw[subject];
+      const lessons = [];
 
-  function buildGenericCourse(subject, title) {
-    const info = getSubjectInfo(subject);
-
-    const introduction =
-      "Cette leçon porte sur « " + title + " ». " +
-      "Elle permet de découvrir la notion, de comprendre son utilité " +
-      "et d'apprendre à l'utiliser dans des situations concrètes.";
-
-    let explanation = "";
-
-    if (subject === "Français") {
-      explanation =
-        "Pour étudier cette notion, il faut d'abord observer les mots, " +
-        "les phrases ou le texte concernés. On identifie ensuite les " +
-        "éléments importants et on formule la règle ou la caractéristique " +
-        "à retenir. Une notion de langue doit être comprise dans son " +
-        "contexte : le sens, la construction et l'emploi sont essentiels. " +
-        "L'élève doit être capable de reconnaître la notion dans un texte, " +
-        "de l'expliquer et de la réutiliser correctement dans ses propres phrases.";
-    } else if (subject === "Anglais") {
-      explanation =
-        "En anglais, il faut comprendre le sens des mots et des expressions " +
-        "avant de les mémoriser. Une phrase simple comporte généralement " +
-        "un sujet et un verbe, auxquels peuvent s'ajouter un complément. " +
-        "Il faut observer l'ordre des mots, la forme du verbe et la situation " +
-        "de communication. La prononciation et la répétition aident à mémoriser " +
-        "les expressions. L'élève doit progressivement savoir écouter, lire, " +
-        "répondre et produire des phrases adaptées au thème étudié.";
-    } else if (subject === "Histoire-Géographie") {
-      explanation =
-        "L'étude de cette leçon repose sur l'observation et l'exploitation " +
-        "de documents. Il peut s'agir d'un texte, d'une carte, d'une image, " +
-        "d'une photographie, d'un tableau ou d'une frise chronologique. " +
-        "Il faut identifier le document, relever les informations utiles, " +
-        "expliquer les faits et organiser les idées. En histoire, on veille " +
-        "à situer les événements dans le temps. En géographie, on localise " +
-        "les lieux et on étudie les caractéristiques des espaces.";
-    } else if (subject === "SVT") {
-      explanation =
-        "Une étude scientifique commence par une observation précise. " +
-        "L'observation conduit à poser un problème auquel on cherche une " +
-        "réponse. On peut formuler une hypothèse, étudier une expérience " +
-        "ou comparer des résultats. Les résultats doivent être décrits " +
-        "sans les confondre avec leur interprétation. La conclusion répond " +
-        "au problème de départ et s'appuie sur les observations réalisées.";
-    } else if (subject === "Physique-Chimie") {
-      explanation =
-        "En physique-chimie, on étudie les propriétés de la matière et " +
-        "les phénomènes observables. Il faut identifier les objets ou " +
-        "substances étudiés, décrire les conditions de l'expérience, " +
-        "effectuer les mesures avec les unités adaptées et interpréter " +
-        "les résultats. Les manipulations doivent toujours respecter les " +
-        "consignes de sécurité et être réalisées avec le matériel adapté.";
-    } else if (subject === "EDHC") {
-      explanation =
-        "Cette notion permet de comprendre comment agir de manière " +
-        "responsable dans la société. Une situation concrète aide à " +
-        "identifier les personnes concernées, les droits, les devoirs " +
-        "et les conséquences des comportements. Il faut distinguer " +
-        "ce qui est responsable de ce qui ne l'est pas, puis proposer " +
-        "des attitudes fondées sur le respect, la justice, la solidarité " +
-        "et la protection des personnes.";
-    } else if (subject === "Arts plastiques") {
-      explanation =
-        "Une production plastique est une réalisation visuelle qui utilise " +
-        "des moyens comme le dessin, la peinture, le collage, les formes, " +
-        "les couleurs et les matières. Pour comprendre cette notion, " +
-        "il faut observer des exemples, identifier les choix de l'artiste " +
-        "et expérimenter différentes techniques. La réalisation doit " +
-        "respecter la consigne tout en laissant une place à la créativité.";
-    } else if (subject === "Éducation musicale") {
-      explanation =
-        "L'éducation musicale développe l'écoute et la pratique. Il faut " +
-        "apprendre à distinguer les sons, repérer les rythmes et les " +
-        "mélodies, reconnaître les caractéristiques d'une production " +
-        "musicale et participer à des activités vocales ou rythmiques. " +
-        "L'écoute attentive et la répétition facilitent la mémorisation.";
-    } else if (subject === "EPS") {
-      explanation =
-        "Cette activité physique nécessite de comprendre les règles, " +
-        "les gestes techniques et les objectifs de l'exercice. Avant " +
-        "l'effort, un échauffement progressif prépare le corps. Pendant " +
-        "l'activité, l'élève doit respecter les consignes, contrôler " +
-        "ses mouvements, coopérer et assurer sa sécurité ainsi que " +
-        "celle des autres.";
-    } else if (subject === "TICE") {
-      explanation =
-        "L'étude de cette notion informatique consiste à identifier " +
-        "l'outil ou la fonction concernée, comprendre son utilité et " +
-        "apprendre à l'utiliser correctement. Il faut suivre les étapes " +
-        "dans l'ordre, vérifier le résultat et adopter de bonnes pratiques : " +
-        "enregistrer son travail, organiser ses fichiers et protéger " +
-        "ses informations personnelles.";
-    } else {
-      explanation =
-        "La notion doit être comprise à partir de sa définition, de ses " +
-        "caractéristiques et de ses applications. Il faut observer les " +
-        "exemples, identifier les éléments importants et s'entraîner.";
-    }
-
-    return {
-      introduction: introduction,
-      explanation: explanation,
-      example:
-        "Exemple d'application : prends une situation simple liée au thème « " +
-        title + " ». Identifie les informations importantes, explique " +
-        "la notion étudiée et montre comment elle peut être utilisée.",
-      vocabulary: info.vocabulary,
-      method: info.method,
-      essential:
-        "À retenir : il faut connaître la définition de la notion, " +
-        "savoir reconnaître ses principales caractéristiques et être " +
-        "capable de l'appliquer dans une situation nouvelle.",
-      conclusion:
-        "Cette leçon permet de construire les connaissances nécessaires " +
-        "pour comprendre le thème « " + title + " » et poursuivre les apprentissages."
-    };
-  }
-
-  function buildCourse(subject, title) {
-    const topic = findTopic(subject, title);
-
-    if (topic) {
-      return Object.assign({}, topic.course);
-    }
-
-    return buildGenericCourse(subject, title);
-  }
-
-  /* =========================================================
-     EXERCICES ET CORRECTIONS
-     ========================================================= */
-
-  function buildExercises(subject, title) {
-    const exercises = [];
-
-    if (subject === "Mathématiques") {
-      exercises.push({
-        level: "Application",
-        instruction:
-          "Explique avec tes propres mots la notion « " + title +
-          " ». Donne deux exemples corrects.",
-        correction:
-          "Correction : la réponse doit présenter une définition correcte " +
-          "de la notion et deux exemples cohérents. Les exemples doivent " +
-          "respecter les propriétés étudiées dans le cours."
-      });
-
-      exercises.push({
-        level: "Entraînement",
-        instruction:
-          "Propose une situation de la vie quotidienne dans laquelle " +
-          "la notion « " + title + " » peut être utilisée. Résous-la.",
-        correction:
-          "Correction : une bonne réponse identifie les données utiles, " +
-          "choisit la propriété ou l'opération adaptée, présente les étapes " +
-          "du raisonnement et donne le résultat avec une explication."
-      });
-    } else if (subject === "Anglais") {
-      exercises.push({
-        level: "Vocabulary",
-        instruction:
-          "Write five English words or expressions related to the lesson « " +
-          title + " ». Give their meanings in French.",
-        correction:
-          "Correction : les cinq mots doivent être en anglais, correctement " +
-          "écrits et associés à leur sens français. Vérifie l'orthographe " +
-          "et la signification de chaque mot."
-      });
-
-      exercises.push({
-        level: "Practice",
-        instruction:
-          "Write three simple English sentences using words or expressions " +
-          "related to the lesson.",
-        correction:
-          "Correction : chaque phrase doit avoir un sens clair, respecter " +
-          "l'ordre des mots en anglais et utiliser correctement le vocabulaire."
-      });
-    } else if (subject === "Français") {
-      exercises.push({
-        level: "Compréhension",
-        instruction:
-          "Explique la notion « " + title +
-          " » et indique comment la reconnaître dans un texte.",
-        correction:
-          "Correction : la réponse doit donner une définition claire, " +
-          "indiquer les caractéristiques de la notion et présenter " +
-          "un exemple correctement expliqué."
-      });
-
-      exercises.push({
-        level: "Production",
-        instruction:
-          "Rédige cinq phrases dans lesquelles tu réutilises correctement " +
-          "la notion étudiée.",
-        correction:
-          "Correction : les phrases doivent être compréhensibles, " +
-          "correctement construites et respecter la règle étudiée."
-      });
-    } else if (subject === "Histoire-Géographie") {
-      exercises.push({
-        level: "Observation",
-        instruction:
-          "Présente le thème « " + title +
-          " ». Indique les informations importantes à retenir.",
-        correction:
-          "Correction : la réponse doit présenter le sujet, les faits " +
-          "ou éléments essentiels, les lieux ou les dates utiles selon " +
-          "la nature de la leçon."
-      });
-
-      exercises.push({
-        level: "Réflexion",
-        instruction:
-          "Explique pourquoi le thème étudié est important pour comprendre " +
-          "une société ou un territoire.",
-        correction:
-          "Correction : il faut établir un lien entre les faits étudiés " +
-          "et leurs conséquences sur les populations, les activités " +
-          "ou l'organisation de l'espace."
-      });
-    } else {
-      exercises.push({
-        level: "Compréhension",
-        instruction:
-          "Définis la notion « " + title +
-          " » et présente au moins trois éléments importants du cours.",
-        correction:
-          "Correction : la définition doit être claire et les éléments " +
-          "présentés doivent correspondre aux connaissances étudiées. " +
-          "Une réponse complète explique les éléments au lieu de les énumérer seulement."
-      });
-
-      exercises.push({
-        level: "Application",
-        instruction:
-          "À partir d'une situation concrète liée à « " + title +
-          " », explique ce qu'il faut observer, comprendre ou réaliser.",
-        correction:
-          "Correction : il faut identifier la situation, mobiliser les " +
-          "connaissances du cours et proposer une réponse cohérente, " +
-          "justifiée et organisée."
-      });
-    }
-
-    exercises.push({
-      level: "Approfondissement",
-      instruction:
-        "Rédige un court paragraphe dans lequel tu expliques ce que tu as " +
-        "retenu de la leçon « " + title + " » et comment tu peux utiliser " +
-        "ces connaissances.",
-      correction:
-        "Correction : le paragraphe doit comporter une idée principale, " +
-        "des explications exactes et un exemple ou une application. " +
-        "La présentation doit être claire et organisée."
-    });
-
-    return exercises;
-  }
-
-  /* =========================================================
-     QUIZ
-     ========================================================= */
-
-  function buildQuiz(subject, title) {
-    return [
-      {
-        question:
-          "Quel est l'objectif principal de la leçon « " + title + " » ?",
-        answer:
-          "Comprendre la notion étudiée, connaître ses caractéristiques " +
-          "et savoir l'utiliser dans une situation adaptée.",
-        explanation:
-          "Une leçon ne consiste pas seulement à mémoriser un titre. " +
-          "Il faut comprendre la notion et être capable de l'appliquer."
-      },
-      {
-        question:
-          "Pourquoi faut-il connaître les définitions et les mots importants du cours ?",
-        answer:
-          "Parce qu'ils permettent de comprendre les explications et " +
-          "d'utiliser correctement les connaissances.",
-        explanation:
-          "Le vocabulaire précis facilite la compréhension et la communication."
-      },
-      {
-        question:
-          "Comment vérifier que tu as compris cette leçon ?",
-        answer:
-          "En expliquant la notion avec ses propres mots et en réussissant " +
-          "des exercices d'application.",
-        explanation:
-          "La réussite d'un exercice permet de vérifier que les connaissances " +
-          "peuvent être utilisées et pas seulement récitées."
-      }
-    ];
-  }
-
-  /* =========================================================
-     ÉVALUATION
-     ========================================================= */
-
-  function buildAssessment(subject, title) {
-    return {
-      duration: "20 minutes",
-      total: 10,
-      instructions:
-        "Lis attentivement les questions. Réponds avec des phrases " +
-        "claires et utilise le vocabulaire approprié. Justifie tes réponses " +
-        "lorsque cela est demandé.",
-      questions: [
-        {
-          points: 2,
-          question:
-            "Donne une définition correcte de la notion étudiée dans « " +
-            title + " ».",
-          expected:
-            "La réponse doit présenter une définition exacte et compréhensible."
-        },
-        {
-          points: 3,
-          question:
-            "Présente trois connaissances importantes à retenir de cette leçon.",
-          expected:
-            "Les trois éléments doivent être exacts, pertinents et liés au cours."
-        },
-        {
-          points: 2,
-          question:
-            "Donne un exemple concret permettant d'illustrer la notion étudiée.",
-          expected:
-            "L'exemple doit être cohérent avec la définition et correctement expliqué."
-        },
-        {
-          points: 3,
-          question:
-            "Résous ou explique une situation simple dans laquelle tu dois utiliser " +
-            "les connaissances de cette leçon.",
-          expected:
-            "La réponse doit montrer un raisonnement organisé, l'utilisation " +
-            "des connaissances du cours et une conclusion cohérente."
-        }
-      ]
-    };
-  }
-
-  /* =========================================================
-     RÉVISION
-     ========================================================= */
-
-  function buildRevision(subject, title, course) {
-    return [
-      "Relire attentivement la définition de la leçon : " + title + ".",
-      "Mémoriser les mots importants et leur signification.",
-      "Revoir les explications et les exemples du cours.",
-      "Être capable d'expliquer la notion sans recopier le texte.",
-      "Refaire les exercices sans regarder les corrections.",
-      "Vérifier les erreurs et comprendre pourquoi elles se sont produites.",
-      "S'entraîner à appliquer les connaissances dans une nouvelle situation."
-    ];
-  }
-
-  /* =========================================================
-     CONSTRUCTION D'UNE SÉANCE
-     ========================================================= */
-
-  function buildSession(subject, title, sessionTitle, sessionIndex) {
-    const course = buildCourse(subject, title);
-
-    return {
-      title: sessionTitle || (
-        sessionIndex === 0
-          ? "Découverte et compréhension de la leçon"
-          : "Approfondissement et application"
-      ),
-      course: course,
-      exercises: buildExercises(subject, title),
-      quiz: buildQuiz(subject, title),
-      assessment: buildAssessment(subject, title),
-      revision: buildRevision(subject, title, course)
-    };
-  }
-
-  /* =========================================================
-     NORMALISATION DU PROGRAMME
-     ========================================================= */
-
-  function normalizeLessons(data) {
-    const result = [];
-
-    if (Array.isArray(data)) {
-      data.forEach(function (item) {
-        if (typeof item === "string") {
-          result.push({
-            title: item,
-            section: "",
-            sessions: []
-          });
-        } else if (item && item.title) {
-          result.push({
-            title: item.title,
-            section: item.section || "",
-            sessions: Array.isArray(item.sessions) ? item.sessions : []
-          });
-        }
-      });
-
-      return result;
-    }
-
-    if (data && typeof data === "object") {
-      Object.keys(data).forEach(function (section) {
-        const lessons = data[section];
-
-        if (!Array.isArray(lessons)) return;
-
-        lessons.forEach(function (item) {
+      if (Array.isArray(source)) {
+        source.forEach(item => {
           if (typeof item === "string") {
-            result.push({
-              title: item,
-              section: section,
-              sessions: []
-            });
-          } else if (item && item.title) {
-            result.push({
-              title: item.title,
-              section: item.section || section,
-              sessions: Array.isArray(item.sessions) ? item.sessions : []
-            });
+            lessons.push({ title: item, section: "" });
+          } else if (item && typeof item === "object") {
+            if (Array.isArray(item.sessions)) {
+              lessons.push({
+                title: getTitle(item),
+                section: item.section || "",
+                sessions: item.sessions
+              });
+            } else {
+              lessons.push({
+                title: getTitle(item),
+                section: item.section || ""
+              });
+            }
           }
         });
-      });
-    }
+      } else if (source && typeof source === "object") {
+        Object.keys(source).forEach(section => {
+          const sectionItems = source[section];
+
+          if (Array.isArray(sectionItems)) {
+            sectionItems.forEach(item => {
+              lessons.push({
+                title: getTitle(item),
+                section: section
+              });
+            });
+          } else if (sectionItems && typeof sectionItems === "object") {
+            if (Array.isArray(sectionItems.sessions)) {
+              lessons.push({
+                title: getTitle(sectionItems),
+                section,
+                sessions: sectionItems.sessions
+              });
+            } else {
+              lessons.push({
+                title: getTitle(sectionItems),
+                section
+              });
+            }
+          }
+        });
+      }
+
+      result[subject] = lessons.filter(item => item.title);
+    });
 
     return result;
   }
 
-  function findCurriculumKey(curriculum, subject) {
-    if (!curriculum || typeof curriculum !== "object") return null;
+  function identify(subject, title) {
+    const t = title.toLowerCase();
 
-    const target = normalizeText(subject);
+    const contains = (...words) =>
+      words.some(word => t.includes(word));
 
-    return Object.keys(curriculum).find(function (key) {
-      return normalizeText(key) === target;
-    }) || null;
-  }
-
-  /* =========================================================
-     CONSTRUCTION D'UNE LEÇON COMPLÈTE
-     ========================================================= */
-
-  function buildLesson(subject, rawLesson, lessonIndex) {
-    const title = typeof rawLesson === "string"
-      ? rawLesson
-      : rawLesson.title;
-
-    const section = rawLesson && rawLesson.section
-      ? rawLesson.section
-      : "";
-
-    const course = buildCourse(subject, title);
-
-    let sourceSessions = rawLesson && Array.isArray(rawLesson.sessions)
-      ? rawLesson.sessions
-      : [];
-
-    if (sourceSessions.length === 0) {
-      sourceSessions = [
-        "Découverte et compréhension",
-        "Application et consolidation"
-      ];
+    if (subject === "Mathématiques") {
+      if (contains("fraction")) return "fractions";
+      if (contains("décimal", "entier", "nombre")) return "nombres";
+      if (contains("droite", "point", "segment")) return "geometrie";
+      if (contains("cercle", "disque")) return "cercle";
+      if (contains("angle")) return "angles";
+      if (contains("triangle")) return "triangles";
+      if (contains("proportion")) return "proportion";
+      if (contains("symétr")) return "symetrie";
+      if (contains("parallélogramme")) return "parallelogramme";
+      if (contains("statistique")) return "statistiques";
+      if (contains("pavé", "cylindre")) return "solides";
+      return "mathematiques";
     }
 
-    const sessions = sourceSessions.map(function (session, index) {
-      const sessionTitle = typeof session === "string"
-        ? session
-        : (session.title || "Séance " + (index + 1));
+    if (subject === "Français") {
+      if (contains("dialogue", "communication orale")) return "oral";
+      if (contains("lettre")) return "lettre";
+      if (contains("récit", "narratif")) return "recit";
+      if (contains("description", "descriptif")) return "description";
+      if (contains("phrase")) return "phrase";
+      if (contains("groupe nominal")) return "nom";
+      if (contains("discours")) return "discours";
+      if (contains("verbe", "groupe verbal")) return "verbe";
+      if (contains("adverbe")) return "adverbe";
+      if (contains("orthographe")) return "orthographe";
+      if (contains("œuvre", "lecture suivie")) return "lecture";
+      return "francais";
+    }
 
-      return buildSession(
-        subject,
-        title,
-        sessionTitle,
-        index
-      );
-    });
+    if (subject === "Anglais") {
+      if (contains("school")) return "school";
+      if (contains("home")) return "home";
+      if (contains("time", "date")) return "time";
+      if (contains("jobs", "occupations")) return "jobs";
+      if (contains("clothes", "colours")) return "clothes";
+      if (contains("food", "drinks")) return "food";
+      if (contains("health", "environment")) return "health";
+      return "english";
+    }
+
+    if (subject === "Histoire-Géographie") {
+      if (contains("histoire", "paléolithique", "néolithique", "métallurgie",
+        "chronologie", "périodes", "sources")) return "histoire";
+      return "geographie";
+    }
+
+    if (subject === "SVT") {
+      if (contains("graine", "germination", "plantes", "fleurs")) return "plantes";
+      if (contains("mammifères", "oiseaux", "reproduction")) return "reproduction";
+      if (contains("vers de terre", "aliments", "croissance")) return "croissance";
+      if (contains("environnement", "dégradation", "néfastes")) return "environnement";
+      return "svt";
+    }
+
+    if (subject === "Physique-Chimie") {
+      if (contains("circuit", "électrique", "court-circuit")) return "electricite";
+      if (contains("solide", "liquide", "gaz", "état")) return "matiere";
+      if (contains("température")) return "temperature";
+      if (contains("air", "combustion", "combustible")) return "air";
+      if (contains("volume", "masse")) return "mesures";
+      return "physique";
+    }
+
+    if (subject === "EDHC") return "edhc";
+    if (subject === "Arts plastiques") return "arts";
+    if (subject === "Éducation musicale") return "musique";
+    if (subject === "EPS") return "eps";
+    if (subject === "TICE") return "tice";
+
+    return "general";
+  }
+
+  const COURSES = {
+    fractions: {
+      definition: "Une fraction représente une ou plusieurs parts égales d'une unité partagée.",
+      objectives: [
+        "Comprendre le sens d'une fraction.",
+        "Identifier le numérateur et le dénominateur.",
+        "Lire, écrire et représenter une fraction."
+      ],
+      explanation: [
+        "Une fraction s'écrit sous la forme a/b, avec b différent de zéro.",
+        "Le nombre du haut est le numérateur : il indique le nombre de parts considérées.",
+        "Le nombre du bas est le dénominateur : il indique en combien de parts égales l'unité est partagée.",
+        "Par exemple, 3/4 signifie que l'on considère trois parts sur quatre parts égales."
+      ],
+      example: "Un gâteau est partagé en 8 parts égales. Si Awa mange 3 parts, elle a mangé 3/8 du gâteau.",
+      method: [
+        "Repérer le nombre de parts égales de l'unité.",
+        "Compter les parts considérées.",
+        "Écrire le nombre de parts considérées au numérateur.",
+        "Écrire le nombre total de parts au dénominateur."
+      ],
+      vocabulary: ["Fraction", "Numérateur", "Dénominateur", "Unité", "Part égale"],
+      revision: "Une fraction permet de représenter une partie d'un tout. Le numérateur indique les parts prises et le dénominateur le nombre total de parts égales."
+    },
+
+    nombres: {
+      definition: "Les nombres servent à compter, mesurer, comparer et effectuer des calculs.",
+      objectives: [
+        "Lire et écrire les nombres.",
+        "Identifier la valeur des chiffres selon leur position.",
+        "Comparer et ranger des nombres.",
+        "Effectuer des opérations simples."
+      ],
+      explanation: [
+        "Dans notre système de numération décimale, dix unités d'un ordre forment une unité de l'ordre immédiatement supérieur.",
+        "La position d'un chiffre détermine sa valeur.",
+        "Pour comparer deux nombres, on compare d'abord leur nombre de chiffres, puis leurs chiffres de gauche à droite.",
+        "Les quatre opérations fondamentales sont l'addition, la soustraction, la multiplication et la division."
+      ],
+      example: "Dans 4 582, le chiffre 4 représente 4 milliers, le chiffre 5 représente 5 centaines, le chiffre 8 représente 8 dizaines et le chiffre 2 représente 2 unités.",
+      method: [
+        "Lire le nombre de gauche à droite.",
+        "Repérer la position de chaque chiffre.",
+        "Comparer les nombres en commençant par le chiffre de plus grand rang.",
+        "Vérifier le résultat d'un calcul par une opération inverse lorsque cela est possible."
+      ],
+      vocabulary: ["Unité", "Dizaine", "Centaine", "Millier", "Addition", "Soustraction"],
+      revision: "La numération décimale repose sur des groupements de dix. La position de chaque chiffre détermine sa valeur."
+    },
+
+    geometrie: {
+      definition: "La géométrie étudie les figures, les points, les droites et leurs propriétés.",
+      objectives: [
+        "Reconnaître et nommer les objets géométriques.",
+        "Utiliser correctement le vocabulaire géométrique.",
+        "Construire des figures à l'aide des instruments."
+      ],
+      explanation: [
+        "Un point indique une position. Il est généralement désigné par une lettre majuscule.",
+        "Une droite est illimitée dans les deux sens.",
+        "Une demi-droite possède une origine et se prolonge dans un seul sens.",
+        "Deux droites peuvent être sécantes lorsqu'elles se coupent ou parallèles lorsqu'elles ne se rencontrent pas."
+      ],
+      example: "Si les droites (AB) et (CD) se coupent en O, le point O est leur point d'intersection.",
+      method: [
+        "Observer les données de la figure.",
+        "Identifier les points et les droites.",
+        "Utiliser la règle pour tracer les droites.",
+        "Nommer chaque objet géométrique avec précision."
+      ],
+      vocabulary: ["Point", "Droite", "Demi-droite", "Parallèle", "Sécante"],
+      revision: "Le point représente une position. La droite est illimitée dans les deux sens. Les droites parallèles ne se coupent pas."
+    },
+
+    cercle: {
+      definition: "Un cercle est l'ensemble des points situés à une même distance d'un point appelé centre.",
+      objectives: [
+        "Identifier le centre d'un cercle.",
+        "Reconnaître un rayon et un diamètre.",
+        "Tracer un cercle avec un compas."
+      ],
+      explanation: [
+        "Le centre est le point fixe à égale distance de tous les points du cercle.",
+        "Le rayon est un segment qui relie le centre à un point du cercle.",
+        "Le diamètre est un segment qui relie deux points du cercle en passant par le centre.",
+        "Le diamètre mesure deux fois le rayon.",
+        "Le disque est la surface limitée par le cercle."
+      ],
+      example: "Si le rayon d'un cercle mesure 3 cm, son diamètre mesure 6 cm.",
+      method: [
+        "Placer la pointe du compas au centre choisi.",
+        "Régler l'ouverture du compas à la longueur du rayon.",
+        "Faire tourner le compas sans déplacer sa pointe.",
+        "Vérifier la régularité du tracé."
+      ],
+      vocabulary: ["Cercle", "Disque", "Centre", "Rayon", "Diamètre"],
+      revision: "Le rayon relie le centre au cercle. Le diamètre passe par le centre et vaut deux rayons."
+    },
+
+    angles: {
+      definition: "Un angle est une figure géométrique formée par deux demi-droites ayant la même origine.",
+      objectives: [
+        "Reconnaître les éléments d'un angle.",
+        "Distinguer les différents types d'angles.",
+        "Mesurer et construire un angle avec un rapporteur."
+      ],
+      explanation: [
+        "Le sommet est l'origine commune des deux demi-droites.",
+        "Les côtés de l'angle sont les deux demi-droites.",
+        "Un angle aigu mesure moins de 90°.",
+        "Un angle droit mesure exactement 90°.",
+        "Un angle obtus mesure plus de 90° et moins de 180°.",
+        "Un angle plat mesure 180°."
+      ],
+      example: "Un angle de 45° est aigu. Un angle de 90° est droit. Un angle de 120° est obtus.",
+      method: [
+        "Placer le centre du rapporteur sur le sommet.",
+        "Aligner la base du rapporteur sur un côté.",
+        "Lire la graduation correspondant à l'autre côté.",
+        "Indiquer la mesure en degrés."
+      ],
+      vocabulary: ["Sommet", "Côté", "Angle aigu", "Angle droit", "Angle obtus", "Degré"],
+      revision: "Les angles se mesurent en degrés. L'angle droit mesure 90° et l'angle plat mesure 180°."
+    },
+
+    triangles: {
+      definition: "Un triangle est un polygone qui possède trois côtés, trois sommets et trois angles.",
+      objectives: [
+        "Identifier les éléments d'un triangle.",
+        "Reconnaître les principales catégories de triangles.",
+        "Construire un triangle à l'aide des instruments."
+      ],
+      explanation: [
+        "Un triangle possède trois côtés et trois sommets.",
+        "Le triangle équilatéral possède trois côtés de même longueur.",
+        "Le triangle isocèle possède deux côtés de même longueur.",
+        "Le triangle rectangle possède un angle droit.",
+        "La somme des mesures des angles d'un triangle est égale à 180°."
+      ],
+      example: "Un triangle dont les angles mesurent 60°, 60° et 60° est équilatéral.",
+      method: [
+        "Identifier les longueurs et les angles donnés.",
+        "Tracer un premier côté.",
+        "Utiliser la règle et le compas pour placer le troisième sommet.",
+        "Relier les sommets et vérifier la construction."
+      ],
+      vocabulary: ["Sommet", "Côté", "Triangle équilatéral", "Triangle isocèle", "Triangle rectangle"],
+      revision: "Un triangle possède trois côtés. La somme de ses trois angles est égale à 180°."
+    },
+
+    proportion: {
+      definition: "La proportionnalité est une relation entre deux grandeurs qui évoluent dans le même rapport.",
+      objectives: [
+        "Reconnaître une situation de proportionnalité.",
+        "Compléter un tableau de proportionnalité.",
+        "Résoudre des problèmes simples."
+      ],
+      explanation: [
+        "Deux grandeurs sont proportionnelles lorsqu'on passe de l'une à l'autre en multipliant toujours par le même nombre.",
+        "Ce nombre est appelé coefficient de proportionnalité.",
+        "Un tableau permet de présenter les valeurs correspondantes.",
+        "La multiplication et la division permettent de trouver les valeurs manquantes."
+      ],
+      example: "Si un cahier coûte 250 F CFA, trois cahiers coûtent 250 × 3 = 750 F CFA.",
+      method: [
+        "Identifier les deux grandeurs.",
+        "Chercher le coefficient de proportionnalité.",
+        "Effectuer la multiplication ou la division nécessaire.",
+        "Vérifier que le résultat est cohérent."
+      ],
+      vocabulary: ["Proportionnalité", "Coefficient", "Grandeur", "Tableau"],
+      revision: "Dans une situation de proportionnalité, on utilise un coefficient constant pour passer d'une grandeur à l'autre."
+    },
+
+    symetrie: {
+      definition: "La symétrie centrale est une transformation géométrique qui associe à chaque point un point situé de l'autre côté d'un centre.",
+      objectives: [
+        "Comprendre la notion de symétrie centrale.",
+        "Construire le symétrique d'un point.",
+        "Reconnaître une figure et son image."
+      ],
+      explanation: [
+        "Le point O est appelé centre de symétrie.",
+        "Un point A et son symétrique A' sont alignés avec O.",
+        "Le centre O est le milieu du segment [AA'].",
+        "La symétrie centrale conserve les longueurs et les mesures des angles."
+      ],
+      example: "Si O est le milieu du segment [AA'], alors A' est le symétrique de A par rapport à O.",
+      method: [
+        "Tracer la droite passant par le point et le centre.",
+        "Mesurer la distance entre le point et le centre.",
+        "Reporter la même distance de l'autre côté du centre.",
+        "Nommer le point obtenu."
+      ],
+      vocabulary: ["Symétrie centrale", "Centre", "Symétrique", "Milieu"],
+      revision: "Dans une symétrie centrale, le centre est le milieu du segment reliant un point à son image."
+    },
+
+    parallelogramme: {
+      definition: "Un parallélogramme est un quadrilatère dont les côtés opposés sont parallèles deux à deux.",
+      objectives: [
+        "Reconnaître un parallélogramme.",
+        "Identifier ses propriétés.",
+        "Construire un parallélogramme."
+      ],
+      explanation: [
+        "Un parallélogramme possède quatre côtés.",
+        "Ses côtés opposés sont parallèles et de même longueur.",
+        "Ses diagonales se coupent en leur milieu.",
+        "Un rectangle, un losange et un carré sont des cas particuliers de parallélogrammes."
+      ],
+      example: "Dans un parallélogramme ABCD, les côtés [AB] et [CD] sont parallèles.",
+      method: [
+        "Tracer deux côtés consécutifs.",
+        "Construire les parallèles nécessaires.",
+        "Déterminer le quatrième sommet.",
+        "Vérifier le parallélisme des côtés opposés."
+      ],
+      vocabulary: ["Quadrilatère", "Côtés opposés", "Diagonale", "Parallèle"],
+      revision: "Les côtés opposés d'un parallélogramme sont parallèles et ses diagonales se coupent en leur milieu."
+    },
+
+    statistiques: {
+      definition: "Les statistiques permettent de recueillir, organiser, présenter et interpréter des données.",
+      objectives: [
+        "Recueillir des données.",
+        "Organiser les informations dans un tableau.",
+        "Lire et interpréter un graphique."
+      ],
+      explanation: [
+        "Une donnée est une information recueillie lors d'une observation ou d'une enquête.",
+        "Un tableau statistique organise les données.",
+        "L'effectif indique le nombre de fois qu'une valeur apparaît.",
+        "Un diagramme permet de représenter les données de manière visuelle."
+      ],
+      example: "Dans une classe, 12 élèves préfèrent le football et 8 préfèrent le basketball. L'effectif total est de 20 élèves.",
+      method: [
+        "Recueillir les informations.",
+        "Classer les réponses.",
+        "Calculer les effectifs.",
+        "Présenter les résultats dans un tableau ou un diagramme.",
+        "Interpréter les résultats."
+      ],
+      vocabulary: ["Statistique", "Donnée", "Effectif", "Tableau", "Diagramme"],
+      revision: "Les statistiques servent à organiser et interpréter des informations recueillies."
+    },
+
+    solides: {
+      definition: "Un solide géométrique est un objet qui occupe un espace et possède trois dimensions : longueur, largeur et hauteur.",
+      objectives: [
+        "Reconnaître des solides usuels.",
+        "Identifier leurs éléments.",
+        "Distinguer les solides selon leurs caractéristiques."
+      ],
+      explanation: [
+        "Un pavé droit possède six faces rectangulaires.",
+        "Un cylindre droit possède deux bases circulaires parallèles et une surface latérale courbe.",
+        "Les solides peuvent être décrits par leurs faces, leurs arêtes, leurs sommets et leurs bases."
+      ],
+      example: "Une boîte rectangulaire peut être assimilée à un pavé droit. Une boîte de conserve peut être assimilée à un cylindre.",
+      method: [
+        "Observer la forme générale de l'objet.",
+        "Identifier les faces ou les bases.",
+        "Repérer les arêtes et les sommets lorsqu'ils existent.",
+        "Nommer le solide."
+      ],
+      vocabulary: ["Solide", "Face", "Arête", "Sommet", "Pavé droit", "Cylindre"],
+      revision: "Le pavé droit possède six faces rectangulaires. Le cylindre droit possède deux bases circulaires."
+    },
+
+    oral: {
+      definition: "La communication orale est un échange d'informations entre des personnes à l'aide de la parole.",
+      objectives: [
+        "S'exprimer clairement devant les autres.",
+        "Écouter et comprendre son interlocuteur.",
+        "Respecter les règles de la conversation.",
+        "Adapter son langage à la situation."
+      ],
+      explanation: [
+        "Une situation de communication met en relation un émetteur et un récepteur.",
+        "L'émetteur transmet un message. Le récepteur écoute et interprète ce message.",
+        "Un dialogue est un échange de paroles entre deux ou plusieurs personnes.",
+        "Une bonne communication exige une articulation claire, une écoute attentive et le respect du tour de parole."
+      ],
+      example: "Awa : Bonjour, comment vas-tu ? Koffi : Je vais bien, merci. Et toi ? Awa : Très bien, merci.",
+      method: [
+        "Saluer son interlocuteur.",
+        "Présenter clairement son idée.",
+        "Écouter sans interrompre.",
+        "Répondre de manière adaptée.",
+        "Terminer poliment l'échange."
+      ],
+      vocabulary: ["Émetteur", "Récepteur", "Message", "Dialogue", "Interlocuteur"],
+      revision: "La communication orale repose sur l'émission et la réception d'un message. Il faut parler clairement et écouter les autres."
+    },
+
+    lettre: {
+      definition: "La lettre personnelle est un texte écrit adressé à une personne pour lui communiquer des informations ou des sentiments.",
+      objectives: [
+        "Identifier les différentes parties d'une lettre.",
+        "Rédiger une lettre personnelle.",
+        "Utiliser des formules adaptées au destinataire."
+      ],
+      explanation: [
+        "Une lettre personnelle comporte généralement le lieu et la date, la formule d'appel, le corps de la lettre, la formule de politesse et la signature.",
+        "Le corps de la lettre présente le message que l'expéditeur souhaite transmettre.",
+        "Le langage doit être adapté à la personne à qui l'on écrit."
+      ],
+      example: "Abidjan, le 6 novembre 2026. Cher ami, je t'écris pour prendre de tes nouvelles. J'espère que tu vas bien. À bientôt. Ton ami.",
+      method: [
+        "Indiquer le lieu et la date.",
+        "Écrire une formule d'appel.",
+        "Présenter l'objet du message.",
+        "Développer les idées dans des paragraphes.",
+        "Terminer par une formule de politesse et signer."
+      ],
+      vocabulary: ["Expéditeur", "Destinataire", "Formule d'appel", "Corps de la lettre", "Signature"],
+      revision: "La lettre personnelle sert à communiquer avec une personne. Elle possède une organisation précise."
+    },
+
+    recit: {
+      definition: "Le récit est un texte qui raconte une suite d'événements réels ou imaginaires.",
+      objectives: [
+        "Identifier les étapes d'un récit.",
+        "Reconnaître les personnages et les événements.",
+        "Rédiger un récit cohérent."
+      ],
+      explanation: [
+        "La situation initiale présente les personnages, le lieu et le moment.",
+        "L'élément perturbateur introduit un événement qui modifie la situation.",
+        "Les péripéties racontent les actions et les difficultés.",
+        "Le dénouement présente la résolution du problème.",
+        "La situation finale montre le nouvel état des choses."
+      ],
+      example: "Un matin, Koffi part à l'école. Sur le chemin, il découvre un portefeuille. Il le rapporte à son propriétaire. Celui-ci le remercie chaleureusement.",
+      method: [
+        "Choisir les personnages et le cadre.",
+        "Présenter la situation initiale.",
+        "Introduire un événement.",
+        "Raconter les actions dans l'ordre.",
+        "Terminer par un dénouement."
+      ],
+      vocabulary: ["Narrateur", "Personnage", "Situation initiale", "Péripétie", "Dénouement"],
+      revision: "Un récit raconte des événements organisés autour d'une situation initiale, de péripéties et d'un dénouement."
+    },
+
+    description: {
+      definition: "La description est un texte qui présente les caractéristiques d'une personne, d'un animal, d'un objet ou d'un lieu.",
+      objectives: [
+        "Observer précisément un sujet.",
+        "Identifier ses caractéristiques.",
+        "Organiser les informations dans un texte descriptif."
+      ],
+      explanation: [
+        "Une description permet au lecteur de se représenter le sujet.",
+        "On peut décrire l'apparence, la taille, la forme, la couleur, le comportement ou l'environnement.",
+        "Les adjectifs qualificatifs et les compléments du nom enrichissent la description.",
+        "Les informations doivent être organisées dans un ordre logique."
+      ],
+      example: "Le baobab est un grand arbre au tronc épais. Ses branches sont larges et ses feuilles forment une couronne imposante.",
+      method: [
+        "Observer attentivement le sujet.",
+        "Noter ses principales caractéristiques.",
+        "Classer les informations.",
+        "Employer des adjectifs précis.",
+        "Relire pour vérifier la cohérence."
+      ],
+      vocabulary: ["Description", "Adjectif qualificatif", "Caractéristique", "Portrait", "Paysage"],
+      revision: "La description présente les caractéristiques d'un sujet à l'aide d'informations précises et organisées."
+    },
+
+    phrase: {
+      definition: "Une phrase est un ensemble de mots organisé qui exprime généralement un sens complet.",
+      objectives: [
+        "Reconnaître une phrase.",
+        "Identifier les différents types de phrases.",
+        "Construire des phrases correctes."
+      ],
+      explanation: [
+        "Une phrase commence par une majuscule et se termine par un signe de ponctuation.",
+        "La phrase déclarative donne une information.",
+        "La phrase interrogative pose une question.",
+        "La phrase exclamative exprime une émotion.",
+        "La phrase impérative donne un ordre, un conseil ou une interdiction."
+      ],
+      example: "Les élèves travaillent. (déclarative) Où vas-tu ? (interrogative) Comme il fait beau ! (exclamative) Fermez la porte. (impérative)",
+      method: [
+        "Repérer le début de la phrase.",
+        "Identifier le signe de ponctuation final.",
+        "Déterminer l'intention de communication.",
+        "Classer la phrase selon son type."
+      ],
+      vocabulary: ["Phrase", "Majuscule", "Ponctuation", "Déclarative", "Interrogative"],
+      revision: "Les types de phrases sont déclaratif, interrogatif, exclamatif et impératif."
+    },
+
+    nom: {
+      definition: "Le groupe nominal est un groupe de mots organisé autour d'un nom principal appelé noyau.",
+      objectives: [
+        "Identifier le nom noyau.",
+        "Reconnaître les déterminants.",
+        "Repérer les expansions du nom."
+      ],
+      explanation: [
+        "Le nom est le noyau du groupe nominal.",
+        "Le déterminant accompagne généralement le nom.",
+        "L'adjectif qualificatif peut préciser le nom.",
+        "Un complément du nom peut apporter une information supplémentaire.",
+        "Le groupe nominal peut être composé d'un déterminant et d'un nom, ou être enrichi par d'autres éléments."
+      ],
+      example: "Dans « le grand arbre de la cour », le nom noyau est « arbre ». « Le » est un déterminant, « grand » est un adjectif et « de la cour » est un complément du nom.",
+      method: [
+        "Repérer le nom principal.",
+        "Identifier le déterminant.",
+        "Chercher les adjectifs.",
+        "Repérer les compléments du nom."
+      ],
+      vocabulary: ["Groupe nominal", "Nom noyau", "Déterminant", "Adjectif", "Complément du nom"],
+      revision: "Le groupe nominal s'organise autour d'un nom noyau. Il peut être accompagné d'un déterminant et d'expansions."
+    },
+
+    discours: {
+      definition: "Le discours direct rapporte les paroles telles qu'elles ont été prononcées. Le discours indirect rapporte ces paroles en les intégrant dans une phrase.",
+      objectives: [
+        "Distinguer discours direct et indirect.",
+        "Identifier les marques du discours direct.",
+        "Transformer des paroles rapportées."
+      ],
+      explanation: [
+        "Le discours direct reproduit les paroles d'une personne.",
+        "Il est souvent introduit par un verbe de parole et marqué par des guillemets ou des tirets.",
+        "Le discours indirect intègre les paroles dans une phrase.",
+        "La transformation peut entraîner des changements de pronoms, de temps et d'indicateurs de lieu ou de temps."
+      ],
+      example: "Direct : Awa dit : « Je suis heureuse. » Indirect : Awa dit qu'elle est heureuse.",
+      method: [
+        "Repérer les paroles rapportées.",
+        "Identifier le verbe introducteur.",
+        "Retirer les guillemets si nécessaire.",
+        "Adapter les pronoms et les mots de liaison."
+      ],
+      vocabulary: ["Discours direct", "Discours indirect", "Verbe de parole", "Guillemets"],
+      revision: "Le discours direct reproduit les paroles. Le discours indirect les rapporte dans une phrase."
+    },
+
+    verbe: {
+      definition: "Le verbe est un mot qui exprime une action ou un état. Il constitue généralement le noyau du groupe verbal.",
+      objectives: [
+        "Identifier le verbe conjugué.",
+        "Reconnaître son infinitif.",
+        "Identifier le sujet et les compléments."
+      ],
+      explanation: [
+        "Le verbe peut exprimer une action : courir, écrire, chanter.",
+        "Il peut aussi exprimer un état : être, sembler, devenir.",
+        "L'infinitif est la forme non conjuguée du verbe.",
+        "Le verbe conjugué varie selon le sujet, le temps et le mode.",
+        "Le groupe verbal est organisé autour du verbe."
+      ],
+      example: "Dans « Les élèves écrivent une leçon », le verbe est « écrivent » et son infinitif est « écrire ».",
+      method: [
+        "Chercher le mot qui exprime l'action ou l'état.",
+        "Vérifier en changeant le temps de la phrase.",
+        "Trouver l'infinitif.",
+        "Identifier le sujet."
+      ],
+      vocabulary: ["Verbe", "Infinitif", "Conjugaison", "Sujet", "Groupe verbal"],
+      revision: "Le verbe exprime une action ou un état. Il se conjugue selon le sujet et le temps."
+    },
+
+    adverbe: {
+      definition: "L'adverbe est un mot invariable qui modifie le sens d'un verbe, d'un adjectif ou d'un autre adverbe.",
+      objectives: [
+        "Reconnaître un adverbe.",
+        "Identifier sa fonction dans une phrase.",
+        "Classer les adverbes selon leur sens."
+      ],
+      explanation: [
+        "L'adverbe est invariable : il ne change pas de forme.",
+        "Les adverbes de manière indiquent comment se déroule une action.",
+        "Les adverbes de temps précisent le moment.",
+        "Les adverbes de lieu précisent l'endroit.",
+        "Les adverbes de quantité ou d'intensité indiquent un degré."
+      ],
+      example: "Dans « Il parle doucement », l'adverbe « doucement » précise la manière de parler.",
+      method: [
+        "Repérer le mot qui précise une action ou une caractéristique.",
+        "Vérifier qu'il est invariable.",
+        "Déterminer l'information qu'il apporte.",
+        "Identifier sa catégorie."
+      ],
+      vocabulary: ["Adverbe", "Invariable", "Manière", "Temps", "Lieu", "Intensité"],
+      revision: "L'adverbe est invariable et apporte une précision sur un verbe, un adjectif ou un autre adverbe."
+    },
+
+    orthographe: {
+      definition: "L'orthographe regroupe les règles qui permettent d'écrire correctement les mots et les phrases.",
+      objectives: [
+        "Écrire correctement les mots.",
+        "Appliquer les règles d'accord.",
+        "Éviter les erreurs grammaticales courantes."
+      ],
+      explanation: [
+        "L'orthographe lexicale concerne la manière d'écrire les mots.",
+        "L'orthographe grammaticale concerne notamment les accords dans la phrase.",
+        "Le déterminant et le nom s'accordent en genre et en nombre.",
+        "L'adjectif qualificatif s'accorde généralement avec le nom qu'il qualifie.",
+        "Le verbe s'accorde avec son sujet."
+      ],
+      example: "« Les petites filles jouent. » Le déterminant, l'adjectif et le nom sont au féminin pluriel. Le verbe s'accorde avec le sujet « les filles ».",
+      method: [
+        "Identifier le nom principal.",
+        "Vérifier le genre et le nombre.",
+        "Contrôler les accords des adjectifs.",
+        "Identifier le sujet du verbe.",
+        "Vérifier l'accord du verbe."
+      ],
+      vocabulary: ["Orthographe lexicale", "Orthographe grammaticale", "Accord", "Genre", "Nombre"],
+      revision: "L'orthographe lexicale concerne l'écriture des mots. L'orthographe grammaticale concerne les règles d'accord."
+    },
+
+    histoire: {
+      definition: "L'histoire est une discipline qui étudie le passé des sociétés humaines à partir de traces et de documents.",
+      objectives: [
+        "Comprendre le rôle de l'histoire.",
+        "Identifier les sources historiques.",
+        "Situer les événements dans le temps.",
+        "Comprendre l'évolution des sociétés."
+      ],
+      explanation: [
+        "L'historien étudie les événements du passé pour comprendre les sociétés humaines.",
+        "Les sources écrites comprennent les lettres, les livres, les archives et les inscriptions.",
+        "Les sources orales comprennent les témoignages et les traditions transmises par la parole.",
+        "Les sources archéologiques comprennent les objets, les outils, les monuments et les vestiges.",
+        "La chronologie permet de classer les événements selon leur ordre dans le temps.",
+        "La préhistoire correspond à la période précédant l'apparition de l'écriture."
+      ],
+      example: "Un outil en pierre découvert lors d'une fouille archéologique constitue une source matérielle qui renseigne sur la vie des populations anciennes.",
+      method: [
+        "Identifier le document ou la source.",
+        "Déterminer sa nature.",
+        "Rechercher les informations qu'il apporte.",
+        "Situer les faits dans leur contexte historique.",
+        "Distinguer les faits établis des interprétations."
+      ],
+      vocabulary: ["Histoire", "Historien", "Source historique", "Chronologie", "Préhistoire", "Archive"],
+      revision: "L'histoire étudie le passé à partir de sources. La chronologie permet de classer les événements dans le temps."
+    },
+
+    geographie: {
+      definition: "La géographie étudie les espaces terrestres, les milieux naturels et les relations entre les sociétés humaines et leur environnement.",
+      objectives: [
+        "Décrire un espace géographique.",
+        "Identifier les éléments du milieu naturel.",
+        "Comprendre les relations entre l'homme et son environnement.",
+        "Utiliser des moyens de représentation de la Terre."
+      ],
+      explanation: [
+        "Le relief désigne les différentes formes de la surface terrestre : montagnes, plateaux, plaines et vallées.",
+        "Le climat correspond aux conditions atmosphériques habituelles d'une région sur une longue période.",
+        "Le sol, le climat et la végétation sont liés et influencent les activités humaines.",
+        "La carte, le plan et le globe sont des moyens de représentation de la Terre.",
+        "Les mouvements de rotation et de révolution de la Terre expliquent notamment l'alternance du jour et de la nuit ainsi que les saisons.",
+        "L'environnement comprend les éléments naturels et les éléments créés ou transformés par l'homme."
+      ],
+      example: "En Côte d'Ivoire, les précipitations et la température influencent la végétation et les activités agricoles des différentes régions.",
+      method: [
+        "Localiser l'espace étudié.",
+        "Identifier les éléments naturels et humains.",
+        "Décrire leurs caractéristiques.",
+        "Expliquer les relations entre ces éléments.",
+        "Présenter les conséquences pour les populations."
+      ],
+      vocabulary: ["Géographie", "Relief", "Climat", "Végétation", "Environnement", "Carte"],
+      revision: "La géographie étudie les espaces et les relations entre les populations et leur environnement."
+    },
+
+    plantes: {
+      definition: "Les plantes à fleurs se reproduisent notamment grâce à la formation de graines qui peuvent germer lorsque les conditions sont favorables.",
+      objectives: [
+        "Identifier les principales parties d'une graine.",
+        "Comprendre la formation d'une graine.",
+        "Expliquer les conditions nécessaires à la germination."
+      ],
+      explanation: [
+        "La fleur est l'organe de reproduction de nombreuses plantes.",
+        "Après la pollinisation et la fécondation, l'ovule se transforme en graine et l'ovaire peut se transformer en fruit.",
+        "Une graine contient généralement un embryon, des réserves nutritives et une enveloppe protectrice.",
+        "La germination est le développement de l'embryon qui donne naissance à une jeune plante.",
+        "L'eau, une température convenable et le dioxygène sont des conditions importantes de la germination."
+      ],
+      example: "Une graine de haricot placée dans du coton humide et dans un endroit convenablement chauffé peut germer après quelques jours.",
+      method: [
+        "Observer une graine.",
+        "Repérer son enveloppe et ses parties internes.",
+        "Placer plusieurs graines dans des conditions différentes.",
+        "Comparer les résultats.",
+        "Identifier les conditions favorables à la germination."
+      ],
+      vocabulary: ["Graine", "Embryon", "Enveloppe", "Germination", "Pollinisation", "Fécondation"],
+      revision: "La graine contient un embryon. Sa germination nécessite notamment de l'eau, du dioxygène et une température convenable."
+    },
+
+    reproduction: {
+      definition: "La reproduction permet aux êtres vivants de donner naissance à de nouveaux individus de la même espèce.",
+      objectives: [
+        "Comprendre le rôle de la reproduction.",
+        "Identifier les modes de reproduction étudiés.",
+        "Distinguer les principales étapes de la reproduction."
+      ],
+      explanation: [
+        "Chez les mammifères, la reproduction est généralement sexuée et implique un mâle et une femelle.",
+        "La fécondation correspond à l'union d'une cellule reproductrice mâle et d'une cellule reproductrice femelle.",
+        "Chez la plupart des mammifères, le développement de l'embryon se déroule dans l'utérus.",
+        "Les oiseaux se reproduisent également par fécondation interne.",
+        "Après la fécondation, l'embryon se développe dans un œuf protégé par une coquille."
+      ],
+      example: "Chez la poule, la femelle pond un œuf fécondé. L'embryon se développe dans l'œuf pendant l'incubation.",
+      method: [
+        "Identifier l'espèce étudiée.",
+        "Repérer les organes reproducteurs concernés.",
+        "Décrire la fécondation.",
+        "Expliquer le développement du nouvel individu."
+      ],
+      vocabulary: ["Reproduction", "Fécondation", "Embryon", "Mammifère", "Ovipare", "Vivipare"],
+      revision: "La reproduction permet la naissance de nouveaux individus. Les mammifères et les oiseaux présentent des modes de développement différents."
+    },
+
+    croissance: {
+      definition: "La croissance est l'augmentation de la taille, de la masse ou du développement d'un être vivant.",
+      objectives: [
+        "Identifier les facteurs qui influencent la croissance.",
+        "Comprendre le rôle de l'alimentation.",
+        "Observer les changements chez les êtres vivants."
+      ],
+      explanation: [
+        "La croissance des plantes dépend de plusieurs facteurs, notamment l'eau, la lumière, les sels minéraux, le dioxyde de carbone et une température adaptée.",
+        "Les plantes utilisent la lumière pour réaliser la photosynthèse.",
+        "Les animaux ont besoin d'une alimentation adaptée pour grandir et maintenir leur organisme.",
+        "Une alimentation insuffisante ou déséquilibrée peut perturber la croissance."
+      ],
+      example: "Deux plantes de même espèce placées dans des conditions différentes peuvent présenter des différences de taille et de développement.",
+      method: [
+        "Choisir des êtres vivants comparables.",
+        "Faire varier un seul facteur à la fois.",
+        "Observer les changements.",
+        "Noter les résultats.",
+        "Formuler une conclusion."
+      ],
+      vocabulary: ["Croissance", "Nutrition", "Lumière", "Sels minéraux", "Photosynthèse"],
+      revision: "La croissance dépend de facteurs environnementaux et nutritionnels. Une expérience permet de comparer leur influence."
+    },
+
+    environnement: {
+      definition: "L'environnement est l'ensemble des éléments naturels et humains qui entourent les êtres vivants.",
+      objectives: [
+        "Identifier les actions humaines nuisibles à l'environnement.",
+        "Comprendre les conséquences de la dégradation.",
+        "Proposer des solutions de protection."
+      ],
+      explanation: [
+        "La déforestation réduit la couverture végétale et peut favoriser l'érosion des sols.",
+        "La pollution de l'eau met en danger les êtres vivants et la santé des populations.",
+        "Les déchets abandonnés dans la nature dégradent le cadre de vie.",
+        "Les feux de brousse peuvent détruire la végétation et les habitats naturels.",
+        "La protection de l'environnement passe par l'assainissement, le reboisement, le tri des déchets et l'utilisation responsable des ressources."
+      ],
+      example: "Planter des arbres dans une zone déboisée contribue à restaurer la végétation et à protéger les sols.",
+      method: [
+        "Observer un problème environnemental.",
+        "Identifier ses causes.",
+        "Décrire ses conséquences.",
+        "Proposer des actions adaptées.",
+        "Participer à une action de protection."
+      ],
+      vocabulary: ["Environnement", "Pollution", "Déforestation", "Érosion", "Reboisement", "Assainissement"],
+      revision: "Les activités humaines peuvent dégrader l'environnement. La prévention, le reboisement et l'assainissement contribuent à sa protection."
+    },
+
+    electricite: {
+      definition: "Un circuit électrique est un ensemble de composants reliés entre eux permettant le passage du courant électrique lorsque le circuit est fermé.",
+      objectives: [
+        "Identifier les éléments d'un circuit électrique.",
+        "Distinguer un circuit ouvert et un circuit fermé.",
+        "Comprendre le rôle d'un interrupteur.",
+        "Connaître les dangers du court-circuit."
+      ],
+      explanation: [
+        "Une pile ou un générateur fournit l'énergie électrique.",
+        "Les fils conducteurs relient les différents composants.",
+        "Une lampe transforme l'énergie électrique en lumière et en chaleur.",
+        "Un interrupteur permet d'ouvrir ou de fermer un circuit.",
+        "Dans un circuit fermé, le courant peut circuler.",
+        "Un court-circuit peut provoquer un échauffement dangereux et endommager une installation."
+      ],
+      example: "Une pile reliée à une lampe par deux fils forme un circuit simple. Lorsque le circuit est fermé, la lampe peut s'allumer.",
+      method: [
+        "Identifier le générateur.",
+        "Repérer les fils et les récepteurs.",
+        "Vérifier les connexions.",
+        "Observer si le circuit est ouvert ou fermé.",
+        "Ne jamais provoquer volontairement un court-circuit sur une installation réelle."
+      ],
+      vocabulary: ["Circuit électrique", "Générateur", "Conducteur", "Récepteur", "Interrupteur", "Court-circuit"],
+      revision: "Le courant circule dans un circuit fermé. Un court-circuit est dangereux et peut provoquer un échauffement."
+    },
+
+    matiere: {
+      definition: "La matière est tout ce qui possède une masse et occupe un volume. Elle peut se présenter sous différents états.",
+      objectives: [
+        "Distinguer les solides, les liquides et les gaz.",
+        "Décrire leurs propriétés.",
+        "Comprendre les changements d'état."
+      ],
+      explanation: [
+        "Un solide possède généralement une forme propre et un volume propre.",
+        "Un liquide possède un volume propre mais prend la forme du récipient qui le contient.",
+        "Un gaz n'a ni forme propre ni volume propre : il occupe l'espace disponible.",
+        "La fusion est le passage de l'état solide à l'état liquide.",
+        "La solidification est le passage de l'état liquide à l'état solide.",
+        "La vaporisation est le passage de l'état liquide à l'état gazeux.",
+        "La liquéfaction est le passage de l'état gazeux à l'état liquide."
+      ],
+      example: "La glace fond et devient de l'eau liquide. Lorsque l'eau est suffisamment refroidie, elle peut se solidifier.",
+      method: [
+        "Observer la matière.",
+        "Déterminer sa forme et son volume.",
+        "Identifier son état physique.",
+        "Décrire le changement d'état éventuel."
+      ],
+      vocabulary: ["Matière", "Solide", "Liquide", "Gaz", "Fusion", "Solidification", "Vaporisation"],
+      revision: "La matière existe principalement sous trois états : solide, liquide et gazeux. Elle peut changer d'état."
+    },
+
+    temperature: {
+      definition: "La température est une grandeur physique qui permet de caractériser l'état thermique d'un corps.",
+      objectives: [
+        "Comprendre la notion de température.",
+        "Utiliser un thermomètre.",
+        "Lire une température en degrés Celsius."
+      ],
+      explanation: [
+        "La température permet de comparer l'état thermique de différents corps.",
+        "Le thermomètre est un instrument utilisé pour mesurer la température.",
+        "Le degré Celsius, noté °C, est une unité couramment utilisée.",
+        "La température peut augmenter ou diminuer selon les échanges thermiques."
+      ],
+      example: "Si un thermomètre indique 25 °C, la température mesurée est de vingt-cinq degrés Celsius.",
+      method: [
+        "Choisir un thermomètre adapté.",
+        "Placer correctement le thermomètre.",
+        "Attendre que la mesure se stabilise.",
+        "Lire la valeur indiquée.",
+        "Noter l'unité."
+      ],
+      vocabulary: ["Température", "Thermomètre", "Degré Celsius", "Mesure"],
+      revision: "La température se mesure à l'aide d'un thermomètre. Elle s'exprime couramment en degrés Celsius."
+    },
+
+    air: {
+      definition: "L'air est un mélange de gaz qui constitue l'atmosphère terrestre.",
+      objectives: [
+        "Connaître les principaux constituants de l'air.",
+        "Comprendre le rôle du dioxygène.",
+        "Identifier les conditions nécessaires à une combustion.",
+        "Connaître les dangers du feu."
+      ],
+      explanation: [
+        "L'air sec est composé principalement de diazote et de dioxygène.",
+        "Le dioxygène représente environ 21 % du volume de l'air et le diazote environ 78 %.",
+        "La combustion est une réaction chimique qui nécessite un combustible, un comburant et une source d'énergie initiale.",
+        "Le dioxygène de l'air joue le rôle de comburant dans de nombreuses combustions.",
+        "Une combustion peut produire de la chaleur, de la lumière et des gaz parfois dangereux.",
+        "Il ne faut jamais jouer avec le feu ni tenter une expérience de combustion sans encadrement."
+      ],
+      example: "Une bougie allumée brûle grâce à la cire qui constitue le combustible et au dioxygène de l'air qui permet la combustion.",
+      method: [
+        "Identifier le combustible.",
+        "Identifier le comburant.",
+        "Repérer la source d'énergie initiale.",
+        "Observer les produits formés.",
+        "Respecter les règles de sécurité."
+      ],
+      vocabulary: ["Air", "Dioxygène", "Diazote", "Combustion", "Combustible", "Comburant"],
+      revision: "L'air contient principalement du diazote et du dioxygène. Une combustion nécessite un combustible, un comburant et une énergie initiale."
+    },
+
+    mesures: {
+      definition: "La mesure permet de déterminer la valeur d'une grandeur physique à l'aide d'une unité et d'un instrument adaptés.",
+      objectives: [
+        "Comprendre la notion de masse et de volume.",
+        "Identifier les instruments de mesure.",
+        "Utiliser les unités adaptées."
+      ],
+      explanation: [
+        "La masse représente la quantité de matière d'un corps.",
+        "La masse se mesure avec une balance et s'exprime notamment en grammes ou en kilogrammes.",
+        "Le volume représente l'espace occupé par un corps.",
+        "Le volume d'un liquide peut être mesuré à l'aide d'une éprouvette graduée.",
+        "Le litre et le millilitre sont des unités courantes de volume."
+      ],
+      example: "Une bouteille contenant 1 litre d'eau possède un volume de 1 L. Une balance peut servir à mesurer la masse de cette bouteille.",
+      method: [
+        "Identifier la grandeur à mesurer.",
+        "Choisir l'instrument adapté.",
+        "Effectuer la mesure correctement.",
+        "Lire la valeur.",
+        "Écrire le résultat avec son unité."
+      ],
+      vocabulary: ["Masse", "Volume", "Balance", "Éprouvette graduée", "Gramme", "Litre"],
+      revision: "La masse se mesure avec une balance. Le volume se mesure avec un instrument adapté, comme une éprouvette graduée."
+    },
+
+    school: {
+      definition: "L'école est un lieu d'apprentissage où les élèves acquièrent des connaissances et développent des compétences.",
+      objectives: [
+        "Connaître le vocabulaire de l'école en anglais.",
+        "Présenter son établissement.",
+        "Formuler des phrases simples en anglais."
+      ],
+      explanation: [
+        "School means école.",
+        "A classroom is une salle de classe.",
+        "A teacher is un enseignant.",
+        "A student or pupil is un élève.",
+        "A book is un livre.",
+        "A pen is un stylo.",
+        "The expression « This is my school » signifie « Voici mon école ».",
+        "The expression « I am a student » signifie « Je suis un élève »."
+      ],
+      example: "My name is Koffi. I am a student. This is my school. My classroom is big.",
+      method: [
+        "Mémoriser les mots de vocabulaire.",
+        "Écouter leur prononciation.",
+        "Répéter les expressions.",
+        "Construire des phrases simples.",
+        "S'entraîner à parler de son école."
+      ],
+      vocabulary: ["School : école", "Teacher : enseignant", "Student : élève", "Classroom : salle de classe", "Book : livre"],
+      revision: "Pour parler de l'école en anglais, il faut connaître le vocabulaire des personnes, des lieux et du matériel scolaire."
+    },
+
+    home: {
+      definition: "Le thème At Home permet de décrire son habitation, les pièces de la maison et les membres de sa famille.",
+      objectives: [
+        "Nommer les pièces de la maison en anglais.",
+        "Présenter sa famille.",
+        "Décrire simplement son habitation."
+      ],
+      explanation: [
+        "House signifie maison.",
+        "Bedroom signifie chambre à coucher.",
+        "Kitchen signifie cuisine.",
+        "Living room signifie salon.",
+        "Father signifie père.",
+        "Mother signifie mère.",
+        "Brother signifie frère.",
+        "Sister signifie sœur.",
+        "There is signifie il y a au singulier.",
+        "There are signifie il y a au pluriel."
+      ],
+      example: "There is a kitchen in my house. There are two bedrooms. My mother is in the kitchen.",
+      method: [
+        "Apprendre le vocabulaire de la maison.",
+        "Nommer les membres de la famille.",
+        "Utiliser There is et There are.",
+        "Décrire les pièces avec des phrases courtes."
+      ],
+      vocabulary: ["House : maison", "Bedroom : chambre", "Kitchen : cuisine", "Mother : mère", "Father : père"],
+      revision: "Le vocabulaire de la maison permet de décrire son habitation et sa famille en anglais."
+    },
+
+    time: {
+      definition: "L'heure et la date permettent d'indiquer le moment où se déroule une activité.",
+      objectives: [
+        "Nommer les jours de la semaine.",
+        "Connaître les mois de l'année.",
+        "Demander et donner l'heure en anglais."
+      ],
+      explanation: [
+        "Les jours de la semaine sont Monday, Tuesday, Wednesday, Thursday, Friday, Saturday et Sunday.",
+        "Les mois commencent par January et se terminent par December.",
+        "La question « What time is it? » signifie « Quelle heure est-il ? ».",
+        "La réponse « It is seven o'clock » signifie « Il est sept heures ».",
+        "La question « What day is it today? » demande le jour actuel."
+      ],
+      example: "What day is it today? It is Monday. What time is it? It is eight o'clock.",
+      method: [
+        "Mémoriser les jours.",
+        "Mémoriser les mois.",
+        "Apprendre les nombres utiles.",
+        "S'entraîner à demander et donner l'heure."
+      ],
+      vocabulary: ["Day : jour", "Week : semaine", "Month : mois", "Year : année", "Time : heure"],
+      revision: "Les jours, les mois et les heures permettent de parler du calendrier et du temps en anglais."
+    },
+
+    jobs: {
+      definition: "Le vocabulaire des métiers permet de présenter les professions et les activités exercées par les personnes.",
+      objectives: [
+        "Nommer différents métiers en anglais.",
+        "Associer un métier à son activité.",
+        "Présenter une profession avec une phrase simple."
+      ],
+      explanation: [
+        "A teacher is un enseignant.",
+        "A doctor is un médecin.",
+        "A nurse is un infirmier ou une infirmière.",
+        "A farmer is un agriculteur.",
+        "A driver is un conducteur.",
+        "A police officer is un policier.",
+        "La question « What do you do? » permet de demander la profession d'une personne.",
+        "La réponse « I am a teacher » signifie « Je suis enseignant »."
+      ],
+      example: "What does your father do? He is a doctor.",
+      method: [
+        "Mémoriser les noms des métiers.",
+        "Associer chaque métier à son activité.",
+        "Apprendre la question sur la profession.",
+        "Construire des réponses simples."
+      ],
+      vocabulary: ["Teacher : enseignant", "Doctor : médecin", "Farmer : agriculteur", "Driver : conducteur", "Nurse : infirmier"],
+      revision: "Le vocabulaire des métiers permet de demander et de présenter les professions en anglais."
+    },
+
+    clothes: {
+      definition: "Le thème Clothes and Colours permet de nommer les vêtements et les couleurs en anglais.",
+      objectives: [
+        "Nommer les vêtements.",
+        "Connaître les principales couleurs.",
+        "Décrire simplement une tenue."
+      ],
+      explanation: [
+        "Shirt signifie chemise.",
+        "Trousers signifie pantalon.",
+        "Dress signifie robe.",
+        "Shoes signifie chaussures.",
+        "Red signifie rouge.",
+        "Blue signifie bleu.",
+        "Green signifie vert.",
+        "Yellow signifie jaune.",
+        "Black signifie noir.",
+        "White signifie blanc.",
+        "On peut utiliser « I am wearing » pour présenter les vêtements que l'on porte."
+      ],
+      example: "I am wearing a blue shirt and black trousers.",
+      method: [
+        "Identifier les vêtements.",
+        "Nommer leur couleur.",
+        "Associer le nom du vêtement à sa couleur.",
+        "Décrire une tenue en anglais."
+      ],
+      vocabulary: ["Shirt : chemise", "Trousers : pantalon", "Dress : robe", "Red : rouge", "Blue : bleu"],
+      revision: "Pour décrire une tenue, il faut connaître les noms des vêtements et les couleurs."
+    },
+
+    food: {
+      definition: "Le thème Food and Drinks permet de parler des aliments, des boissons et des habitudes alimentaires.",
+      objectives: [
+        "Nommer des aliments en anglais.",
+        "Nommer des boissons.",
+        "Exprimer ses préférences alimentaires."
+      ],
+      explanation: [
+        "Rice signifie riz.",
+        "Bread signifie pain.",
+        "Fish signifie poisson.",
+        "Meat signifie viande.",
+        "Milk signifie lait.",
+        "Water signifie eau.",
+        "Fruit signifie fruit.",
+        "Vegetables signifie légumes.",
+        "I like signifie j'aime.",
+        "I don't like signifie je n'aime pas."
+      ],
+      example: "I like rice and fish. I drink water every day.",
+      method: [
+        "Apprendre le vocabulaire des aliments.",
+        "Apprendre le vocabulaire des boissons.",
+        "Utiliser I like et I don't like.",
+        "Présenter ses préférences."
+      ],
+      vocabulary: ["Rice : riz", "Bread : pain", "Fish : poisson", "Water : eau", "Milk : lait"],
+      revision: "Le vocabulaire alimentaire permet de nommer les aliments et d'exprimer ses goûts en anglais."
+    },
+
+    health: {
+      definition: "La santé et l'environnement sont liés aux conditions de vie, à l'hygiène et à la protection du milieu naturel.",
+      objectives: [
+        "Connaître le vocabulaire de la santé.",
+        "Identifier les comportements favorables à la santé.",
+        "Parler de l'environnement en anglais."
+      ],
+      explanation: [
+        "Health signifie santé.",
+        "Environment signifie environnement.",
+        "Clean signifie propre.",
+        "Dirty signifie sale.",
+        "Water signifie eau.",
+        "Pollution signifie pollution.",
+        "Il est important de se laver les mains, de boire de l'eau potable et de maintenir son environnement propre.",
+        "La protection de l'environnement contribue au bien-être des populations."
+      ],
+      example: "We must keep our environment clean. We must wash our hands before eating.",
+      method: [
+        "Apprendre le vocabulaire de la santé.",
+        "Identifier les règles d'hygiène.",
+        "Apprendre les expressions de conseil et d'obligation.",
+        "Formuler des phrases de sensibilisation."
+      ],
+      vocabulary: ["Health : santé", "Environment : environnement", "Clean : propre", "Dirty : sale", "Pollution : pollution"],
+      revision: "La santé et l'environnement sont liés. L'hygiène et la protection du cadre de vie sont essentielles."
+    },
+
+    edhc: {
+      definition: "L'éducation aux droits de l'homme et à la citoyenneté aide chacun à connaître ses droits, respecter ses devoirs et vivre en société.",
+      objectives: [
+        "Connaître les droits et les devoirs.",
+        "Respecter la dignité humaine.",
+        "Adopter des comportements responsables.",
+        "Participer à la vie de la communauté."
+      ],
+      explanation: [
+        "Les droits de l'enfant comprennent notamment le droit à la vie, à la santé, à l'éducation, à la protection et à une identité.",
+        "Les droits de l'homme appartiennent à toute personne et reposent sur le respect de la dignité humaine.",
+        "La Constitution organise les institutions et fixe les principes fondamentaux de l'État.",
+        "La démocratie repose notamment sur la participation des citoyens, le respect des libertés et l'égalité devant la loi.",
+        "La sécurité routière exige le respect des panneaux, des feux de signalisation et des règles de circulation.",
+        "L'hygiène et l'assainissement contribuent à prévenir les maladies.",
+        "Le civisme consiste à respecter les règles de la vie collective."
+      ],
+      example: "Un élève qui respecte ses camarades, refuse la violence et protège le matériel commun adopte un comportement citoyen.",
+      method: [
+        "Identifier le droit ou le devoir concerné.",
+        "Comprendre la situation présentée.",
+        "Déterminer les comportements responsables.",
+        "Proposer une solution respectueuse des personnes et des règles."
+      ],
+      vocabulary: ["Droit", "Devoir", "Citoyenneté", "Dignité", "Démocratie", "Civisme", "Solidarité"],
+      revision: "La citoyenneté repose sur la connaissance des droits, le respect des devoirs et la participation responsable à la vie collective."
+    },
+
+    arts: {
+      definition: "Les arts plastiques permettent de créer et de communiquer des idées à travers des formes, des couleurs, des lignes et des matières.",
+      objectives: [
+        "Connaître le matériel graphique.",
+        "Utiliser différents procédés plastiques.",
+        "Comprendre les couleurs et les compositions.",
+        "Développer sa créativité."
+      ],
+      explanation: [
+        "Le crayon, le fusain, le feutre, le pinceau et la peinture sont des outils d'expression graphique.",
+        "Le point, la ligne, la forme et la surface sont des éléments fondamentaux de la création plastique.",
+        "Les couleurs primaires traditionnelles en peinture sont le rouge, le jaune et le bleu.",
+        "Les couleurs secondaires peuvent être obtenues par mélange de couleurs primaires.",
+        "La composition consiste à organiser les éléments dans une œuvre.",
+        "Les techniquesd'impression permettent de reproduire une image ou un motif sur un support.",
+        "L'art peut également transmettre des messages de paix, de civisme et de protection de l'environnement."
+      ],
+      example: "Pour créer une affiche sur la protection de l'environnement, on peut dessiner un arbre, utiliser des couleurs visibles et placer un message court au centre.",
+      method: [
+        "Choisir le thème de création.",
+        "Sélectionner les outils et les matériaux.",
+        "Organiser les éléments sur le support.",
+        "Réaliser le dessin ou la composition.",
+        "Vérifier la lisibilité et la qualité du travail."
+      ],
+      vocabulary: ["Dessin", "Couleur", "Matière", "Composition", "Support", "Impression"],
+      revision: "Les arts plastiques utilisent les formes, les couleurs et les matières pour exprimer des idées et créer des œuvres."
+    },
+
+    musique: {
+      definition: "L'éducation musicale permet de découvrir les sons, les rythmes, les notes et les instruments de musique.",
+      objectives: [
+        "Reconnaître les notes musicales.",
+        "Comprendre les figures de notes.",
+        "Identifier les familles d'instruments.",
+        "Développer l'écoute et le sens du rythme."
+      ],
+      explanation: [
+        "Les notes de musique permettent de représenter les sons dans une œuvre musicale.",
+        "La portée musicale est composée de cinq lignes et de quatre interlignes.",
+        "La noire représente une durée d'un temps dans une mesure à quatre temps lorsque la noire est l'unité de temps.",
+        "La blanche vaut généralement deux noires.",
+        "Deux croches valent la durée d'une noire.",
+        "Le soupir représente un silence de la durée d'une noire.",
+        "Les idiophones produisent des sons par vibration de leur propre matière.",
+        "Les membranophones produisent des sons grâce à une membrane tendue.",
+        "Les cordophones produisent des sons grâce à des cordes vibrantes.",
+        "Les aérophones produisent des sons grâce à la vibration de l'air."
+      ],
+      example: "Dans une mesure où la noire vaut un temps, une blanche occupe deux temps et deux croches occupent ensemble un temps.",
+      method: [
+        "Observer les symboles musicaux.",
+        "Identifier les notes et les figures.",
+        "Compter les durées.",
+        "Écouter les instruments.",
+        "Classer les instruments selon leur mode de production du son."
+      ],
+      vocabulary: ["Note", "Portée", "Noire", "Blanche", "Croche", "Soupir", "Idiophone", "Membranophone"],
+      revision: "La musique utilise des notes, des figures rythmiques et différentes familles d'instruments pour organiser les sons."
+    },
+
+    eps: {
+      definition: "L'éducation physique et sportive développe les capacités physiques, les habiletés motrices et l'esprit d'équipe.",
+      objectives: [
+        "Améliorer les capacités physiques.",
+        "Apprendre les gestes sportifs.",
+        "Respecter les règles et les autres.",
+        "Développer l'endurance, la vitesse et la coordination."
+      ],
+      explanation: [
+        "L'endurance est la capacité à maintenir un effort pendant une durée relativement longue.",
+        "La vitesse est la capacité à réaliser une action dans un temps court.",
+        "La gymnastique au sol permet de développer l'équilibre, la coordination et la maîtrise corporelle.",
+        "Les sauts comprennent notamment le saut en hauteur, le saut en longueur et le triple saut.",
+        "Les lancers nécessitent une bonne coordination et le respect des règles de sécurité.",
+        "Les sports collectifs comme le basketball, le handball, le volleyball et le football reposent sur la coopération et le respect des règles."
+      ],
+      example: "Lors d'un match de basketball, chaque joueur doit se déplacer, passer le ballon, respecter les règles et coopérer avec ses partenaires.",
+      method: [
+        "S'échauffer avant l'activité.",
+        "Écouter les consignes.",
+        "Réaliser les exercices progressivement.",
+        "Respecter les règles de sécurité.",
+        "Terminer par un retour au calme."
+      ],
+      vocabulary: ["Endurance", "Vitesse", "Coordination", "Équilibre", "Échauffement", "Esprit d'équipe"],
+      revision: "L'EPS développe les capacités physiques et les compétences motrices tout en enseignant le respect des règles et la coopération."
+    },
+
+    tice: {
+      definition: "Les technologies de l'information et de la communication pour l'enseignement permettent d'utiliser les outils numériques pour apprendre, produire et communiquer.",
+      objectives: [
+        "Identifier les composants d'un ordinateur.",
+        "Utiliser la souris et le clavier.",
+        "Découvrir un système d'exploitation.",
+        "Utiliser des logiciels simples.",
+        "Découvrir Internet et les moteurs de recherche."
+      ],
+      explanation: [
+        "L'unité centrale contient plusieurs composants qui assurent le fonctionnement de l'ordinateur.",
+        "L'écran permet d'afficher les informations.",
+        "Le clavier permet de saisir du texte et des commandes.",
+        "La souris permet de déplacer le pointeur, de sélectionner et de cliquer.",
+        "Un système d'exploitation gère les ressources de l'ordinateur et permet d'utiliser les logiciels.",
+        "Un logiciel de dessin permet de créer et de modifier des images.",
+        "Un logiciel de traitement de texte permet de saisir, modifier et mettre en forme des documents.",
+        "Internet est un réseau mondial qui permet d'échanger des informations.",
+        "Un moteur de recherche aide à retrouver des informations sur Internet."
+      ],
+      example: "Pour rédiger un devoir, on ouvre un logiciel de traitement de texte, on saisit le texte, on le met en forme puis on enregistre le document.",
+      method: [
+        "Identifier l'ordinateur et ses périphériques.",
+        "Allumer correctement l'appareil.",
+        "Utiliser le clavier et la souris.",
+        "Ouvrir le logiciel nécessaire.",
+        "Enregistrer régulièrement son travail.",
+        "Utiliser Internet de manière responsable."
+      ],
+      vocabulary: ["Ordinateur", "Clavier", "Souris", "Écran", "Logiciel", "Système d'exploitation", "Internet"],
+      revision: "L'ordinateur permet de traiter des informations. Le clavier et la souris servent à communiquer avec la machine. Internet permet d'accéder à des ressources en ligne."
+    }
+  };
+
+  function getCourse(subject, title) {
+    const key = identify(subject, title);
+    const course = COURSES[key] || {
+      definition: title + " est une notion étudiée dans le programme de " + subject + ".",
+      objectives: [
+        "Comprendre la notion étudiée.",
+        "Identifier ses principales caractéristiques.",
+        "Utiliser les connaissances dans une situation concrète."
+      ],
+      explanation: [
+        "Cette leçon permet de découvrir la notion de " + title + ".",
+        "Il faut connaître les mots importants et comprendre leur signification.",
+        "L'observation, l'analyse et la pratique permettent de mieux maîtriser cette notion.",
+        "Les connaissances acquises doivent être réutilisées dans des exercices et des situations de la vie quotidienne."
+      ],
+      example: "À partir d'une situation concrète, l'élève identifie les éléments importants de la notion et explique sa réponse.",
+      method: [
+        "Lire attentivement le sujet.",
+        "Identifier les informations importantes.",
+        "Appliquer les connaissances du cours.",
+        "Présenter une réponse claire et organisée."
+      ],
+      vocabulary: [subject, title],
+      revision: "Retenir la définition, les caractéristiques et les applications principales de la leçon."
+    };
 
     return {
-      title: title,
-      section: section,
-      introduction: course.introduction,
-      objectives: [
-        "Comprendre la notion étudiée : " + title + ".",
-        "Connaître les définitions et le vocabulaire essentiel.",
-        "Expliquer les principales caractéristiques de la notion.",
-        "Utiliser les connaissances dans des exercices et des situations concrètes."
-      ],
-      sessions: sessions
+      definition: course.definition,
+      objectives: course.objectives.slice(),
+      explanation: course.explanation.slice(),
+      example: course.example,
+      method: course.method.slice(),
+      vocabulary: course.vocabulary.slice(),
+      revision: course.revision
     };
   }
 
-  /* =========================================================
-     CONSTRUCTION DE TOUTES LES MATIÈRES
-     ========================================================= */
+  function buildExercises(subject, title) {
+    return [
+      {
+        level: "Application",
+        instruction: "Explique avec tes propres mots la notion principale de la leçon « " + title + " ». Donne deux informations importantes.",
+        correction: "La réponse doit présenter une définition correcte de la notion et deux caractéristiques essentielles étudiées dans le cours."
+      },
+      {
+        level: "Compréhension",
+        instruction: "Cite trois mots importants de cette leçon et explique leur signification.",
+        correction: "L'élève doit citer trois termes du vocabulaire de la leçon et donner pour chacun une définition adaptée."
+      },
+      {
+        level: "Réflexion",
+        instruction: "Donne un exemple concret de la vie quotidienne qui permet d'illustrer la leçon « " + title + " ».",
+        correction: "La réponse doit présenter une situation cohérente avec la notion étudiée et expliquer le lien entre l'exemple et le cours."
+      },
+      {
+        level: "Approfondissement",
+        instruction: "Rédige un court paragraphe dans lequel tu présentes ce que tu as retenu de cette leçon.",
+        correction: "Le paragraphe doit être compréhensible, organisé et contenir les principales connaissances de la leçon."
+      }
+    ];
+  }
 
-  function buildAll(curriculum) {
+  function buildQuiz(subject, title, course) {
+    return [
+      {
+        question: "Quel est le sujet principal de la leçon « " + title + " » ?",
+        answer: course.definition,
+        explanation: "Cette définition présente la notion centrale étudiée."
+      },
+      {
+        question: "Pourquoi est-il important de connaître cette notion ?",
+        answer: "Elle permet de comprendre le phénomène étudié et d'utiliser les connaissances dans des situations concrètes.",
+        explanation: "Une notion scolaire doit pouvoir être comprise et réutilisée."
+      },
+      {
+        question: "Cite deux éléments importants de cette leçon.",
+        answer: course.objectives.slice(0, 2).join(" "),
+        explanation: "Ces éléments correspondent aux objectifs essentiels du cours."
+      },
+      {
+        question: "Donne un exemple permettant d'illustrer cette leçon.",
+        answer: course.example,
+        explanation: "L'exemple permet de relier les connaissances théoriques à une situation concrète."
+      }
+    ];
+  }
+
+  function buildSession(subject, title, index) {
+    const course = getCourse(subject, title);
+
+    return {
+      title: title,
+      number: index + 1,
+      objectives: course.objectives,
+      introduction: "Dans cette séance de " + subject + ", nous allons étudier : " + title + ". Cette notion est importante pour comprendre le programme et développer de nouvelles compétences.",
+      course: {
+        definition: course.definition,
+        explanation: course.explanation,
+        example: course.example,
+        method: course.method,
+        vocabulary: course.vocabulary,
+        essential: course.revision,
+        conclusion: "À la fin de cette séance, l'élève doit être capable d'expliquer la notion étudiée, de reconnaître ses caractéristiques et de l'utiliser dans une situation simple."
+      },
+      exercises: buildExercises(subject, title),
+      quiz: buildQuiz(subject, title, course),
+      revision: [
+        "Définition : " + course.definition,
+        "À retenir : " + course.revision,
+        "Exemple : " + course.example
+      ]
+    };
+  }
+
+  function buildLesson(subject, item, index) {
+    const title = item.title;
+    const course = getCourse(subject, title);
+
+    let sessionTitles = [];
+
+    if (Array.isArray(item.sessions) && item.sessions.length) {
+      sessionTitles = item.sessions.map(getTitle).filter(Boolean);
+    }
+
+    if (!sessionTitles.length) {
+      sessionTitles = [
+        "Découverte et compréhension",
+        "Approfondissement et application",
+        "Exercices et évaluation"
+      ];
+    }
+
+    const sessions = sessionTitles.map((sessionTitle, i) =>
+      buildSession(subject, sessionTitle, i)
+    );
+
+    return {
+      title: title,
+      section: item.section || "",
+      number: index + 1,
+      introduction: "Cette leçon de " + subject + " porte sur « " + title + " ». Elle permet à l'élève de découvrir les connaissances essentielles, de comprendre les explications et de mettre en pratique ce qu'il a appris.",
+      objectives: course.objectives,
+      explanation: course.explanation,
+      example: course.example,
+      vocabulary: course.vocabulary,
+      method: course.method,
+      essential: course.revision,
+      conclusion: "La maîtrise de cette leçon repose sur la compréhension de la définition, la connaissance des éléments importants et la réalisation régulière des exercices.",
+      sessions: sessions,
+      exercises: buildExercises(subject, title),
+      quiz: buildQuiz(subject, title, course),
+      revision: [
+        "Définition : " + course.definition,
+        "À retenir : " + course.revision,
+        "Exemple : " + course.example
+      ],
+      finalAssessment: {
+        instructions: [
+          "Lis attentivement chaque question.",
+          "Réponds en utilisant les connaissances de la leçon.",
+          "Rédige des phrases claires et complètes."
+        ],
+        questions: [
+          {
+            question: "Donne la définition de la notion principale de cette leçon.",
+            points: 4,
+            expected: course.definition
+          },
+          {
+            question: "Cite deux caractéristiques importantes de cette leçon.",
+            points: 4,
+            expected: course.objectives.slice(0, 2).join(" ")
+          },
+          {
+            question: "Explique la méthode à suivre pour appliquer cette notion.",
+            points: 6,
+            expected: course.method.join(" ")
+          },
+          {
+            question: "Donne un exemple concret et explique-le.",
+            points: 6,
+            expected: course.example
+          }
+        ]
+      }
+    };
+  }
+
+  function buildAll(raw) {
+    const curriculum = normalizeCurriculum(raw);
     const result = {};
 
-    SUBJECTS.forEach(function (subject) {
-      const key = findCurriculumKey(curriculum, subject);
-
-      if (!key) {
-        result[subject] = {
-          lessons: []
-        };
-        return;
-      }
-
-      const lessons = normalizeLessons(curriculum[key]);
-
+    Object.keys(curriculum).forEach(subject => {
       result[subject] = {
-        lessons: lessons.map(function (lesson, index) {
-          return buildLesson(subject, lesson, index);
-        })
+        title: subject,
+        lessons: curriculum[subject].map((item, index) =>
+          buildLesson(subject, item, index)
+        )
       };
     });
 
     return result;
   }
 
-  /* =========================================================
-     API UTILISÉE PAR SCHOOL.JS
-     ========================================================= */
-
   window.ATP_LEARNING_CONTENT_6E = {
-    version: "2.0",
+    version: "3.0",
     subjects: SUBJECTS,
-    commonRules: {
-      language: "fr",
-      level: "6e",
-      country: "Côte d'Ivoire",
-      pedagogy: "Approche par compétences",
-      principles: [
-        "Partir des connaissances et des situations concrètes.",
-        "Expliquer les notions avant de proposer les exercices.",
-        "Faire participer activement l'apprenant.",
-        "Proposer des exercices progressifs.",
-        "Présenter les corrections et les explications.",
-        "Vérifier les acquis par des évaluations."
-      ]
-    },
+    courses: COURSES,
     buildAll: buildAll,
     buildLesson: buildLesson,
     buildSession: buildSession
