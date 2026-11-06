@@ -308,6 +308,7 @@ window.ATP_CURRICULUM_6E = {
     "Proportionnalité",
     "Figures symétriques par rapport à un point",
     "Parallélogramme",
+    "Figures symétriques par rapport à un point",
     "Statistiques",
     "Pavé droit et cylindre droit"
   ],
