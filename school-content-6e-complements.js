@@ -6,7 +6,7 @@
   const engine = window.ATP_LEARNING_CONTENT_6E;
   if (!engine || typeof engine.buildAll !== "function") return;
   const previousBuildAll = engine.buildAll;
-  const norm = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+  const norm = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, " ").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/[^a-z0-9]+/g, " ").trim();
   const make = (definition, objectives, explanation, example, method, vocabulary, essential, exercises, quiz) => ({
     definition, objectives, explanation, example, method, vocabulary, essential, exercises, quiz
   });
