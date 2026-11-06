@@ -253,120 +253,138 @@
       margin-top: 8px;
     }
 
-    /* ESPACE PERSONNEL : CARTES ALIGNÉES */
+    /* ESPACE PERSONNEL COMPACT */
 
     #academy-dashboard {
-      padding-top: 55px;
-      padding-bottom: 75px;
+      padding-top: 45px;
+      padding-bottom: 65px;
     }
 
     #academy-dashboard .section-heading {
-      padding: 25px;
-      margin-bottom: 28px;
+      padding: 23px 25px;
+      margin-bottom: 20px;
       background: linear-gradient(120deg,#eaf1ff,#f0edff);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 16px;
     }
 
     #academy-dashboard .section-heading h2 {
       color: #203452;
+      font-size: 27px;
     }
 
     #academy-dashboard .section-heading p {
       color: var(--muted);
+      font-size: 14px;
     }
 
-    #academy-dashboard .benefits {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: stretch;
-      gap: 22px;
-      padding: 0;
-      margin: 0;
-    }
+    /* ONGLET HORIZONTAUX */
 
-    #academy-dashboard .benefit {
+    .academy-tabs {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      min-width: 0;
-      min-height: 245px;
-      height: 100%;
-      padding: 25px;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
       background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 17px;
-      box-shadow: 0 6px 20px rgba(36,65,110,.055);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
+      border-radius: 13px;
+      box-shadow: 0 4px 14px rgba(36,65,110,.04);
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
     }
 
-    #academy-dashboard .benefit:hover {
-      transform: translateY(-4px);
-      border-color: #b9cbed;
-      box-shadow: var(--shadow);
+    .academy-tab {
+      flex: 1 0 auto;
+      min-height: 42px;
+      padding: 10px 15px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      background: transparent;
+      color: #61708c;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: .2s;
     }
 
-    #academy-dashboard .benefit-icon {
+    .academy-tab:hover {
+      background: #f1f5ff;
+      color: var(--blue);
+    }
+
+    .academy-tab[aria-selected="true"] {
+      background: linear-gradient(135deg,#2864d8,#6557c8);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(40,100,216,.17);
+    }
+
+    /* CONTENU DES ONGLETS */
+
+    .academy-tab-panel {
+      min-height: 150px;
+      padding: 23px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 5px 18px rgba(36,65,110,.045);
+    }
+
+    .academy-tab-panel[hidden] {
+      display: none !important;
+    }
+
+    .academy-panel-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-bottom: 15px;
+    }
+
+    .academy-panel-icon {
       display: grid;
       place-items: center;
-      width: 48px;
-      height: 48px;
-      margin-bottom: 12px;
-      border-radius: 14px;
+      width: 39px;
+      height: 39px;
+      flex: 0 0 39px;
+      border-radius: 11px;
       background: #eaf1ff;
       color: var(--blue);
-      font-size: 25px;
+      font-size: 20px;
     }
 
-    #academy-dashboard .benefit:nth-child(2) .benefit-icon,
-    #academy-dashboard .benefit:nth-child(5) .benefit-icon {
-      background: #f0edff;
-      color: var(--indigo);
-    }
-
-    #academy-dashboard .benefit:nth-child(3) .benefit-icon,
-    #academy-dashboard .benefit:nth-child(6) .benefit-icon {
-      background: #e8f7fa;
-      color: #247e91;
-    }
-
-    #academy-dashboard .benefit h3 {
+    .academy-panel-title h3 {
       color: #203452;
       font-size: 17px;
-      margin: 5px 0 10px;
     }
 
-    #academy-dashboard .benefit p,
-    #academy-dashboard .benefit div p {
+    .academy-tab-panel p {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.7;
-      overflow-wrap: anywhere;
     }
 
-    #academy-dashboard .benefit > div {
-      width: 100%;
-    }
-
-    #academy-dashboard .benefit .primary-button {
-      margin-top: auto;
-      padding: 11px 15px;
+    .academy-tab-panel .primary-button {
+      margin-top: 16px;
+      padding: 10px 15px;
       font-size: 12px;
     }
 
-    #academy-dashboard .certification {
-      margin: 30px 0 0;
-      padding: 25px;
-      background: linear-gradient(120deg,#eaf1ff,#f0edff);
-      border-color: #d9e3fa;
+    #academy-enrollments,
+    #academy-progress {
+      width: 100%;
     }
 
-    #academy-dashboard .certification h3 {
-      color: #203452;
-    }
-
-    #academy-dashboard .certification p {
-      color: var(--muted);
+    #academy-dashboard-status {
+      margin-top: 15px;
+      padding: 12px 14px;
+      background: #f2f6ff;
+      border: 1px solid #e0e9fa;
+      border-radius: 10px;
+      font-size: 13px;
     }
 
     /* CATALOGUE DYNAMIQUE */
@@ -455,10 +473,6 @@
         grid-template-columns: repeat(2,minmax(0,1fr));
       }
 
-      #academy-dashboard .benefits {
-        grid-template-columns: repeat(2,minmax(0,1fr));
-      }
-
       #academy-dynamic-catalogue .atp-live-courses {
         grid-template-columns: repeat(2,minmax(0,1fr));
       }
@@ -481,13 +495,8 @@
       }
 
       .benefits,
-      #academy-dashboard .benefits,
       #academy-dynamic-catalogue .atp-live-courses {
         grid-template-columns: 1fr;
-      }
-
-      #academy-dashboard .benefit {
-        min-height: 210px;
       }
 
       .section-heading {
@@ -501,7 +510,26 @@
       }
 
       #academy-dashboard .section-heading {
-        padding: 20px;
+        padding: 18px;
+      }
+
+      #academy-dashboard .section-heading h2 {
+        font-size: 23px;
+      }
+
+      .academy-tabs {
+        gap: 6px;
+        padding: 6px;
+      }
+
+      .academy-tab {
+        min-height: 39px;
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .academy-tab-panel {
+        padding: 17px;
       }
     }
 
@@ -592,7 +620,6 @@
         </div>
       </div>
 
-      <!-- CATALOGUE DYNAMIQUE SUPABASE -->
       <div id="academy-dynamic-catalogue"></div>
 
     </section>
@@ -604,62 +631,180 @@
         <div>
           <span class="catalogue-label">MON ESPACE PERSONNEL</span>
           <h2>Bienvenue dans ton Academy</h2>
-          <p>Retrouve tes formations, tes cours et ta progression.</p>
+          <p>Retrouve tes formations et consulte ton parcours depuis un espace simplifié.</p>
         </div>
       </div>
 
-      <div class="benefits">
+      <!-- MENU COMPACT -->
+      <div class="academy-tabs" role="tablist" aria-label="Menu de mon espace Academy">
 
-        <article class="benefit">
-          <span class="benefit-icon">📚</span>
+        <button
+          class="academy-tab"
+          id="tab-formations"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-formations"
+          data-tab="panel-formations">
+          📚 Mes formations
+        </button>
+
+        <button
+          class="academy-tab"
+          id="tab-progression"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-progression"
+          data-tab="panel-progression"
+          tabindex="-1">
+          📈 Ma progression
+        </button>
+
+        <button
+          class="academy-tab"
+          id="tab-cours"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-cours"
+          data-tab="panel-cours"
+          tabindex="-1">
+          🎓 Mes cours
+        </button>
+
+        <button
+          class="academy-tab"
+          id="tab-evaluations"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-evaluations"
+          data-tab="panel-evaluations"
+          tabindex="-1">
+          📝 Mes évaluations
+        </button>
+
+        <button
+          class="academy-tab"
+          id="tab-attestations"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-attestations"
+          data-tab="panel-attestations"
+          tabindex="-1">
+          🏆 Mes attestations
+        </button>
+
+      </div>
+
+      <!-- ONGLET MES FORMATIONS -->
+      <div
+        class="academy-tab-panel"
+        id="panel-formations"
+        role="tabpanel"
+        aria-labelledby="tab-formations">
+
+        <div class="academy-panel-title">
+          <span class="academy-panel-icon">📚</span>
           <h3>Mes formations</h3>
-          <div id="academy-enrollments">
-            <p>Chargement de tes formations...</p>
-          </div>
-        </article>
+        </div>
 
-        <article class="benefit">
-          <span class="benefit-icon">📈</span>
-          <h3>Ma progression</h3>
-          <div id="academy-progress">
-            <p>Ta progression apparaîtra ici.</p>
-          </div>
-        </article>
+        <div id="academy-enrollments">
+          <p>Chargement de tes formations...</p>
+        </div>
 
-        <article class="benefit">
-          <span class="benefit-icon">🎓</span>
-          <h3>Mes cours</h3>
-          <p>Accède aux leçons et aux modules auxquels tu es inscrit.</p>
-        </article>
+        <p id="academy-dashboard-status">
+          Tes inscriptions et ton parcours d'apprentissage seront affichés ici.
+        </p>
 
-        <article class="benefit">
-          <span class="benefit-icon">📝</span>
-          <h3>Mes évaluations</h3>
-          <p>Consulte tes quiz et tes résultats.</p>
-        </article>
-
-        <article class="benefit">
-          <span class="benefit-icon">🏆</span>
-          <h3>Mes attestations</h3>
-          <p>Retrouve les attestations obtenues.</p>
-        </article>
-
-        <article class="benefit">
-          <span class="benefit-icon">🔎</span>
-          <h3>Découvrir les formations</h3>
-          <p>Explore les parcours disponibles sur Academy.</p>
-          <a href="#formations" class="primary-button">Voir le catalogue →</a>
-        </article>
-
+        <a href="#formations" class="primary-button">
+          Découvrir les formations →
+        </a>
       </div>
 
-      <div class="certification">
-        <div>
-          <h3>Ton parcours d'apprentissage</h3>
-          <p id="academy-dashboard-status">
-            Tes inscriptions et ta progression seront affichées ici.
-          </p>
+      <!-- ONGLET MA PROGRESSION -->
+      <div
+        class="academy-tab-panel"
+        id="panel-progression"
+        role="tabpanel"
+        aria-labelledby="tab-progression"
+        hidden>
+
+        <div class="academy-panel-title">
+          <span class="academy-panel-icon">📈</span>
+          <h3>Ma progression</h3>
         </div>
+
+        <div id="academy-progress">
+          <p>Ta progression apparaîtra ici.</p>
+        </div>
+      </div>
+
+      <!-- ONGLET MES COURS -->
+      <div
+        class="academy-tab-panel"
+        id="panel-cours"
+        role="tabpanel"
+        aria-labelledby="tab-cours"
+        hidden>
+
+        <div class="academy-panel-title">
+          <span class="academy-panel-icon">🎓</span>
+          <h3>Mes cours</h3>
+        </div>
+
+        <p>
+          Retrouve les modules et les leçons de tes formations.
+          Sélectionne une formation dans le catalogue pour accéder à son contenu.
+        </p>
+
+        <a href="#formations" class="primary-button">
+          Accéder aux formations →
+        </a>
+      </div>
+
+      <!-- ONGLET MES EVALUATIONS -->
+      <div
+        class="academy-tab-panel"
+        id="panel-evaluations"
+        role="tabpanel"
+        aria-labelledby="tab-evaluations"
+        hidden>
+
+        <div class="academy-panel-title">
+          <span class="academy-panel-icon">📝</span>
+          <h3>Mes évaluations</h3>
+        </div>
+
+        <p>
+          Les quiz et les évaluations sont accessibles dans les leçons
+          de tes formations. Ouvre une formation pour commencer.
+        </p>
+
+        <a href="#formations" class="primary-button">
+          Voir mes formations →
+        </a>
+      </div>
+
+      <!-- ONGLET MES ATTESTATIONS -->
+      <div
+        class="academy-tab-panel"
+        id="panel-attestations"
+        role="tabpanel"
+        aria-labelledby="tab-attestations"
+        hidden>
+
+        <div class="academy-panel-title">
+          <span class="academy-panel-icon">🏆</span>
+          <h3>Mes attestations</h3>
+        </div>
+
+        <p>
+          Retrouve ici les attestations que tu auras obtenues
+          après avoir rempli les conditions de réussite.
+        </p>
       </div>
 
     </section>
@@ -689,6 +834,55 @@
       <p>© 2026 AFRIQUE TECH PLUS. Tous droits réservés.</p>
     </div>
   </footer>
+
+  <!-- GESTION DES ONGLETS -->
+  <script>
+    (() => {
+      const tabs = document.querySelectorAll(".academy-tab");
+      const panels = document.querySelectorAll(".academy-tab-panel");
+
+      function activateTab(tab) {
+        const targetId = tab.dataset.tab;
+
+        tabs.forEach((item) => {
+          const active = item === tab;
+
+          item.setAttribute("aria-selected", String(active));
+          item.tabIndex = active ? 0 : -1;
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== targetId;
+        });
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => {
+          activateTab(tab);
+        });
+
+        tab.addEventListener("keydown", (event) => {
+          let nextIndex = index;
+
+          if (event.key === "ArrowRight") {
+            nextIndex = (index + 1) % tabs.length;
+          } else if (event.key === "ArrowLeft") {
+            nextIndex = (index - 1 + tabs.length) % tabs.length;
+          } else {
+            return;
+          }
+
+          event.preventDefault();
+          tabs[nextIndex].focus();
+          activateTab(tabs[nextIndex]);
+        });
+      });
+
+      if (tabs.length) {
+        activateTab(tabs[0]);
+      }
+    })();
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="config.js"></script>
