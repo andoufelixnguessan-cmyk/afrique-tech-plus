@@ -111,6 +111,17 @@
       [{level:"Analyse",instruction:"Décris une œuvre préhistorique à partir de son sujet, de ses matériaux et de sa technique.",correction:"La réponse doit décrire des éléments observables et présenter toute interprétation comme une hypothèse."}],
       [{question:"Pourquoi faut-il distinguer observation et interprétation ?",answer:"Parce que l'observation décrit ce qui est visible, tandis que l'interprétation propose une explication.",explanation:"Cette distinction évite d'affirmer comme certain ce qui reste hypothétique."}]
     )],
+    ["correction des evaluations", make(
+      "La correction d'une évaluation consiste à comparer ses réponses aux critères attendus, comprendre ses erreurs et préparer une amélioration.",
+      ["Repérer les réussites et les difficultés.", "Identifier l'origine d'une erreur.", "Corriger et améliorer sa méthode."],
+      ["Une erreur peut venir d'une mauvaise lecture de la consigne, d'un oubli, d'une technique mal maîtrisée ou d'un manque de soin.", "La correction ne consiste pas seulement à recopier la bonne réponse : il faut comprendre pourquoi elle est correcte.", "Une grille simple peut vérifier le respect du sujet, l'organisation, le choix des outils, la propreté et la qualité plastique.", "Les corrections servent à fixer un objectif concret pour la prochaine production."],
+      "Si une affiche manque de lisibilité, l'élève peut agrandir le titre, renforcer le contraste et supprimer les détails inutiles.",
+      ["Relire la consigne.", "Comparer le travail aux critères.", "Entourer les points réussis.", "Identifier une ou deux erreurs prioritaires.", "Refaire ou améliorer la production."],
+      ["Évaluation","Critère","Correction","Erreur","Amélioration","Lisibilité","Soin"],
+      "Une correction utile explique l'erreur et indique comment progresser.",
+      [{level:"Auto-évaluation",instruction:"Choisis une production plastique et propose deux améliorations précises.",correction:"Les améliorations doivent être observables, par exemple mieux organiser les éléments et renforcer le contraste du titre."}],
+      [{question:"Pourquoi faut-il comprendre une erreur au lieu de recopier seulement la correction ?",answer:"Pour éviter de refaire la même erreur et améliorer sa méthode.",explanation:"Comprendre l'origine de l'erreur aide à progresser."}]
+    )],
     ["consequences de la guerre", make(
       "Une œuvre d'art témoin des conséquences de la guerre est une production qui représente, évoque ou conserve la mémoire des souffrances et destructions liées aux conflits.",
       ["Décrire une œuvre liée à la guerre.", "Identifier son message et son contexte.", "Respecter la dignité des personnes représentées."],
