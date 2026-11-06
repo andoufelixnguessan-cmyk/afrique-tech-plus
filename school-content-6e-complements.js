@@ -367,6 +367,180 @@
     )]
   ];
 
+  EDHC.push(
+    ["constitution de la cote d ivoire", make(
+      "La Constitution est la loi fondamentale de l'État. Elle organise les institutions, définit leurs compétences et énonce des principes et droits qui encadrent la vie nationale.",
+      ["Définir la Constitution.", "Comprendre son rôle dans l'organisation de l'État.", "Relier le respect des règles à la paix sociale."],
+      ["La Constitution fixe les grandes règles de fonctionnement des institutions de la République.", "Elle précise les pouvoirs des institutions et les relations entre elles.", "Le respect de la Constitution et des lois contribue à l'ordre public, à la stabilité et à la paix.", "Les citoyens doivent connaître leurs droits et respecter les règles communes.", "Une règle doit être appliquée dans le respect de la dignité et des droits de chacun."],
+      "Les institutions publiques exercent leurs missions dans le cadre fixé par la Constitution et les lois.",
+      ["Identifier la règle ou l'institution étudiée.", "Lire le passage ou le résumé fourni par l'enseignant.", "Repérer le droit, le devoir ou le pouvoir concerné.", "Expliquer son utilité pour la paix et la vie collective."],
+      ["Constitution","Loi fondamentale","République","Institution","Pouvoir","Citoyen","Paix sociale"],
+      "La Constitution organise l'État et encadre l'exercice des pouvoirs ; son respect contribue à la paix.",
+      [{level:"Compréhension",instruction:"Donne deux rôles de la Constitution.",correction:"Elle organise les institutions et fixe des principes et règles fondamentales de la vie nationale."}],
+      [{question:"Pourquoi la Constitution est-elle appelée loi fondamentale ?",answer:"Parce qu'elle fixe les règles essentielles d'organisation de l'État et des institutions.",explanation:"Les autres règles doivent respecter le cadre constitutionnel."}]
+    )],
+    ["circulation routiere", make(
+      "La sécurité routière regroupe les règles et comportements qui permettent de réduire les accidents et de protéger tous les usagers de la route.",
+      ["Identifier les principaux usagers de la route.", "Reconnaître des règles de sécurité.", "Adopter des comportements prudents."],
+      ["Les usagers comprennent les piétons, cyclistes, motocyclistes, automobilistes et passagers.", "Le piéton utilise les trottoirs lorsqu'ils existent et traverse aux endroits adaptés après avoir observé la circulation.", "Les panneaux, feux et marquages donnent des indications ou imposent des obligations.", "Le casque protège les motocyclistes et cyclistes lorsqu'il est adapté et correctement attaché ; la ceinture protège les occupants d'un véhicule.", "Il ne faut pas jouer sur la chaussée, traverser sans regarder ou utiliser le téléphone en conduisant."],
+      "Avant de traverser, s'arrêter au bord du trottoir, regarder des deux côtés, écouter et traverser lorsque la voie est sûre.",
+      ["Identifier son rôle : piéton, passager ou conducteur.", "Repérer les dangers.", "Observer les signaux et les véhicules.", "Respecter les règles de traversée et de protection.", "Alerter un adulte en cas de danger."],
+      ["Usager","Piéton","Chaussée","Trottoir","Passage piéton","Feu tricolore","Signalisation","Casque"],
+      "La prudence, l'attention et le respect du code protègent tous les usagers.",
+      [{level:"Situation",instruction:"Un élève veut traverser entre deux véhicules stationnés. Que doit-il faire ?",correction:"Il doit chercher un endroit dégagé et sécurisé, rejoindre un passage adapté si possible, observer la circulation et ne traverser que lorsque la voie est libre."}],
+      [{question:"Que signifie un feu rouge pour un piéton ?",answer:"Il doit attendre et ne pas s'engager si le signal piéton l'interdit.",explanation:"Il faut respecter les feux et les indications destinées aux piétons."}]
+    )],
+    ["puberte", make(
+      "La puberté est une période du développement pendant laquelle le corps de l'enfant évolue progressivement vers la maturité sexuelle et physique.",
+      ["Identifier des changements de la puberté.", "Comprendre que le rythme varie selon les personnes.", "Adopter des habitudes d'hygiène et de respect de soi."],
+      ["La puberté apparaît à des âges différents selon les individus ; les changements ne se produisent pas tous au même moment.", "Les changements physiques peuvent comprendre une croissance rapide, l'apparition de poils, une modification de la voix chez certains garçons, le développement des seins et le début des menstruations chez certaines filles.", "Des changements émotionnels et sociaux peuvent aussi survenir ; ils sont variables.", "L'hygiène corporelle, une alimentation équilibrée, le sommeil et l'activité physique contribuent au bien-être.", "Aucune personne ne doit être moquée ou discriminée en raison de son développement."],
+      "Deux élèves du même âge peuvent connaître des changements à des moments différents : cela ne signifie pas que l'un est anormal.",
+      ["S'informer auprès de sources éducatives fiables.", "Respecter son intimité et celle des autres.", "Maintenir une bonne hygiène.", "Parler à un adulte de confiance ou à un professionnel de santé en cas d'inquiétude."],
+      ["Puberté","Croissance","Maturité","Menstruation","Hygiène","Intimité","Respect"],
+      "La puberté est un processus naturel, progressif et variable ; chacun doit être respecté.",
+      [{level:"Compréhension",instruction:"Pourquoi ne faut-il pas comparer ou se moquer du développement physique des élèves ?",correction:"Parce que le rythme de la puberté varie d'une personne à l'autre et que chacun a droit au respect de son intimité et de sa dignité."}],
+      [{question:"La puberté commence-t-elle exactement au même âge chez tous les adolescents ?",answer:"Non.",explanation:"Le rythme du développement varie selon les personnes."}]
+    )],
+    ["abstinence sexuelle", make(
+      "L'abstinence sexuelle consiste à choisir de ne pas avoir de rapports sexuels. Dans l'éducation à la santé, elle peut être présentée comme un choix de prévention et de protection.",
+      ["Définir l'abstinence.", "Identifier des moyens de préserver sa santé.", "Savoir demander conseil à une personne compétente."],
+      ["L'abstinence est un choix personnel qui doit être libre et respecté ; personne ne doit subir de pression ou de contrainte.", "Ne pas avoir de rapports sexuels évite les risques de grossesse liés aux rapports sexuels et contribue à éviter les infections sexuellement transmissibles liées à ces rapports.", "Le respect du consentement, des limites personnelles et de la dignité est essentiel.", "Les informations de santé doivent provenir de professionnels ou de sources fiables.", "En cas de question ou de pression, l'adolescent peut s'adresser à un adulte de confiance ou à un professionnel de santé."],
+      "Un adolescent peut refuser une pression de groupe et demander conseil à un adulte de confiance pour prendre une décision respectueuse de sa santé.",
+      ["Identifier la pression ou la situation.", "Exprimer clairement ses limites.", "S'éloigner d'une situation non souhaitée.", "Demander de l'aide à une personne de confiance.", "Vérifier les informations auprès d'une source de santé fiable."],
+      ["Abstinence","Prévention","Consentement","Limites personnelles","Santé","Respect","Pression"],
+      "Le respect du consentement et des limites personnelles est indispensable ; chacun a le droit de refuser.",
+      [{level:"Situation",instruction:"Que peut faire un adolescent qui subit une pression pour agir contre ses valeurs ou sa volonté ?",correction:"Exprimer son refus, s'éloigner de la situation et demander de l'aide à un adulte de confiance."}],
+      [{question:"Une personne doit-elle respecter le refus d'un autre ?",answer:"Oui, toujours.",explanation:"Le consentement et les limites personnelles doivent être respectés."}]
+    )],
+    ["entretien du cadre de vie", make(
+      "L'entretien du cadre de vie regroupe les gestes qui maintiennent les lieux propres, sûrs et agréables afin de protéger la santé des populations.",
+      ["Identifier les sources d'insalubrité.", "Proposer des gestes d'assainissement.", "Participer à la protection de l'environnement."],
+      ["Les déchets abandonnés peuvent attirer des animaux nuisibles, boucher les caniveaux et favoriser la pollution.", "L'eau stagnante peut favoriser la prolifération de moustiques.", "Il faut trier et déposer les déchets dans les endroits prévus, garder les aliments couverts et éviter les eaux stagnantes.", "Le nettoyage collectif doit être organisé et encadré, avec des outils adaptés et des protections.", "Les produits dangereux, objets coupants et déchets médicaux ne doivent pas être manipulés par les élèves."],
+      "Une classe peut organiser, avec l'accord de l'établissement, une opération de propreté autour des salles et signaler les zones dangereuses.",
+      ["Observer les lieux sans toucher aux déchets dangereux.", "Repérer les causes d'insalubrité.", "Proposer une action réalisable.", "Utiliser les équipements adaptés sous encadrement.", "Évaluer le résultat et maintenir les bonnes habitudes."],
+      ["Assainissement","Insalubrité","Déchet","Eau stagnante","Caniveau","Hygiène","Environnement"],
+      "Un cadre de vie sain dépend de gestes réguliers, d'une gestion correcte des déchets et de la prévention des dangers.",
+      [{level:"Application",instruction:"Cite trois gestes qui améliorent l'hygiène de la cour d'un collège.",correction:"Utiliser les poubelles, éviter les eaux stagnantes et maintenir les caniveaux dégagés par des personnes encadrées."}],
+      [{question:"Pourquoi faut-il éviter les eaux stagnantes près des habitations ?",answer:"Elles peuvent favoriser la reproduction des moustiques.",explanation:"L'élimination des eaux stagnantes contribue à la prévention."}]
+    )],
+    ["entretien des latrines", make(
+      "L'entretien des latrines et des toilettes consiste à les garder propres et fonctionnelles pour limiter la transmission des maladies et préserver la dignité des usagers.",
+      ["Expliquer l'importance des toilettes propres.", "Identifier les règles d'hygiène.", "Participer à la préservation des installations."],
+      ["Les toilettes doivent être utilisées correctement et maintenues propres selon les consignes de l'établissement.", "Le lavage des mains à l'eau et au savon après les toilettes est un geste essentiel.", "Les déchets ne doivent pas être jetés dans les latrines s'ils risquent de les boucher.", "L'entretien des installations doit être assuré avec des produits et équipements adaptés par des personnes formées ou responsables.", "Un élève ne doit pas manipuler des produits chimiques dangereux ni effectuer seul une opération risquée."],
+      "Après être allé aux toilettes, l'élève se lave soigneusement les mains avec de l'eau et du savon.",
+      ["Utiliser les toilettes selon les consignes.", "Laisser l'espace propre.", "Se laver les mains.", "Signaler une panne ou un manque d'eau à un responsable.", "Ne pas toucher aux produits d'entretien dangereux."],
+      ["Latrines","Toilettes","Hygiène","Assainissement","Lavage des mains","Eau et savon","Dignité"],
+      "Des toilettes propres et le lavage des mains protègent la santé et respectent les usagers.",
+      [{level:"Application",instruction:"Que faire si une toilette est bouchée ou si un produit dangereux est renversé ?",correction:"Ne pas intervenir soi-même ; éloigner les élèves et prévenir immédiatement un responsable."}],
+      [{question:"Quel geste est indispensable après l'utilisation des toilettes ?",answer:"Se laver les mains avec de l'eau et du savon.",explanation:"Ce geste réduit la transmission des microbes."}]
+    )]
+  );
+
+  TICE.push(
+    ["constituants d un ordinateur", make(
+      "Un ordinateur est un appareil électronique qui reçoit, traite, stocke et restitue des informations. Il comprend des éléments matériels et des logiciels.",
+      ["Identifier les principaux composants.", "Distinguer unité centrale et périphériques.", "Relier chaque composant à sa fonction."],
+      ["Le processeur exécute les instructions et réalise les traitements.", "La mémoire vive (RAM) conserve temporairement les données utilisées pendant le fonctionnement.", "Le stockage (disque dur ou SSD) conserve les fichiers même lorsque l'ordinateur est éteint.", "L'écran, le clavier, la souris, l'imprimante et les haut-parleurs sont des périphériques.", "Les logiciels et le système d'exploitation permettent d'utiliser les composants matériels."],
+      "Pour rédiger un texte, le clavier sert à saisir, l'écran à afficher, le processeur à traiter et le stockage à conserver le document.",
+      ["Identifier le composant.", "Observer sa forme et son branchement.", "Associer sa fonction.", "Classer les éléments en entrée, traitement, stockage ou sortie."],
+      ["Matériel","Logiciel","Processeur","Mémoire vive","Stockage","Périphérique","Unité centrale"],
+      "Un ordinateur associe matériel et logiciels ; chaque composant remplit une fonction précise.",
+      [{level:"Classement",instruction:"Classe clavier, écran, processeur et SSD selon leur fonction.",correction:"Clavier : entrée ; écran : sortie ; processeur : traitement ; SSD : stockage."}],
+      [{question:"Quel composant conserve les fichiers même après extinction ?",answer:"Le support de stockage, par exemple un SSD ou un disque dur.",explanation:"La mémoire vive, elle, est temporaire."}]
+    )],
+    ["utilisation de la souris", make(
+      "La souris est un périphérique de pointage qui permet de déplacer le pointeur et d'interagir avec les éléments affichés à l'écran.",
+      ["Tenir et déplacer correctement la souris.", "Utiliser clic, double-clic et glisser-déposer.", "Choisir un élément à l'écran."],
+      ["Le déplacement de la souris déplace le pointeur à l'écran.", "Le clic gauche sélectionne ou active un élément ; le double-clic ouvre généralement un fichier ou un dossier.", "Le clic droit affiche souvent un menu contextuel.", "La molette permet de faire défiler une page.", "Le glisser-déposer consiste à maintenir le bouton enfoncé, déplacer l'élément puis relâcher."],
+      "Pour ouvrir un dossier, déplacer le pointeur sur son icône puis effectuer un double-clic gauche.",
+      ["Poser la souris sur une surface stable.", "Déplacer doucement le pointeur.", "Faire un clic simple pour sélectionner.", "Faire un double-clic pour ouvrir.", "Utiliser la molette pour faire défiler."],
+      ["Pointeur","Clic gauche","Double-clic","Clic droit","Molette","Glisser-déposer"],
+      "La souris sert à pointer, sélectionner, ouvrir et déplacer des éléments.",
+      [{level:"Pratique",instruction:"Quelle action permet de déplacer un fichier vers un autre dossier avec la souris ?",correction:"Utiliser le glisser-déposer, si les droits et l'application le permettent."}],
+      [{question:"À quoi sert le clic droit ?",answer:"À afficher un menu contextuel dans de nombreuses applications.",explanation:"Ce menu propose des actions liées à l'élément sélectionné."}]
+    )],
+    ["utilisation du clavier", make(
+      "Le clavier est un périphérique d'entrée qui permet de saisir des lettres, des chiffres, des signes et des commandes.",
+      ["Identifier les principales touches.", "Saisir un texte simple.", "Utiliser les touches de correction et de déplacement."],
+      ["Les touches alphabétiques permettent de saisir les lettres ; les touches numériques servent à écrire les chiffres.", "La barre d'espace sépare les mots ; Entrée valide ou crée une nouvelle ligne selon le contexte.", "Retour arrière efface le caractère placé avant le curseur ; Suppr efface souvent le caractère après le curseur ou l'élément sélectionné.", "Majuscule permet d'écrire une lettre capitale ; Verr. Maj maintient la saisie en majuscules.", "Les touches directionnelles déplacent le curseur ou la sélection."],
+      "Pour écrire « BONJOUR », utiliser Verr. Maj ou maintenir Maj pendant la saisie des lettres.",
+      ["Placer les doigts confortablement.", "Repérer le curseur.", "Saisir le texte sans frapper fort.", "Corriger avec Retour arrière ou Suppr.", "Enregistrer le document."],
+      ["Clavier","Curseur","Entrée","Espace","Retour arrière","Suppr","Majuscule"],
+      "Le clavier permet la saisie ; les touches spéciales facilitent la correction et la navigation.",
+      [{level:"Application",instruction:"Quelle touche permet de passer à la ligne suivante dans un traitement de texte ?",correction:"La touche Entrée."}],
+      [{question:"Quelle touche efface le caractère situé avant le curseur ?",answer:"Retour arrière (Backspace).",explanation:"Suppr agit généralement sur le caractère après le curseur."}]
+    )],
+    ["systeme d exploitation", make(
+      "Un système d'exploitation est le logiciel principal qui gère les ressources de l'ordinateur et permet aux autres logiciels de fonctionner.",
+      ["Définir le système d'exploitation.", "Identifier ses fonctions principales.", "Utiliser les éléments de base de l'environnement."],
+      ["Le système d'exploitation gère le processeur, la mémoire, les fichiers et les périphériques.", "Il fournit une interface permettant à l'utilisateur de lancer des applications et de gérer les dossiers.", "Windows, Linux, macOS et Android sont des exemples de systèmes d'exploitation.", "Les mises à jour peuvent corriger des erreurs et améliorer la sécurité ; elles doivent être réalisées selon les consignes de l'établissement.", "Il faut fermer correctement sa session et ne pas modifier les réglages importants sans autorisation."],
+      "Sur Windows, l'explorateur de fichiers permet de créer des dossiers, déplacer et retrouver des documents.",
+      ["Allumer l'ordinateur selon la procédure.", "Ouvrir sa session avec autorisation.", "Repérer le bureau et les applications.", "Créer ou ouvrir un dossier.", "Fermer les applications puis arrêter correctement l'appareil."],
+      ["Système d'exploitation","Interface","Bureau","Fichier","Dossier","Application","Périphérique"],
+      "Le système d'exploitation coordonne les ressources et permet d'utiliser les applications.",
+      [{level:"Compréhension",instruction:"Donne deux fonctions d'un système d'exploitation.",correction:"Gérer les ressources matérielles et permettre à l'utilisateur de lancer les applications et gérer les fichiers."}],
+      [{question:"Windows est-il un système d'exploitation ?",answer:"Oui.",explanation:"Il gère l'ordinateur et fournit une interface utilisateur."}]
+    )],
+    ["logiciel de dessin", make(
+      "Un logiciel de dessin est une application qui permet de créer ou modifier des images à l'aide d'outils numériques.",
+      ["Identifier les outils de dessin.", "Créer une image simple.", "Enregistrer son travail dans un format adapté."],
+      ["Les outils de ligne, rectangle, ellipse et pinceau servent à construire des formes.", "La palette permet de choisir les couleurs ; la gomme efface une partie du dessin.", "Le zoom facilite le travail sur les détails mais ne change pas les dimensions réelles du fichier.", "Il faut enregistrer régulièrement le dessin dans un dossier connu.", "Un nom de fichier clair facilite le classement et la recherche."],
+      "Pour réaliser un pictogramme, tracer un cercle, ajouter une forme simple, choisir deux couleurs et enregistrer le fichier.",
+      ["Ouvrir le logiciel.", "Créer une nouvelle image.", "Choisir les outils et les couleurs.", "Dessiner les formes principales.", "Enregistrer le fichier."],
+      ["Pinceau","Ligne","Forme","Palette","Gomme","Zoom","Fichier image"],
+      "Un dessin numérique se construit avec des outils simples et doit être enregistré régulièrement.",
+      [{level:"Pratique",instruction:"Quels outils utiliser pour dessiner une maison très simple ?",correction:"Rectangle pour les murs, triangle ou polygone pour le toit, ligne pour la porte et les fenêtres."}],
+      [{question:"Quel outil permet d'effacer une partie du dessin ?",answer:"La gomme.",explanation:"Elle retire les éléments dessinés dans la zone choisie."}]
+    )]
+  );
+
+  EPS.push(
+    ["effort de longue duree", make(
+      "Un effort de longue durée est un effort physique maintenu pendant un temps relativement long à une intensité que l'élève peut gérer.",
+      ["Comprendre la notion d'endurance.", "Adapter son allure à la durée.", "Récupérer et respecter les signaux du corps."],
+      ["L'endurance permet de maintenir une activité sans s'épuiser trop rapidement.", "Une allure régulière est préférable à un départ trop rapide.", "L'échauffement prépare progressivement le corps à l'effort.", "La respiration doit rester contrôlée ; l'élève ralentit ou s'arrête en cas de douleur, malaise ou difficulté inhabituelle.", "L'hydratation et la récupération participent à la sécurité."],
+      "Lors d'une course de durée, l'élève choisit une allure modérée qu'il peut maintenir jusqu'à la fin.",
+      ["S'échauffer progressivement.", "Commencer à allure modérée.", "Garder un rythme régulier.", "Adapter l'allure à ses capacités.", "Ralentir puis récupérer en fin d'exercice."],
+      ["Endurance","Allure","Échauffement","Respiration","Hydratation","Récupération"],
+      "Pour durer, il faut gérer son allure et respecter ses capacités.",
+      [{level:"Application",instruction:"Pourquoi ne faut-il pas partir trop vite lors d'une course de durée ?",correction:"Un départ trop rapide fatigue rapidement et empêche de maintenir l'effort jusqu'à la fin."}],
+      [{question:"Quelle qualité physique est principalement développée par une course de longue durée ?",answer:"L'endurance.",explanation:"Elle permet de maintenir un effort dans le temps."}]
+    )],
+    ["effort de courte duree", make(
+      "Un effort de courte durée est un effort bref réalisé à une intensité élevée, comme une course rapide sur une distance courte.",
+      ["Identifier les caractéristiques d'un effort bref.", "Améliorer la vitesse et la réaction.", "Respecter les phases de récupération."],
+      ["La vitesse correspond à la capacité de réaliser un déplacement rapidement.", "Un départ efficace nécessite une position stable et une réaction au signal.", "La course rapide demande une coordination des bras et des jambes.", "Les efforts intenses doivent être séparés par une récupération suffisante.", "L'échauffement est indispensable avant les accélérations."],
+      "Sur une courte distance, l'élève se place derrière la ligne, réagit au signal et court rapidement jusqu'à l'arrivée.",
+      ["S'échauffer.", "Prendre une position de départ stable.", "Attendre le signal.", "Accélérer en coordonnant les bras et les jambes.", "Récupérer avant un nouvel essai."],
+      ["Vitesse","Sprint","Départ","Signal","Accélération","Récupération"],
+      "Un effort bref et rapide nécessite un bon départ, une coordination efficace et une récupération suffisante.",
+      [{level:"Application",instruction:"Cite deux précautions avant de répéter plusieurs courses rapides.",correction:"S'échauffer correctement et prévoir une récupération suffisante entre les essais."}],
+      [{question:"Quelle qualité physique est principalement sollicitée dans un sprint court ?",answer:"La vitesse.",explanation:"L'effort est bref et intense."}]
+    )],
+    ["gymnastique au sol", make(
+      "La gymnastique au sol est une activité qui enchaîne des actions corporelles sur un tapis ou une surface adaptée en recherchant équilibre, coordination et maîtrise.",
+      ["Réaliser des actions simples en sécurité.", "Enchaîner plusieurs éléments.", "Contrôler son équilibre et sa réception."],
+      ["Les actions peuvent comprendre roulades adaptées, déplacements, appuis, équilibres et sauts simples selon le niveau.", "Une posture contrôlée et un placement correct des mains et de la tête sont essentiels.", "Les éléments nouveaux doivent être appris avec une aide et une surface adaptées.", "Il ne faut jamais tenter seul un mouvement acrobatique non enseigné.", "Une petite séquence doit être fluide et respecter les espaces de pratique."],
+      "Une séquence débutante peut enchaîner une marche sur le tapis, un équilibre simple avec aide puis une réception stable.",
+      ["Vérifier le tapis et l'espace.", "S'échauffer.", "Répéter chaque élément séparément.", "Enchaîner deux ou trois actions maîtrisées.", "Terminer par une réception équilibrée."],
+      ["Équilibre","Appui","Roulade","Coordination","Tapis","Réception","Enchaînement"],
+      "La gymnastique au sol exige une progression, une maîtrise des appuis et une sécurité constante.",
+      [{level:"Sécurité",instruction:"Pourquoi ne faut-il pas tenter une roulade ou une figure acrobatique sans apprentissage ?",correction:"Un mauvais placement peut entraîner une blessure ; la figure doit être enseignée et réalisée sur une surface adaptée."}],
+      [{question:"Quel élément doit être vérifié avant une séance de gymnastique au sol ?",answer:"L'état du tapis et la sécurité de l'espace.",explanation:"La zone doit être dégagée et adaptée."}]
+    )],
+    ["lancer du poids", make(
+      "Le lancer du poids est une activité athlétique qui consiste à propulser un engin lourd vers l'avant à partir d'une zone réglementée.",
+      ["Identifier les règles de sécurité.", "Adopter une posture de lancer adaptée.", "Mesurer et comparer les performances."],
+      ["Le poids est tenu près du cou, puis poussé vers l'avant ; il ne se lance pas comme une balle en le jetant derrière la tête.", "Le lancer se réalise dans une zone dégagée et uniquement au signal de l'enseignant.", "Personne ne doit se placer dans la direction du lancer ou aller récupérer l'engin avant l'autorisation.", "L'engin utilisé doit être adapté à l'âge et aux capacités des élèves.", "La performance peut être mesurée de la ligne de lancer au premier point de contact de l'engin avec le sol, selon les consignes de la séance."],
+      "L'élève apprend d'abord le geste avec un engin léger adapté, sans lancer tant que la zone n'est pas libre.",
+      ["Écouter les consignes.", "Vérifier que la zone est dégagée.", "Se placer derrière la ligne.", "Pousser l'engin selon la technique enseignée.", "Attendre l'autorisation avant de récupérer l'engin."],
+      ["Poids","Lancer","Zone de lancer","Propulsion","Mesure","Sécurité"],
+      "La sécurité de la zone et le respect des signaux sont prioritaires dans le lancer du poids.",
+      [{level:"Sécurité",instruction:"Quand peut-on récupérer le poids après un lancer ?",correction:"Uniquement lorsque l'enseignant l'autorise et que tous les lancers sont terminés."}],
+      [{question:"Pourquoi personne ne doit-il se tenir devant la zone de lancer ?",answer:"Pour éviter d'être atteint par l'engin.",explanation:"La zone doit être entièrement dégagée."}]
+    )]
+  );
+
   function apply(target, course) {
     if (!target || !course) return;
     target.contentStatus = "Cours spécifique rédigé — complément disciplinaire 6e";
