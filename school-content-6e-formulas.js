@@ -269,8 +269,7 @@
               math("Combustion complète du butane", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><msub><mi>C</mi><mn>4</mn></msub><msub><mi>H</mi><mn>10</mn></msub><mo>+</mo><mn>13</mn><msub><mi>O</mi><mn>2</mn></msub><mo>→</mo><mn>8</mn><msub><mi>CO</mi><mn>2</mn></msub><mo>+</mo><mn>10</mn><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow></math>', "Équation équilibrée de la combustion complète du butane, présentée en approfondissement.")
             );
 
-              math("Masse d'un liquide par double pesée", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mtext>liquide</mtext></msub><mo>=</mo><msub><mi>m</mi><mtext>récipient plein</mtext></msub><mo>−</mo><msub><mi>m</mi><mtext>récipient vide</mtext></msub></mrow></math>', "Soustraire la masse du récipient vide de celle du récipient plein.")
-            );
+
             if (formulas.length) {
               lesson.formulaBlocks = formulas;
               (lesson.sessions || []).forEach(session => { session.formulaBlocks = formulas; });
