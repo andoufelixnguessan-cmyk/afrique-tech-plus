@@ -1030,7 +1030,7 @@
     }
   });
 
-  function renderLesson(parent, lesson, lessonIndex) {
+function renderLesson(parent, lesson, lessonIndex) {
     const content = getLessonContent(currentSubject, lessonIndex);
 
     const key = lessonKey(currentSubject, lesson, lessonIndex);
@@ -1082,6 +1082,9 @@
       sessions.forEach((session, index) => {
         const sessionDetails = document.createElement("details");
         sessionDetails.className = "atp-session";
+
+        // Ouvrir automatiquement la première séance.
+        sessionDetails.open = index === 0;
 
         sessionDetails.appendChild(
           el("summary", "Séance " + (index + 1) + " : " + (session.title || "Séance"))
@@ -1204,8 +1207,7 @@
 
     details.appendChild(body);
     parent.appendChild(details);
-  }
-
+}
   function renderResources() {
     closeFullscreenLesson();
 
