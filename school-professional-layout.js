@@ -9,8 +9,6 @@
   const style = document.createElement("style");
 
   style.textContent = `
-    /* Organisation générale */
-
     #resourceList > .atp-learning-section {
       grid-column: 1 / -1;
       width: 100%;
@@ -23,8 +21,6 @@
       gap: 22px;
       width: 100%;
     }
-
-    /* Bloc de chaque thème ou rubrique */
 
     .atp-theme-group {
       width: 100%;
@@ -65,8 +61,6 @@
       white-space: nowrap;
     }
 
-    /* Grille uniforme des leçons */
-
     .atp-theme-lessons {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -91,11 +85,13 @@
       box-shadow: 0 4px 13px rgba(36,65,110,.08);
     }
 
+    /* CORRECTION : le titre ne doit plus occuper 100% de l'écran */
+
     .atp-main-lesson > summary {
       display: flex;
       align-items: center;
       min-height: 84px;
-      height: 100%;
+      height: auto;
       padding: 15px;
       background: #ffffff;
       color: #263754;
@@ -104,6 +100,7 @@
       line-height: 1.55;
       overflow-wrap: anywhere;
       list-style-position: inside;
+      cursor: pointer;
     }
 
     .atp-main-lesson > summary::marker {
@@ -111,12 +108,45 @@
     }
 
     .atp-main-lesson[open] > summary {
+      height: auto;
+      min-height: 60px;
       background: #edf4ff;
       color: #245bc1;
       border-bottom: 1px solid #dce5f4;
     }
 
-    /* Progression en bas */
+    /* Contenu pédagogique toujours accessible */
+
+    .atp-main-lesson > .atp-session-body {
+      display: block;
+      height: auto;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    .atp-fullscreen-lesson {
+      z-index: 999999 !important;
+    }
+
+    .atp-fullscreen-lesson > summary {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      height: auto !important;
+      min-height: 60px;
+    }
+
+    .atp-fullscreen-lesson > .atp-session-body {
+      display: block !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    .atp-fullscreen-lesson .atp-close-reading {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
     #resourceList > .atp-learning-section:last-child {
       margin-top: 22px;
@@ -126,12 +156,6 @@
 
     #resourceList > .atp-learning-section:last-child h3 {
       color: #203b69;
-    }
-
-    /* Mode plein écran conservé */
-
-    .atp-fullscreen-lesson {
-      z-index: 999999 !important;
     }
 
     @media (max-width: 650px) {
@@ -158,6 +182,7 @@
 
       .atp-main-lesson > summary {
         min-height: 76px;
+        height: auto;
         padding: 14px;
         font-size: 14px;
       }
