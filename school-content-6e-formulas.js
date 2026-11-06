@@ -162,6 +162,33 @@
     }
   };
 
+  F.lines = [
+    math("Appartenance d'un point à une droite", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>∈</mo><mi>(d)</mi></mrow></math>', "A appartient à la droite (d)."),
+    math("Non-appartenance d'un point à une droite", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>B</mi><mo>∉</mo><mi>(d)</mi></mrow></math>', "B n'appartient pas à la droite (d)."),
+    math("Parallélisme et perpendicularité", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mi>(d)</mi><mo>∥</mo><mi>(d′)</mi></mrow><mtd><mtext>droites parallèles</mtext></mtd></mtr><mtr><mtd><mi>(d)</mi><mo>⊥</mo><mi>(d′)</mi></mtd><mtd><mtext>droites perpendiculaires</mtext></mtd></mtr></mtable></math>', "Les droites perpendiculaires forment un angle droit.")
+  ];
+  F.segment = [
+    math("Milieu d'un segment", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AI</mi><mo>=</mo><mi>IB</mi><mo>=</mo><mfrac><mi>AB</mi><mn>2</mn></mfrac></mrow></math>', "I est le milieu de [AB] si I appartient au segment et si AI = IB.")
+  ];
+  F.circle = [
+    math("Diamètre et rayon", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mn>2</mn><mi>r</mi><mspace width="1em"/><mi>r</mi><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac></mrow></math>', "Le diamètre est deux fois le rayon.")
+  ];
+  F.angles = [
+    math("Angle droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mes</mi><mo>(</mo><mi>angle droit</mi><mo>)</mo><mo>=</mo><mn>90</mn><mo>°</mo></mrow></math>', "Un angle droit mesure 90 degrés."),
+    math("Angle plat", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mes</mi><mo>(</mo><mi>angle plat</mi><mo>)</mo><mo>=</mo><mn>180</mn><mo>°</mo></mrow></math>', "Un angle plat mesure 180 degrés.")
+  ];
+  F.triangle = [
+    math("Somme des angles d'un triangle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>+</mo><mi>B</mi><mo>+</mo><mi>C</mi><mo>=</mo><mn>180</mn><mo>°</mo></mrow></math>', "La somme des trois angles intérieurs d'un triangle vaut 180 degrés."),
+    math("Périmètre d'un triangle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow></math>', "Le périmètre est la somme des trois côtés.")
+  ];
+  F.parallelogram = [
+    math("Côtés opposés", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AB</mi><mo>=</mo><mi>CD</mi><mspace width="1em"/><mi>AD</mi><mo>=</mo><mi>BC</mi></mrow></math>', "Les côtés opposés d'un parallélogramme sont de même longueur."),
+    math("Diagonales", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AO</mi><mo>=</mo><mi>OC</mi><mspace width="1em"/><mi>BO</mi><mo>=</mo><mi>OD</mi></mrow></math>', "Les diagonales se coupent en leur milieu O.")
+  ];
+  F.solid = [
+    math("Volume d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>×</mo><mi>l</mi><mo>×</mo><mi>h</mi></mrow></math>', "Les trois dimensions doivent être exprimées dans la même unité."),
+    math("Volume d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>π</mi><mo>×</mo><msup><mi>r</mi><mn>2</mn></msup><mo>×</mo><mi>h</mi></mrow></math>', "r est le rayon de la base et h la hauteur.")
+  ];
   function normalize(value) {
     return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
   }
@@ -172,11 +199,18 @@
     if (t.includes("fraction")) return F.fractions;
     if (t.includes("proportion")) return F.proportion;
     if (t.includes("statist")) return F.statistics;
-    if (/(droite|point|segment|cercle|disque|angle|triangle|parallelogramme|pave|cylindre)/.test(t)) return F.geometry;
+    if (t.includes("droite") || t.includes("point")) return F.lines;
+    if (t.includes("segment")) return F.segment;
+    if (t.includes("cercle") || t.includes("disque")) return F.circle;
+    if (t.includes("angle")) return F.angles;
+    if (t.includes("triangle")) return F.triangle;
+    if (t.includes("parallelogramme")) return F.parallelogram;
+    if (t.includes("pave") || t.includes("cylindre")) return F.solid;
     return [];
   }
   function applyCourse(target, course) {
     if (!target || !course) return;
+    target.contentStatus = "Cours spécifique rédigé et enrichi selon le programme de 6e";
     target.definition = course.definition;
     target.explanation = course.explanation.slice();
     target.example = course.example;
