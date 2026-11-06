@@ -26,7 +26,8 @@
     ]
   };
 
-  const COLLEGE = [
+  // Matières communes du collège
+  const COLLEGE_BASE = [
     ["Français", "📖"],
     ["Mathématiques", "➗"],
     ["Anglais", "🇬🇧"],
@@ -34,122 +35,125 @@
     ["SVT", "🌱"],
     ["Physique-Chimie", "🧪"],
     ["EDHC", "🤝"],
-    ["Arts plastiques", "🎨"],
+    ["Arts plastiques / Dessin", "🎨"],
     ["Éducation musicale", "🎵"],
     ["EPS", "🏃"],
     ["TICE", "💻"]
   ];
 
-  const SUBJECTS = {
-    "6e": COLLEGE,
-    "5e": COLLEGE,
-    "4e": COLLEGE,
-    "3e": COLLEGE,
+  // Langues vivantes 2 proposées selon les établissements
+  const LANGUES_VIVANTES = [
+    ["Allemand (LV2)", "🇩🇪"],
+    ["Espagnol (LV2)", "🇪🇸"]
+  ];
 
+  // Enseignements du lycée
+  const LYCEE_BASE = [
+    ["Français", "📖"],
+    ["Anglais", "🇬🇧"],
+    ["Histoire-Géographie", "🌍"],
+    ["Mathématiques", "➗"],
+    ["Dessin / Éducation musicale", "🎨"],
+    ["EPS", "🏃"]
+  ];
+
+  const SUBJECTS = {
+    // COLLÈGE
+    "6e": COLLEGE_BASE,
+    "5e": COLLEGE_BASE,
+
+    "4e": [
+      ...COLLEGE_BASE,
+      ...LANGUES_VIVANTES
+    ],
+
+    "3e": [
+      ...COLLEGE_BASE,
+      ...LANGUES_VIVANTES
+    ],
+
+    // SECONDE
     "2nde-A": [
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Langue vivante 2", "🌐"],
-      ["Histoire-Géographie", "🌍"],
-      ["SVT", "🌱"],
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Physique-Chimie", "🧪"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ],
 
     "2nde-C": [
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Langue vivante 2", "🌐"],
-      ["Histoire-Géographie", "🌍"],
-      ["SVT", "🌱"],
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Physique-Chimie", "🧪"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ],
 
+    // PREMIÈRE A1
     "1ere-A1": [
-      ["Français", "📖"],
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EPS", "🏃"]
+      ["Physique-Chimie", "🧪"],
+      ["SVT", "🌱"]
     ],
 
+    // PREMIÈRE A2
     "1ere-A2": [
-      ["Français", "📖"],
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EPS", "🏃"]
+      ["Physique-Chimie", "🧪"],
+      ["SVT", "🌱"]
     ],
 
+    // PREMIÈRE C
     "1ere-C": [
-      ["Français", "📖"],
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
       ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ],
 
+    // PREMIÈRE D
     "1ere-D": [
-      ["Français", "📖"],
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Mathématiques", "➗"],
       ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ],
 
+    // TERMINALE A1
     "tle-A1": [
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ],
 
+    // TERMINALE A2
     "tle-A2": [
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["Langue vivante 2", "🌐"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ],
 
+    // TERMINALE C
     "tle-C": [
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
-      ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EPS", "🏃"]
+      ["Physique-Chimie", "🧪"]
     ],
 
+    // TERMINALE D
     "tle-D": [
+      ...LYCEE_BASE,
+      ...LANGUES_VIVANTES,
       ["Philosophie", "💭"],
-      ["Français", "📖"],
-      ["Mathématiques", "➗"],
       ["Physique-Chimie", "🧪"],
-      ["SVT", "🌱"],
-      ["Anglais", "🇬🇧"],
-      ["Histoire-Géographie", "🌍"],
-      ["EPS", "🏃"]
+      ["SVT", "🌱"]
     ]
   };
 
@@ -180,7 +184,10 @@
   }
 
   let currentClass = localStorage.getItem("atp_school_class_v2");
-  if (!SUBJECTS[currentClass]) currentClass = "6e";
+
+  if (!SUBJECTS[currentClass]) {
+    currentClass = "6e";
+  }
 
   let currentSubject = null;
   let currentCategory = "cours";
@@ -190,8 +197,14 @@
 
   function save() {
     localStorage.setItem("atp_school_class_v2", currentClass);
-    localStorage.setItem("atp_school_favorites_v2", JSON.stringify(favorites));
-    localStorage.setItem("atp_school_completed_v2", JSON.stringify(completed));
+    localStorage.setItem(
+      "atp_school_favorites_v2",
+      JSON.stringify(favorites)
+    );
+    localStorage.setItem(
+      "atp_school_completed_v2",
+      JSON.stringify(completed)
+    );
   }
 
   function updateStats() {
@@ -229,6 +242,7 @@
     const list = SUBJECTS[currentClass].filter(([name]) => {
       const matches = name.toLocaleLowerCase("fr").includes(search);
       const key = `${currentClass}::${name}`;
+
       return matches && (!favoritesOnly || favorites.includes(key));
     });
 
@@ -261,7 +275,10 @@
       const favorite = document.createElement("button");
       favorite.type = "button";
       favorite.textContent = isFavorite ? "★" : "☆";
-      favorite.setAttribute("aria-label", "Ajouter ou retirer des favoris");
+      favorite.setAttribute(
+        "aria-label",
+        "Ajouter ou retirer des favoris"
+      );
       favorite.style.cssText =
         "background:transparent;border:0;color:#d69b16;font-size:25px";
 
@@ -302,7 +319,6 @@
 
     $("viewFilter").value = "all";
     $("subjectSearch").value = "";
-
     $("subjectWorkspace").classList.add("hidden");
 
     save();
@@ -329,7 +345,9 @@
 
   function renderResources() {
     const [title, description] = CATEGORIES[currentCategory];
-    const key = `${currentClass}::${currentSubject}::${currentCategory}`;
+    const key =
+      `${currentClass}::${currentSubject}::${currentCategory}`;
+
     const isDone = completed.includes(key);
 
     $("workspaceDescription").textContent = description;
@@ -389,6 +407,7 @@
 
   function showCategory(category) {
     if (!CATEGORIES[category] || !currentSubject) return;
+
     currentCategory = category;
     renderResources();
   }
@@ -397,9 +416,12 @@
     favoritesOnly = true;
     $("viewFilter").value = "favorites";
     $("subjectSearch").value = "";
+
     renderSubjects();
 
-    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
+    $("subjectsSection").scrollIntoView({
+      behavior: "smooth"
+    });
   }
 
   $("schoolClassSelector").addEventListener("change", event => {
@@ -431,7 +453,10 @@
 
   $("backSubjects").addEventListener("click", () => {
     $("subjectWorkspace").classList.add("hidden");
-    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
+
+    $("subjectsSection").scrollIntoView({
+      behavior: "smooth"
+    });
   });
 
   $("showFavorites").addEventListener("click", showFavorites);
@@ -446,7 +471,9 @@
   });
 
   $("showSubjects").addEventListener("click", () => {
-    $("subjectsSection").scrollIntoView({ behavior: "smooth" });
+    $("subjectsSection").scrollIntoView({
+      behavior: "smooth"
+    });
   });
 
   buildClassSelector();
