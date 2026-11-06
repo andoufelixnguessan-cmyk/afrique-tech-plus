@@ -380,19 +380,23 @@
     return node;
   }
 
-  function addSection(parent, title, content) {
-    const section = el("section", "", "atp-learning-section");
-    section.appendChild(el("h4", title));
+function addSection(parent, title, content) {
+  const section = document.createElement("section");
+  section.className = "atp-learning-section";
 
-    if (typeof content === "string" || typeof content === "number") {
-      section.appendChild(el("p", String(content)));
-    } else if (content) {
-      section.appendChild(content);
-    }
+  section.appendChild(el("h4", title));
 
-    parent.appendChild(section);
-    return section;
+  if (Array.isArray(content)) {
+    section.appendChild(makeList(content));
+  } else if (typeof content === "string" || typeof content === "number") {
+    section.appendChild(el("p", String(content)));
+  } else if (content instanceof Node) {
+    section.appendChild(content);
   }
+
+  parent.appendChild(section);
+  return section;
+}
 
   // Accepte aussi bien une chaîne qu'un tableau.
   function toArray(value) {
