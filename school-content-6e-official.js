@@ -663,16 +663,33 @@
       for (const key of keys) if (t.includes(normalize(key))) return dict[key];
       return null;
     };
-    if (subject === "Mathématiques") return match(M, ["Nombres entiers naturels", "Nombres décimaux relatifs", "Droites et points", "Segment", "Cercles et disques", "Fractions", "Angles", "Triangles", "Proportionnalité", "Symétrie centrale", "Parallélogramme", "Statistiques", "Pavé droit et cylindre"]);
+    if (subject === "Mathématiques") {
+      if (t.includes("symet")) return M["Symétrie centrale"];
+      return match(M, ["Nombres entiers naturels", "Nombres décimaux relatifs", "Droites et points", "Segment", "Cercles et disques", "Fractions", "Angles", "Triangles", "Proportionnalité", "Parallélogramme", "Statistiques", "Pavé droit et cylindre"]);
+    }
     if (subject === "Français") return match(F, ["Les activités de communication orale", "Le dialogue oral", "La lettre personnelle", "Le récit", "La description", "Lecture méthodique", "Lecture suivie", "La phrase", "Le groupe nominal", "Discours direct", "Le verbe", "Le groupe verbal", "Les adverbes", "Orthographe"]);
     if (subject === "Anglais") return match(A, ["At School", "At Home", "Time and Date", "Jobs and Occupations", "Clothes and Colours", "Food and Drinks", "Health and Environment"]);
     if (subject === "Histoire-Géographie") {
       if (t.includes("histoire") || t.includes("chronologie") || t.includes("pal eolithique") || t.includes("neolithique") || t.includes("metallurgie") || t.includes("source") || t.includes("periode")) {
         return match(H, ["Les sources de l’histoire", "La chronologie", "Les grandes périodes", "Paléolithique", "Néolithique", "Métallurgie du fer", "L’histoire et son objet"]);
       }
+      if (t.includes("impot")) return make(
+        "L'impôt est une contribution obligatoire versée par les citoyens et les entreprises aux pouvoirs publics pour financer les services et équipements collectifs.",
+        ["Définir l'impôt.", "Identifier des réalisations financées par les recettes publiques.", "Expliquer le lien entre civisme fiscal et développement local."],
+        ["Les recettes fiscales permettent notamment de financer des écoles, des centres de santé, des routes, l'éclairage public et certains services collectifs.", "Le paiement de l'impôt selon les règles contribue au financement du budget public.", "Le civisme fiscal implique de respecter les obligations fiscales et de comprendre que les ressources publiques doivent être gérées avec transparence.", "Les équipements publics répondent à des besoins collectifs et peuvent améliorer les conditions de vie d'une région."],
+        "La construction et l'entretien d'une école publique ou d'une route peuvent être financés en partie par les ressources du budget public.",
+        ["Identifier un besoin collectif dans sa région.", "Repérer un équipement ou un service public correspondant.", "Expliquer comment les recettes publiques contribuent à son financement.", "Distinguer impôt et don volontaire."],
+        ["Impôt", "Recette fiscale", "Budget public", "Civisme fiscal", "Service public", "Développement local"],
+        "L'impôt contribue au financement des services et équipements collectifs ; son utilisation doit servir l'intérêt général.",
+        [{level:"Application",instruction:"Cite trois équipements ou services collectifs qui contribuent au développement de ta région.",correction:"Une école, un centre de santé, une route, un réseau d'eau potable ou l'éclairage public."}],
+        [{question:"À quoi servent principalement les recettes fiscales ?",answer:"À contribuer au financement des services et équipements publics.",explanation:"Elles participent au financement des besoins collectifs."}]
+      );
       return match(H, ["Géographie et son objet", "Le relief", "Le climat", "Sols climat végétation", "Représentation de la Terre", "Mouvements de la Terre", "Population et environnement", "Cycle de l’eau"]);
     }
-    if (subject === "SVT") return match(S, ["Formation de la graine", "Germination", "Reproduction chez les mammifères", "Reproduction chez les oiseaux", "Facteurs de croissance", "Aliments et croissance des vers de terre", "Actions néfastes", "Lutte contre la dégradation"]);
+    if (subject === "SVT") {
+      if (t.includes("vers de terre") || t.includes("aliments")) return S["Aliments et croissance des vers de terre"];
+      return match(S, ["Formation de la graine", "Germination", "Reproduction chez les mammifères", "Reproduction chez les oiseaux", "Facteurs de croissance", "Actions néfastes", "Lutte contre la dégradation"]);
+    }
     return null;
   }
 
