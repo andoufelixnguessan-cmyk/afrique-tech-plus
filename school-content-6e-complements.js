@@ -528,7 +528,7 @@
       [{level:"Sécurité",instruction:"Pourquoi ne faut-il pas tenter une roulade ou une figure acrobatique sans apprentissage ?",correction:"Un mauvais placement peut entraîner une blessure ; la figure doit être enseignée et réalisée sur une surface adaptée."}],
       [{question:"Quel élément doit être vérifié avant une séance de gymnastique au sol ?",answer:"L'état du tapis et la sécurité de l'espace.",explanation:"La zone doit être dégagée et adaptée."}]
     )],
-    ["lancer du poids", make(
+    ["lancers poids", make(
       "Le lancer du poids est une activité athlétique qui consiste à propulser un engin lourd vers l'avant à partir d'une zone réglementée.",
       ["Identifier les règles de sécurité.", "Adopter une posture de lancer adaptée.", "Mesurer et comparer les performances."],
       ["Le poids est tenu près du cou, puis poussé vers l'avant ; il ne se lance pas comme une balle en le jetant derrière la tête.", "Le lancer se réalise dans une zone dégagée et uniquement au signal de l'enseignant.", "Personne ne doit se placer dans la direction du lancer ou aller récupérer l'engin avant l'autorisation.", "L'engin utilisé doit être adapté à l'âge et aux capacités des élèves.", "La performance peut être mesurée de la ligne de lancer au premier point de contact de l'engin avec le sol, selon les consignes de la séance."],
