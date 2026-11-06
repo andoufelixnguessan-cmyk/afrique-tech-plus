@@ -158,6 +158,85 @@
       color: #203b69;
     }
 
+    /* Lecture de cours : largeur maximale de l'écran, ordinateur et mobile */
+    .layout { grid-template-columns: 245px minmax(0, 1fr); }
+    main { max-width: none !important; width: 100%; min-width: 0; margin: 0; }
+    #subjectWorkspace, #resourceList { width: 100%; min-width: 0; }
+    .atp-fullscreen-lesson {
+      position: fixed !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      overflow-y: auto !important;
+      border-radius: 0 !important;
+    }
+    .atp-fullscreen-lesson > .atp-session-body {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding: clamp(16px, 3vw, 48px) !important;
+      padding-bottom: 72px !important;
+      font-size: clamp(16px, 1.25vw, 19px) !important;
+      line-height: 1.85 !important;
+    }
+    .atp-fullscreen-lesson .atp-learning-section {
+      width: 100%;
+      padding: clamp(16px, 2.4vw, 30px);
+      margin: 22px 0;
+    }
+    .atp-formula-panel { width: 100%; }
+    .atp-formula-card {
+      display: grid;
+      grid-template-columns: minmax(180px, .8fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: 12px 22px;
+      padding: 17px;
+      margin: 12px 0;
+      border: 1px solid #dce5f4;
+      border-radius: 13px;
+      background: #f8faff;
+    }
+    .atp-mathml {
+      min-width: 0;
+      overflow-x: auto;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: #fff;
+      color: #152b4d;
+      text-align: center;
+      font-size: 1.25em;
+    }
+    .atp-mathml math {
+      display: inline-block;
+      min-width: max-content;
+      font-size: 1.18em;
+    }
+    .atp-formula-note {
+      grid-column: 1 / -1;
+      margin: 0 !important;
+      font-size: .94em;
+      color: #566781;
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      main { padding: 16px !important; }
+    }
+    @media (max-width: 600px) {
+      .atp-fullscreen-lesson > .atp-session-body {
+        padding: 14px !important;
+        padding-bottom: 56px !important;
+        font-size: 16px !important;
+      }
+      .atp-formula-card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding: 13px;
+      }
+      .atp-mathml { text-align: left; font-size: 1.1em; }
+    }
+
     @media (max-width: 650px) {
       .atp-theme-group {
         padding: 12px;
