@@ -258,6 +258,17 @@
               math("Équivalences de volume", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mn>1</mn><mtext> L</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mtext> dm</mtext><msup><mn>3</mn><mn></mn></msup></mtd></mtr><mtr><mtd><mn>1</mn><mtext> mL</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mtext> cm</mtext><msup><mn>3</mn><mn></mn></msup></mtd></mtr><mtr><mtd><mn>1</mn><mtext> m</mtext><msup><mn>3</mn><mn></mn></msup></mtd><mtd><mo>=</mo></mtd><mtd><mn>1000</mn><mtext> L</mtext></mtd></mtr></mtable></math>', "Ces équivalences sont indispensables pour convertir les mesures.")
             );
             if (key === "Masse d’un solide et d’un liquide") formulas.push(
+              math("Masse d'un liquide par double pesée", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mtext>liquide</mtext></msub><mo>=</mo><msub><mi>m</mi><mtext>récipient plein</mtext></msub><mo>−</mo><msub><mi>m</mi><mtext>récipient vide</mtext></msub></mrow></math>', "Soustraire la masse du récipient vide de celle du récipient plein."),
+              math("Conversions de masse", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mn>1</mn><mtext> kg</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1000</mn><mtext> g</mtext></mtd></mtr><mtr><mtd><mn>1</mn><mtext> g</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1000</mn><mtext> mg</mtext></mtd></mtr></mtable></math>', "Pour convertir kg en g, multiplier par 1 000 ; pour convertir g en kg, diviser par 1 000.")
+            );
+            if (key === "Combustion d’un solide et d’un liquide dans l’air") formulas.push(
+              math("Combustion complète du carbone", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>+</mo><msub><mi>O</mi><mn>2</mn></msub><mo>→</mo><msub><mi>CO</mi><mn>2</mn></msub></mrow></math>', "Écriture symbolique pour le carbone qui brûle dans le dioxygène ; le programme demande notamment de savoir écrire les équations littérales."),
+              math("Combustion complète de l'éthanol", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>C</mi><mn>2</mn></msub><msub><mi>H</mi><mn>5</mn></msub><mi>OH</mi><mo>+</mo><mn>3</mn><msub><mi>O</mi><mn>2</mn></msub><mo>→</mo><mn>2</mn><msub><mi>CO</mi><mn>2</mn></msub><mo>+</mo><mn>3</mn><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow></math>', "Équation équilibrée donnée comme approfondissement : les atomes de chaque élément sont conservés.")
+            );
+            if (key === "Combustion d’un gaz dans l’air") formulas.push(
+              math("Combustion complète du butane", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>2</mn><msub><mi>C</mi><mn>4</mn></msub><msub><mi>H</mi><mn>10</mn></msub><mo>+</mo><mn>13</mn><msub><mi>O</mi><mn>2</mn></msub><mo>→</mo><mn>8</mn><msub><mi>CO</mi><mn>2</mn></msub><mo>+</mo><mn>10</mn><msub><mi>H</mi><mn>2</mn></msub><mi>O</mi></mrow></math>', "Équation équilibrée de la combustion complète du butane, présentée en approfondissement.")
+            );
+
               math("Masse d'un liquide par double pesée", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mtext>liquide</mtext></msub><mo>=</mo><msub><mi>m</mi><mtext>récipient plein</mtext></msub><mo>−</mo><msub><mi>m</mi><mtext>récipient vide</mtext></msub></mrow></math>', "Soustraire la masse du récipient vide de celle du récipient plein.")
             );
             if (formulas.length) {
