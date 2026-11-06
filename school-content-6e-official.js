@@ -670,9 +670,13 @@
     if (subject === "Français") return match(F, ["Les activités de communication orale", "Le dialogue oral", "La lettre personnelle", "Le récit", "La description", "Lecture méthodique", "Lecture suivie", "La phrase", "Le groupe nominal", "Discours direct", "Le verbe", "Le groupe verbal", "Les adverbes", "Orthographe"]);
     if (subject === "Anglais") return match(A, ["At School", "At Home", "Time and Date", "Jobs and Occupations", "Clothes and Colours", "Food and Drinks", "Health and Environment"]);
     if (subject === "Histoire-Géographie") {
-      if (t.includes("histoire") || t.includes("chronologie") || t.includes("pal eolithique") || t.includes("neolithique") || t.includes("metallurgie") || t.includes("source") || t.includes("periode")) {
-        return match(H, ["Les sources de l’histoire", "La chronologie", "Les grandes périodes", "Paléolithique", "Néolithique", "Métallurgie du fer", "L’histoire et son objet"]);
-      }
+      if (t.includes("source")) return H["Les sources de l’histoire"];
+      if (t.includes("chronologie")) return H["La chronologie"];
+      if (t.includes("pal eolithique")) return H["Paléolithique"];
+      if (t.includes("neolithique")) return H["Néolithique"];
+      if (t.includes("metallurgie")) return H["Métallurgie du fer"];
+      if (t.includes("periode")) return H["Les grandes périodes"];
+      if (t.includes("histoire")) return H["L’histoire et son objet"];
       if (t.includes("impot")) return make(
         "L'impôt est une contribution obligatoire versée par les citoyens et les entreprises aux pouvoirs publics pour financer les services et équipements collectifs.",
         ["Définir l'impôt.", "Identifier des réalisations financées par les recettes publiques.", "Expliquer le lien entre civisme fiscal et développement local."],
