@@ -748,3 +748,367 @@ a {
 .auth-card label {
   color: #303a59;
 }
+/* ==========================================
+   AFRIQUE TECH PLUS — NOUVELLE IDENTITÉ
+   Accueil uniquement — SCHOOL préservé
+========================================== */
+
+:root {
+  --home-blue: #2864d8;
+  --home-indigo: #6557c8;
+  --home-bg: #f3f7ff;
+  --home-text: #17233d;
+  --home-muted: #61708c;
+  --home-border: #dce5f4;
+}
+
+body {
+  background: var(--home-bg);
+  color: var(--home-text);
+}
+
+/* Navigation */
+.announcement {
+  background: #1d3766;
+  color: #edf4ff;
+}
+
+.site-header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--home-border);
+  box-shadow: 0 4px 18px rgba(35,65,110,.05);
+}
+
+.brand-name,
+.main-nav a {
+  color: #1b2c4d;
+}
+
+.brand-mark {
+  background: linear-gradient(135deg,#2864d8,#6557c8);
+  box-shadow: 0 8px 24px rgba(40,100,216,.2);
+}
+
+.main-nav a:hover {
+  color: var(--home-blue);
+}
+
+.language-switch {
+  color: var(--home-blue);
+  border-color: #cbd8ed;
+  background: #f5f8ff;
+}
+
+/* Écran d'accueil */
+.hero {
+  color: var(--home-text);
+  background:
+    radial-gradient(ellipse at 82% 18%,rgba(101,87,200,.18),transparent 43%),
+    radial-gradient(ellipse at 8% 92%,rgba(40,100,216,.16),transparent 42%),
+    linear-gradient(135deg,#f4f8ff,#eaf1ff 58%,#f1efff);
+}
+
+.hero h1 {
+  color: #192c50;
+}
+
+.hero h1 em {
+  color: var(--home-blue);
+}
+
+.hero-copy > p,
+.hero-proof {
+  color: #536582;
+}
+
+.eyebrow,
+.section-label {
+  color: var(--home-blue);
+}
+
+.eyebrow-dot {
+  background: var(--home-blue);
+  box-shadow: 0 0 0 5px rgba(40,100,216,.12);
+}
+
+.button-primary {
+  background: linear-gradient(135deg,#2864d8,#6557c8);
+  color: white;
+  box-shadow: 0 8px 20px rgba(40,100,216,.18);
+}
+
+.button-primary:hover {
+  background: linear-gradient(135deg,#1e50b4,#5148bd);
+}
+
+.button-ghost {
+  color: #245bc1;
+  border: 1px solid #b9cbed;
+  background: rgba(255,255,255,.75);
+}
+
+.hero-art {
+  background: radial-gradient(circle,#dce8ff 0%,transparent 70%);
+}
+
+.art-center {
+  background: linear-gradient(145deg,#2864d8,#6557c8);
+  color: white;
+  box-shadow: 0 20px 55px rgba(40,100,216,.22);
+}
+
+.orbit {
+  border-color: rgba(40,100,216,.22);
+}
+
+.orbit-chip {
+  background: white;
+  color: #203452;
+  border: 1px solid var(--home-border);
+}
+
+.orbit-chip b {
+  color: var(--home-blue);
+}
+
+.hero-bottom {
+  border-color: rgba(40,80,150,.18);
+  color: #61708c;
+}
+
+.scroll-cue {
+  color: var(--home-blue);
+}
+
+/* Sections et titres */
+.feature-section,
+.store-section,
+.about-section {
+  background: #fff;
+}
+
+.compact-section {
+  background: #edf3ff;
+}
+
+.section-heading h2,
+.feature-copy h2,
+.mini-feature h2,
+.about-inner h2 {
+  color: #1b2c4d;
+}
+
+h2 span,
+.about-inner h2 span {
+  color: var(--home-indigo);
+}
+
+.section-heading > p,
+.feature-copy > p,
+.mini-feature > p,
+.about-inner p {
+  color: var(--home-muted);
+}
+
+/* Cartes des rubriques */
+.domain-card,
+.mini-feature {
+  background: #fff;
+  border: 1px solid var(--home-border);
+  box-shadow: 0 5px 18px rgba(36,65,110,.045);
+}
+
+.domain-card:hover {
+  border-color: #a9c2f0;
+  box-shadow: 0 12px 26px rgba(36,65,110,.09);
+}
+
+.domain-card h3,
+.mini-feature h3 {
+  color: #203452;
+}
+
+.domain-card p,
+.mini-feature p {
+  color: #61708c;
+}
+
+.domain-number {
+  color: #8795ad;
+}
+
+/* Couleurs des rubriques sur l'accueil */
+.domain-academy {
+  --accent: #2864d8;
+  --tint: #eaf1ff;
+}
+
+.domain-school {
+  --accent: #6557c8;
+  --tint: #f0edff;
+}
+
+.domain-store {
+  --accent: #247e91;
+  --tint: #e8f7fa;
+}
+
+.domain-ai {
+  --accent: #6551ca;
+  --tint: #f0edff;
+}
+
+.domain-media {
+  --accent: #c04d8a;
+  --tint: #fff0f7;
+}
+
+.domain-services {
+  --accent: #277cba;
+  --tint: #eaf5ff;
+}
+
+.domain-community {
+  --accent: #37844b;
+  --tint: #eaf8ec;
+}
+
+.domain-link,
+.text-link {
+  color: var(--home-blue);
+}
+
+/* Présentation des formations */
+.feature-visual {
+  background: radial-gradient(circle,#eaf1ff,transparent 68%);
+}
+
+.visual-window {
+  border-color: var(--home-border);
+}
+
+.mini-tag {
+  background: #eaf1ff;
+  color: var(--home-blue);
+}
+
+.lesson-progress span {
+  background: linear-gradient(90deg,#2864d8,#6557c8);
+}
+
+.lesson-icons b {
+  background: #eaf1ff;
+  color: var(--home-blue);
+}
+
+.floating-note {
+  color: var(--home-blue);
+  border-color: var(--home-border);
+}
+
+.floating-note span {
+  color: #203452;
+}
+
+.check-list li {
+  color: #536582;
+}
+
+/* Boutique */
+.store-card {
+  background: #fff;
+  border-color: var(--home-border);
+  box-shadow: 0 8px 25px rgba(36,65,110,.05);
+}
+
+.store-info h3 {
+  color: #203452;
+}
+
+.store-info p {
+  color: #61708c;
+}
+
+/* Sections secondaires */
+.coming-soon {
+  color: #536582;
+  border-color: #d2def0;
+  background: #f7f9ff;
+}
+
+/* Espace personnel de l'accueil */
+.account-section {
+  background:
+    radial-gradient(ellipse at 85% 10%,rgba(101,87,200,.25),transparent 40%),
+    linear-gradient(120deg,#1c3767,#263e78);
+}
+
+.account-copy h2,
+.account-copy h2 span {
+  color: white;
+}
+
+.account-copy > p,
+.plan-note {
+  color: #e0e9fb;
+}
+
+.auth-card {
+  background: white;
+  color: #17233d;
+  border: 1px solid var(--home-border);
+  box-shadow: 0 22px 60px rgba(12,35,80,.2);
+}
+
+.auth-card label {
+  color: #303a59;
+}
+
+.auth-form input {
+  color: #17233d;
+  background: #fbfcff;
+  border-color: #dce5f4;
+}
+
+.auth-form input:focus {
+  border-color: var(--home-blue);
+  box-shadow: 0 0 0 3px rgba(40,100,216,.1);
+}
+
+.submit-button {
+  background: linear-gradient(135deg,#2864d8,#6557c8);
+  color: white;
+}
+
+.auth-toggle button {
+  color: var(--home-blue);
+}
+
+/* Pied de page */
+.site-footer {
+  background: #142849;
+  color: white;
+}
+
+.footer-links {
+  color: #dce7fa;
+}
+
+/* Adaptation mobile */
+@media (max-width: 700px) {
+  .main-nav {
+    background: white;
+    border-color: var(--home-border);
+    box-shadow: 0 12px 22px rgba(36,65,110,.08);
+  }
+
+  .main-nav a {
+    color: #203452;
+  }
+
+  .hero {
+    background:
+      radial-gradient(ellipse at 85% 12%,rgba(101,87,200,.13),transparent 42%),
+      linear-gradient(145deg,#f4f8ff,#eaf1ff);
+  }
+}
