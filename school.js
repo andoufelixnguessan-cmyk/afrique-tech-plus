@@ -1,6 +1,6 @@
 /* ==========================================================
    AFRIQUE TECH PLUS — ATP SCHOOL
-   Gestion pédagogique et lecture plein écran
+   Gestion pédagogique, navigation et lecture plein écran
    ========================================================== */
 
 (() => {
@@ -88,7 +88,6 @@
   let completed = safeRead("atp_school_completed", []);
   let quizResults = safeRead("atp_school_quiz_results", []);
   let favoritesOnly = false;
-
   let activeFullscreenLesson = null;
 
   if (!SUBJECTS[currentClass]) currentClass = "6e";
@@ -170,6 +169,7 @@
       border-radius:9px;
       color:#205c39;
       line-height:1.7;
+      white-space:pre-wrap;
     }
 
     .atp-answer.visible {
@@ -208,34 +208,6 @@
       transition:width .3s;
     }
 
-    .atp-quiz-option {
-      display:block;
-      width:100%;
-      text-align:left;
-      padding:11px;
-      margin:7px 0;
-      border:1px solid #cbd8ed;
-      border-radius:9px;
-      background:#fff;
-      color:#263754;
-      cursor:pointer;
-    }
-
-    .atp-quiz-option.selected {
-      border-color:#2864d8;
-      background:#eaf1ff;
-    }
-
-    .atp-quiz-option.correct {
-      border-color:#23965a;
-      background:#e7f7ed;
-    }
-
-    .atp-quiz-option.wrong {
-      border-color:#d65a5a;
-      background:#fff0f0;
-    }
-
     .atp-score {
       padding:13px;
       background:#eaf1ff;
@@ -257,7 +229,17 @@
       margin-top:18px;
     }
 
-    /* MODE LECTURE PLEIN ÉCRAN */
+    .atp-check {
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:12px 0;
+      line-height:1.6;
+    }
+
+    #subjectWorkspace {
+      scroll-margin-top:90px;
+    }
 
     .atp-session.atp-fullscreen-lesson {
       position:fixed !important;
@@ -296,6 +278,7 @@
       padding-bottom:60px;
       font-size:17px;
       line-height:1.9;
+      overflow-wrap:anywhere;
     }
 
     .atp-fullscreen-lesson .atp-learning-section {
@@ -312,10 +295,6 @@
     .atp-fullscreen-lesson .atp-session summary {
       font-size:16px;
       padding:18px;
-    }
-
-    .atp-fullscreen-lesson .atp-session-body {
-      overflow-wrap:anywhere;
     }
 
     .atp-fullscreen-lesson .atp-close-reading {
@@ -405,8 +384,8 @@
     const section = el("section", "", "atp-learning-section");
     section.appendChild(el("h4", title));
 
-    if (typeof content === "string") {
-      section.appendChild(el("p", content));
+    if (typeof content === "string" || typeof content === "number") {
+      section.appendChild(el("p", String(content)));
     } else if (content) {
       section.appendChild(content);
     }
@@ -415,13 +394,29 @@
     return section;
   }
 
+  // Accepte aussi bien une chaîne qu'un tableau.
+  function toArray(value) {
+    if (Array.isArray(value)) return value.filter(item => item != null && item !== "");
+    if (typeof value === "string" && value.trim()) {
+      return value
+        .split(/\n|•|;/)
+        .map(item => item.trim())
+        .filter(Boolean);
+    }
+    return [];
+  }
+
   function makeList(items) {
     const list = document.createElement("ul");
     list.className = "atp-list";
 
-    (items || []).forEach(item => {
-      list.appendChild(el("li", item));
+    toArray(items).forEach(item => {
+      list.appendChild(el("li", String(item)));
     });
+
+    if (!list.children.length) {
+      list.appendChild(el("li", "Notions à compléter."));
+    }
 
     return list;
   }
@@ -487,13 +482,22 @@
       return null;
     }
 
-    const all = CONTENT.buildAll(RAW_CURRICULUM);
-    return all[curriculumName(subject)] || null;
+    try {
+      const all = CONTENT.buildAll(RAW_CURRICULUM);
+      return all && all[curriculumName(subject)]
+        ? all[curriculumName(subject)]
+        : null;
+    } catch (error) {
+      console.error("Erreur du moteur pédagogique :", error);
+      return null;
+    }
   }
 
   function getLessonContent(subject, index) {
     const data = getLearningSubject(subject);
-    return data && data.lessons ? data.lessons[index] : null;
+    return data && Array.isArray(data.lessons)
+      ? data.lessons[index] || null
+      : null;
   }
 
   function lessonKey(subject, lesson, index) {
@@ -537,6 +541,17 @@
     select.value = currentClass;
   }
 
+  function scrollToWorkspace() {
+    const workspace = $("subjectWorkspace");
+
+    requestAnimationFrame(() => {
+      workspace.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  }
+
   function renderSubjects() {
     const grid = $("subjectGrid");
     const search = $("subjectSearch").value.toLowerCase().trim();
@@ -553,9 +568,7 @@
     });
 
     if (!subjects.length) {
-      grid.appendChild(
-        el("p", "Aucune matière trouvée.", "empty")
-      );
+      grid.appendChild(el("p", "Aucune matière trouvée.", "empty"));
     }
 
     subjects.forEach(([name, emoji]) => {
@@ -563,7 +576,6 @@
       card.tabIndex = 0;
 
       const top = el("div");
-
       top.style.cssText =
         "display:flex;justify-content:space-between;align-items:center";
 
@@ -590,15 +602,11 @@
       top.append(icon, favoriteButton);
 
       const title = el("h3", name);
-      const count = currentClass === "6e"
-        ? getLessons(name).length
-        : 0;
+      const count = currentClass === "6e" ? getLessons(name).length : 0;
 
       const info = el(
         "p",
-        count
-          ? count + " leçons enregistrées"
-          : "Espace pédagogique"
+        count ? count + " leçons enregistrées" : "Espace pédagogique"
       );
 
       card.append(top, title, info);
@@ -619,6 +627,8 @@
   }
 
   function openSubject(name) {
+    closeFullscreenLesson();
+
     currentSubject = name;
     currentCategory = "cours";
 
@@ -626,59 +636,91 @@
     $("subjectWorkspace").classList.remove("hidden");
 
     renderResources();
-
-    $("subjectWorkspace").scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    scrollToWorkspace();
   }
 
   function renderObjectives(parent, objectives) {
-    addSection(
-      parent,
-      "🎯 Objectifs pédagogiques",
-      makeList(objectives)
-    );
+    const items = toArray(objectives);
+
+    if (items.length) {
+      addSection(parent, "🎯 Objectifs pédagogiques", makeList(items));
+    }
   }
 
   function renderCourse(parent, session) {
-    const course = session.course;
+    const course = session && session.course ? session.course : {};
 
-    addSection(parent, "Introduction", course.introduction);
-    addSection(parent, "Explication du cours", course.explanation);
-    addSection(parent, "Exemple pratique", course.example);
-    addSection(parent, "Vocabulaire essentiel", makeList(course.vocabulary));
-    addSection(parent, "Méthode de travail", course.method);
-    addSection(parent, "À retenir", course.essential);
-    addSection(parent, "Conclusion", course.conclusion);
+    if (course.introduction) {
+      addSection(parent, "Introduction", course.introduction);
+    }
+
+    if (course.explanation) {
+      addSection(parent, "Explication du cours", course.explanation);
+    }
+
+    if (course.example) {
+      addSection(parent, "Exemple pratique", course.example);
+    }
+
+    if (course.vocabulary) {
+      addSection(parent, "Vocabulaire essentiel", makeList(course.vocabulary));
+    }
+
+    if (course.method) {
+      addSection(parent, "Méthode de travail", course.method);
+    }
+
+    if (course.essential) {
+      addSection(parent, "À retenir", course.essential);
+    }
+
+    if (course.conclusion) {
+      addSection(parent, "Conclusion", course.conclusion);
+    }
   }
 
   function renderExercises(parent, session) {
-    const heading = el(
-      "p",
-      "Effectue les exercices avant d'afficher les corrections.",
-      "atp-muted"
+    const exercises = toArray(session && session.exercises);
+
+    parent.appendChild(
+      el(
+        "p",
+        "Effectue les exercices avant d'afficher les corrections.",
+        "atp-muted"
+      )
     );
 
-    parent.appendChild(heading);
+    if (!exercises.length) {
+      parent.appendChild(el("p", "Aucun exercice enregistré pour cette séance."));
+      return;
+    }
 
-    session.exercises.forEach((exercise, exerciseIndex) => {
+    exercises.forEach((exercise, exerciseIndex) => {
+      if (typeof exercise === "string") {
+        exercise = {
+          instruction: exercise,
+          correction: "Consulte ton cours pour vérifier ta réponse.",
+          level: "Application"
+        };
+      }
+
       const card = el("div", "", "atp-question");
 
       card.appendChild(
-        el("span", exercise.level, "atp-learning-tag")
+        el("span", exercise.level || "Exercice", "atp-learning-tag")
       );
 
       card.appendChild(
         el(
           "p",
-          "Exercice " + (exerciseIndex + 1) + " : " + exercise.instruction
+          "Exercice " + (exerciseIndex + 1) + " : " +
+          (exercise.instruction || exercise.question || "Consigne à compléter.")
         )
       );
 
       const answer = el(
         "div",
-        exercise.correction,
+        exercise.correction || exercise.answer || "Correction à compléter.",
         "atp-answer"
       );
 
@@ -700,7 +742,9 @@
   }
 
   function renderQuiz(parent, session, lessonIndex, sessionIndex) {
-    const quiz = session.quiz;
+    const quiz = toArray(session && session.quiz);
+
+    if (!quiz.length) return;
 
     const quizId = [
       currentClass,
@@ -711,9 +755,7 @@
 
     const box = el("div", "", "atp-learning-section");
 
-    box.appendChild(
-      el("h4", "🧠 Mini-quiz de la séance")
-    );
+    box.appendChild(el("h4", "🧠 Mini-quiz de la séance"));
 
     box.appendChild(
       el(
@@ -732,19 +774,25 @@
     );
 
     quiz.forEach((question, questionIndex) => {
+      if (typeof question === "string") {
+        question = {
+          question,
+          answer: "Réponse à vérifier dans le cours.",
+          explanation: ""
+        };
+      }
+
       const card = el("div", "", "atp-question");
 
       card.appendChild(
-        el(
-          "strong",
-          (questionIndex + 1) + ". " + question.question
-        )
+        el("strong", (questionIndex + 1) + ". " + (question.question || "Question"))
       );
 
       const answer = el(
         "div",
         "Réponse attendue : " +
-        question.answer + " " + question.explanation,
+        (question.answer || "À compléter.") + " " +
+        (question.explanation || ""),
         "atp-answer"
       );
 
@@ -811,9 +859,7 @@
   }
 
   function updateQuizResult(quizId, score, total) {
-    const previous = quizResults.filter(
-      item => item.id !== quizId
-    );
+    const previous = quizResults.filter(item => item.id !== quizId);
 
     previous.push({
       id: quizId,
@@ -827,39 +873,63 @@
   }
 
   function renderAssessment(parent, assessment) {
+    if (!assessment || typeof assessment !== "object") {
+      parent.appendChild(
+        el("p", "Aucune évaluation générale n'est disponible pour cette leçon.")
+      );
+      return;
+    }
+
+    const duration = assessment.duration || "Durée non précisée";
+    const total = assessment.total != null
+      ? assessment.total
+      : "Non précisé";
+
     addSection(
       parent,
-      "📝 Évaluation — " + assessment.duration,
-      "Barème : " + assessment.total +
+      "📝 Évaluation — " + duration,
+      "Barème : " + total +
       " points. Réponds d'abord dans ton cahier avant de consulter les éléments de correction."
     );
 
-    assessment.instructions.forEach((instruction, index) => {
+    toArray(assessment.instructions).forEach((instruction, index) => {
       parent.appendChild(
-        el(
-          "p",
-          (index + 1) + ". " + instruction,
-          "atp-muted"
-        )
+        el("p", (index + 1) + ". " + instruction, "atp-muted")
       );
     });
 
-    assessment.questions.forEach((question, index) => {
+    const questions = toArray(assessment.questions);
+
+    if (!questions.length) {
+      parent.appendChild(el("p", "Les questions de cette évaluation ne sont pas encore disponibles."));
+      return;
+    }
+
+    questions.forEach((question, index) => {
+      if (typeof question === "string") {
+        question = {
+          question,
+          points: "?",
+          expected: "Correction à compléter."
+        };
+      }
+
       const card = el("div", "", "atp-question");
 
       card.appendChild(
         el(
           "strong",
           "Question " + (index + 1) +
-          " — " + question.points + " points"
+          " — " + (question.points != null ? question.points : "?") + " points"
         )
       );
 
-      card.appendChild(el("p", question.question));
+      card.appendChild(el("p", question.question || "Question à compléter."));
 
       const correction = el(
         "div",
-        "Éléments de correction : " + question.expected,
+        "Éléments de correction : " +
+        (question.expected || question.correction || "Correction à compléter."),
         "atp-answer"
       );
 
@@ -868,6 +938,9 @@
         "atp-small-btn secondary",
         () => {
           correction.classList.toggle("visible");
+          reveal.textContent = correction.classList.contains("visible")
+            ? "Masquer la correction"
+            : "Consulter les éléments de correction";
         }
       );
 
@@ -877,19 +950,21 @@
   }
 
   function renderRevision(parent, items) {
+    const revisionItems = toArray(items);
+
+    if (!revisionItems.length) return;
+
     const wrapper = el("div", "", "atp-learning-section");
 
-    wrapper.appendChild(
-      el("h4", "📌 Ma fiche de révision")
-    );
+    wrapper.appendChild(el("h4", "📌 Ma fiche de révision"));
 
-    items.forEach(item => {
+    revisionItems.forEach(item => {
       const label = el("label", "", "atp-check");
       const checkbox = document.createElement("input");
 
       checkbox.type = "checkbox";
 
-      label.append(checkbox, el("span", item));
+      label.append(checkbox, el("span", String(item)));
       wrapper.appendChild(label);
     });
 
@@ -899,6 +974,8 @@
   /* OUVRIR UNE LEÇON EN PLEIN ÉCRAN */
 
   function openFullscreenLesson(details) {
+    if (activeFullscreenLesson === details) return;
+
     if (activeFullscreenLesson) {
       closeFullscreenLesson();
     }
@@ -940,9 +1017,7 @@
 
     const closeArea = details.querySelector(".atp-close-reading");
 
-    if (closeArea) {
-      closeArea.remove();
-    }
+    if (closeArea) closeArea.remove();
 
     document.body.classList.remove("atp-reading-active");
 
@@ -956,16 +1031,9 @@
   });
 
   function renderLesson(parent, lesson, lessonIndex) {
-    const content = getLessonContent(
-      currentSubject,
-      lessonIndex
-    );
+    const content = getLessonContent(currentSubject, lessonIndex);
 
-    const key = lessonKey(
-      currentSubject,
-      lesson,
-      lessonIndex
-    );
+    const key = lessonKey(currentSubject, lesson, lessonIndex);
 
     const details = document.createElement("details");
     details.className = "atp-session atp-main-lesson";
@@ -998,37 +1066,28 @@
       return;
     }
 
-    body.appendChild(
-      el(
-        "span",
-        content.sessions.length + " séance(s)",
-        "atp-learning-tag"
-      )
-    );
+    const sessions = Array.isArray(content.sessions) ? content.sessions : [];
 
     body.appendChild(
-      el("p", content.introduction)
+      el("span", sessions.length + " séance(s)", "atp-learning-tag")
     );
+
+    if (content.introduction) {
+      body.appendChild(el("p", content.introduction));
+    }
 
     if (currentCategory === "cours") {
       renderObjectives(body, content.objectives);
 
-      content.sessions.forEach((session, index) => {
+      sessions.forEach((session, index) => {
         const sessionDetails = document.createElement("details");
         sessionDetails.className = "atp-session";
 
         sessionDetails.appendChild(
-          el(
-            "summary",
-            "Séance " + (index + 1) + " : " + session.title
-          )
+          el("summary", "Séance " + (index + 1) + " : " + (session.title || "Séance"))
         );
 
-        const sessionBody = el(
-          "div",
-          "",
-          "atp-session-body"
-        );
+        const sessionBody = el("div", "", "atp-session-body");
 
         renderObjectives(sessionBody, session.objectives);
         renderCourse(sessionBody, session);
@@ -1041,23 +1100,16 @@
     }
 
     if (currentCategory === "exercices") {
-      content.sessions.forEach((session, index) => {
+      sessions.forEach((session, index) => {
         const sessionDetails = document.createElement("details");
         sessionDetails.className = "atp-session";
         sessionDetails.open = index === 0;
 
         sessionDetails.appendChild(
-          el(
-            "summary",
-            "Exercices — " + session.title
-          )
+          el("summary", "Exercices — " + (session.title || "Séance " + (index + 1)))
         );
 
-        const sessionBody = el(
-          "div",
-          "",
-          "atp-session-body"
-        );
+        const sessionBody = el("div", "", "atp-session-body");
 
         renderExercises(sessionBody, session);
         renderQuiz(sessionBody, session, lessonIndex, index);
@@ -1065,38 +1117,61 @@
         sessionDetails.appendChild(sessionBody);
         body.appendChild(sessionDetails);
       });
+
+      if (!sessions.length) {
+        body.appendChild(el("p", "Aucun exercice n'est disponible pour cette leçon."));
+      }
     }
 
     if (currentCategory === "devoirs") {
-      renderAssessment(body, content.finalAssessment);
+      if (content.finalAssessment) {
+        renderAssessment(body, content.finalAssessment);
+      }
 
-      content.sessions.forEach((session, index) => {
+      sessions.forEach((session, index) => {
         const sessionDetails = document.createElement("details");
         sessionDetails.className = "atp-session";
 
         sessionDetails.appendChild(
-          el(
-            "summary",
-            "Évaluation de la séance " + (index + 1)
-          )
+          el("summary", "Évaluation de la séance " + (index + 1))
         );
 
-        const sessionBody = el(
-          "div",
-          "",
-          "atp-session-body"
-        );
+        const sessionBody = el("div", "", "atp-session-body");
 
         renderAssessment(sessionBody, session.assessment);
 
         sessionDetails.appendChild(sessionBody);
         body.appendChild(sessionDetails);
       });
+
+      if (!content.finalAssessment && !sessions.length) {
+        body.appendChild(el("p", "Aucune évaluation n'est disponible pour cette leçon."));
+      }
     }
 
     if (currentCategory === "examens") {
       renderRevision(body, content.revision);
-      renderAssessment(body, content.finalAssessment);
+
+      if (content.finalAssessment) {
+        renderAssessment(body, content.finalAssessment);
+      }
+
+      sessions.forEach((session, index) => {
+        if (!session.assessment) return;
+
+        const sessionDetails = document.createElement("details");
+        sessionDetails.className = "atp-session";
+
+        sessionDetails.appendChild(
+          el("summary", "Évaluation de révision — Séance " + (index + 1))
+        );
+
+        const sessionBody = el("div", "", "atp-session-body");
+        renderAssessment(sessionBody, session.assessment);
+
+        sessionDetails.appendChild(sessionBody);
+        body.appendChild(sessionDetails);
+      });
 
       addSection(
         body,
@@ -1105,11 +1180,7 @@
       );
     }
 
-    const actions = el(
-      "div",
-      "",
-      "atp-lesson-actions"
-    );
+    const actions = el("div", "", "atp-lesson-actions");
 
     const doneButton = button(
       isDone(key)
@@ -1152,7 +1223,6 @@
           "empty"
         )
       );
-
       return;
     }
 
@@ -1166,76 +1236,46 @@
           "empty"
         )
       );
-
       return;
     }
 
     const subjectContent = getLearningSubject(currentSubject);
-
     const total = lessons.length;
 
     const finished = lessons.filter((lesson, index) =>
-      isDone(
-        lessonKey(currentSubject, lesson, index)
-      )
+      isDone(lessonKey(currentSubject, lesson, index))
     ).length;
 
     const percentage = total
       ? Math.round((finished / total) * 100)
       : 0;
 
-    /* EN-TÊTE DE MATIÈRE : OBJECTIF SEULEMENT */
-
-    const header = el(
-      "div",
-      "",
-      "atp-learning-section"
-    );
+    const header = el("div", "", "atp-learning-section");
 
     header.appendChild(
-      el(
-        "h3",
-        currentSubject + " — Programme de 6e"
-      )
+      el("h3", currentSubject + " — Programme de 6e")
     );
 
-    if (subjectContent) {
+    if (subjectContent && subjectContent.goal) {
       header.appendChild(
-        el(
-          "p",
-          "Objectif général : " + subjectContent.goal
-        )
+        el("p", "Objectif général : " + subjectContent.goal)
       );
     }
 
     list.appendChild(header);
 
-    /* LISTE DES LEÇONS */
-
     let previousSection = null;
 
     lessons.forEach((lesson, index) => {
-      if (
-        lesson.section &&
-        lesson.section !== previousSection
-      ) {
+      if (lesson.section && lesson.section !== previousSection) {
         previousSection = lesson.section;
-
-        list.appendChild(
-          el("h3", lesson.section)
-        );
+        list.appendChild(el("h3", lesson.section));
       }
 
       renderLesson(list, lesson, index);
     });
 
-    /* PROGRESSION DÉPLACÉE TOUT EN BAS */
-
-    const progressFooter = el(
-      "div",
-      "",
-      "atp-learning-section"
-    );
+    const progressFooter = el("div", "", "atp-learning-section");
 
     progressFooter.appendChild(
       el("h3", "📊 Progression de la matière")
@@ -1249,13 +1289,9 @@
       )
     );
 
-    const progress = el(
-      "div",
-      "",
-      "atp-progress"
-    );
-
+    const progress = el("div", "", "atp-progress");
     const bar = el("span");
+
     bar.style.width = percentage + "%";
 
     progress.appendChild(bar);
@@ -1282,6 +1318,9 @@
 
     currentCategory = category;
     renderResources();
+
+    // Affiche clairement la zone de travail après le changement de rubrique.
+    scrollToWorkspace();
   }
 
   function showFavorites() {
@@ -1293,7 +1332,8 @@
     renderSubjects();
 
     $("subjectsSection").scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
+      block: "start"
     });
   }
 
@@ -1313,10 +1353,7 @@
     renderSubjects();
   });
 
-  $("subjectSearch").addEventListener(
-    "input",
-    renderSubjects
-  );
+  $("subjectSearch").addEventListener("input", renderSubjects);
 
   $("viewFilter").addEventListener("change", event => {
     favoritesOnly = event.target.value === "favorites";
@@ -1345,21 +1382,19 @@
     $("subjectWorkspace").classList.add("hidden");
 
     $("subjectsSection").scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
+      block: "start"
     });
   });
 
-  $("showFavorites").addEventListener(
-    "click",
-    showFavorites
-  );
+  $("showFavorites").addEventListener("click", showFavorites);
 
   $("openCours").addEventListener("click", () => {
     if (!currentSubject) {
       openSubject(SUBJECTS[currentClass][0][0]);
-    } else {
-      showCategory("cours");
     }
+
+    showCategory("cours");
   });
 
   $("openExos").addEventListener("click", () => {
@@ -1372,7 +1407,8 @@
 
   $("showSubjects").addEventListener("click", () => {
     $("subjectsSection").scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
+      block: "start"
     });
   });
 
