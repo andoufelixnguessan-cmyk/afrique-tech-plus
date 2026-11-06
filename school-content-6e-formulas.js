@@ -276,6 +276,36 @@
             (lesson.sessions || []).forEach((session, index) => { if (index === 0) session.formulaBlocks = blocks; else delete session.formulaBlocks; });
           }
         }
+        if (subject === "Mathématiques" && normalize(lesson.title).includes("figures symetriques")) {
+          const course = {
+            contentStatus: "Cours spécifique aligné sur les consignes DPFC de 6e",
+            definition: "Une figure admet un centre de symétrie lorsqu'on peut reconnaître un point autour duquel son organisation se retrouve après un demi-tour. En 6e, l'apprentissage porte surtout sur le repérage de ce centre et l'étude de figures usuelles.",
+            explanation: [
+              "On observe une figure, un motif ou un logo pour rechercher le point autour duquel son organisation se retrouve après un demi-tour.",
+              "Le centre d'un cercle est son centre de symétrie.",
+              "Le milieu d'un segment est son centre de symétrie.",
+              "Dans un parallélogramme, le point d'intersection des diagonales est le centre de symétrie.",
+              "Les propriétés étudiées portent notamment sur la conservation des longueurs, des mesures d'angles, de l'alignement et du parallélisme.",
+              "Le guide DPFC précise que la formalisation générale de la notion de symétrie centrale et le vocabulaire image/antécédent ne sont pas exigibles en 6e."
+            ],
+            example: "Un logo peut présenter un centre de symétrie si, après un demi-tour autour d'un point précis, il retrouve la même disposition.",
+            method: ["Observer la figure entière.", "Repérer un point candidat comme centre.", "Comparer les parties opposées.", "Vérifier avec un pliage, un calque ou un demi-tour.", "Justifier la reconnaissance avec les propriétés étudiées."],
+            vocabulary: ["Centre de symétrie", "Demi-tour", "Milieu", "Diagonale", "Parallélogramme", "Alignement"],
+            essential: "En 6e, il faut reconnaître le centre de symétrie éventuel d'une figure et connaître les cas du segment, du cercle et du parallélogramme."
+          };
+          Object.assign(lesson, course);
+          lesson.exercises = [
+            {level:"Reconnaissance",instruction:"Quel est le centre de symétrie d'un segment [AB] ?",correction:"C'est le milieu du segment [AB]."},
+            {level:"Reconnaissance",instruction:"Quel est le centre de symétrie d'un parallélogramme ?",correction:"C'est le point d'intersection de ses diagonales."},
+            {level:"Reconnaissance",instruction:"Quel est le centre de symétrie d'un cercle ?",correction:"C'est le centre du cercle."}
+          ];
+          lesson.quiz = [{question:"Quel point est le centre de symétrie d'un parallélogramme ?",answer:"Le point d'intersection de ses diagonales.",explanation:"Les diagonales se coupent en leur milieu."}];
+          (lesson.sessions || []).forEach(session => {
+            Object.assign(session, course);
+            session.exercises = lesson.exercises;
+            session.quiz = lesson.quiz;
+          });
+        }
         if (subject === "Physique-Chimie") {
           const key = Object.keys(PC).find(name => normalize(lesson.title).includes(normalize(name)) || normalize(name).includes(normalize(lesson.title)));
           if (key) {
