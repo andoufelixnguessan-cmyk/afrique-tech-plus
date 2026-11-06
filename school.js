@@ -1123,6 +1123,9 @@ function renderLesson(parent, lesson, lessonIndex) {
         )
       );
 
+      if (currentCategory === "cours" && window.ATP_SCHOOL_SOURCES_6E) {
+        window.ATP_SCHOOL_SOURCES_6E.render(body, currentSubject);
+      }
       details.appendChild(body);
       parent.appendChild(details);
       return;
@@ -1162,6 +1165,9 @@ function renderLesson(parent, lesson, lessonIndex) {
       });
 
       renderRevision(body, content.revision);
+      if (window.ATP_SCHOOL_SOURCES_6E) {
+        window.ATP_SCHOOL_SOURCES_6E.render(body, currentSubject);
+      }
     }
 
     if (currentCategory === "exercices") {
