@@ -171,6 +171,7 @@
     math("Milieu d'un segment", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AI</mi><mo>=</mo><mi>IB</mi><mo>=</mo><mfrac><mi>AB</mi><mn>2</mn></mfrac></mrow></math>', "I est le milieu de [AB] si I appartient au segment et si AI = IB.")
   ];
   F.circle = [
+    math("Appartenance à un cercle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mo>∈</mo><mi>C</mi><mo>(</mo><mi>A</mi><mo>,</mo><mi>r</mi><mo>)</mo><mo>⇔</mo><mi>AM</mi><mo>=</mo><mi>r</mi></mrow></math>', "M appartient au cercle de centre A et de rayon r si et seulement si AM = r."),
     math("Rayon et diamètre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mn>2</mn><mi>r</mi><mspace width="1em"/><mi>r</mi><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac></mrow></math>', "Le diamètre est deux fois le rayon."),
     math("Périmètre d'un cercle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>=</mo><mi>π</mi><mi>d</mi></mrow></math>', "P est la longueur du cercle ; d est le diamètre."),
     math("Aire d'un disque", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>', "L'aire du disque s'exprime en unités carrées.")
@@ -191,10 +192,15 @@
     math("Propriété des diagonales", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>AO</mi><mo>=</mo><mi>OC</mi><mspace width="1em"/><mi>BO</mi><mo>=</mo><mi>OD</mi></mrow></math>', "Les diagonales se coupent en leur milieu O.")
   ];
   F.solid = [
-    math("Volume d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>×</mo><mi>l</mi><mo>×</mo><mi>h</mi></mrow></math>', "Multiplier longueur, largeur et hauteur."),
+    math("Aire d'une face rectangulaire du pavé", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mi>L</mi><mo>×</mo><mi>l</mi></mrow></math>', "Aire d'une face de dimensions L et l."),
+    math("Aire latérale d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mtext>lat</mtext></msub><mo>=</mo><mn>2</mn><mi>h</mi><mo>(</mo><mi>L</mi><mo>+</mo><mi>l</mi><mo>)</mo></mrow></math>', "Somme des quatre faces latérales."),
     math("Aire totale d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mn>2</mn><mo>(</mo><mi>L</mi><mi>l</mi><mo>+</mo><mi>L</mi><mi>h</mi><mo>+</mo><mi>l</mi><mi>h</mi><mo>)</mo></mrow></math>', "Aire des six faces réunies."),
+    math("Volume d'un pavé droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>L</mi><mo>×</mo><mi>l</mi><mo>×</mo><mi>h</mi></mrow></math>', "Multiplier longueur, largeur et hauteur."),
+    math("Aire totale d'un cube", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mn>6</mn><msup><mi>a</mi><mn>2</mn></msup></mrow></math>', "Un cube possède six faces carrées de côté a."),
     math("Volume d'un cube", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><msup><mi>a</mi><mn>3</mn></msup></mrow></math>', "a est la longueur d'une arête."),
-    math("Aire totale d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>(</mo><mi>r</mi><mo>+</mo><mi>h</mi><mo>)</mo></mrow></math>', "Elle comprend les deux bases circulaires et la surface latérale."),
+    math("Aire d'une base du cylindre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mtext>base</mtext></msub><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>', "La base est un disque de rayon r."),
+    math("Aire latérale du cylindre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>A</mi><mtext>lat</mtext></msub><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mi>h</mi></mrow></math>', "Périmètre de la base multiplié par la hauteur."),
+    math("Aire totale du cylindre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>(</mo><mi>r</mi><mo>+</mo><mi>h</mi><mo>)</mo></mrow></math>', "Deux bases plus la surface latérale."),
     math("Volume d'un cylindre droit", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>V</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mi>h</mi></mrow></math>', "r est le rayon de la base et h la hauteur.")
   ];
   F.symmetry = [
@@ -268,7 +274,7 @@
             );
             if (key === "Volume d’un liquide et d’un solide") formulas.push(
               math("Volume d'un solide par déplacement", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>V</mi><mtext>solide</mtext></msub><mo>=</mo><msub><mi>V</mi><mn>2</mn></msub><mo>−</mo><msub><mi>V</mi><mn>1</mn></msub></mrow></math>', "V₁ est le volume initial du liquide et V₂ le volume après immersion."),
-              math("Équivalences de volume", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mn>1</mn><mtext> L</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mtext> dm</mtext><msup><mn>3</mn><mn></mn></msup></mtd></mtr><mtr><mtd><mn>1</mn><mtext> mL</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><mtext> cm</mtext><msup><mn>3</mn><mn></mn></msup></mtd></mtr><mtr><mtd><mn>1</mn><mtext> m</mtext><msup><mn>3</mn><mn></mn></msup></mtd><mtd><mo>=</mo></mtd><mtd><mn>1000</mn><mtext> L</mtext></mtd></mtr></mtable></math>', "Ces équivalences sont indispensables pour convertir les mesures.")
+              math("Équivalences de volume", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mtable><mtr><mtd><mn>1</mn><mtext> L</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><msup><mtext>dm</mtext><mn>3</mn></msup></mtd></mtr><mtr><mtd><mn>1</mn><mtext> mL</mtext></mtd><mtd><mo>=</mo></mtd><mtd><mn>1</mn><msup><mtext>cm</mtext><mn>3</mn></msup></mtd></mtr><mtr><mtd><mn>1</mn><msup><mtext>m</mtext><mn>3</mn></msup></mtd><mtd><mo>=</mo></mtd><mtd><mn>1000</mn><mtext> L</mtext></mtd></mtr></mtable></math>', "Ces équivalences sont indispensables pour convertir les mesures.")
             );
             if (key === "Masse d’un solide et d’un liquide") formulas.push(
               math("Masse d'un liquide par double pesée", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>m</mi><mtext>liquide</mtext></msub><mo>=</mo><msub><mi>m</mi><mtext>récipient plein</mtext></msub><mo>−</mo><msub><mi>m</mi><mtext>récipient vide</mtext></msub></mrow></math>', "Soustraire la masse du récipient vide de celle du récipient plein."),
