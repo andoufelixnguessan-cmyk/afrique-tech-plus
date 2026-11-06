@@ -122,6 +122,17 @@
       [{level:"Auto-évaluation",instruction:"Choisis une production plastique et propose deux améliorations précises.",correction:"Les améliorations doivent être observables, par exemple mieux organiser les éléments et renforcer le contraste du titre."}],
       [{question:"Pourquoi faut-il comprendre une erreur au lieu de recopier seulement la correction ?",answer:"Pour éviter de refaire la même erreur et améliorer sa méthode.",explanation:"Comprendre l'origine de l'erreur aide à progresser."}]
     )],
+    ["sante et comportements responsables", make(
+      "La sensibilisation à la santé consiste à connaître les risques de transmission de certaines infections, à adopter des comportements responsables et à respecter les personnes concernées.",
+      ["Identifier des situations pouvant transmettre une infection.", "Distinguer les contacts ordinaires des situations à risque.", "Proposer des comportements de prévention et de respect."],
+      ["Certaines infections peuvent se transmettre par le contact avec du sang contaminé ou par l'utilisation d'objets perforants qui n'ont pas été correctement stérilisés.", "Une poignée de main, une accolade, le partage d'une salle de classe ou le fait de manger à la même table ne transmettent pas ces infections.", "La prévention repose sur l'information fiable, l'hygiène, la sécurité et l'utilisation de matériel médical stérile.", "Il ne faut jamais partager des aiguilles ou des objets coupants pouvant être souillés par du sang.", "Les personnes malades doivent être respectées ; les moqueries et l'exclusion sont injustes."],
+      "Un slogan de sensibilisation peut rappeler : « S'informer, prévenir, respecter chacun ».",
+      ["Lire une information provenant d'une source de santé fiable.", "Identifier les situations à risque sans stigmatiser les personnes.", "Choisir un comportement de prévention adapté.", "Créer un slogan court et exact.", "Vérifier que le message ne diffuse ni peur ni discrimination."],
+      ["Prévention","Transmission","Sang contaminé","Matériel stérile","Hygiène","Respect","Discrimination"],
+      "La prévention repose sur l'information, la sécurité et le respect de chacun.",
+      [{level:"Compréhension",instruction:"Cite deux situations qui ne présentent pas de risque de transmission par le sang.",correction:"Une poignée de main et le partage d'une salle de classe, par exemple."},{level:"Prévention",instruction:"Pourquoi ne faut-il jamais partager une aiguille ?",correction:"Parce qu'elle peut être contaminée par du sang et transmettre une infection."}],
+      [{question:"Pourquoi faut-il éviter de partager des objets perforants ?",answer:"Parce qu'ils peuvent être contaminés par du sang.",explanation:"Le matériel médical doit être stérile et utilisé selon les règles de sécurité."}]
+    )],
     ["consequences de la guerre", make(
       "Une œuvre d'art témoin des conséquences de la guerre est une production qui représente, évoque ou conserve la mémoire des souffrances et destructions liées aux conflits.",
       ["Décrire une œuvre liée à la guerre.", "Identifier son message et son contexte.", "Respecter la dignité des personnes représentées."],
