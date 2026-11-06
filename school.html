@@ -5,15 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f3f7ff">
   <title>ATP SCHOOL | AFRIQUE TECH PLUS</title>
-  <meta name="description" content="Ton espace scolaire numérique : cours, exercices corrigés, devoirs et préparation aux examens.">
+  <meta name="description" content="Ton espace scolaire numérique : cours, exercices, devoirs et préparation aux examens.">
 
   <style>
     :root {
       --bg:#f3f7ff;
       --panel:#ffffff;
-      --panel2:#edf3ff;
       --blue:#2864d8;
-      --violet:#7951d5;
       --text:#17233d;
       --muted:#61708c;
       --border:#dce5f4;
@@ -41,7 +39,7 @@
     }
 
     aside {
-      background:#ffffff;
+      background:#fff;
       border-right:1px solid var(--border);
       padding:25px 17px;
       position:sticky;
@@ -153,8 +151,6 @@
       border:1px solid #dce5fa;
       border-radius:25px;
       background:linear-gradient(115deg,#e4efff,#eee7ff);
-      position:relative;
-      overflow:hidden;
     }
 
     .hero h1 {
@@ -171,7 +167,7 @@
 
     .hero-tag {
       display:inline-block;
-      background:#ffffff;
+      background:#fff;
       color:#365c9c;
       padding:8px 12px;
       border-radius:30px;
@@ -203,7 +199,7 @@
     }
 
     .picker-panel,.toolbar,.workspace,.stat {
-      background:#ffffff;
+      background:#fff;
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:0 4px 14px rgba(36,65,110,.04);
@@ -234,7 +230,6 @@
     }
 
     .school-select {min-width:230px}
-    .school-select option {background:white;color:#263754}
 
     .school-select:focus,.search:focus,.filter:focus {
       border-color:var(--blue);
@@ -249,6 +244,7 @@
     }
 
     .stat {padding:18px}
+
     .stat strong {
       display:block;
       font-size:25px;
@@ -285,7 +281,7 @@
     }
 
     .subject-card {
-      background:#ffffff;
+      background:#fff;
       border:1px solid var(--border);
       padding:20px;
       border-radius:17px;
@@ -329,7 +325,7 @@
 
     .category-card {
       padding:19px;
-      background:#ffffff;
+      background:#fff;
       border:1px solid var(--border);
       border-radius:15px;
       color:#263754;
@@ -364,16 +360,14 @@
       border-radius:13px;
     }
 
-    .resource-item h3 {
-      font-size:15px;
-      margin:0 0 8px;
+    .resource-item summary {
+      cursor:pointer;
+      font-weight:bold;
       color:#203452;
+      line-height:1.5;
     }
 
-    .resource-item p {
-      font-size:12px;
-      margin:0;
-    }
+    .lesson-body {padding-top:14px}
 
     .empty {
       padding:25px;
@@ -555,6 +549,7 @@
   </main>
 </div>
 
+<script src="school-curriculum-6e.js"></script>
 <script src="school.js"></script>
 </body>
 </html>
