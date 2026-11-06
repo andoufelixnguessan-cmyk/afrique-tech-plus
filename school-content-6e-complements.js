@@ -111,7 +111,7 @@
       [{level:"Analyse",instruction:"Décris une œuvre préhistorique à partir de son sujet, de ses matériaux et de sa technique.",correction:"La réponse doit décrire des éléments observables et présenter toute interprétation comme une hypothèse."}],
       [{question:"Pourquoi faut-il distinguer observation et interprétation ?",answer:"Parce que l'observation décrit ce qui est visible, tandis que l'interprétation propose une explication.",explanation:"Cette distinction évite d'affirmer comme certain ce qui reste hypothétique."}]
     )],
-    ["oeuvres d art temoins", make(
+    ["consequences de la guerre", make(
       "Une œuvre d'art témoin des conséquences de la guerre est une production qui représente, évoque ou conserve la mémoire des souffrances et destructions liées aux conflits.",
       ["Décrire une œuvre liée à la guerre.", "Identifier son message et son contexte.", "Respecter la dignité des personnes représentées."],
       ["Une œuvre peut témoigner des destructions, déplacements, pertes, blessures et efforts de reconstruction.", "Les artistes utilisent formes, couleurs, matières et symboles pour transmettre une émotion ou un message.", "L'analyse doit éviter le sensationnalisme et respecter les victimes.", "Une œuvre peut contribuer à la mémoire et à la sensibilisation à la paix."],
@@ -135,6 +135,17 @@
       "Les droits de l'enfant protègent sa vie, sa santé, son identité et son développement.",
       [{level:"Situation",instruction:"Cite trois droits qui protègent un enfant et explique leur importance.",correction:"Droit à la santé, à l'éducation et à la protection, par exemple ; ils contribuent à son développement et à sa sécurité."}],
       [{question:"Que faire si un enfant est en danger ?",answer:"Se mettre en sécurité et prévenir un adulte de confiance ou un service compétent.",explanation:"La protection de l'enfant est prioritaire."}]
+    )],
+    ["droits de l homme", make(
+      "Les droits de l'homme sont des droits et libertés fondamentaux reconnus à toute personne en raison de sa dignité humaine.",
+      ["Citer des droits fondamentaux.", "Expliquer l'importance de l'égalité et de la dignité.", "Identifier des comportements qui respectent ou violent les droits."],
+      ["Les droits fondamentaux concernent toutes les personnes sans distinction d'origine, de sexe, de langue, de croyance ou de situation sociale.", "Ils comprennent notamment le droit à la vie, à l'éducation, à la santé, à la liberté et à la sécurité.", "Le respect des droits d'une personne implique de respecter ceux des autres.", "Une discrimination consiste à traiter injustement une personne ou un groupe en raison d'une caractéristique.", "Les institutions et les citoyens ont des responsabilités dans la protection des droits."],
+      "Permettre à chaque élève d'accéder aux cours sans discrimination est une manière de respecter le droit à l'éducation.",
+      ["Identifier la personne concernée.", "Nommer le droit en jeu.", "Décrire le comportement observé.", "Proposer une solution qui protège la dignité et l'égalité."],
+      ["Droit humain","Dignité","Égalité","Liberté","Discrimination","Respect"],
+      "Les droits de l'homme sont universels et doivent être respectés dans la vie quotidienne.",
+      [{level:"Application",instruction:"Donne deux exemples de comportements qui respectent les droits de l'homme à l'école.",correction:"Écouter chacun sans discrimination et permettre à tous les élèves de participer aux activités."}],
+      [{question:"Les droits fondamentaux s'appliquent-ils à toutes les personnes ?",answer:"Oui, sans discrimination.",explanation:"Ils sont liés à la dignité humaine."}]
     )],
     ["droit international humanitaire", make(
       "Le droit international humanitaire (DIH) est l'ensemble des règles qui cherchent à limiter les effets des conflits armés et à protéger les personnes qui ne participent pas ou plus aux combats.",
