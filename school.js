@@ -1184,6 +1184,7 @@ function renderLesson(parent, lesson, lessonIndex) {
 
     if (currentCategory === "cours") {
       renderObjectives(body, content.objectives);
+      if (!sessions.length) renderFormulaBlocks(body, content.formulaBlocks);
 
       sessions.forEach((session, index) => {
         const sessionDetails = document.createElement("details");
