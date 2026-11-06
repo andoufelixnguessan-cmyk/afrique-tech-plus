@@ -263,7 +263,7 @@
       [{level:"Sécurité",instruction:"Que doit faire un élève dès que le professeur donne le signal d'arrêt ?",correction:"Il arrête immédiatement l'action, relâche le partenaire et attend la consigne suivante."}],
       [{question:"Peut-on improviser une projection sans apprentissage ni encadrement ?",answer:"Non.",explanation:"Les techniques se réalisent progressivement sous la surveillance de l'enseignant."}]
     )],
-    ["saut en hauteur", make(
+    ["sauts hauteur", make(
       "Le saut en hauteur est une activité athlétique qui consiste à franchir une barre ou un obstacle placé à une hauteur donnée.",
       ["Identifier les phases du saut en hauteur.", "Coordonner course d'élan et impulsion.", "Franchir et réceptionner en sécurité."],
       ["Le saut comprend une course d'élan adaptée, une impulsion sur un pied, le franchissement de l'obstacle et une réception sur une zone sécurisée.", "L'élève doit respecter la zone d'élan et attendre que la zone de réception soit libre.", "La technique est adaptée au niveau de l'élève et au matériel disponible.", "La hauteur augmente progressivement ; la qualité du geste compte autant que la performance."],
@@ -368,7 +368,7 @@
 
   engine.buildAll = function (raw) {
     const all = previousBuildAll(raw);
-    const stats = { arts: 0, edhc: 0, tice: 0, missing: [] };
+    const stats = { arts: 0, edhc: 0, tice: 0, eps: 0, missing: [] };
     Object.keys(all || {}).forEach(subject => {
       const lessons = all[subject] && Array.isArray(all[subject].lessons) ? all[subject].lessons : [];
       lessons.forEach(lesson => {
@@ -385,7 +385,7 @@
           if (item) { course = item[1]; stats.tice++; }
         } else if (subject === "EPS") {
           const item = EPS.find(([key]) => title.includes(norm(key)));
-          if (item) course = item[1];
+          if (item) { course = item[1]; stats.eps++; }
         }
         if (course) {
           apply(lesson, course);
