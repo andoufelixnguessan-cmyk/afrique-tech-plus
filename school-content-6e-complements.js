@@ -251,6 +251,97 @@
     )]
   ];
 
+  const EPS = [
+    ["techniques de projection et de controle", make(
+      "Les techniques de projection et de contrôle sont des actions motrices qui consistent à déséquilibrer, déplacer ou maîtriser un partenaire dans un cadre sportif réglementé.",
+      ["Identifier les positions et les appuis.", "Réaliser des actions simples sous contrôle de l'enseignant.", "Respecter l'intégrité physique du partenaire."],
+      ["Une projection est une action qui fait perdre l'équilibre au partenaire et l'amène au sol selon une technique autorisée.", "Le contrôle consiste à stabiliser une position sans geste dangereux ni pression sur une articulation.", "Les apprentissages se font progressivement, sur une surface adaptée et avec des partenaires de gabarit convenable.", "Il est interdit de frapper, étrangler, tordre une articulation ou poursuivre une action après le signal d'arrêt.", "Le respect, la maîtrise de soi et l'arrêt immédiat au signal sont indispensables."],
+      "Lors d'un exercice encadré, l'élève apprend d'abord à adopter une posture stable et à accompagner un déplacement sans brutalité.",
+      ["Écouter la démonstration.", "S'échauffer et vérifier le tapis.", "Répéter les placements sans force.", "Réaliser uniquement la technique autorisée.", "Arrêter au signal et vérifier que le partenaire va bien."],
+      ["Appui","Déséquilibre","Projection","Contrôle","Partenaire","Tapis","Sécurité"],
+      "La sécurité du partenaire passe avant la performance ; aucune technique dangereuse ne doit être improvisée.",
+      [{level:"Sécurité",instruction:"Que doit faire un élève dès que le professeur donne le signal d'arrêt ?",correction:"Il arrête immédiatement l'action, relâche le partenaire et attend la consigne suivante."}],
+      [{question:"Peut-on improviser une projection sans apprentissage ni encadrement ?",answer:"Non.",explanation:"Les techniques se réalisent progressivement sous la surveillance de l'enseignant."}]
+    )],
+    ["saut en hauteur", make(
+      "Le saut en hauteur est une activité athlétique qui consiste à franchir une barre ou un obstacle placé à une hauteur donnée.",
+      ["Identifier les phases du saut en hauteur.", "Coordonner course d'élan et impulsion.", "Franchir et réceptionner en sécurité."],
+      ["Le saut comprend une course d'élan adaptée, une impulsion sur un pied, le franchissement de l'obstacle et une réception sur une zone sécurisée.", "L'élève doit respecter la zone d'élan et attendre que la zone de réception soit libre.", "La technique est adaptée au niveau de l'élève et au matériel disponible.", "La hauteur augmente progressivement ; la qualité du geste compte autant que la performance."],
+      "Un élève commence par franchir une corde basse après une course d'élan courte et contrôlée.",
+      ["Vérifier la zone et le matériel.", "S'échauffer.", "Prendre un élan régulier.", "Impulser sur un pied et franchir l'obstacle.", "Réceptionner sur la zone prévue."],
+      ["Élan","Impulsion","Franchissement","Réception","Barre","Zone de chute"],
+      "Le saut en hauteur demande coordination et réception sûre ; la hauteur doit être adaptée.",
+      [{level:"Analyse",instruction:"Cite les phases essentielles du saut en hauteur.",correction:"Course d'élan, impulsion, franchissement et réception."}],
+      [{question:"Pourquoi la zone de réception doit-elle être dégagée ?",answer:"Pour éviter les collisions et les blessures.",explanation:"La sécurité est prioritaire."}]
+    )],
+    ["saut en longueur", make(
+      "Le saut en longueur est une épreuve athlétique dans laquelle l'élève cherche à parcourir la plus grande distance horizontale après une impulsion.",
+      ["Identifier les phases du saut.", "Régler une course d'élan.", "Améliorer impulsion et réception."],
+      ["Les phases sont la course d'élan, l'appel sur un pied, la phase aérienne et la réception dans la zone prévue.", "L'appel doit se faire avant la limite de la planche ou de la ligne d'appel.", "La réception se fait dans le sable ou sur une zone adaptée, jambes fléchies et sans mettre les mains derrière soi si cela peut déséquilibrer.", "La distance est mesurée entre la ligne d'appel et la marque la plus proche laissée dans la zone de réception."],
+      "Après une course d'élan maîtrisée, l'élève prend son impulsion avant la ligne puis se réceptionne dans le sable.",
+      ["Mesurer et régler l'élan.", "S'échauffer.", "Courir progressivement.", "Prendre l'appel avant la ligne.", "Projeter les jambes vers l'avant et réceptionner en sécurité."],
+      ["Course d'élan","Appel","Impulsion","Phase aérienne","Réception","Planche d'appel"],
+      "La performance dépend de l'élan, de l'appel et d'une réception contrôlée.",
+      [{level:"Application",instruction:"Dans quel ordre se déroulent les phases du saut en longueur ?",correction:"Course d'élan, appel, phase aérienne, réception."}],
+      [{question:"Sur quelle zone se fait généralement la réception ?",answer:"Dans un bac de sable ou une zone de réception adaptée.",explanation:"La zone amortit la réception."}]
+    )],
+    ["triple saut", make(
+      "Le triple saut est une épreuve athlétique composée de trois bonds successifs avant la réception.",
+      ["Nommer les trois phases de bonds.", "Coordonner les appuis.", "Respecter la zone d'appel et de réception."],
+      ["Le triple saut enchaîne un cloche-pied, une foulée bondissante et un saut final.", "Le même pied réalise l'appel et la réception du cloche-pied ; le pied opposé intervient ensuite pour la foulée bondissante.", "La coordination et le rythme permettent de conserver l'équilibre et la vitesse.", "La réception finale doit se faire dans une zone dégagée et adaptée."],
+      "L'élève répète d'abord les trois phases à faible vitesse avant de les enchaîner avec un élan progressif.",
+      ["Apprendre chaque bond séparément.", "Répéter le rythme sans chercher la distance.", "Enchaîner cloche-pied, foulée bondissante et saut.", "Contrôler la réception."],
+      ["Cloche-pied","Foulée bondissante","Saut","Appel","Coordination","Réception"],
+      "Le triple saut exige un enchaînement précis : cloche-pied, foulée bondissante, saut.",
+      [{level:"Rappel",instruction:"Nomme les trois bonds du triple saut dans l'ordre.",correction:"Cloche-pied, foulée bondissante, saut."}],
+      [{question:"Combien de bonds successifs composent le triple saut ?",answer:"Trois.",explanation:"C'est l'origine du nom de l'épreuve."}]
+    )],
+    ["basketball", make(
+      "Le basketball est un sport collectif où deux équipes cherchent à marquer en faisant entrer le ballon dans le panier adverse.",
+      ["Se déplacer avec et sans ballon.", "Réaliser passes, dribbles et tirs simples.", "Respecter les règles et coopérer."],
+      ["Le dribble permet de se déplacer avec le ballon ; marcher en tenant le ballon sans dribbler constitue une faute.", "La passe transmet le ballon à un partenaire mieux placé.", "Le tir vise le panier adverse ; la réussite dépend de l'équilibre et du geste.", "Les joueurs se démarquent pour proposer une solution de passe.", "Le contact dangereux, les poussées et les gestes antisportifs sont interdits."],
+      "Un joueur dribble jusqu'à un espace libre puis passe à un partenaire démarqué qui tente un tir.",
+      ["S'échauffer.", "Maîtriser le dribble à l'arrêt puis en déplacement.", "Réaliser des passes à deux.", "Enchaîner réception, déplacement et tir.", "Respecter les règles et le fair-play."],
+      ["Dribble","Passe","Tir","Panier","Démarquage","Marcher","Défense"],
+      "Le basketball repose sur le dribble, la passe, le tir et la coopération.",
+      [{level:"Règle",instruction:"Pourquoi un joueur ne doit-il pas avancer avec le ballon sans dribbler ?",correction:"Parce que cela constitue une faute de marcher."}],
+      [{question:"Quel geste permet de faire progresser le ballon en se déplaçant ?",answer:"Le dribble.",explanation:"Le joueur fait rebondir le ballon au sol."}]
+    )],
+    ["handball", make(
+      "Le handball est un sport collectif où deux équipes utilisent principalement les mains pour faire circuler le ballon et marquer dans le but adverse.",
+      ["Réaliser une passe et une réception.", "Se déplacer et tirer en respectant les règles.", "Coopérer en attaque et en défense."],
+      ["La passe permet de faire circuler rapidement le ballon entre partenaires.", "Le joueur peut progresser en dribblant ou en effectuant les pas autorisés par les règles scolaires.", "Le tir vise le but adverse ; le gardien protège la zone de but.", "Les joueurs doivent respecter la zone du gardien et éviter les contacts dangereux.", "Le repli défensif permet de protéger son but après la perte du ballon."],
+      "Après une passe, un joueur se déplace vers un espace libre pour recevoir à nouveau le ballon et tirer.",
+      ["S'échauffer avec des passes.", "Travailler la réception à deux mains.", "Apprendre le dribble et le tir.", "Se démarquer en attaque.", "Revenir défendre sans pousser ni retenir un adversaire."],
+      ["Passe","Réception","Dribble","Tir","Gardien","Zone de but","Repli défensif"],
+      "Le handball demande des passes précises, des déplacements coordonnés et le respect de la zone du gardien.",
+      [{level:"Tactique",instruction:"Pourquoi faut-il se déplacer après avoir fait une passe ?",correction:"Pour se démarquer et offrir une nouvelle solution à ses partenaires."}],
+      [{question:"Quel joueur protège principalement le but ?",answer:"Le gardien.",explanation:"Il défend la zone de but selon les règles."}]
+    )],
+    ["volleyball", make(
+      "Le volleyball est un sport collectif où deux équipes se renvoient un ballon au-dessus d'un filet afin de le faire tomber dans le camp adverse.",
+      ["Réaliser une manchette et une passe simple.", "Se placer pour recevoir le ballon.", "Coopérer et respecter les règles de jeu."],
+      ["Le service met le ballon en jeu depuis l'arrière du terrain.", "La réception contrôle le ballon envoyé par l'adversaire ; la manchette utilise les avant-bras rapprochés.", "La passe prépare l'attaque d'un partenaire.", "Une équipe dispose généralement de trois touches au maximum pour renvoyer le ballon, sans compter le contact de bloc selon les règles officielles.", "Les joueurs communiquent pour éviter que deux personnes se gênent sur le même ballon."],
+      "Un joueur réceptionne un service en manchette, un partenaire fait une passe et un troisième renvoie le ballon au-dessus du filet.",
+      ["S'échauffer les épaules et les jambes.", "Apprendre la position d'attente.", "Réaliser des manchettes à deux.", "Enchaîner réception et passe.", "Annoncer clairement « j'ai » pour communiquer."],
+      ["Service","Réception","Manchette","Passe","Filet","Camp","Rotation"],
+      "La communication et la qualité de réception sont essentielles au volleyball.",
+      [{level:"Application",instruction:"Décris une séquence de trois touches permettant de renvoyer le ballon.",correction:"Réception en manchette, passe à un partenaire puis renvoi au-dessus du filet."}],
+      [{question:"Combien de touches une équipe peut-elle généralement utiliser avant de renvoyer le ballon ?",answer:"Trois touches au maximum.",explanation:"C'est la règle de base enseignée au volleyball."}]
+    )],
+    ["football", make(
+      "Le football est un sport collectif où deux équipes cherchent à marquer en envoyant le ballon dans le but adverse, principalement avec les pieds.",
+      ["Contrôler et conduire le ballon.", "Réaliser une passe et un tir.", "Se démarquer et respecter les règles."],
+      ["Le contrôle permet de maîtriser le ballon à sa réception.", "La conduite consiste à avancer en gardant le ballon près de soi.", "La passe transmet le ballon à un partenaire ; le tir vise le but.", "Les joueurs sans ballon se déplacent pour créer des espaces et proposer des solutions.", "Le gardien peut utiliser les mains dans sa surface de réparation selon les règles ; les autres joueurs ne jouent pas volontairement le ballon avec la main."],
+      "Un joueur contrôle le ballon, lève la tête, passe à un partenaire démarqué puis se déplace pour recevoir de nouveau.",
+      ["S'échauffer.", "Contrôler le ballon avec le pied.", "Conduire le ballon en changeant de direction.", "Faire des passes courtes.", "Tirer vers une cible et respecter les autres joueurs."],
+      ["Contrôle","Conduite","Passe","Tir","Démarquage","Gardien","Fair-play"],
+      "Le football repose sur le contrôle, la conduite, la passe, le tir et le jeu collectif.",
+      [{level:"Application",instruction:"Explique pourquoi un joueur doit lever la tête avant de faire une passe.",correction:"Pour repérer la position des partenaires et des adversaires et choisir une passe adaptée."}],
+      [{question:"Quel joueur peut utiliser les mains dans sa surface de réparation ?",answer:"Le gardien de but.",explanation:"Les autres joueurs doivent jouer le ballon avec les parties autorisées."}]
+    )]
+  ];
+
   function apply(target, course) {
     if (!target || !course) return;
     target.contentStatus = "Cours spécifique rédigé — complément disciplinaire 6e";
@@ -292,6 +383,9 @@
         } else if (subject === "TICE") {
           const item = TICE.find(([key]) => title.includes(norm(key)));
           if (item) { course = item[1]; stats.tice++; }
+        } else if (subject === "EPS") {
+          const item = EPS.find(([key]) => title.includes(norm(key)));
+          if (item) course = item[1];
         }
         if (course) {
           apply(lesson, course);
