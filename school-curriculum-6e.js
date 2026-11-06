@@ -335,7 +335,7 @@ window.ATP_CURRICULUM_6E = {
     "La reproduction chez les mammifères",
     "La reproduction chez les oiseaux",
     "Les facteurs de croissance chez les plantes à fleurs",
-    "L’influence des aliments sur la croissance des vers de terre",
+    "L’influence des aliments sur la croissance des vertébrés (cas du poulet)",
     "Les actions néfastes de l’homme sur l’environnement",
     "La lutte contre la dégradation de l’environnement"
   ],
