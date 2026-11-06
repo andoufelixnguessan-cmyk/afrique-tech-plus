@@ -194,8 +194,8 @@
   }
   function formulaFor(title) {
     const t = normalize(title);
-    if (t.includes("entier naturel")) return F.nat;
-    if (t.includes("decimal relatif")) return F.relatifs;
+    if (t.includes("entier naturel") || t.includes("entiers naturels")) return F.nat;
+    if (t.includes("decimal relatif") || t.includes("decimaux relatifs")) return F.relatifs;
     if (t.includes("fraction")) return F.fractions;
     if (t.includes("proportion")) return F.proportion;
     if (t.includes("statist")) return F.statistics;
@@ -229,7 +229,7 @@
   }
   engine.buildAll = function (raw) {
     const all = previousBuildAll(raw);
-    const audit = { mathLessonsWithFormulaBlocks: 0, physicsLessonsWithSpecificCourse: 0, subjects: {} };
+    const audit = { mathLessonsWithFormulaBlocks: 0, physicsSpecificLessons: 0, subjects: {} };
     Object.keys(all || {}).forEach(subject => {
       const lessons = all[subject] && Array.isArray(all[subject].lessons) ? all[subject].lessons : [];
       audit.subjects[subject] = { lessons: lessons.length, formulaLessons: 0, physicsSpecific: 0 };
