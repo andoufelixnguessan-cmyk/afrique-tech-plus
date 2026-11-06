@@ -25,8 +25,12 @@
 
     // Ne jamais fabriquer un cours à partir du seul titre : on enrichit
     // uniquement une fiche qui possède déjà une matière pédagogique réelle.
-    if (!definition || explanations.length < 2 || !example || !methods.length) {
-      target.contentStatus = target.contentStatus || "Contenu à rédiger et vérifier";
+    const genericFallback =
+      definition.toLocaleLowerCase("fr").startsWith("cette leçon porte sur") ||
+      example.toLocaleLowerCase("fr").startsWith("pour travailler") ||
+      explanations.some(line => clean(line).startsWith("Commence par observer ou lire attentivement la situation proposée"));
+    if (!definition || explanations.length < 2 || !example || !methods.length || genericFallback) {
+      target.contentStatus = "Contenu à rédiger et vérifier — fiche spécifique insuffisante";
       return false;
     }
 
