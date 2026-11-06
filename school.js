@@ -734,6 +734,21 @@ function addSection(parent, title, content) {
     if (course.method) addSection(parent, "Méthode de travail", course.method);
     if (course.essential) addSection(parent, "À retenir", course.essential);
     if (course.conclusion) addSection(parent, "Conclusion", course.conclusion);
+    if (course.guidedProgression) {
+      const progression = course.guidedProgression.map(step =>
+        step.heading + " : " + step.text
+      );
+      addSection(parent, "📚 Comprendre le cours étape par étape", progression);
+    }
+    if (course.workedExample) {
+      addSection(parent, "🧩 Exemple résolu — démarche", [
+        "Situation : " + course.workedExample.statement,
+        ...toArray(course.workedExample.steps).map((step, index) => "Étape " + (index + 1) + " : " + step),
+        course.workedExample.conclusion
+      ]);
+    }
+    if (course.commonErrors) addSection(parent, "⚠️ Erreurs fréquentes à éviter", course.commonErrors);
+    if (course.selfCheck) addSection(parent, "✅ Vérifie que tu maîtrises la leçon", course.selfCheck);
 
     if (!parent.querySelector(".atp-learning-section")) {
       addSection(parent, "Contenu du cours",
