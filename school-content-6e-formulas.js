@@ -184,7 +184,10 @@
     math("Appartenance à un cercle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi><mo>∈</mo><mi>C</mi><mo>(</mo><mi>A</mi><mo>,</mo><mi>r</mi><mo>)</mo><mo>⇔</mo><mi>AM</mi><mo>=</mo><mi>r</mi></mrow></math>', "M appartient au cercle de centre A et de rayon r si et seulement si AM = r."),
     math("Rayon et diamètre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>d</mi><mo>=</mo><mn>2</mn><mi>r</mi><mspace width="1em"/><mi>r</mi><mo>=</mo><mfrac><mi>d</mi><mn>2</mn></mfrac></mrow></math>', "Le diamètre est deux fois le rayon."),
     math("Périmètre d'un cercle", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>P</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>r</mi><mo>=</mo><mi>π</mi><mi>d</mi></mrow></math>', "P est la longueur du cercle ; d est le diamètre."),
-    math("Aire d'un disque", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>', "L'aire du disque s'exprime en unités carrées.")
+    math("Aire d'un disque", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup></mrow></math>', "L'aire du disque s'exprime en unités carrées."),
+    math("Aire d'un disque à partir du diamètre", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>A</mi><mo>=</mo><mfrac><mrow><mi>π</mi><msup><mi>d</mi><mn>2</mn></msup></mrow><mn>4</mn></mfrac></mrow></math>', "On peut utiliser le diamètre d au lieu du rayon."),
+    math("Valeur approchée de pi", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>π</mi><mo>≈</mo><mn>3.14</mn></mrow></math>', "Pour obtenir une valeur approchée du périmètre ou de l'aire.")
+
   ];
   F.angles = [
     math("Angle nul", '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>mesure</mi><mo>=</mo><mn>0</mn><mo>°</mo></mrow></math>', "Les deux côtés sont confondus."),
