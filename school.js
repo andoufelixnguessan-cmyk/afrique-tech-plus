@@ -1,10 +1,6 @@
 (() => {
   "use strict";
 
-  // ==========================================
-  // 1. CLASSES ET MATIÈRES
-  // ==========================================
-
   const GROUPS = {
     "Collège": ["6e", "5e", "4e", "3e"],
     "Seconde": ["Seconde A", "Seconde C"],
@@ -62,79 +58,6 @@
     "Dessin / Éducation musicale": "Éducation musicale"
   };
 
-  const SUBJECT_ICONS = Object.fromEntries(
-    COLLEGE.map(([name, icon]) => [name, icon])
-  );
-
-  // ==========================================
-  // 2. RÉCUPÉRATION DU PROGRAMME DE 6e
-  // ==========================================
-
-  const curriculum = window.ATP_CURRICULUM_6E || {};
-
-  function normalizeLessons(data) {
-    const result = [];
-
-    if (Array.isArray(data)) {
-      data.forEach((item, index) => {
-        if (typeof item === "string") {
-          result.push({
-            title: item,
-            section: "",
-            number: index + 1
-          });
-        } else if (item && typeof item.title === "string") {
-          result.push({
-            title: item.title,
-            section: item.section || "",
-            number: index + 1
-          });
-        }
-      });
-
-      return result;
-    }
-
-    if (data && typeof data === "object") {
-      Object.entries(data).forEach(([section, titles]) => {
-        if (!Array.isArray(titles)) return;
-
-        titles.forEach((item, index) => {
-          if (typeof item === "string") {
-            result.push({
-              title: item,
-              section,
-              number: index + 1
-            });
-          } else if (item && typeof item.title === "string") {
-            result.push({
-              title: item.title,
-              section: item.section || section,
-              number: index + 1
-            });
-          }
-        });
-      });
-    }
-
-    return result;
-  }
-
-  const LESSONS = {};
-
-  Object.entries(curriculum).forEach(([subject, data]) => {
-    LESSONS[subject] = normalizeLessons(data);
-  });
-
-  function getSubjectLessons(subject) {
-    const curriculumName = SUBJECT_ALIASES[subject] || subject;
-    return LESSONS[curriculumName] || [];
-  }
-
-  // ==========================================
-  // 3. CATÉGORIES DE RESSOURCES
-  // ==========================================
-
   const CATEGORIES = {
     cours: "Cours",
     exercices: "Exercices corrigés",
@@ -143,15 +66,11 @@
   };
 
   const CATEGORY_MESSAGES = {
-    cours: "Le titre de la leçon est enregistré. Le contenu pédagogique complet sera intégré à partir de la ressource officielle.",
+    cours: "Le contenu détaillé du cours sera intégré à partir des ressources pédagogiques vérifiées.",
     exercices: "Les exercices et leurs corrections seront ajoutés à partir des ressources pédagogiques vérifiées.",
-    devoirs: "Les devoirs et évaluations de cette leçon seront ajoutés après récupération des documents correspondants.",
+    devoirs: "Les devoirs et évaluations seront ajoutés à partir des documents correspondants.",
     examens: "Les fiches de révision et sujets d'examen seront ajoutés à partir de ressources vérifiées."
   };
-
-  // ==========================================
-  // 4. ÉTAT ET OUTILS
-  // ==========================================
 
   const $ = id => document.getElementById(id);
 
@@ -169,6 +88,7 @@
 
   let currentSubject = "";
   let currentCategory = "cours";
+  let currentSection = "";
   let favorites = safeRead("atp_school_favorites", []);
   let completed = safeRead("atp_school_completed", []);
   let favoritesOnly = false;
@@ -183,10 +103,8 @@
 
   function createElement(tag, content = "", className = "") {
     const element = document.createElement(tag);
-
     if (content !== "") element.textContent = content;
     if (className) element.className = className;
-
     return element;
   }
 
@@ -203,10 +121,72 @@
     $("completedCount").textContent = completed.length;
   }
 
-  // ==========================================
-  // 5. SÉLECTEUR DE CLASSE
-  // ==========================================
+  // Normalisation des anciennes listes et du nouveau format imbriqué.
+  function normalizeLessons(data) {
+    const result = [];
 
+    if (Array.isArray(data)) {
+      data.forEach((item, index) => {
+        if (typeof item === "string") {
+          result.push({
+            title: item,
+            section: "",
+            number: index + 1,
+            sessions: []
+          });
+        } else if (item && typeof item.title === "string") {
+          result.push({
+            title: item.title,
+            section: item.section || "",
+            number: index + 1,
+            sessions: Array.isArray(item.sessions) ? item.sessions : []
+          });
+        }
+      });
+
+      return result;
+    }
+
+    if (data && typeof data === "object") {
+      Object.entries(data).forEach(([section, items]) => {
+        if (!Array.isArray(items)) return;
+
+        items.forEach((item, index) => {
+          if (typeof item === "string") {
+            result.push({
+              title: item,
+              section,
+              number: index + 1,
+              sessions: []
+            });
+          } else if (item && typeof item.title === "string") {
+            result.push({
+              title: item.title,
+              section,
+              number: index + 1,
+              sessions: Array.isArray(item.sessions) ? item.sessions : []
+            });
+          }
+        });
+      });
+    }
+
+    return result;
+  }
+
+  const curriculum = window.ATP_CURRICULUM_6E || {};
+  const LESSONS = {};
+
+  Object.entries(curriculum).forEach(([subject, data]) => {
+    LESSONS[subject] = normalizeLessons(data);
+  });
+
+  function getSubjectLessons(subject) {
+    const curriculumName = SUBJECT_ALIASES[subject] || subject;
+    return LESSONS[curriculumName] || [];
+  }
+
+  // Sélecteur des classes.
   function buildClassSelector() {
     const select = $("schoolClassSelector");
     select.replaceChildren();
@@ -228,10 +208,7 @@
     select.value = currentClass;
   }
 
-  // ==========================================
-  // 6. AFFICHAGE DES MATIÈRES
-  // ==========================================
-
+  // Affichage des matières.
   function renderSubjects() {
     const grid = $("subjectGrid");
     const search = $("subjectSearch").value.toLowerCase().trim();
@@ -245,14 +222,11 @@
       const matchesSearch = name.toLowerCase().includes(search);
       const key = currentClass + "::" + name;
       const isFavorite = favorites.includes(key);
-
       return matchesSearch && (!favoritesOnly || isFavorite);
     });
 
     if (subjects.length === 0) {
-      grid.appendChild(
-        createElement("p", "Aucune matière trouvée.", "empty")
-      );
+      grid.appendChild(createElement("p", "Aucune matière trouvée.", "empty"));
     }
 
     subjects.forEach(([name, emoji]) => {
@@ -286,7 +260,6 @@
       top.append(icon, favoriteButton);
 
       const title = createElement("h3", name);
-
       const count = currentClass === "6e"
         ? getSubjectLessons(name).length
         : 0;
@@ -294,7 +267,7 @@
       const info = createElement(
         "p",
         count > 0
-          ? count + " intitulés de leçons enregistrés"
+          ? count + " leçons ou intitulés enregistrés"
           : "Espace pédagogique"
       );
 
@@ -315,19 +288,16 @@
     updateStats();
   }
 
-  // ==========================================
-  // 7. OUVERTURE D'UNE MATIÈRE
-  // ==========================================
-
+  // Ouverture d'une matière.
   function openSubject(name) {
     currentSubject = name;
+    currentSection = "";
     currentCategory = "cours";
 
     $("workspaceTitle").textContent =
       name + " · " + currentClass;
 
     $("subjectWorkspace").classList.remove("hidden");
-
     renderResources();
 
     $("subjectWorkspace").scrollIntoView({
@@ -336,10 +306,27 @@
     });
   }
 
-  // ==========================================
-  // 8. AFFICHAGE D'UNE LEÇON
-  // ==========================================
+  // Affichage d'une séance dans une leçon.
+  function renderSession(parent, session, index) {
+    const item = createElement(
+      "div",
+      "Séance " + (index + 1) + " : " + session,
+      "session-item"
+    );
 
+    item.style.cssText = [
+      "padding:10px 12px",
+      "margin:7px 0",
+      "border-left:3px solid #2864d8",
+      "background:rgba(40,100,216,.06)",
+      "border-radius:5px",
+      "line-height:1.5"
+    ].join(";");
+
+    parent.appendChild(item);
+  }
+
+  // Affichage d'une leçon et de ses séances.
   function renderLesson(parent, lesson, index) {
     const key = [
       currentClass,
@@ -353,56 +340,54 @@
 
     const summary = createElement(
       "summary",
-      (index + 1) + ". " + lesson.title
+      "Leçon " + (index + 1) + " : " + lesson.title
     );
 
     summary.style.cssText =
-      "cursor:pointer;font-weight:bold;color:#203452;line-height:1.5";
+      "cursor:pointer;font-weight:bold;color:#203452;line-height:1.5;padding:8px 0";
 
     const body = createElement("div", "", "lesson-body");
-    body.style.cssText = "padding-top:14px";
+    body.style.cssText = "padding:12px 0";
 
-    const notice = createElement(
-      "p",
-      CATEGORY_MESSAGES[currentCategory]
+    if (lesson.sessions && lesson.sessions.length > 0) {
+      const sessionHeading = createElement("h4", "Séances de la leçon");
+      body.appendChild(sessionHeading);
+
+      lesson.sessions.forEach((session, sessionIndex) => {
+        renderSession(body, session, sessionIndex);
+      });
+    }
+
+    body.appendChild(
+      createElement("p", CATEGORY_MESSAGES[currentCategory])
     );
 
-    body.appendChild(notice);
-
     if (currentCategory === "cours") {
-      body.appendChild(
-        createElement(
-          "p",
-          "Statut : intitulé de la leçon enregistré. Le cours complet reste à intégrer."
-        )
-      );
+      body.appendChild(createElement(
+        "p",
+        "Le titre et les séances sont enregistrés. Le cours détaillé reste à intégrer."
+      ));
     }
 
     if (currentCategory === "exercices") {
-      body.appendChild(
-        createElement(
-          "p",
-          "Aucun exercice officiel n'est encore associé à cette leçon."
-        )
-      );
+      body.appendChild(createElement(
+        "p",
+        "Aucun exercice officiel n'est encore associé à cette leçon."
+      ));
     }
 
     if (currentCategory === "devoirs") {
-      body.appendChild(
-        createElement(
-          "p",
-          "Aucun devoir officiel n'est encore associé à cette leçon."
-        )
-      );
+      body.appendChild(createElement(
+        "p",
+        "Aucun devoir officiel n'est encore associé à cette leçon."
+      ));
     }
 
     if (currentCategory === "examens") {
-      body.appendChild(
-        createElement(
-          "p",
-          "Aucun sujet officiel n'est encore associé à cette leçon."
-        )
-      );
+      body.appendChild(createElement(
+        "p",
+        "Aucun sujet officiel n'est encore associé à cette leçon."
+      ));
     }
 
     const isCompleted = completed.includes(key);
@@ -423,15 +408,11 @@
     );
 
     body.appendChild(doneButton);
-
     details.append(summary, body);
     parent.appendChild(details);
   }
 
-  // ==========================================
-  // 9. AFFICHAGE DES RESSOURCES
-  // ==========================================
-
+  // Affichage des ressources et des sous-parties.
   function renderResources() {
     const list = $("resourceList");
     list.replaceChildren();
@@ -440,26 +421,22 @@
       CATEGORIES[currentCategory] + " de " + currentSubject;
 
     if (currentClass !== "6e") {
-      list.appendChild(
-        createElement(
-          "div",
-          "Les matières de cette classe sont disponibles. Les intitulés détaillés et les contenus seront intégrés après réception et vérification des ressources pédagogiques.",
-          "empty"
-        )
-      );
+      list.appendChild(createElement(
+        "div",
+        "Les matières de cette classe sont disponibles. Les intitulés détaillés et les contenus seront intégrés après vérification des ressources pédagogiques.",
+        "empty"
+      ));
       return;
     }
 
     const lessons = getSubjectLessons(currentSubject);
 
     if (lessons.length === 0) {
-      list.appendChild(
-        createElement(
-          "div",
-          "Aucun intitulé n'est encore enregistré pour cette matière. Les ressources seront ajoutées dès leur réception.",
-          "empty"
-        )
-      );
+      list.appendChild(createElement(
+        "div",
+        "Aucun intitulé n'est encore enregistré pour cette matière.",
+        "empty"
+      ));
       return;
     }
 
@@ -470,14 +447,15 @@
 
     const description = createElement(
       "p",
-      lessons.length + " intitulés de leçons enregistrés."
+      lessons.length + " leçons ou intitulés enregistrés."
     );
 
     list.append(heading, description);
 
     let previousSection = null;
+    let lessonIndex = 0;
 
-    lessons.forEach((lesson, index) => {
+    lessons.forEach(lesson => {
       if (lesson.section && lesson.section !== previousSection) {
         previousSection = lesson.section;
 
@@ -487,19 +465,17 @@
         );
 
         sectionHeading.style.cssText =
-          "grid-column:1/-1;margin:20px 0 0;color:#2864d8";
+          "margin:22px 0 12px;color:#2864d8";
 
         list.appendChild(sectionHeading);
       }
 
-      renderLesson(list, lesson, index);
+      renderLesson(list, lesson, lessonIndex);
+      lessonIndex++;
     });
   }
 
-  // ==========================================
-  // 10. NAVIGATION DES CATÉGORIES
-  // ==========================================
-
+  // Navigation entre les catégories.
   function showCategory(category) {
     if (!CATEGORIES[category]) return;
 
@@ -523,13 +499,11 @@
     });
   }
 
-  // ==========================================
-  // 11. ÉVÉNEMENTS DE L'INTERFACE
-  // ==========================================
-
+  // Événements de l'interface.
   $("schoolClassSelector").addEventListener("change", event => {
     currentClass = event.target.value;
     currentSubject = "";
+    currentSection = "";
     favoritesOnly = false;
 
     $("subjectSearch").value = "";
@@ -589,10 +563,7 @@
     });
   });
 
-  // ==========================================
-  // 12. INITIALISATION
-  // ==========================================
-
+  // Initialisation.
   buildClassSelector();
   renderSubjects();
   save();
