@@ -159,6 +159,42 @@
       .community-content { padding: 40px 5%; }
       .community-hero { padding: 65px 5% 50px; }
     }
+  
+    .community-page{background:#f4f7fb!important;color:#1b2e45!important}
+    .community-topbar{background:transparent!important;border-color:#dce5ee!important}
+    .community-logo,.community-back{color:#1b2e45!important}
+    .community-back{border-color:#cbd7e4!important}
+    .community-hero{background:linear-gradient(125deg,#eaf3ff,#eaf7f2)!important;color:#173b32!important}
+    .community-hero p,.community-intro{color:#52667b!important}
+    .community-content h2,.community-content h3{color:#173b32!important}
+    .community-card,.community-banner,.community-post{background:#fff!important;color:#243b53!important;border:1px solid #dce5ee!important;box-shadow:0 10px 28px rgba(28,52,78,.055)}
+    .community-card p,.community-banner p,.community-post p{color:#52667b!important}
+    .community-label,.community-status{color:#087b62!important}
+    .community-compose label{display:block;margin:12px 0 7px;color:#263e55;font-weight:800}
+    .community-compose textarea,.community-comment-form textarea{width:100%;resize:vertical;padding:13px 14px;border:1px solid #cbd8e4;border-radius:12px;background:#fbfdff;color:#172b42;font:inherit;line-height:1.6}
+    .community-compose textarea:focus,.community-comment-form textarea:focus{outline:3px solid #0c8c6d22;border-color:#0c8c6d}
+    .community-form-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+    .community-form-footer span,.community-date{font-size:12px;color:#66798e}
+    .community-button{border:0;cursor:pointer;background:#087b62!important;color:#fff!important}
+    .community-feed{display:grid;gap:16px;margin-top:18px}
+    .community-post{padding:20px;border-radius:18px}
+    .community-post-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px}
+    .community-author{font-weight:900;color:#173b32}
+    .community-post-body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.75;color:#243b53!important}
+    .community-post-actions{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .community-text-button{border:0;background:transparent;color:#087b62;font-weight:800;cursor:pointer;padding:7px 0}
+    .community-delete{color:#b42318}
+    .community-comments{border-top:1px solid #e6edf3;margin-top:14px;padding-top:12px;display:grid;gap:10px}
+    .community-comment{padding:10px 12px;background:#f5f8fb;border-radius:11px}
+    .community-comment p{margin:5px 0 0;color:#40566d!important;white-space:pre-wrap}
+    .community-comment-form{display:grid;gap:8px;margin-top:8px}
+    .community-comment-form button{justify-self:start;border:0;border-radius:9px;padding:9px 13px;background:#e7f3ef;color:#08634f;font-weight:800;cursor:pointer}
+    .community-empty{padding:25px;text-align:center;border:1px dashed #bdcbd8;border-radius:14px;color:#60758b;background:#fff}
+    .community-feedback{min-height:20px;color:#52667b;font-size:13px}
+    .community-footer{color:#66798e!important;border-color:#dce5ee!important}
+    .community-footer a{color:#087b62!important}
+    @media(max-width:600px){.community-post{padding:15px}.community-post-head{align-items:flex-start;flex-direction:column}.community-form-footer{align-items:stretch;flex-direction:column}.community-form-footer .community-button{width:100%}}
+
   </style>
   <link rel="stylesheet" href="atp-theme.css?v=20261107-12">
 </head>
@@ -173,15 +209,45 @@
   </header>
 
   <main>
-<section class="community-hero"><div class="community-label">AFRIQUE TECH PLUS COMMUNITY</div><h1>Apprendre ensemble, progresser durablement.</h1><p>Un espace destiné aux apprenants, créateurs et passionnés du numérique. Découvre comment participer et les règles qui protègent les membres.</p></section>
-<section class="community-content"><h2>Les principes de notre communauté</h2><p class="community-intro">Une communauté utile repose sur des échanges respectueux, des contributions concrètes et la protection des membres.</p><div class="community-grid">
-<article class="community-card"><div class="community-icon">🤝</div><h3>Entraide</h3><p>Pose des questions précises, partage une méthode que tu as testée et aide les autres sans les rabaisser.</p><span class="community-status">CHARTE DE PARTICIPATION</span></article>
-<article class="community-card"><div class="community-icon">📚</div><h3>Apprentissage</h3><p>Partage tes progrès, tes ressources utiles et les difficultés rencontrées pendant ton parcours.</p><span class="community-status">PARTAGE DE CONNAISSANCES</span></article>
-<article class="community-card"><div class="community-icon">💻</div><h3>Culture numérique</h3><p>Échange autour de l'informatique, de la création, des outils numériques et de l'intelligence artificielle.</p><span class="community-status">ÉCHANGES RESPONSABLES</span></article>
-<article class="community-card"><div class="community-icon">🚀</div><h3>Projets</h3><p>Présente le but de ton projet, ce que tu as déjà réalisé et le type de retour dont tu as besoin.</p><span class="community-status">PROJETS ET RETOURS</span></article>
-</div></section>
-<section class="community-content"><div class="community-banner"><h2>Notre charte de participation</h2><ul><li>Respecte les autres membres et leurs opinions.</li><li>Ne publie pas de données personnelles, mots de passe, codes OTP ou informations bancaires.</li><li>Évite le spam, les arnaques, les publicités trompeuses et les contenus illégaux.</li><li>Indique clairement quand une information n'est pas vérifiée.</li><li>Respecte les droits d'auteur et cite tes sources.</li></ul><p><strong>État des fonctionnalités :</strong> les discussions publiques, profils communautaires et outils de modération ne sont pas encore activés. Ne confonds pas cette page d'information avec un forum déjà ouvert.</p><a class="community-button" href="index.html#account">Créer mon compte membre →</a></div></section>
-</main>
+    <section class="community-hero">
+      <div class="community-label">AFRIQUE TECH PLUS COMMUNITY</div>
+      <h1>Apprendre ensemble, progresser durablement.</h1>
+      <p>Pose tes questions, partage tes découvertes et échange autour des études, de la création et du numérique dans un cadre respectueux.</p>
+    </section>
+    <section class="community-content">
+      <h2>Le fil de la communauté</h2>
+      <p class="community-intro">Les membres connectés peuvent publier un message et commenter les échanges. Les publications restent soumises à notre charte de participation.</p>
+      <div class="community-compose community-banner" id="community-compose" hidden>
+        <h3>Partager une idée ou poser une question</h3>
+        <form id="community-post-form">
+          <label for="community-post-body">Ton message</label>
+          <textarea id="community-post-body" rows="4" minlength="10" maxlength="2000" placeholder="Explique clairement ton idée ou ta question (10 à 2 000 caractères)." required></textarea>
+          <div class="community-form-footer"><span id="community-post-count">0 / 2000</span><button class="community-button" type="submit">Publier le message</button></div>
+        </form>
+      </div>
+      <div class="community-signin community-banner" id="community-signin">
+        <h3>Connecte-toi pour participer</h3>
+        <p>Tu peux consulter les échanges librement. Pour publier ou commenter, connecte-toi à ton compte AFRIQUE TECH PLUS.</p>
+        <a class="community-button" href="index.html#account">Accéder à mon compte →</a>
+      </div>
+      <p class="community-feedback" id="community-feedback" role="status" aria-live="polite"></p>
+      <div class="community-feed" id="community-feed"><div class="community-empty">Chargement des publications…</div></div>
+    </section>
+    <section class="community-content">
+      <div class="community-banner">
+        <h2>Notre charte de participation</h2>
+        <ul>
+          <li>Respecte les autres membres et leurs opinions.</li>
+          <li>Ne publie jamais de données personnelles, mots de passe, codes OTP ou informations bancaires.</li>
+          <li>Évite le spam, les arnaques, les publicités trompeuses et les contenus illégaux.</li>
+          <li>Indique clairement quand une information n'est pas vérifiée.</li>
+          <li>Respecte les droits d'auteur et cite tes sources.</li>
+          <li>Signale les contenus problématiques et ne règle pas les conflits par des attaques personnelles.</li>
+        </ul>
+        <p><strong>Confidentialité :</strong> les noms ne sont pas affichés publiquement dans ce premier fil. Les messages sont associés au compte qui les a publiés pour permettre leur gestion.</p>
+      </div>
+    </section>
+  </main>
 
   <footer class="community-footer">
     © <span id="community-year"></span> AFRIQUE TECH PLUS —
@@ -195,6 +261,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
+<script src="community.js?v=20261107-1"></script>
 
   
   <script src="site-preferences.js?v=20261107-10"></script>
