@@ -136,6 +136,68 @@
     #member-dashboard .atp-member-preferences{display:block!important;visibility:visible!important;opacity:1!important}
     #member-dashboard .atp-theme-toggle{display:inline-flex!important;align-items:center;justify-content:center;min-height:42px;font-weight:800}
   `;
+
+  style.textContent += `
+    /* Contraste global ATP : mêmes règles sur toutes les rubriques */
+    html[data-theme="light"] body{background:#f5f7fb!important;color:#17243a!important}
+    html[data-theme="dark"] body{background:#0d1728!important;color:#edf2fa!important}
+    html[data-theme="light"] body :is(h1,h2,h3,h4,h5,h6){color:#17243a!important}
+    html[data-theme="dark"] body :is(h1,h2,h3,h4,h5,h6){color:#f5f8ff!important}
+    html[data-theme="light"] body :is(p,li,dt,dd,label,small,summary,figcaption,blockquote,td,th,legend,output){color:#34445d!important}
+    html[data-theme="dark"] body :is(p,li,dt,dd,label,small,summary,figcaption,blockquote,td,th,legend,output){color:#d2dced!important}
+    html[data-theme="light"] body :is(span,strong,b,em){color:inherit}
+    html[data-theme="dark"] body :is(span,strong,b,em){color:#e6edf8!important}
+    html[data-theme="light"] body a:not(.button):not(.button-primary):not(.nav-cta):not(.primary-button):not(.action-btn):not(.home-btn){color:#185b49}
+    html[data-theme="dark"] body a:not(.button):not(.button-primary):not(.nav-cta):not(.primary-button):not(.action-btn):not(.home-btn){color:#a9c9ff!important}
+    html[data-theme="dark"] body :is(main,section,article,aside,.layout,.container,.content,.page-content,.academy-page,.school-page,.store-page,.ai-page,.media-page,.services-page,.community-page,.about-content,.about-values,.about-status-section,.catalogue,.benefits,.workspace,.picker-panel,.toolbar,.stat,.subject-card,.category-card,.resource-item,.academy-tab-panel,.academy-tabs,.auth-card,.service-card,.services-card,.about-section,.featured-courses,.home-featured,.home-account,.home-member-dashboard,.certification,.atp-theme-group,.atp-main-lesson,.atp-learning-section,.atp-formula-card,.atp-live-card,.atp-module,.atp-lesson,.atp-quiz,.atp-progress,.video-course-link,.home-space-card,.domain-card,.feature-section,.school-section){
+      background-color:#152238!important;color:#edf2fa!important;border-color:#344761!important;
+    }
+    html[data-theme="light"] body :is(.atp-live-card,.atp-module,.atp-lesson,.atp-quiz,.atp-progress,.video-course-link,.home-space-card,.domain-card){
+      background-color:#fff!important;color:#17243a!important;border-color:#d8e0eb!important;
+    }
+    html[data-theme="dark"] body :is(.topbar,.site-header,.site-nav,.navigation,aside,.sidebar,.services-topbar,.ai-topbar,.media-topbar,.community-topbar,.site-footer,footer){
+      background:#101b2d!important;color:#edf2fa!important;border-color:#344761!important;
+    }
+    html[data-theme="dark"] body :is(input,select,textarea,option,.school-select,.search,.filter){
+      background:#0e1a2c!important;color:#f5f8ff!important;border:1px solid #52647e!important;
+    }
+    html[data-theme="light"] body :is(input,select,textarea,option,.school-select,.search,.filter){
+      background:#fff!important;color:#17243a!important;border-color:#aebbd0!important;
+    }
+    html[data-theme="dark"] body :is(button,.button,.primary-button,.action-btn,.home-btn,.nav-button,.submit-button){
+      color:#fff!important;
+    }
+    html[data-theme="dark"] body :is(.hero,.academy-hero,.school-page .hero,.ai-hero,.media-hero,.services-hero,.community-hero,.about-hero){
+      background:linear-gradient(135deg,#14243c,#203b5e)!important;color:#fff!important;
+    }
+    html[data-theme="dark"] body :is(.hero,.academy-hero,.school-page .hero,.ai-hero,.media-hero,.services-hero,.community-hero,.about-hero) :is(h1,h2,h3,p,span,strong,small,.eyebrow,.section-label){
+      color:#f5f8ff!important;
+    }
+    html[data-theme="dark"] body :is(.hero,.academy-hero,.school-page .hero,.ai-hero,.media-hero,.services-hero,.community-hero,.about-hero) :is(.eyebrow,.section-label,.hero-tag,.catalogue-label){
+      color:#d9f28a!important;
+    }
+    html[data-theme="dark"] body :is(.academy-tab[aria-selected="true"],.academy-tab.active,.nav button.active){
+      background:#285b4b!important;color:#fff!important;border-color:#5e9b83!important;
+    }
+    html[data-theme="dark"] body :is(.academy-tab,.nav button,.category-card,.resource-item summary,.atp-main-lesson>summary,.atp-session summary){
+      color:#edf2fa!important;
+    }
+    html[data-theme="dark"] body :is(.status,.badge,.tag,.pill,.community-status,.ai-status,.media-status,.services-status){
+      background:#234a3b!important;color:#e5ffd9!important;border-color:#54836e!important;
+    }
+    html[data-theme="dark"] body :is(.atp-mathml,math,.math-expression){
+      background:#f7f9ff!important;color:#14213a!important;
+    }
+    html[data-theme="dark"] body :is(.atp-answer,.success,.success-message){
+      background:#174332!important;color:#e4ffed!important;
+    }
+    html[data-theme="dark"] body :is(.error,.error-message){color:#ffb4b4!important}
+    html[data-theme="light"] body :is(.error,.error-message){color:#a32121!important}
+    html[data-theme="dark"] body ::placeholder{color:#aebdd1!important;opacity:1}
+    html[data-theme="light"] body ::placeholder{color:#596a82!important;opacity:1}
+    html[data-theme="dark"] body :focus-visible{outline:3px solid #b8d4ff!important;outline-offset:3px}
+    html[data-theme="light"] body :focus-visible{outline:3px solid #256b58!important;outline-offset:3px}
+  `;
   document.head.appendChild(style);
 
   const protectLogos = () => {
