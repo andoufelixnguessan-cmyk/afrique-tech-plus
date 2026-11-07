@@ -1474,7 +1474,7 @@ function renderLesson(parent, lesson, lessonIndex) {
 
   $("showFavorites").addEventListener("click", showFavorites);
 
-  $("openCours").addEventListener("click", () => {
+  $("openCours")?.addEventListener("click", () => {
     if (!currentSubject) {
       openSubject(SUBJECTS[currentClass][0][0]);
     }
@@ -1482,7 +1482,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     showCategory("cours");
   });
 
-  $("openExos").addEventListener("click", () => {
+  $("openExos")?.addEventListener("click", () => {
     if (!currentSubject) {
       openSubject(SUBJECTS[currentClass][0][0]);
     }
