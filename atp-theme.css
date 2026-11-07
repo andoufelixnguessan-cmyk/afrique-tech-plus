@@ -1,0 +1,55 @@
+/* AFRIQUE TECH PLUS — palette commune à toutes les rubriques */
+:root{
+ --navy:#101a35!important;--navy2:#17284a!important;
+ --blue:#2864d8!important;--blue-dark:#1e4fae!important;
+ --purple:#2864d8!important;--indigo:#19aebd!important;--cyan:#19c6d2!important;
+ --lime:#f2b544!important;--gold:#f2b544!important;
+ --bg:#f4f7fc!important;--paper:#f4f7fc!important;--panel:#fff!important;
+ --ink:#17233d!important;--text:#17233d!important;--muted:#60708a!important;
+ --border:#dfe7f1!important;--line:#dfe7f1!important;
+}
+body{color:#17233d}
+a{accent-color:#2864d8}
+button,.button,.btn,.primary-button,.nav-button,.store-button,.community-button,.atp-live-button,.action-btn{
+ background:linear-gradient(135deg,#2864d8,#19aebd)!important;color:#fff!important;border-color:transparent!important;
+}
+button:hover,.button:hover,.btn:hover,.primary-button:hover,.nav-button:hover,.store-button:hover,.community-button:hover,.atp-live-button:hover,.action-btn:hover{filter:brightness(1.06)}
+.topbar,.store-topbar,.ai-topbar,.media-topbar,.services-topbar,.community-topbar{
+ background:rgba(255,255,255,.97)!important;border-bottom:1px solid #dfe7f1!important;
+}
+.brand,.store-logo,.ai-logo,.media-logo,.services-logo,.community-logo{color:#17284a!important}
+.brand span,.store-logo span,.ai-logo span,.media-logo span,.services-logo span,.community-logo span{color:#19aebd!important}
+.nav-links a,.store-back,.ai-back,.media-back,.services-back,.community-back{color:#2864d8!important}
+.store-page,.ai-page,.media-page,.services-page,.community-page{background:#f4f7fc!important;color:#17233d!important}
+.store-page .store-hero,.ai-page .ai-hero,.media-page .media-hero,.services-page .services-hero,.community-page .community-hero{
+ background:linear-gradient(130deg,#101a35,#1b3762 68%,#147f93)!important;color:#fff!important;
+}
+.store-page .store-label,.ai-page .ai-label,.media-page .media-label,.services-page .services-label,.community-page .community-label{color:#f2b544!important}
+.store-content,.ai-content,.media-content,.services-content,.community-content{background:#f4f7fc!important}
+.store-card,.ai-card,.media-card,.services-card,.community-card{
+ background:#fff!important;border:1px solid #dfe7f1!important;box-shadow:0 12px 28px rgba(16,26,53,.07)!important;color:#17233d!important;
+}
+.store-card h3,.ai-card h3,.media-card h3,.services-card h3,.community-card h3{color:#17233d!important}
+.store-card p,.ai-card p,.media-card p,.services-card p,.community-card p{color:#60708a!important}
+.store-price,.product-price{color:#a36a12!important}
+.store-footer,.ai-footer,.media-footer,.services-footer,.community-footer,footer{
+ background:#101a35!important;color:#e7eef9!important;
+}
+.store-footer a,.ai-footer a,.media-footer a,.services-footer a,.community-footer a{color:#f2b544!important}
+.academy-page .hero{background:linear-gradient(130deg,#eaf2ff,#e9f9fa)!important}
+.academy-page .eyebrow,.academy-page .catalogue-label,.academy-page .benefit-icon{color:#2864d8!important}
+.academy-page .hero h1 span{color:#19aebd!important}
+.academy-page .academy-tab[aria-selected="true"],.academy-page .academy-tab.active{background:#2864d8!important;color:#fff!important}
+.academy-page .atp-live-card,.academy-page .atp-module,.academy-page .atp-lesson,.academy-page .atp-quiz{
+ border-color:#dfe7f1!important;
+}
+.school-page{background:#f4f7fc!important;color:#17233d!important}
+.school-page .topbar{background:rgba(255,255,255,.97)!important;border-bottom:1px solid #dfe7f1!important}
+.school-page .brand,.school-page .nav-title{color:#17284a!important}
+.school-page .hero{background:linear-gradient(130deg,#eaf2ff,#e9f9fa)!important}
+.school-page .hero-tag,.school-page .section-head h2{color:#2864d8!important}
+.school-page .picker-panel,.school-page .subject-grid,.school-page .category-card,.school-page .workspace,.school-page .resource-grid>*{
+ border-color:#dfe7f1!important;
+}
+.school-page .action-btn{background:linear-gradient(135deg,#2864d8,#19aebd)!important;color:#fff!important}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
