@@ -1237,3 +1237,26 @@ body{background:#f4f7fc;color:#17233d}
 .nav-wrap{height:68px}
 #member-nav-link{color:#59617c!important}
 @media(max-width:700px){.main-nav{background:#f4f7fb!important;border-bottom:1px solid #e1e8ef!important}}
+
+/* ATP HOME — identité chaleureuse, lumineuse et contemporaine */
+:root{--navy:#203b30;--navy2:#315b45;--purple:#b95f3b;--cyan:#d8a45c;--lime:#e8b45c;--ink:#26372e;--muted:#69766c;--bg:#f7f5ee;--line:#e6e0d3;--white:#fffefa;--radius:24px;--shadow:0 18px 48px rgba(48,62,44,.10)}
+body{background:#f7f5ee;color:#26372e}.site-header{background:rgba(250,248,241,.96);border-color:#e5dfd2}
+.brand-logo{display:block;width:48px;height:48px;object-fit:contain;flex:0 0 auto}.brand-name{color:#203b30}.brand-name small{color:#8a705c}
+.main-nav a,.services-toggle{color:#405648}.main-nav a:hover,.footer-links a:hover{color:#b95f3b}
+.button-primary,.nav-cta{background:#24563e;color:#fff;box-shadow:0 8px 22px rgba(36,86,62,.18)}.button-primary:hover,.nav-cta:hover{background:#1c4632}
+.hero{background:linear-gradient(120deg,#f4ead7 0%,#e8eee3 52%,#f2dfc9 100%);color:#203b30}
+.hero:after{opacity:.18;background-image:linear-gradient(#8a9b82 1px,transparent 1px),linear-gradient(90deg,#8a9b82 1px,transparent 1px)}
+.glow-one{background:#e9b76a55}.glow-two{background:#8ba98a55}.eyebrow,.section-label{color:#a45132}.eyebrow-dot{background:#c56a3d;box-shadow:0 0 0 5px #c56a3d20}
+.hero h1 em{color:#b65e38}.hero-copy>p,.hero-proof{color:#526258}.proof-check{background:#dce9d8;color:#24563e}
+.hero-bottom{border-color:#cbd8c7;color:#647267}.scroll-cue{color:#a45132}
+.art-center{background:linear-gradient(145deg,#e9b45b,#d87543);color:#203b30;box-shadow:0 25px 70px #c7794140}.orbit{border-color:#a9b9a2}.orbit-chip{color:#203b30;background:#fffefa}.orbit-chip b{color:#b95f3b}
+.domain-card{background:#fffefa;border-color:#e4dfd3}.domain-card:hover{border-color:#d4a06a}
+.domain-academy{--accent:#477b55;--tint:#e8eee3}.domain-school{--accent:#b56a3c;--tint:#f7e9dc}.domain-store{--accent:#a66a2e;--tint:#f8edda}.domain-ai{--accent:#547a62;--tint:#e8eee3}.domain-media{--accent:#b65e43;--tint:#f8e8df}.domain-services{--accent:#3f806d;--tint:#e2eee7}.domain-community{--accent:#a56d31;--tint:#f6ead7}
+.section-label,h2 span,.about-inner h2 span{color:#a45132}.feature-section,.store-section,.about-section{background:#fffefa}.feature-visual{background:radial-gradient(circle,#f2e5d2,transparent 68%)}
+.mini-tag{background:#f7e8dc;color:#9d4e31}.lesson-progress span{background:linear-gradient(90deg,#4c805a,#d69a4d)}.lesson-icons b{background:#e8eee3;color:#3e7650}
+.floating-note{color:#a45132}.floating-note span{color:#203b30}.text-link{color:#a45132}.school-section,.compact-section{background:#f0eee5}
+.school-visual{background:radial-gradient(circle,#e3eee2,transparent 67%)}.paper-label,.subject-row>span,.subject-row i{color:#477b55}.subject-row>span{background:#e8eee3}
+.school-sticker{background:#e9b45b;color:#203b30}.store-cover{background:radial-gradient(circle at 90% 10%,#d99b61,transparent 40%),linear-gradient(145deg,#28533e,#507653)}
+.store-cover div b{color:#f2c56f}.store-buy .button,.submit-button{background:#24563e;color:#fff}.account-section{background:linear-gradient(120deg,#203b30,#315b45)}
+.account-copy h2 span{color:#f0c36f}.auth-form input:focus{border-color:#8ba98a;box-shadow:0 0 0 3px #8ba98a25}.auth-toggle button{color:#a45132}.site-footer{background:#203b30}
+@media(max-width:700px){.main-nav{background:#fffefa;border-color:#e5dfd2}}
