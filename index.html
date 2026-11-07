@@ -10,18 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="atp-theme.css?v=20261107-2">
+  <link rel="stylesheet" href="atp-theme.css?v=20261107-3">
 </head>
 
 <body>
-  <div class="announcement">
-    <div class="container announcement-inner">
-      <span data-i18n="announcement">La plateforme numérique pour apprendre, entreprendre et progresser.</span>
-      <span>FR · EN</span>
-    </div>
-  </div>
-
-  <header class="site-header">
+<header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="AFRIQUE TECH PLUS accueil">
         <span class="brand-mark">A<span>+</span></span>
@@ -109,10 +102,10 @@
 
     <section class="home-featured" id="formations-a-la-une" aria-label="Formations à la une">
       <div class="container">
-        <div class="featured-heading"><div><span class="featured-kicker">ATP ACADEMY</span><h2>À découvrir <em>maintenant.</em></h2><p>Deux formations gratuites et deux formations premium sélectionnées dans notre catalogue.</p></div><a href="academy.html#formations" class="featured-all">Voir toutes les formations ↗</a></div>
+        <div class="featured-heading"><div><h2>Formations à découvrir.</h2></div><a href="academy.html#formations" class="featured-all">Découvrir plus de formations ↗</a></div>
         <div class="video-carousel" id="home-course-carousel"><div class="video-track" id="home-course-track" aria-live="polite"><p class="course-loading">Chargement des formations…</p></div></div>
         <div class="carousel-controls"><button type="button" id="course-prev" aria-label="Formations précédentes">←</button><div class="carousel-dots" id="course-dots"></div><button type="button" id="course-next" aria-label="Formations suivantes">→</button></div>
-        <p class="course-caption" id="home-course-status">Les formations publiées apparaîtront ici.</p>
+        <p class="course-caption" id="home-course-status" hidden>Les formations publiées apparaîtront ici.</p>
       </div>
     </section>
     <section class="home-account" id="account" hidden>
@@ -126,7 +119,7 @@
         </div><div id="member-panel" hidden><div class="member-avatar">✓</div><h3 id="member-greeting">Bienvenue !</h3><p>Tu es connecté à AFRIQUE TECH PLUS.</p><a class="button button-primary" href="academy.html">Explorer les formations</a></div><p id="auth-message" class="auth-message" role="status" aria-live="polite"></p><p class="privacy-note">Ne partage jamais ton mot de passe.</p></div>
       </div>
     </section>
-    <section class="home-member-dashboard" id="member-dashboard" hidden><div class="container account-shell"><div class="account-copy"><span class="section-label">ESPACE MEMBRE</span><h2 id="dashboard-greeting">Bienvenue !</h2><p>Ton compte AFRIQUE TECH PLUS est actif.</p></div><div class="auth-card"><div class="member-avatar">✓</div><h3>Mon profil</h3><div class="profile-details"><p><strong>Nom complet :</strong></p><p id="profile-name">Chargement…</p><p><strong>Adresse e-mail :</strong></p><p id="profile-email">Chargement…</p></div><a class="button button-primary" href="academy.html">Accéder à Academy</a></div></div></section>
+    <section class="home-member-dashboard" id="member-dashboard" hidden><div class="container account-shell"><div class="account-copy"><span class="section-label">ESPACE MEMBRE</span><h2 id="dashboard-greeting">Bienvenue !</h2><p>Retrouve tes informations et personnalise ton expérience AFRIQUE TECH PLUS.</p><div class="member-shortcuts"><a href="academy.html#formations">📚 Mes formations <span>Découvrir le catalogue</span></a><a href="academy.html#academy-dashboard">📈 Mon apprentissage <span>Suivre mon parcours</span></a><a href="community.html">🤝 Communauté <span>Échanger et progresser</span></a></div></div><div class="auth-card member-profile-card"><div class="member-avatar">✓</div><span class="section-label">MON PROFIL</span><h3>Bienvenue dans ton espace.</h3><div class="profile-details"><p><strong>Nom complet</strong></p><p id="profile-name">Chargement…</p><p><strong>Adresse e-mail</strong></p><p id="profile-email">Chargement…</p></div><p class="member-profile-note">Tes informations de compte sont conservées en sécurité.</p></div></div></section>
 \n  </main>
 
   <footer class="site-footer">
@@ -164,7 +157,8 @@
   <!-- Fonctionnalités générales et authentification -->
   <script src="app.js?v=20261107-5"></script>
   <script src="services-menu.js?v=20261107-2"></script>
-  <script src="home-courses.js?v=20261107-1"></script>
+  <script src="home-courses.js?v=20261107-2"></script>
+  <script src="site-preferences.js?v=20261107-1"></script>
 
 </body>
 </html>
