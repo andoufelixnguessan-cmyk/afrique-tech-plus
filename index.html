@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="atp-theme.css">
 </head>
 
 <body>
@@ -30,14 +31,10 @@
       <button class="mobile-menu" id="mobile-menu" aria-label="Ouvrir le menu">☰</button>
 
       <nav class="main-nav" id="main-nav">
-        <a href="#domains">Nos espaces</a>
-        <a href="academy.html">Formations</a>
-        <a href="school.html">SCHOOL</a>
-        <a href="store.html">Boutique</a>
-        <a href="ai.html">AI</a>
-        <a href="media.html">MEDIA</a>
-        <a href="services.html">SERVICES</a>
-        <a href="community.html">COMMUNITY</a>
+        <a href="#home">Accueil</a>
+        <a href="#formations-en-vedette">Formations</a>
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
 
         <button id="menu-logout" class="menu-logout" type="button" hidden>
           ↪️ Se déconnecter
@@ -71,7 +68,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="#domains" data-i18n="hero_explore">
+            <a class="button button-primary" href="#services" data-i18n="hero_explore">
               Explorer la plateforme <span>↗</span>
             </a>
             <a class="button button-ghost" href="#account" data-i18n="hero_account">
@@ -105,340 +102,78 @@
       </div>
     </section>
 
-    <section class="section domains-section" id="domains">
+    <section class="section featured-courses" id="formations-en-vedette">
       <div class="container">
         <div class="section-heading">
           <div>
-            <span class="section-label" data-i18n="domains_label">UN ÉCOSYSTÈME COMPLET</span>
-            <h2 data-i18n="domains_title">Tout pour avancer.<br><span>Au même endroit.</span></h2>
+            <span class="section-label">APPRENDRE AVEC ATP</span>
+            <h2>Des formations pour <span>passer à l'action.</span></h2>
           </div>
-          <p data-i18n="domains_intro">
-            Sept espaces complémentaires conçus pour accompagner les apprenants, les étudiants, les professionnels et les entrepreneurs.
-          </p>
+          <a class="text-link" href="academy.html">Voir toutes les formations ↗</a>
         </div>
-
-        <div class="domain-grid">
-          <a class="domain-card domain-academy" href="academy.html">
-            <span class="domain-number">01</span>
-            <span class="domain-icon">✦</span>
-            <h3>ACADEMY</h3>
-            <p data-i18n="d_academy">Des formations structurées, des exercices et des attestations internes.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
-
-          <a class="domain-card domain-school" href="school.html">
-            <span class="domain-number">02</span>
-            <span class="domain-icon">▤</span>
-            <h3>SCHOOL</h3>
-            <p data-i18n="d_school">Des cours, exercices et révisions du collège au lycée.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
-
-          <a class="domain-card domain-store" href="store.html">
-            <span class="domain-number">03</span>
-            <span class="domain-icon">▣</span>
-            <h3>STORE</h3>
-            <p data-i18n="d_store">Des guides, modèles et ressources numériques téléchargeables.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
-
-          <a class="domain-card domain-ai" href="ai.html">
-            <span class="domain-number">04</span>
-            <span class="domain-icon">⌘</span>
-            <h3>AI</h3>
-            <p data-i18n="d_ai">Des assistants et outils pour apprendre, créer et travailler.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
-
-          <a class="domain-card domain-media" href="media.html">
-            <span class="domain-number">05</span>
-            <span class="domain-icon">▥</span>
-            <h3>MEDIA</h3>
-            <p data-i18n="d_media">Des articles, tutoriels et actualités du monde numérique.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
-
-          <a class="domain-card domain-services" href="services.html">
-            <span class="domain-number">06</span>
-            <span class="domain-icon">◈</span>
-            <h3>SERVICES</h3>
-            <p data-i18n="d_services">Un accompagnement numérique pour les projets et activités.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
-
-          <a class="domain-card domain-community" href="community.html">
-            <span class="domain-number">07</span>
-            <span class="domain-icon">◎</span>
-            <h3>COMMUNITY</h3>
-            <p data-i18n="d_community">Un espace d'échange, d'entraide et de partage de projets.</p>
-            <span class="domain-link" data-i18n="discover">Découvrir l'espace ↗</span>
-          </a>
+        <div class="course-carousel" aria-label="Formations gratuites et premium">
+          <div class="course-track" id="home-course-track">
+            <p class="course-loading" id="home-course-status">Chargement des formations disponibles…</p>
+          </div>
         </div>
+        <p class="course-caption">Deux parcours gratuits et deux parcours premium seront mis en avant selon le catalogue publié.</p>
       </div>
     </section>
 
-    <section class="section academy-section" id="academy">
-      <div class="container">
-
-        <div class="academy-header">
-          <span class="section-label">AFRIQUE TECH PLUS ACADEMY</span>
-          <h2>Développe des compétences qui <span>font la différence.</span></h2>
-          <p>
-            Apprends à ton rythme grâce à des formations structurées,
-            des exercices pratiques, des quiz et des ressources téléchargeables.
-          </p>
-        </div>
-
-        <div class="academy-benefits">
-          <div class="academy-benefit">
-            <span>✦</span>
-            <h3>Leçons structurées</h3>
-            <p>Des cours organisés en modules et en chapitres.</p>
-          </div>
-
-          <div class="academy-benefit">
-            <span>▤</span>
-            <h3>Pratique</h3>
-            <p>Des exercices pour appliquer chaque notion apprise.</p>
-          </div>
-
-          <div class="academy-benefit">
-            <span>✓</span>
-            <h3>Évaluations</h3>
-            <p>Des quiz et des travaux pratiques pour mesurer tes progrès.</p>
-          </div>
-
-          <div class="academy-benefit">
-            <span>♧</span>
-            <h3>Attestations</h3>
-            <p>Une attestation interne sous réserve de réussite aux évaluations.</p>
-          </div>
-        </div>
-
-        <div class="academy-catalog" id="academy-catalog">
-          <div class="academy-catalog-heading">
-            <div>
-              <span class="section-label">TON PARCOURS COMMENCE ICI</span>
-              <h2>Nos formations</h2>
-              <p>Explore les formations AFRIQUE TECH PLUS.</p>
-            </div>
-            <span class="academy-count">CATALOGUE</span>
-          </div>
-
-          <div class="academy-courses">
-
-            <article class="academy-course">
-              <div class="course-cover course-ai">
-                <span class="course-category">TECHNOLOGIE</span>
-                <span class="course-symbol">✦</span>
-                <span class="course-level">DÉBUTANT</span>
-              </div>
-
-              <div class="course-content">
-                <h3>Découvrir l'intelligence artificielle</h3>
-                <p>
-                  Comprends les bases de l'intelligence artificielle,
-                  découvre ses outils et apprends à les utiliser.
-                </p>
-                <div class="course-meta">
-                  <span>4 modules</span>
-                  <span>12 leçons</span>
-                </div>
-                <a href="#account" class="button button-primary course-button">
-                  Rejoindre pour apprendre →
-                </a>
-              </div>
-            </article>
-
-            <article class="academy-course">
-              <div class="course-cover course-office">
-                <span class="course-category">BUREAUTIQUE</span>
-                <span class="course-symbol">▤</span>
-                <span class="course-level">DÉBUTANT</span>
-              </div>
-
-              <div class="course-content">
-                <h3>Maîtriser les outils bureautiques</h3>
-                <p>
-                  Découvre les bases du traitement de texte,
-                  des tableurs et des présentations.
-                </p>
-                <div class="course-meta">
-                  <span>Programme à venir</span>
-                </div>
-                <a href="#account" class="button button-secondary course-button">
-                  Créer mon compte →
-                </a>
-              </div>
-            </article>
-
-            <article class="academy-course">
-              <div class="course-cover course-data">
-                <span class="course-category">INFORMATIQUE</span>
-                <span class="course-symbol">⌘</span>
-                <span class="course-level">DÉBUTANT</span>
-              </div>
-
-              <div class="course-content">
-                <h3>Initiation aux bases de données</h3>
-                <p>
-                  Apprends à comprendre les données, les tables,
-                  les relations et les premières requêtes SQL.
-                </p>
-                <div class="course-meta">
-                  <span>Programme à venir</span>
-                </div>
-                <a href="#account" class="button button-secondary course-button">
-                  Créer mon compte →
-                </a>
-              </div>
-            </article>
-
-          </div>
-        </div>
-
-        <div class="academy-certification">
-          <span class="certification-icon">🏆</span>
-          <div>
-            <h3>Valorise tes apprentissages</h3>
-            <p>
-              Une attestation interne AFRIQUE TECH PLUS pourra être délivrée
-              après réussite du quiz final et de l'exercice pratique,
-              avec un minimum de 70 % de réussite.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section school-section" id="school">
-      <div class="container school-grid">
-        <div class="feature-copy">
-          <span class="section-label">02 — SCHOOL</span>
-          <h2 data-i18n="school_title">Tes études méritent un <span>espace dédié.</span></h2>
-          <p data-i18n="school_text">
-            Un espace de ressources scolaires organisé par classe, série, matière et chapitre, en commençant par le programme officiel de Côte d'Ivoire.
-          </p>
-          <div class="class-pills">
-            <span>6e</span><span>5e</span><span>4e</span><span>3e</span><span>2nde</span><span>1ère</span><span>Tle</span>
-          </div>
-          <ul class="check-list">
-            <li data-i18n="school_b1">Cours détaillés et fiches de révision</li>
-            <li data-i18n="school_b2">Exercices corrigés et quiz interactifs</li>
-            <li data-i18n="school_b3">Préparation BEPC et BAC</li>
-          </ul>
-          <a class="text-link" href="#account" data-i18n="school_link">
-            Créer un compte pour accéder aux ressources ↗
-          </a>
-        </div>
-
-        <div class="school-visual">
-          <div class="school-paper">
-            <span class="paper-label">MON ESPACE SCOLAIRE</span>
-            <div class="paper-title">Révise.<br><strong>Comprends.</strong><br>Progresse.</div>
-
-            <div class="subject-row">
-              <span>∑</span>
-              <div><b>Mathématiques</b><small>Leçons & exercices</small></div>
-              <i>→</i>
-            </div>
-
-            <div class="subject-row">
-              <span>文</span>
-              <div><b>Français</b><small>Cours & fiches</small></div>
-              <i>→</i>
-            </div>
-
-            <div class="subject-row">
-              <span>⚗</span>
-              <div><b>Physique-Chimie</b><small>Exercices corrigés</small></div>
-              <i>→</i>
-            </div>
-          </div>
-
-          <div class="school-sticker">BEPC<br>& BAC</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section store-section" id="store">
+    <section class="section services-section" id="services">
       <div class="container">
         <div class="section-heading">
           <div>
-            <span class="section-label">03 — STORE</span>
-            <h2 data-i18n="store_title">Des ressources utiles.<br><span>Des résultats concrets.</span></h2>
+            <span class="section-label">L'ÉCOSYSTÈME AFRIQUE TECH PLUS</span>
+            <h2>Tous nos espaces réunis <span>dans Services.</span></h2>
           </div>
-          <p data-i18n="store_intro">
-            Retrouve des guides et outils numériques conçus pour t'aider à passer de la théorie à la pratique.
-          </p>
+          <p>Retrouve au même endroit les espaces éducatifs, les ressources et les outils de la plateforme.</p>
         </div>
-
-        <div class="store-card">
-          <div class="store-cover">
-            <span>AFRIQUE TECH PLUS</span>
-            <div>IA<br><b>AU SERVICE<br>DE TON ACTIVITÉ</b></div>
-            <small>GUIDE PRATIQUE · 2026</small>
-          </div>
-
-          <div class="store-info">
-            <span class="product-status" data-i18n="product_available">DISPONIBLE MAINTENANT</span>
-            <h3>L'intelligence artificielle au service de ton activité</h3>
-            <p data-i18n="product_desc">
-              Un guide pratique pour découvrir les outils d'IA, apprendre à les utiliser et développer tes projets, même en débutant.
-            </p>
-            <div class="store-buy">
-              <strong>1 000 FCFA</strong>
-              <a class="button button-primary" href="https://afrique-tech-plus.myficsell.com/x6nx8kk4e" target="_blank" rel="noopener noreferrer" data-i18n="buy_now">
-                Acheter le guide ↗
-              </a>
-            </div>
-          </div>
+        <div class="services-grid">
+          <a class="service-card service-academy" href="academy.html">
+            <span class="service-icon">✦</span><span class="service-kicker">APPRENTISSAGE</span>
+            <h3>Academy</h3><p>Formations numériques, modules, exercices et évaluations.</p><span class="service-link">Accéder ↗</span>
+          </a>
+          <a class="service-card service-school" href="school.html">
+            <span class="service-icon">▤</span><span class="service-kicker">ÉDUCATION</span>
+            <h3>ATP School</h3><p>Cours, leçons et ressources scolaires organisés par niveau.</p><span class="service-link">Accéder ↗</span>
+          </a>
+          <a class="service-card service-store" href="store.html">
+            <span class="service-icon">▣</span><span class="service-kicker">RESSOURCES</span>
+            <h3>Boutique</h3><p>Guides et produits numériques proposés par ATP.</p><span class="service-link">Accéder ↗</span>
+          </a>
+          <a class="service-card service-ai" href="ai.html">
+            <span class="service-icon">⌘</span><span class="service-kicker">TECHNOLOGIE</span>
+            <h3>AI</h3><p>Outils et assistants numériques en développement.</p><span class="service-link">Accéder ↗</span>
+          </a>
+          <a class="service-card service-media" href="media.html">
+            <span class="service-icon">▥</span><span class="service-kicker">INFORMATION</span>
+            <h3>Media</h3><p>Articles, tutoriels et contenus autour du numérique.</p><span class="service-link">Accéder ↗</span>
+          </a>
+          <a class="service-card service-projects" href="services.html">
+            <span class="service-icon">◈</span><span class="service-kicker">ACCOMPAGNEMENT</span>
+            <h3>Prestations</h3><p>Services numériques et accompagnement de projets.</p><span class="service-link">Accéder ↗</span>
+          </a>
+          <a class="service-card service-community" href="community.html">
+            <span class="service-icon">◎</span><span class="service-kicker">ÉCHANGES</span>
+            <h3>Community</h3><p>Un espace de partage, d'entraide et de collaboration.</p><span class="service-link">Accéder ↗</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section compact-section" id="ai">
-      <div class="container mini-grid">
-
-        <div class="mini-feature">
-          <span class="section-label">04 — AI</span>
-          <h2 data-i18n="ai_title">L'intelligence artificielle, <span>en pratique.</span></h2>
-          <p data-i18n="ai_text">
-            Des outils d'aide à la rédaction, aux études, à la productivité et à la création. Les fonctionnalités nécessitant une infrastructure payante seront activées uniquement après validation.
-          </p>
-          <span class="coming-soon" data-i18n="progressive">DÉPLOIEMENT PROGRESSIF</span>
+    <section class="section about-section" id="about">
+      <div class="container about-layout">
+        <div class="about-heading">
+          <span class="section-label">À PROPOS D'AFRIQUE TECH PLUS</span>
+          <h2>Apprendre, créer et évoluer <span>avec le numérique.</span></h2>
         </div>
-
-        <div class="mini-feature" id="media">
-          <span class="section-label">05 — MEDIA</span>
-          <h2 data-i18n="media_title">Comprendre le numérique <span>sans jargon.</span></h2>
-          <p data-i18n="media_text">
-            Des articles, tutoriels et dossiers pratiques pour mieux comprendre les technologies et saisir les opportunités.
-          </p>
-          <a class="text-link" href="#account" data-i18n="media_link">
-            Recevoir les prochaines publications ↗
-          </a>
+        <div class="about-copy">
+          <p>AFRIQUE TECH PLUS (ATP) est une plateforme numérique indépendante, pensée pour rendre l'apprentissage, les ressources et les outils technologiques plus accessibles.</p>
+          <p>Elle rassemble des espaces de formation, d'accompagnement scolaire, de ressources numériques, d'information et de collaboration.</p>
+          <p class="about-mission"><strong>Notre ambition :</strong> aider chacun à développer ses compétences, concrétiser ses idées et progresser grâce au numérique.</p>
+          <span class="about-status">La plateforme évolue progressivement : certaines fonctionnalités et formalités sont encore en cours de finalisation.</span>
         </div>
-
-        <div class="mini-feature" id="services">
-          <span class="section-label">06 — SERVICES</span>
-          <h2 data-i18n="services_title">Fais avancer <span>tes projets.</span></h2>
-          <p data-i18n="services_text">
-            Des prestations numériques seront proposées progressivement, selon les capacités et les services effectivement disponibles.
-          </p>
-          <span class="coming-soon" data-i18n="progressive">DÉPLOIEMENT PROGRESSIF</span>
-        </div>
-
-        <div class="mini-feature" id="community">
-          <span class="section-label">07 — COMMUNITY</span>
-          <h2 data-i18n="community_title">Apprendre ensemble. <span>Grandir ensemble.</span></h2>
-          <p data-i18n="community_text">
-            Un espace d'entraide et de partage autour des études, de l'IA, de la technologie, de l'entrepreneuriat et des projets.
-          </p>
-          <span class="coming-soon" data-i18n="progressive">DÉPLOIEMENT PROGRESSIF</span>
-        </div>
-
       </div>
     </section>
 
@@ -576,17 +311,7 @@
       </div>
     </section>
 
-    <section class="section about-section" id="about">
-      <div class="container about-inner">
-        <span class="section-label">AFRIQUE TECH PLUS</span>
-        <h2 data-i18n="about_title">
-          Le savoir ouvre des portes.<br><span>Le numérique en ouvre encore plus.</span>
-        </h2>
-        <p data-i18n="about_text">
-          Une plateforme indépendante, bilingue et ouverte sur le monde, conçue pour rendre l'apprentissage et les outils numériques plus accessibles.
-        </p>
-      </div>
-    </section>
+
 
   </main>
 
@@ -598,14 +323,10 @@
       </a>
 
       <div class="footer-links">
-        <a href="#domains" data-i18n="nav_domains">Nos espaces</a>
-        <a href="academy.html" data-i18n="nav_academy">Formations</a>
-        <a href="school.html">SCHOOL</a>
-        <a href="store.html" data-i18n="nav_store">Boutique</a>
-        <a href="ai.html">AI</a>
-        <a href="media.html">MEDIA</a>
-        <a href="services.html">SERVICES</a>
-        <a href="community.html">COMMUNITY</a>
+        <a href="#home">Accueil</a>
+        <a href="#formations-en-vedette">Formations</a>
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
         <a href="#account" data-i18n="nav_join">Rejoindre</a>
       </div>
     </div>
@@ -626,6 +347,7 @@
 
   <!-- Configuration Supabase -->
   <script src="config.js"></script>
+  <script src="home-courses.js?v=20261107-1"></script>
 
   <!-- Fonctionnalités générales et authentification -->
   <script src="app.js?v=20261104-5"></script>
