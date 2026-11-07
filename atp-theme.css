@@ -441,3 +441,67 @@ html[data-theme="dark"] .home-member-dashboard .atp-theme-toggle{
   .home-member-dashboard .member-profile-card{padding:20px!important}
   .home-member-dashboard .profile-details{padding:14px;margin:14px 0}
 }
+
+
+/* ATP ACCESSIBILITY PATCH — stable layout and strong text contrast in both modes */
+html[data-theme="light"] body{
+  background:#f4f6f3!important;color:#172820!important;
+}
+html[data-theme="dark"] body{
+  background:#101a22!important;color:#f1f5f3!important;
+}
+html[data-theme="light"] body :is(h1,h2,h3,h4,h5,h6){color:#172820!important}
+html[data-theme="light"] body :is(p,li,label,small,summary,figcaption,td,th,legend){color:#35483e!important}
+html[data-theme="dark"] body :is(h1,h2,h3,h4,h5,h6){color:#f7faf8!important}
+html[data-theme="dark"] body :is(p,li,label,small,summary,figcaption,td,th,legend){color:#dce7e1!important}
+
+/* Homepage cards: explicitly style every text layer, not just inherited color */
+html[data-theme="light"] .home-spaces{background:#f4f6f3!important}
+html[data-theme="light"] .home-spaces-heading h2{color:#172820!important}
+html[data-theme="light"] .home-spaces-heading p{color:#35483e!important}
+html[data-theme="light"] .home-space-card{
+  background:#fff!important;color:#172820!important;border:1px solid #d2ddd5!important;
+  box-shadow:0 6px 18px rgba(20,45,32,.07)!important;
+}
+html[data-theme="light"] .home-space-card h3{color:#172820!important}
+html[data-theme="light"] .home-space-card p{color:#35483e!important}
+html[data-theme="light"] .home-space-number{color:#52675b!important}
+html[data-theme="light"] .home-space-link{color:#176344!important}
+html[data-theme="dark"] .home-spaces{background:#101a22!important}
+html[data-theme="dark"] .home-spaces-heading h2{color:#f7faf8!important}
+html[data-theme="dark"] .home-spaces-heading h2 span{color:#b9df8a!important}
+html[data-theme="dark"] .home-spaces-heading p{color:#dce7e1!important}
+html[data-theme="dark"] .home-space-card{
+  background:#1c2b32!important;color:#f7faf8!important;border:1px solid #425a57!important;
+  box-shadow:0 6px 18px rgba(0,0,0,.18)!important;
+}
+html[data-theme="dark"] .home-space-card h3{color:#ffffff!important}
+html[data-theme="dark"] .home-space-card p{color:#e1ebe5!important}
+html[data-theme="dark"] .home-space-number{color:#c1d0c8!important}
+html[data-theme="dark"] .home-space-link{color:#b9e7c8!important}
+html[data-theme="dark"] .home-space-icon{background:#29443d!important;color:#e4f5a8!important}
+
+/* Whole-page dark surfaces and controls */
+html[data-theme="dark"] body :is(.site-header,.main-nav,.services-menu,.site-footer,.home-featured,.home-account,.home-member-dashboard,.auth-card,.video-course-card,.feature-section,.about-content,.about-values,.about-status-section){
+  background:#15242b!important;color:#f1f5f3!important;border-color:#40544f!important;
+}
+html[data-theme="dark"] body :is(.site-header a,.main-nav a,.services-toggle,.services-menu a,.footer-links a){color:#edf5ef!important}
+html[data-theme="dark"] body :is(.services-menu small,.course-caption,.auth-card p,.auth-card label){color:#d1dfd7!important}
+html[data-theme="dark"] body :is(input,select,textarea){
+  background:#101c23!important;color:#f7faf8!important;border:1px solid #526760!important;
+}
+html[data-theme="light"] body :is(input,select,textarea){
+  background:#fff!important;color:#172820!important;border:1px solid #9eafa4!important;
+}
+html[data-theme="dark"] body :is(.domain-card,.auth-card,.service-card,.video-course-card,.subject-card,.category-card,.workspace,.picker-panel,.toolbar,.stat,.atp-live-card,.atp-module,.atp-lesson,.atp-quiz,.atp-progress){
+  background:#1c2b32!important;color:#f1f5f3!important;border-color:#425a57!important;
+}
+html[data-theme="dark"] body :is(.domain-card h3,.domain-card p,.domain-link,.video-course-info h3,.video-course-info p){color:#f1f5f3!important}
+
+/* No theme-specific movement, clipping or sizing changes */
+.home-space-card{transform:none!important;min-width:0;overflow-wrap:anywhere}
+.home-space-card:hover{transform:none!important}
+.home-spaces-grid{align-items:stretch}
+.home-space-card h3,.home-space-card p,.home-space-link{overflow-wrap:anywhere}
+@media(max-width:980px){.home-spaces-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.home-spaces-grid{grid-template-columns:1fr}.home-space-card{min-height:0}}
