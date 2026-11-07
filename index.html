@@ -108,7 +108,28 @@
       </div>
     </section>
 
-  </main>
+
+    <section class="home-featured" id="formations-a-la-une" aria-label="Formations à la une">
+      <div class="container">
+        <div class="featured-heading"><div><span class="featured-kicker">ATP ACADEMY</span><h2>À découvrir <em>maintenant.</em></h2><p>Deux formations gratuites et deux formations premium sélectionnées dans notre catalogue.</p></div><a href="academy.html#formations" class="featured-all">Voir toutes les formations ↗</a></div>
+        <div class="video-carousel" id="home-course-carousel"><div class="video-track" id="home-course-track" aria-live="polite"><p class="course-loading">Chargement des formations…</p></div></div>
+        <div class="carousel-controls"><button type="button" id="course-prev" aria-label="Formations précédentes">←</button><div class="carousel-dots" id="course-dots"></div><button type="button" id="course-next" aria-label="Formations suivantes">→</button></div>
+        <p class="course-caption" id="home-course-status">Les formations publiées apparaîtront ici.</p>
+      </div>
+    </section>
+    <section class="home-account" id="account" hidden>
+      <div class="container account-shell">
+        <div class="account-copy"><span class="section-label">TON ESPACE PERSONNEL</span><h2>Commence gratuitement.<br><span>Évolue à ton rythme.</span></h2><p>Crée ton compte pour retrouver progressivement tes formations et tes ressources.</p></div>
+        <div class="auth-card"><div id="auth-forms">
+          <div class="auth-heading"><h3 id="auth-title">Créer mon compte</h3><p id="auth-subtitle">Rejoins gratuitement la plateforme.</p></div>
+          <form id="signup-form" class="auth-form"><div class="input-row"><label><span>Nom</span><input id="nom" autocomplete="family-name" required></label><label><span>Prénom</span><input id="prenom" autocomplete="given-name" required></label></div><label><span>Adresse e-mail</span><input id="signup-email" type="email" autocomplete="email" required></label><label class="password-field"><span>Mot de passe (8 caractères minimum)</span><span class="password-control"><input id="signup-password" type="password" minlength="8" autocomplete="new-password" required><button type="button" class="password-toggle" data-password-target="signup-password" aria-label="Afficher le mot de passe" aria-pressed="false">◉</button></span></label><button class="button button-primary submit-button" id="signup-button" type="submit">Créer mon compte →</button></form>
+          <form id="login-form" class="auth-form" hidden><label><span>Adresse e-mail</span><input id="login-email" type="email" autocomplete="email" required></label><label class="password-field"><span>Mot de passe</span><span class="password-control"><input id="login-password" type="password" autocomplete="current-password" required><button type="button" class="password-toggle" data-password-target="login-password" aria-label="Afficher le mot de passe" aria-pressed="false">◉</button></span></label><button class="button button-primary submit-button" type="submit">Se connecter →</button></form>
+          <p class="auth-toggle"><span id="switch-label">Tu as déjà un compte ?</span><button id="switch-auth" type="button">Se connecter</button></p>
+        </div><div id="member-panel" hidden><div class="member-avatar">✓</div><h3 id="member-greeting">Bienvenue !</h3><p>Tu es connecté à AFRIQUE TECH PLUS.</p><a class="button button-primary" href="academy.html">Explorer les formations</a></div><p id="auth-message" class="auth-message" role="status" aria-live="polite"></p><p class="privacy-note">Ne partage jamais ton mot de passe.</p></div>
+      </div>
+    </section>
+    <section class="home-member-dashboard" id="member-dashboard" hidden><div class="container account-shell"><div class="account-copy"><span class="section-label">ESPACE MEMBRE</span><h2 id="dashboard-greeting">Bienvenue !</h2><p>Ton compte AFRIQUE TECH PLUS est actif.</p></div><div class="auth-card"><div class="member-avatar">✓</div><h3>Mon profil</h3><div class="profile-details"><p><strong>Nom complet :</strong></p><p id="profile-name">Chargement…</p><p><strong>Adresse e-mail :</strong></p><p id="profile-email">Chargement…</p></div><a class="button button-primary" href="academy.html">Accéder à Academy</a></div></div></section>
+\n  </main>
 
   <footer class="site-footer">
     <div class="container footer-main">
