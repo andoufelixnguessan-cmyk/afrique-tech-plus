@@ -7,7 +7,7 @@
   menu?.addEventListener("click",()=>nav?.classList.toggle("open"));
   nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
 
-  const account=$("account"), dashboard=$("member-dashboard"), forms=$("auth-forms");
+  const account=$("account"), dashboard=$("member-dashboard"), forms=$("auth-forms");\n  if(window.location.hash==="#account" && account) account.hidden=false;
   const signup=$("signup-form"), login=$("login-form"), member=$("member-panel");
   const messageEl=$("auth-message"), logout=$("menu-logout"), navCta=document.querySelector(".nav-cta");
   let client=null, modeLogin=false;
@@ -44,7 +44,7 @@
     if(logout)logout.hidden=!connected;
     if(navCta)navCta.hidden=connected;
     document.querySelectorAll('a[href="#account"]').forEach(a=>{if(a.classList.contains("button-ghost")||a.classList.contains("nav-cta"))a.hidden=connected;});
-    if(account)account.hidden=connected;
+    if(connected && account)account.hidden=true;
     if(!connected){if(dashboard)dashboard.hidden=true;setMode(true);return;}
     const meta=user.user_metadata||{};
     const full=[meta.prenom,meta.nom].filter(Boolean).join(" ")||"Membre";
