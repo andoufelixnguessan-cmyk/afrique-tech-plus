@@ -7,7 +7,8 @@
   menu?.addEventListener("click",()=>nav?.classList.toggle("open"));
   nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
 
-  const account=$("account"), dashboard=$("member-dashboard"), forms=$("auth-forms");\n  if(window.location.hash==="#account" && account) account.hidden=false;
+  const account=$("account"), dashboard=$("member-dashboard"), forms=$("auth-forms");
+  if(window.location.hash==="#account" && account) account.hidden=false;
   const signup=$("signup-form"), login=$("login-form"), member=$("member-panel");
   const messageEl=$("auth-message"), logout=$("menu-logout"), navCta=document.querySelector(".nav-cta");
   let client=null, modeLogin=false;
