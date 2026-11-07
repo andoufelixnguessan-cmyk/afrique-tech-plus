@@ -80,3 +80,59 @@ html{scroll-behavior:smooth}body{background:#f7f5ee!important;color:#1d2b25!impo
 @keyframes atp-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
 @keyframes atp-glow-drift{from{transform:translate3d(-10px,0,0) scale(.96)}to{transform:translate3d(18px,12px,0) scale(1.06)}}
 @media(prefers-reduced-motion:reduce){.hero-glow,.orbit-a,.orbit-b,.art-center,.orbit-chip{animation:none!important}}
+
+/* Carrousel de formations en vedette */
+.home-featured{padding:68px 0 58px;background:#f0f1e7;overflow:hidden}
+.featured-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:25px}
+.featured-kicker{color:#b85f3b;font-size:10px;font-weight:900;letter-spacing:2px}
+.featured-heading h2{font:900 clamp(28px,4vw,42px)/1.1 Manrope;color:#173b32;margin:10px 0}
+.featured-heading h2 em{font-style:normal;color:#d97850}
+.featured-heading p{color:#68766d;font-size:14px}
+.featured-all{color:#27745b;font-weight:800;font-size:13px;text-decoration:none;white-space:nowrap}
+.video-carousel{overflow:hidden;border-radius:22px}
+.video-track{display:flex;transition:transform .7s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.video-course-card{flex:0 0 100%;min-width:0;padding:0 1px}
+.video-course-link{display:grid;grid-template-columns:1.1fr 1fr;min-height:245px;background:#fffefa;border:1px solid #e2e6d9;border-radius:22px;overflow:hidden;text-decoration:none;color:#1d2b25;box-shadow:0 14px 36px rgba(23,59,50,.08)}
+.video-course-cover{position:relative;min-height:245px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 20% 20%,#d6ef78 0,transparent 35%),linear-gradient(135deg,#173b32,#27745b 70%,#d97850)}
+.video-course-card.is-premium .video-course-cover{background:radial-gradient(circle at 20% 20%,#f3c29c 0,transparent 35%),linear-gradient(135deg,#4b3329,#b85f3b 75%,#d6ef78)}
+.video-course-cover:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(255,255,255,.25);border-radius:50%;box-shadow:0 0 0 28px rgba(255,255,255,.05),0 0 0 58px rgba(255,255,255,.04)}
+.video-course-label{position:absolute;top:20px;left:22px;padding:7px 10px;border-radius:20px;background:rgba(255,255,255,.16);color:white;font-size:10px;font-weight:900;letter-spacing:1px}
+.video-play{position:relative;z-index:1;display:grid;place-items:center;width:62px;height:62px;padding-left:4px;border-radius:50%;background:#fffefa;color:#173b32;font-size:19px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.video-course-brand{position:absolute;bottom:18px;right:20px;color:rgba(255,255,255,.78);font-size:9px;font-weight:900;letter-spacing:2px}
+.video-course-info{padding:32px;display:flex;flex-direction:column;justify-content:center}
+.video-course-info h3{font:850 clamp(21px,3vw,30px)/1.15 Manrope;color:#173b32;margin:0 0 12px}
+.video-course-info p{font-size:14px;line-height:1.7;color:#68766d;margin:0 0 18px}
+.video-course-meta{color:#b85f3b;font-size:12px;font-weight:800}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin:18px 0 8px}
+.carousel-controls>button{width:36px;height:36px;border:1px solid #d9dfd2;border-radius:50%;background:#fffefa;color:#173b32;font-size:18px;cursor:pointer}
+.carousel-dots{display:flex;gap:7px}
+.carousel-dots button{width:7px;height:7px;padding:0;border:0;border-radius:10px;background:#b9c5b8;cursor:pointer}
+.carousel-dots button.active{width:22px;background:#27745b}
+.course-caption{text-align:center;color:#7b887e;font-size:11px}
+.home-account,.home-member-dashboard{padding:72px 0;background:#fffefa}
+.home-account[hidden],.home-member-dashboard[hidden]{display:none!important}
+.home-account .account-shell,.home-member-dashboard .account-shell{display:grid;grid-template-columns:1fr minmax(300px,500px);gap:50px;align-items:center}
+.home-account .account-copy h2,.home-member-dashboard .account-copy h2{font:900 clamp(30px,4vw,46px)/1.1 Manrope;color:#173b32;margin:15px 0}
+.home-account .account-copy h2 span{color:#d97850}
+.home-account .account-copy p,.home-member-dashboard .account-copy p{color:#68766d;line-height:1.8}
+.home-account .auth-card,.home-member-dashboard .auth-card{padding:28px;background:#f7f5ee;border:1px solid #e5e5d9;border-radius:20px}
+.home-account .auth-form{display:grid;gap:14px;margin-top:18px}
+.home-account .auth-form label{display:grid;gap:7px;color:#526157;font-size:12px;font-weight:700}
+.home-account .auth-form input{width:100%;min-width:0;padding:13px 14px;border:1px solid #dfe4d7;border-radius:10px;background:#fffefa;color:#1d2b25}
+.home-account .input-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.password-control{display:flex;position:relative}
+.password-control input{padding-right:50px!important}
+.password-toggle{position:absolute;right:5px;top:5px;bottom:5px;width:39px;border:0;border-radius:8px;background:#edf1e6;color:#173b32;font-size:17px;cursor:pointer}
+.home-account .submit-button{width:100%;justify-content:center}
+.home-account .auth-heading h3,.home-member-dashboard .auth-card h3{font:850 22px Manrope;color:#173b32}
+.home-account .auth-heading p,.home-account .auth-toggle,.home-account .privacy-note{color:#718076;font-size:12px}
+.home-account .auth-toggle{margin-top:16px}
+.home-account .auth-toggle button{border:0;background:none;color:#27745b;font-weight:800;cursor:pointer}
+.home-account .auth-message{margin-top:12px;color:#27745b;font-size:13px}
+.home-account .auth-message.error{color:#b42318}.home-account .auth-message.success{color:#27745b}
+.home-account .member-avatar,.home-member-dashboard .member-avatar{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:#d6ef78;color:#173b32;font-size:22px;margin-bottom:15px}
+.home-member-dashboard .profile-details{margin:18px 0;color:#68766d;font-size:13px;line-height:1.8}
+.menu-logout{border:0;background:transparent;color:#b85f3b;font:700 14px "DM Sans";cursor:pointer;padding:8px 0}
+@media(max-width:760px){.featured-heading{align-items:flex-start;flex-direction:column}.video-course-link{grid-template-columns:1fr}.video-course-cover{min-height:180px}.video-course-info{padding:22px}.home-account .account-shell,.home-member-dashboard .account-shell{grid-template-columns:1fr;gap:25px}.home-account,.home-member-dashboard{padding:48px 0}}
+@media(max-width:420px){.home-account .input-row{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.video-track{transition:none}}
