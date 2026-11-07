@@ -89,7 +89,7 @@
       border-radius: 9px;
       padding: 11px 16px;
       margin: 8px 8px 0 0;
-      background: #7c5cff;
+      background: #2864d8;
       color: white;
       font-weight: bold;
       cursor: pointer;
@@ -104,16 +104,16 @@
 
     .atp-outline-button {
       background: transparent;
-      border: 1px solid #7c5cff;
-      color: #c8baff;
+      border: 1px solid #2864d8;
+      color: #a9c9ff;
     }
 
     .atp-course-player {
       margin-top: 35px;
       padding: 22px;
-      border: 1px solid rgba(124,92,255,.35);
+      border: 1px solid rgba(40,100,216,.35);
       border-radius: 16px;
-      background: rgba(124,92,255,.06);
+      background: rgba(40,100,216,.06);
     }
 
     .atp-course-player[hidden],
@@ -147,7 +147,7 @@
       margin-top: 12px;
       padding: 12px;
       border-radius: 9px;
-      background: rgba(124,92,255,.12);
+      background: rgba(40,100,216,.12);
       color: #f5f7ff;
       font-size: 14px;
     }
@@ -160,7 +160,7 @@
 
     .atp-course-tag {
       display: inline-block;
-      color: #c8fa72;
+      color: #f2b544;
       font-size: 12px;
       margin-bottom: 10px;
     }
@@ -174,7 +174,7 @@
       margin: 18px 0;
       padding: 16px;
       background: #171e3d;
-      border: 1px solid rgba(124,92,255,.35);
+      border: 1px solid rgba(40,100,216,.35);
       border-radius: 12px;
       color: #f5f7ff;
     }
@@ -190,12 +190,12 @@
     .atp-progress-fill {
       height: 100%;
       width: 0%;
-      background: #c8fa72;
+      background: #f2b544;
       transition: width .3s ease;
     }
 
     .atp-completed {
-      color: #c8fa72;
+      color: #f2b544;
       font-size: 13px;
       margin-top: 10px;
     }
@@ -204,7 +204,7 @@
       padding: 14px;
       margin: 15px 0;
       border-radius: 10px;
-      background: rgba(124,92,255,.12);
+      background: rgba(40,100,216,.12);
       color: #f5f7ff;
       line-height: 1.6;
     }
