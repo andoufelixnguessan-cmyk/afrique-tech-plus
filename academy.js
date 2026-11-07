@@ -26,14 +26,17 @@
     "maitriser-canva-et-le-design-graphique":
       "https://afrique-tech-plus.myficsell.com/vqdrcpz6p",
 
-    "devenir-freelance-et-trouver-ses-premiers-clients":
-      "https://afrique-tech-plus.myficsell.com/egaw85w38",
+    "demarrer-en-freelance-sans-experience":
+      "https://afrique-tech-plus.myficsell.com/asenb8c5s",
 
     "maitriser-les-bases-de-la-programmation":
       "https://afrique-tech-plus.myficsell.com/j99qjmm7g",
 
     "creer-son-premier-site-web":
-      "https://afrique-tech-plus.myficsell.com/c7xuw5fzu"
+      "https://afrique-tech-plus.myficsell.com/c7xuw5fzu",
+
+    "l-intelligence-artificielle-au-service-de-ton-activite-guide":
+      "https://afrique-tech-plus.myficsell.com/x6nx8kk4e"
   };
 
   let currentUser = null;
