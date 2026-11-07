@@ -56,7 +56,7 @@
   protectLogos();
   new MutationObserver(protectLogos).observe(document.documentElement,{childList:true,subtree:true});
 
-  const languageHost = document.querySelector(".nav-actions,.navigation,.nav-wrap,.services-topbar,.topbar .container,.topbar,.layout aside,header") || document.body;
+  const languageHost = document.querySelector(".nav-actions,.navigation,.nav-wrap,.services-topbar,.topbar .container,.topbar,header") || document.querySelector(".layout aside") || document.body;
   const languageControl = document.createElement("div");
   languageControl.className = "atp-preferences";
   languageControl.innerHTML = '<button type="button" class="atp-language-toggle" aria-label="Changer de langue" title="Changer de langue"></button><div id="google_translate_element" hidden></div>';
