@@ -65,12 +65,12 @@
     .atp-module,
     .atp-lesson,
     .atp-quiz {
-      background: #171e3d;
-      border: 1px solid rgba(255,255,255,.12);
+      background: #ffffff;
+      border: 1px solid #dce5f4;
       border-radius: 14px;
       padding: 20px;
       margin-bottom: 15px;
-      color: #f5f7ff;
+      color: #17233d;
     }
 
     .atp-live-card h3,
@@ -82,7 +82,7 @@
     .atp-live-card p,
     .atp-module p,
     .atp-lesson p {
-      color: #c0c8df;
+      color: #61708c;
       font-size: 14px;
     }
 
@@ -108,15 +108,15 @@
     .atp-outline-button {
       background: transparent;
       border: 1px solid #2864d8;
-      color: #a9c9ff;
+      color: #245bc1;
     }
 
     .atp-course-player {
       margin-top: 35px;
       padding: 22px;
-      border: 1px solid rgba(40,100,216,.35);
+      border: 1px solid #dce5f4;
       border-radius: 16px;
-      background: rgba(40,100,216,.06);
+      background: #f7f9ff;
     }
 
     .atp-course-player[hidden],
@@ -128,7 +128,7 @@
     .atp-lesson-content {
       white-space: pre-wrap;
       line-height: 1.8;
-      color: #dce2f5;
+      color: #34445d;
       margin: 15px 0;
       font-size: 14px;
     }
@@ -137,7 +137,7 @@
       display: block;
       padding: 10px;
       margin: 8px 0;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid #dce5f4;
       border-radius: 8px;
       cursor: pointer;
     }
@@ -150,20 +150,20 @@
       margin-top: 12px;
       padding: 12px;
       border-radius: 9px;
-      background: rgba(40,100,216,.12);
-      color: #f5f7ff;
+      background: #edf3ff;
+      color: #17233d;
       font-size: 14px;
     }
 
     .atp-status {
-      color: #c0c8df;
+      color: #61708c;
       font-size: 13px;
       margin: 12px 0;
     }
 
     .atp-course-tag {
       display: inline-block;
-      color: #f2b544;
+      color: #8b5b12;
       font-size: 12px;
       margin-bottom: 10px;
     }
@@ -176,15 +176,15 @@
     .atp-progress {
       margin: 18px 0;
       padding: 16px;
-      background: #171e3d;
+      background: #ffffff;
       border: 1px solid rgba(40,100,216,.35);
       border-radius: 12px;
-      color: #f5f7ff;
+      color: #17233d;
     }
 
     .atp-progress-track {
       height: 10px;
-      background: rgba(255,255,255,.12);
+      background: #e8edf7;
       border-radius: 20px;
       overflow: hidden;
       margin-top: 10px;
@@ -198,7 +198,7 @@
     }
 
     .atp-completed {
-      color: #f2b544;
+      color: #8b5b12;
       font-size: 13px;
       margin-top: 10px;
     }
@@ -207,8 +207,8 @@
       padding: 14px;
       margin: 15px 0;
       border-radius: 10px;
-      background: rgba(40,100,216,.12);
-      color: #f5f7ff;
+      background: #edf3ff;
+      color: #17233d;
       line-height: 1.6;
     }
 
