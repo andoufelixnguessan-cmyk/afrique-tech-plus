@@ -586,3 +586,27 @@ html[data-theme="dark"] body :is(.error,.error-message){color:#ffb4b4!important}
 .home-space-card,.domain-card,.service-card,.course-card,.video-course-link,.ai-card,.media-card,.services-card,.community-card,.store-card{
   box-sizing:border-box;min-width:0;overflow-wrap:anywhere;
 }
+
+
+/* Shared transparent headers: the header blends into the page canvas in both themes */
+html[data-theme="light"] body :is(.ai-topbar,.media-topbar,.services-topbar,.community-topbar,.store-topbar,.navigation,.nav-wrap,.school-page aside){
+  background:transparent!important;color:#172b25!important;border-color:#dce3e7!important;box-shadow:none!important;
+}
+html[data-theme="dark"] body :is(.ai-topbar,.media-topbar,.services-topbar,.community-topbar,.store-topbar,.navigation,.nav-wrap,.school-page aside){
+  background:transparent!important;color:#f0f5f4!important;border-color:#344553!important;box-shadow:none!important;
+}
+html[data-theme="light"] body :is(.ai-logo,.media-logo,.services-logo,.community-logo,.store-logo,.ai-back,.media-back,.services-back,.community-back,.store-back){
+  color:#173b32!important;
+}
+html[data-theme="dark"] body :is(.ai-logo,.media-logo,.services-logo,.community-logo,.store-logo,.ai-back,.media-back,.services-back,.community-back,.store-back){
+  color:#f0f5f4!important;border-color:#526570!important;
+}
+html[data-theme="dark"] body :is(.ai-logo span,.media-logo span,.services-logo span,.community-logo span,.store-logo span){
+  color:#cce88a!important;
+}
+.atp-preferences{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto}
+.atp-header-theme-toggle,.atp-language-toggle{flex:0 0 auto}
+@media(max-width:700px){
+  body :is(.ai-topbar,.media-topbar,.services-topbar,.community-topbar,.store-topbar){padding:14px 5%!important;gap:8px!important}
+  .atp-preferences{gap:5px}
+}
