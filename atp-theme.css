@@ -302,3 +302,41 @@ html[data-theme="dark"] :is(.section-head h2,.workspace h2,.subject-card h3,.cat
 .atp-learning-section h4,.atp-course-player h2,.atp-course-player h3){color:#f2f6ff!important}
 html[data-theme="dark"] :is(.section-head p,.workspace p,.subject-card p,.category-card span,
 .atp-learning-section p,.atp-muted,.atp-list){color:#b8c6dc!important}
+
+
+/* Accueil — présentation claire des sept espaces ATP */
+.home-spaces{padding:76px 0 82px;background:rgba(255,255,255,.62)!important}
+.home-spaces-heading{max-width:720px;margin:0 auto 34px;text-align:center}
+.home-spaces-heading h2{margin:13px 0;color:#17233d;font:900 clamp(29px,4vw,43px)/1.15 Manrope;letter-spacing:-1.2px}
+.home-spaces-heading h2 span{color:#2864d8}
+.home-spaces-heading p{max-width:620px;margin:0 auto;color:#60708a;font-size:14px;line-height:1.8}
+.home-spaces-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.home-space-card{position:relative;display:flex;min-width:0;min-height:224px;flex-direction:column;padding:22px;border:1px solid #dfe7f1;border-radius:19px;background:rgba(255,255,255,.94);color:#17233d;text-decoration:none;box-shadow:0 10px 28px rgba(16,26,53,.045);transition:transform .2s,box-shadow .2s,border-color .2s}
+.home-space-card:hover{transform:translateY(-4px);border-color:#b9c9e8;box-shadow:0 16px 34px rgba(16,26,53,.09)}
+.home-space-icon{display:grid;place-items:center;width:43px;height:43px;margin-bottom:17px;border-radius:13px;background:#eaf1ff;color:#2864d8;font-size:22px;font-weight:900}
+.home-space-number{position:absolute;top:23px;right:22px;color:#9aa6b8;font-size:10px;font-weight:900;letter-spacing:1px}
+.home-space-card h3{margin:0 0 8px;color:#17233d;font:850 17px Manrope}
+.home-space-card p{margin:0 0 17px;color:#60708a;font-size:12px;line-height:1.7}
+.home-space-link{margin-top:auto;color:#2864d8;font-size:11px;font-weight:900}
+.space-school .home-space-icon,.space-media .home-space-icon{background:#e8f8f8;color:#078b95}
+.space-store .home-space-icon,.space-services .home-space-icon{background:#fff4df;color:#a36a12}
+.space-ai .home-space-icon{background:#f0edff;color:#6551ca}
+.space-community .home-space-icon{background:#eaf8ec;color:#37844b}
+@media(max-width:980px){.home-spaces-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+ .home-spaces{padding:54px 0 58px}
+ .home-spaces-heading{text-align:left;margin-bottom:24px}
+ .home-spaces-heading p{font-size:13px}
+ .home-spaces-grid{gap:11px}
+ .home-space-card{min-height:205px;padding:17px}
+ .home-space-card h3{font-size:15px}
+ .home-space-card p{font-size:11px}
+ .hero-actions .button{min-height:46px}
+ .nav-dropdown{width:100%}
+ .services-toggle{width:100%;justify-content:space-between}
+ .services-menu{top:calc(100% + 6px);left:0;right:auto;width:min(300px,calc(100vw - 48px));transform:none}
+ .nav-dropdown.is-open .services-menu{animation:home-mobile-menu-in .16s ease-out}
+ @keyframes home-mobile-menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(max-width:390px){.home-spaces-grid{grid-template-columns:1fr}.home-space-card{min-height:175px}}
+@media(prefers-reduced-motion:reduce){.home-space-card{transition:none}}
