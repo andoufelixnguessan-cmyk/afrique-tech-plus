@@ -186,5 +186,6 @@
     button.addEventListener("click",()=>{const next=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=next;localStorage.setItem(KEY,next);sync();});
     sync();container.appendChild(panel);
   };
-  addThemeControl(document.querySelector("#member-dashboard .member-profile-card"));\n  addThemeControl(document.getElementById("academy-dashboard"));
+  addThemeControl(document.querySelector("#member-dashboard .member-profile-card"));
+  addThemeControl(document.getElementById("academy-dashboard"));
 })();
