@@ -44,6 +44,98 @@
     body{top:0!important}
     .notranslate{translate:no!important}
   `;
+  style.textContent += `
+    /* Charte lisible commune pour AI, MEDIA, SERVICES et COMMUNITY */
+    html[data-theme="light"] :is(.ai-page,.media-page,.services-page,.community-page){
+      background:#f3f6fb!important;color:#17233d!important;
+    }
+    html[data-theme="dark"] :is(.ai-page,.media-page,.services-page,.community-page){
+      background:#0b1424!important;color:#e8eef9!important;
+    }
+    html[data-theme="light"] :is(.ai-topbar,.media-topbar,.services-topbar,.community-topbar){
+      background:#fff!important;color:#17233d!important;border-color:#dce4ef!important;
+    }
+    html[data-theme="dark"] :is(.ai-topbar,.media-topbar,.services-topbar,.community-topbar){
+      background:#101a2b!important;color:#e8eef9!important;border-color:#2a3a55!important;
+    }
+    html[data-theme="light"] :is(.ai-logo,.media-logo,.services-logo,.community-logo){
+      color:#17233d!important;
+    }
+    html[data-theme="dark"] :is(.ai-logo,.media-logo,.services-logo,.community-logo){
+      color:#f2f6ff!important;
+    }
+    :is(.ai-back,.media-back,.services-back,.community-back){
+      display:inline-flex;align-items:center;justify-content:center;
+      background:#fff!important;color:#17233d!important;border:1px solid #cbd5e1!important;
+      border-radius:999px;padding:10px 16px;text-decoration:none;font-weight:700;
+    }
+    html[data-theme="dark"] :is(.ai-back,.media-back,.services-back,.community-back){
+      background:#17243a!important;color:#f2f6ff!important;border-color:#40516a!important;
+    }
+    :is(.ai-hero,.media-hero,.services-hero,.community-hero){
+      background:linear-gradient(135deg,#14213d,#243f78)!important;color:#fff!important;
+    }
+    :is(.ai-hero,.media-hero,.services-hero,.community-hero) :is(h1,h2,p){
+      color:#fff!important;
+    }
+    :is(.ai-content,.media-content,.services-content,.community-content){
+      color:#17233d!important;
+    }
+    html[data-theme="light"] :is(.ai-content,.media-content,.services-content,.community-content) :is(h2,h3){
+      color:#17233d!important;
+    }
+    html[data-theme="light"] :is(.ai-intro,.media-intro,.services-intro,.community-intro){
+      color:#52627a!important;
+    }
+    html[data-theme="light"] :is(.ai-card,.media-card,.services-card,.community-card,.ai-banner,.media-banner,.services-banner,.community-banner){
+      background:#fff!important;color:#17233d!important;border:1px solid #dce4ef!important;
+      box-shadow:0 10px 28px rgba(25,45,80,.07);
+    }
+    html[data-theme="light"] :is(.ai-card,.media-card,.services-card,.community-card,.ai-banner,.media-banner,.services-banner,.community-banner) :is(h2,h3,strong){
+      color:#17233d!important;
+    }
+    html[data-theme="light"] :is(.ai-card,.media-card,.services-card,.community-card,.ai-banner,.media-banner,.services-banner,.community-banner) p{
+      color:#52627a!important;
+    }
+    html[data-theme="dark"] :is(.ai-content,.media-content,.services-content,.community-content){
+      color:#e8eef9!important;
+    }
+    html[data-theme="dark"] :is(.ai-content,.media-content,.services-content,.community-content) :is(h2,h3){
+      color:#f2f6ff!important;
+    }
+    html[data-theme="dark"] :is(.ai-intro,.media-intro,.services-intro,.community-intro){
+      color:#b8c6dc!important;
+    }
+    html[data-theme="dark"] :is(.ai-card,.media-card,.services-card,.community-card,.ai-banner,.media-banner,.services-banner,.community-banner){
+      background:#151f33!important;color:#e8eef9!important;border:1px solid #354761!important;
+      box-shadow:0 10px 28px rgba(0,0,0,.18);
+    }
+    html[data-theme="dark"] :is(.ai-card,.media-card,.services-card,.community-card,.ai-banner,.media-banner,.services-banner,.community-banner) :is(h2,h3,strong){
+      color:#f2f6ff!important;
+    }
+    html[data-theme="dark"] :is(.ai-card,.media-card,.services-card,.community-card,.ai-banner,.media-banner,.services-banner,.community-banner) p{
+      color:#c4d0e2!important;
+    }
+    :is(.ai-status,.media-status,.services-status,.community-status){
+      display:inline-block;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:800;
+      background:#e8eefb!important;color:#244b9b!important;border:1px solid #cbd8f1!important;
+    }
+    html[data-theme="dark"] :is(.ai-status,.media-status,.services-status,.community-status){
+      background:#203454!important;color:#dce8ff!important;border-color:#405b82!important;
+    }
+    :is(.ai-footer,.media-footer,.services-footer,.community-footer){
+      padding:24px 7%;background:#e8eef6!important;color:#42516a!important;
+    }
+    :is(.ai-footer,.media-footer,.services-footer,.community-footer) a{color:#244b9b!important;font-weight:700}
+    html[data-theme="dark"] :is(.ai-footer,.media-footer,.services-footer,.community-footer){
+      background:#080e1a!important;color:#c4d0e2!important;
+    }
+    html[data-theme="dark"] :is(.ai-footer,.media-footer,.services-footer,.community-footer) a{color:#a9c5ff!important}
+    html[data-theme="light"] .home-member-dashboard .member-profile-card{background:#fff!important;color:#17233d!important}
+    html[data-theme="dark"] .home-member-dashboard .member-profile-card{background:#151f33!important;color:#e8eef9!important}
+    #member-dashboard .atp-member-preferences{display:block!important;visibility:visible!important;opacity:1!important}
+    #member-dashboard .atp-theme-toggle{display:inline-flex!important;align-items:center;justify-content:center;min-height:42px;font-weight:800}
+  `;
   document.head.appendChild(style);
 
   const protectLogos = () => {
@@ -94,5 +186,5 @@
     button.addEventListener("click",()=>{const next=document.documentElement.dataset.theme==="dark"?"light":"dark";document.documentElement.dataset.theme=next;localStorage.setItem(KEY,next);sync();});
     sync();container.appendChild(panel);
   };
-  addThemeControl(document.querySelector("#home-member-dashboard .member-profile-card"));\n  addThemeControl(document.getElementById("academy-dashboard"));
+  addThemeControl(document.querySelector("#member-dashboard .member-profile-card"));\n  addThemeControl(document.getElementById("academy-dashboard"));
 })();
