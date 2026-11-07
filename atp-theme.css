@@ -136,3 +136,52 @@ html{scroll-behavior:smooth}body{background:#f7f5ee!important;color:#1d2b25!impo
 @media(max-width:760px){.featured-heading{align-items:flex-start;flex-direction:column}.video-course-link{grid-template-columns:1fr}.video-course-cover{min-height:180px}.video-course-info{padding:22px}.home-account .account-shell,.home-member-dashboard .account-shell{grid-template-columns:1fr;gap:25px}.home-account,.home-member-dashboard{padding:48px 0}}
 @media(max-width:420px){.home-account .input-row{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.video-track{transition:none}}
+
+/* Nouvelle identité ATP : cobalt électrique, corail franc et citron */
+:root{
+ --navy:#111a36!important;--navy2:#1a2b55!important;--purple:#2448ff!important;
+ --cyan:#17c7d8!important;--lime:#d9ff42!important;--ink:#101a32!important;
+ --muted:#59657a!important;--bg:#f5f7fb!important;--line:#dce2ef!important;--white:#fff!important;
+ --home-blue:#2448ff;--home-indigo:#ff5b45;--home-bg:#f5f7fb;--home-text:#101a32;--home-muted:#59657a;--home-border:#dce2ef;
+}
+body{background:#f5f7fb!important;color:#101a32!important}
+.site-header{background:#fff!important;border-color:#dce2ef!important}
+.brand-mark{background:#2448ff!important;box-shadow:0 8px 22px rgba(36,72,255,.22)!important}
+.brand-mark span{color:#d9ff42!important}
+.brand-name,.main-nav a{color:#111a36!important}
+.main-nav a:hover,.footer-links a:hover{color:#ff5b45!important}
+.button-primary,.submit-button{background:#2448ff!important;color:#fff!important;box-shadow:0 9px 24px rgba(36,72,255,.2)!important}
+.nav-cta{background:#2448ff!important;color:#fff!important}
+.section-label{color:#2448ff!important}
+.hero{background:linear-gradient(118deg,#111a36 0%,#1b2f67 64%,#2448ff 100%)!important}
+.hero h1 em{color:#d9ff42!important}.eyebrow{color:#d9ff42!important}
+.eyebrow-dot,.proof-check{background:#d9ff42!important;color:#111a36!important}
+.art-center{background:linear-gradient(145deg,#d9ff42,#ff5b45)!important;color:#111a36!important}
+.orbit-chip{color:#111a36!important}.orbit-chip b{color:#ff5b45!important}
+.site-footer{background:#111a36!important;color:#fff!important}
+.mobile-menu{background:#2448ff!important;color:#fff!important;border:0!important;border-radius:10px!important}
+.services-toggle{color:#111a36!important}
+.services-menu{background:#fff!important;border-color:#dce2ef!important;box-shadow:0 18px 48px rgba(17,26,54,.2)!important}
+.services-menu a{color:#111a36!important}
+.services-menu a:hover{background:#edf1ff!important;color:#2448ff!important}
+.services-menu small{color:#64708a!important}
+.menu-logout{color:#ff5b45!important}
+.home-featured{background:#edf1ff!important}
+.featured-kicker,.video-course-meta{color:#ff5b45!important}
+.featured-heading h2{color:#111a36!important}.featured-heading h2 em{color:#2448ff!important}
+.video-course-cover{background:radial-gradient(circle at 20% 20%,#d9ff42 0,transparent 35%),linear-gradient(135deg,#111a36,#2448ff 75%,#17c7d8)!important}
+.video-course-card.is-premium .video-course-cover{background:radial-gradient(circle at 20% 20%,#ffd1c5 0,transparent 35%),linear-gradient(135deg,#5b1f35,#ff5b45 75%,#d9ff42)!important}
+.carousel-dots button.active{background:#2448ff!important}
+.carousel-controls>button{color:#2448ff!important}
+.home-account,.home-member-dashboard{background:#fff!important}
+.home-account .account-copy h2,.home-member-dashboard .account-copy h2{color:#111a36!important}
+.home-account .account-copy h2 span{color:#ff5b45!important}
+.home-account .auth-card,.home-member-dashboard .auth-card{background:#f5f7fb!important;border-color:#dce2ef!important}
+.password-toggle{background:#e9edff!important;color:#2448ff!important}
+.member-avatar{background:#d9ff42!important;color:#111a36!important}
+#member-nav-link{font-weight:800!important;color:#2448ff!important}
+@media(max-width:760px){
+ .main-nav{background:#fff!important;border-color:#dce2ef!important;box-shadow:0 18px 34px rgba(17,26,54,.16)!important}
+ .services-menu{background:#f5f7fb!important}
+ .mobile-menu{display:grid!important;place-items:center!important;width:42px!important;height:42px!important;font-size:22px!important}
+}
