@@ -814,3 +814,32 @@ body :is(.site-footer,.footer,.services-footer,.ai-footer,.media-footer,.communi
 @keyframes atp-film-spin{to{transform:rotate(360deg)}}@keyframes atp-film-float{0%,100%{translate:0 0}50%{translate:0 -8px}}
 @media(max-width:760px){.atp-intro-film{padding:48px 0}.atp-film-player{grid-template-columns:1fr}.atp-film-visual{min-height:250px}.atp-film-copy{padding:25px}.atp-film-heading p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.atp-film-orbit,.atp-film-floating{animation:none!important}.atp-film-progress span{transition:none!important}}
+
+
+/* ATP NAVIGATION COMMUNE — même menu Services et mêmes boutons de retour */
+.atp-global-dropdown{position:relative;display:inline-flex;align-items:center;margin-left:12px;z-index:120}
+.atp-global-toggle{display:inline-flex;align-items:center;gap:8px;border:1px solid #cbd7c9!important;border-radius:999px!important;padding:10px 15px!important;background:#fffefa!important;color:#203b30!important;font:800 12px "DM Sans",Arial,sans-serif!important;cursor:pointer}
+.atp-global-toggle:hover{background:#e8eee3!important}
+.atp-global-menu{position:absolute;top:calc(100% + 10px);right:0;z-index:200;width:245px;padding:8px;background:#fffefa;border:1px solid #d4dfd0;border-radius:15px;box-shadow:0 16px 40px rgba(23,59,50,.18);display:grid;gap:3px}
+.atp-global-menu[hidden]{display:none!important}
+.atp-global-menu a{display:flex;flex-direction:column;gap:3px;padding:10px 12px;border-radius:10px;color:#203b30!important;text-decoration:none!important}
+.atp-global-menu a:hover{background:#e8eee3!important}
+.atp-global-menu strong{font-size:13px;color:#203b30!important}
+.atp-global-menu small{font-size:11px;color:#536157!important}
+.atp-back-control,.services-back,.store-back,.ai-back,.media-back,.community-back,.home-btn{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;
+ min-height:42px!important;padding:10px 17px!important;border:1px solid #24563e!important;border-radius:999px!important;
+ background:#24563e!important;color:#fffefa!important;text-decoration:none!important;font-size:13px!important;font-weight:800!important;
+ box-shadow:0 5px 14px rgba(36,86,62,.16)!important;transition:background .18s,transform .18s!important
+}
+.atp-back-control:hover,.services-back:hover,.store-back:hover,.ai-back:hover,.media-back:hover,.community-back:hover,.home-btn:hover{
+ background:#173b2b!important;color:#fffefa!important;transform:translateY(-1px)
+}
+.services-banner .services-button{background:#24563e!important;color:#fffefa!important;border-color:#24563e!important}
+.services-banner .services-button:hover{background:#173b2b!important;color:#fffefa!important}
+.services-banner .services-button *{color:#fffefa!important}
+@media(max-width:760px){
+ .atp-global-dropdown{margin-left:0}
+ .atp-global-menu{right:0;left:auto;width:min(245px,calc(100vw - 34px))}
+ header .atp-global-dropdown{align-self:flex-start}
+}
