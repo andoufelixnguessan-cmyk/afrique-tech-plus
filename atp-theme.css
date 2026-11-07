@@ -610,3 +610,13 @@ html[data-theme="dark"] body :is(.ai-logo span,.media-logo span,.services-logo s
   body :is(.ai-topbar,.media-topbar,.services-topbar,.community-topbar,.store-topbar){padding:14px 5%!important;gap:8px!important}
   .atp-preferences{gap:5px}
 }
+
+
+/* Final light-only navigation and member dashboard refinement */
+#member-nav-link{color:#59617c!important;font-weight:800!important}
+#member-nav-link:hover{color:#2864d8!important}
+.home-member-dashboard .member-shortcuts a{background:#fff!important;color:#1e3d5d!important;border-color:#dce5ee!important;box-shadow:0 5px 16px rgba(24,48,76,.04)!important}
+.home-member-dashboard .member-shortcuts a span{color:#5d6d80!important}
+.home-member-dashboard .member-profile-card{background:#fff!important;border:1px solid #dce5ee!important;box-shadow:0 16px 42px rgba(24,48,76,.08)!important}
+.home-member-dashboard .profile-details{background:#f5f8fc!important;color:#40536a!important}
+.home-member-dashboard .profile-details p,.home-member-dashboard .profile-details strong{color:#40536a!important}
