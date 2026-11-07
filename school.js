@@ -91,6 +91,7 @@
   let activeFullscreenLesson = null;
   const pageParams = new URLSearchParams(window.location.search);
   const lessonPage = document.body.classList.contains("school-lesson-page");
+  const lessonReader = lessonPage && pageParams.has("lesson");
 
   if (!SUBJECTS[currentClass]) currentClass = "6e";
 
@@ -1169,7 +1170,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     const body = el("div", "", "atp-session-body");
 
     summary.addEventListener("click", event => {
-      if (lessonPage) return;
+      if (lessonReader) return;
       event.preventDefault();
       const params = new URLSearchParams({ class: currentClass, subject: currentSubject, lesson: String(lessonIndex), category: currentCategory });
       window.location.href = "school-lesson.html?" + params.toString();
@@ -1183,7 +1184,7 @@ function renderLesson(parent, lesson, lessonIndex) {
         )
       );
       details.appendChild(body);
-      if (lessonPage) details.open = true;
+      if (lessonReader) details.open = true;
       parent.appendChild(details);
       return;
     }
@@ -1329,7 +1330,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     body.appendChild(actions);
 
     details.appendChild(body);
-    if (lessonPage) details.open = true;
+    if (lessonReader) details.open = true;
     parent.appendChild(details);
 }
   function renderResources() {
@@ -1353,10 +1354,10 @@ function renderLesson(parent, lesson, lessonIndex) {
     }
 
     let lessons = getLessons(currentSubject);
-    const requestedLesson = lessonPage && pageParams.has("lesson") ? Number(pageParams.get("lesson")) : -1;
+    const requestedLesson = lessonReader ? Number(pageParams.get("lesson")) : -1;
     const requestedIndex = Number.isInteger(requestedLesson) ? requestedLesson : -1;
     const allLessons = lessons;
-    if (lessonPage && requestedIndex >= 0) lessons = allLessons.filter((lesson, index) => index === requestedIndex);
+    if (lessonReader && requestedIndex >= 0) lessons = allLessons.filter((lesson, index) => index === requestedIndex);
 
     if (!lessons.length) {
       list.appendChild(
@@ -1373,7 +1374,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     const total = allLessons.length;
     const finished = allLessons.filter((lesson, index) => isDone(lessonKey(currentSubject, lesson, index))).length;
     const percentage = total ? Math.round((finished / total) * 100) : 0;
-    if (!lessonPage) {
+    if (!lessonReader) {
       const header = el("div", "", "atp-learning-section");
       header.appendChild(el("h3", currentSubject + " — Programme de 6e"));
       if (subjectContent && subjectContent.goal) header.appendChild(el("p", "Objectif général : " + subjectContent.goal));
@@ -1383,8 +1384,8 @@ function renderLesson(parent, lesson, lessonIndex) {
     let previousSection = null;
 
     lessons.forEach((lesson, visibleIndex) => {
-      const index = lessonPage ? requestedIndex : visibleIndex;
-      if (!lessonPage && lesson.section && lesson.section !== previousSection) {
+      const index = lessonReader ? requestedIndex : visibleIndex;
+      if (!lessonReader && lesson.section && lesson.section !== previousSection) {
         previousSection = lesson.section;
         list.appendChild(el("h3", lesson.section));
       }
@@ -1392,7 +1393,7 @@ function renderLesson(parent, lesson, lessonIndex) {
       renderLesson(list, lesson, index);
     });
 
-    if (!lessonPage) {
+    if (!lessonReader) {
       const progressFooter = el("div", "", "atp-learning-section");
       progressFooter.appendChild(el("h3", "📊 Progression de la matière"));
       progressFooter.appendChild(el("p", finished + " leçon(s) terminée(s) sur " + total + " — " + percentage + "%"));
@@ -1519,6 +1520,23 @@ function renderLesson(parent, lesson, lessonIndex) {
       block: "start"
     });
   });
+
+  // Le lecteur individuel revient vers la liste des leçons de la rubrique choisie.
+  const pageBackLink = document.querySelector(".school-lesson-page .home-btn");
+  if (pageBackLink) {
+    if (lessonReader) {
+      const backParams = new URLSearchParams({
+        class: pageParams.get("class") || currentClass,
+        subject: pageParams.get("subject") || "",
+        category: pageParams.get("category") || "cours"
+      });
+      pageBackLink.href = "school-lesson.html?" + backParams.toString();
+      pageBackLink.textContent = "← Retour aux leçons";
+    } else {
+      pageBackLink.href = "school.html";
+      pageBackLink.textContent = "← Retour aux matières";
+    }
+  }
 
   if (pageParams.has("class") && SUBJECTS[pageParams.get("class")]) currentClass = pageParams.get("class");
   if (pageParams.has("category") && CATEGORIES[pageParams.get("category")]) currentCategory = pageParams.get("category");
