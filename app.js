@@ -4,8 +4,16 @@
   const year=$("year"); if(year) year.textContent=new Date().getFullYear();
   const nav=$("main-nav");
   const menu=$("mobile-menu");
-  menu?.addEventListener("click",()=>nav?.classList.toggle("open"));
-  nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+  menu?.addEventListener("click",()=>{
+    const open=nav?.classList.toggle("open")||false;
+    menu.setAttribute("aria-expanded",String(open));
+    menu.setAttribute("aria-label",open?"Fermer le menu":"Ouvrir le menu");
+  });
+  nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{
+    nav.classList.remove("open");
+    menu?.setAttribute("aria-expanded","false");
+    menu?.setAttribute("aria-label","Ouvrir le menu");
+  }));
 
   const account=$("account"), dashboard=$("member-dashboard"), forms=$("auth-forms");
   const memberNav=$("member-nav-link");
@@ -33,6 +41,8 @@
   memberNav?.addEventListener("click",event=>{
     event.preventDefault();
     nav?.classList.remove("open");
+    menu?.setAttribute("aria-expanded","false");
+    menu?.setAttribute("aria-label","Ouvrir le menu");
     if(currentUser && dashboard){
       dashboard.hidden=false;
       dashboard.scrollIntoView({behavior:"smooth",block:"start"});
