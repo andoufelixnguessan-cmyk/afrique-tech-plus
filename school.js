@@ -1317,6 +1317,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     body.appendChild(actions);
 
     details.appendChild(body);
+    if (lessonPage) details.open = true;
     parent.appendChild(details);
 }
   function renderResources() {
