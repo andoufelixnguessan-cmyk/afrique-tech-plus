@@ -17,6 +17,12 @@
       button.textContent = mode === "dark" ? "☀️ Passer au thème clair" : "🌙 Activer le thème sombre";
       button.setAttribute("aria-pressed", String(mode === "dark"));
     });
+    document.querySelectorAll(".atp-header-theme-toggle").forEach(button => {
+      button.textContent = mode === "dark" ? "☀️" : "🌙";
+      button.title = mode === "dark" ? "Passer au thème clair" : "Activer le thème sombre";
+      button.setAttribute("aria-label", button.title);
+      button.setAttribute("aria-pressed", String(mode === "dark"));
+    });
   };
   let savedTheme = "light";
   try { savedTheme = localStorage.getItem(KEY) === "dark" ? "dark" : "light"; } catch (_) {}
@@ -25,6 +31,8 @@
   const style = document.createElement("style");
   style.textContent = `
     .atp-preferences{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto}
+    .atp-header-theme-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:34px;padding:0 9px;border:1px solid #9aa9bd;border-radius:9px;background:#fff;color:#1b2a41;font:700 12px Arial,sans-serif;cursor:pointer}
+    html[data-theme="dark"] .atp-header-theme-toggle{background:#243449;color:#f4f7fb;border-color:#61748e}
     .atp-language-toggle{display:inline-flex;align-items:center;justify-content:center;min-width:40px;height:34px;padding:0 10px;border:1px solid #9aa9bd;border-radius:9px;background:#fff;color:#1b2a41;font:800 11px Arial,sans-serif;cursor:pointer}
     html[data-theme="dark"] .atp-language-toggle{background:#243449;color:#f4f7fb;border-color:#61748e}
     .atp-member-preferences{margin-top:20px;padding:16px;border:1px solid #d5deea;border-radius:14px;background:#f1f5f9;color:#1b2a41}
@@ -59,9 +67,11 @@
   if (!languageHost.querySelector(".atp-preferences")) {
     const languageControl = document.createElement("div");
     languageControl.className = "atp-preferences";
-    languageControl.innerHTML = '<button type="button" class="atp-language-toggle" aria-label="Changer de langue" title="Changer de langue"></button><div id="google_translate_element" hidden></div>';
+    languageControl.innerHTML = '<button type="button" class="atp-header-theme-toggle" aria-label="Changer de thème" title="Changer de thème">🌙</button><button type="button" class="atp-language-toggle" aria-label="Changer de langue" title="Changer de langue"></button><div id="google_translate_element" hidden></div>';
     languageHost.appendChild(languageControl);
-    const languageButton = languageControl.querySelector("button");
+    const headerThemeButton = languageControl.querySelector(".atp-header-theme-toggle");
+    headerThemeButton.addEventListener("click", () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark"));
+    const languageButton = languageControl.querySelector(".atp-language-toggle");
     const syncLanguage = () => {
       const french = currentLanguage() === "fr";
       languageButton.textContent = french ? "EN" : "FR";
