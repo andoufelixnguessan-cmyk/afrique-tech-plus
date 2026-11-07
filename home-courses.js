@@ -13,7 +13,7 @@
     const premium=course.access_type!=="free";
     const card=document.createElement("article");
     card.className="video-course-card"+(premium?" is-premium":"");
-    card.innerHTML='<a class="video-course-link" href="academy.html#formations" aria-label="Découvrir '+escape(course.title)+'"><div class="video-course-cover"><span class="video-course-label">'+(premium?"FORMATION PREMIUM":"FORMATION GRATUITE")+'</span><span class="video-play" aria-hidden="true">▶</span><span class="video-course-brand">AFRIQUE TECH PLUS ACADEMY</span></div><div class="video-course-info"><h3>'+escape(course.title||"Formation ATP")+'</h3><p>'+escape(course.description||"Développe tes compétences avec cette formation.")+'</p><span class="video-course-meta">'+escape(course.level||"Tous niveaux")+' · '+Number(course.modules_count||0)+' module(s)</span></div></a>';
+    card.innerHTML='<a class="video-course-link" href="academy-course.html?id='+encodeURIComponent(course.id)+'" aria-label="Ouvrir '+escape(course.title)+'"><div class="video-course-cover"><span class="video-play" aria-hidden="true">▶</span></div><div class="video-course-info"><h3>'+escape(course.title||"Formation ATP")+'</h3><p>'+escape(course.description||"Développe tes compétences avec cette formation.")+'</p><span class="video-course-meta">'+escape(course.level||"Tous niveaux")+' · '+Number(course.modules_count||0)+' module(s)</span></div></a>';
     return card;
   };
   const show=index=>{
@@ -39,13 +39,13 @@
       const all=data||[];
       const selected=[...all.filter(c=>c.access_type==="free").slice(0,2),...all.filter(c=>c.access_type!=="free").slice(0,2)];
       if(selected.length!==4){
-        setStatus("Les 4 emplacements seront affichés dès que 2 formations gratuites et 2 premium seront publiées dans Academy.");
+        setStatus("Le catalogue des formations sera bientôt enrichi.");
         return;
       }
       track.replaceChildren();selected.forEach(c=>track.appendChild(render(c)));
       cards=[...track.children];
       if(dots){dots.replaceChildren();cards.forEach((_,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Afficher la formation "+(i+1));b.addEventListener("click",()=>{show(i);start();});dots.appendChild(b);});}
-      status.textContent="2 formations gratuites et 2 formations premium · Défilement automatique";
+      status.textContent="Formations disponibles";
       show(0);start();
     }catch(error){console.error("Chargement des formations à la une :",error);setStatus("Impossible de charger les formations pour le moment.");}
   }
