@@ -89,6 +89,8 @@
   let quizResults = safeRead("atp_school_quiz_results", []);
   let favoritesOnly = false;
   let activeFullscreenLesson = null;
+  const pageParams = new URLSearchParams(window.location.search);
+  const lessonPage = document.body.classList.contains("school-lesson-page");
 
   if (!SUBJECTS[currentClass]) currentClass = "6e";
 
@@ -1156,8 +1158,10 @@ function renderLesson(parent, lesson, lessonIndex) {
     const body = el("div", "", "atp-session-body");
 
     summary.addEventListener("click", event => {
+      if (lessonPage) return;
       event.preventDefault();
-      openFullscreenLesson(details);
+      const params = new URLSearchParams({ class: currentClass, subject: currentSubject, lesson: String(lessonIndex), category: currentCategory });
+      window.location.href = "school-lesson.html?" + params.toString();
     });
 
     if (!content) {
@@ -1335,7 +1339,11 @@ function renderLesson(parent, lesson, lessonIndex) {
       return;
     }
 
-    const lessons = getLessons(currentSubject);
+    let lessons = getLessons(currentSubject);
+    const requestedLesson = lessonPage ? Number(pageParams.get("lesson")) : -1;
+    const requestedIndex = Number.isInteger(requestedLesson) ? requestedLesson : -1;
+    const allLessons = lessons;
+    if (lessonPage && requestedIndex >= 0) lessons = allLessons.filter((lesson, index) => index === requestedIndex);
 
     if (!lessons.length) {
       list.appendChild(
@@ -1349,34 +1357,21 @@ function renderLesson(parent, lesson, lessonIndex) {
     }
 
     const subjectContent = getLearningSubject(currentSubject);
-    const total = lessons.length;
-
-    const finished = lessons.filter((lesson, index) =>
-      isDone(lessonKey(currentSubject, lesson, index))
-    ).length;
-
-    const percentage = total
-      ? Math.round((finished / total) * 100)
-      : 0;
-
-    const header = el("div", "", "atp-learning-section");
-
-    header.appendChild(
-      el("h3", currentSubject + " — Programme de 6e")
-    );
-
-    if (subjectContent && subjectContent.goal) {
-      header.appendChild(
-        el("p", "Objectif général : " + subjectContent.goal)
-      );
+    const total = allLessons.length;
+    const finished = allLessons.filter((lesson, index) => isDone(lessonKey(currentSubject, lesson, index))).length;
+    const percentage = total ? Math.round((finished / total) * 100) : 0;
+    if (!lessonPage) {
+      const header = el("div", "", "atp-learning-section");
+      header.appendChild(el("h3", currentSubject + " — Programme de 6e"));
+      if (subjectContent && subjectContent.goal) header.appendChild(el("p", "Objectif général : " + subjectContent.goal));
+      list.appendChild(header);
     }
-
-    list.appendChild(header);
 
     let previousSection = null;
 
-    lessons.forEach((lesson, index) => {
-      if (lesson.section && lesson.section !== previousSection) {
+    lessons.forEach((lesson, visibleIndex) => {
+      const index = lessonPage ? requestedIndex : visibleIndex;
+      if (!lessonPage && lesson.section && lesson.section !== previousSection) {
         previousSection = lesson.section;
         list.appendChild(el("h3", lesson.section));
       }
@@ -1384,38 +1379,18 @@ function renderLesson(parent, lesson, lessonIndex) {
       renderLesson(list, lesson, index);
     });
 
-    const progressFooter = el("div", "", "atp-learning-section");
-
-    progressFooter.appendChild(
-      el("h3", "📊 Progression de la matière")
-    );
-
-    progressFooter.appendChild(
-      el(
-        "p",
-        finished + " leçon(s) terminée(s) sur " +
-        total + " — " + percentage + "%"
-      )
-    );
-
-    const progress = el("div", "", "atp-progress");
-    const bar = el("span");
-
-    bar.style.width = percentage + "%";
-
-    progress.appendChild(bar);
-    progressFooter.appendChild(progress);
-
-    if (percentage === 100) {
-      progressFooter.appendChild(
-        el(
-          "p",
-          "🎉 Félicitations ! Toutes les leçons de cette matière sont terminées."
-        )
-      );
+    if (!lessonPage) {
+      const progressFooter = el("div", "", "atp-learning-section");
+      progressFooter.appendChild(el("h3", "📊 Progression de la matière"));
+      progressFooter.appendChild(el("p", finished + " leçon(s) terminée(s) sur " + total + " — " + percentage + "%"));
+      const progress = el("div", "", "atp-progress");
+      const bar = el("span");
+      bar.style.width = percentage + "%";
+      progress.appendChild(bar);
+      progressFooter.appendChild(progress);
+      if (percentage === 100) progressFooter.appendChild(el("p", "🎉 Félicitations ! Toutes les leçons de cette matière sont terminées."));
+      list.appendChild(progressFooter);
     }
-
-    list.appendChild(progressFooter);
   }
 
   function showCategory(category) {
@@ -1521,8 +1496,11 @@ function renderLesson(parent, lesson, lessonIndex) {
     });
   });
 
+  if (pageParams.has("class") && SUBJECTS[pageParams.get("class")]) currentClass = pageParams.get("class");
+  if (pageParams.has("category") && CATEGORIES[pageParams.get("category")]) currentCategory = pageParams.get("category");
   buildClassSelector();
   renderSubjects();
   save();
+  if (pageParams.has("subject")) { const requestedSubject = pageParams.get("subject"); if (SUBJECTS[currentClass].some(([name]) => name === requestedSubject)) openSubject(requestedSubject); }
 
 })();
