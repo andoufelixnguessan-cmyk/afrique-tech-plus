@@ -340,3 +340,104 @@ html[data-theme="dark"] :is(.section-head p,.workspace p,.subject-card p,.catego
 }
 @media(max-width:390px){.home-spaces-grid{grid-template-columns:1fr}.home-space-card{min-height:175px}}
 @media(prefers-reduced-motion:reduce){.home-space-card{transition:none}}
+
+
+/* Correctifs ciblés — espace membre : lisibilité claire/sombre et responsive */
+.home-member-dashboard{
+  width:100%;
+  overflow:visible;
+  background:#f5f7fb!important;
+  color:#101a32!important;
+  scroll-margin-top:90px;
+}
+.home-member-dashboard .account-shell{
+  width:min(1180px,calc(100% - 40px));
+  margin-inline:auto;
+  grid-template-columns:minmax(0,1fr) minmax(280px,440px);
+  gap:clamp(22px,4vw,48px);
+  align-items:start;
+}
+.home-member-dashboard .account-copy,
+.home-member-dashboard .member-profile-card{min-width:0;max-width:100%}
+.home-member-dashboard .account-copy h2{color:#111a36!important;overflow-wrap:anywhere}
+.home-member-dashboard .account-copy>p{color:#59657a!important}
+.home-member-dashboard .member-shortcuts{width:100%;max-width:100%;gap:12px}
+.home-member-dashboard .member-shortcuts a{
+  min-width:0;
+  padding:15px 17px;
+  background:#fff!important;
+  color:#17233d!important;
+  border:1px solid #dce2ef!important;
+  box-shadow:0 7px 20px rgba(17,26,54,.055);
+  overflow-wrap:anywhere;
+}
+.home-member-dashboard .member-shortcuts a span{color:#59657a!important}
+.home-member-dashboard .member-shortcuts a:hover{
+  background:#edf1ff!important;border-color:#9aaeff!important;
+  transform:translateY(-2px);
+}
+.home-member-dashboard .member-profile-card{
+  background:#fff!important;color:#101a32!important;
+  border:1px solid #dce2ef!important;
+  box-shadow:0 14px 38px rgba(17,26,54,.07);
+}
+.home-member-dashboard .member-profile-card h3{color:#111a36!important}
+.home-member-dashboard .profile-details{
+  background:#f5f7fb!important;
+  border:1px solid #dce2ef!important;
+  color:#34415a!important;
+  overflow:hidden;
+}
+.home-member-dashboard .profile-details p,
+.home-member-dashboard .profile-details strong{color:#34415a!important;overflow-wrap:anywhere}
+.home-member-dashboard .member-profile-note{color:#59657a!important}
+.home-member-dashboard .atp-member-preferences{
+  margin-top:20px;padding:15px;background:#f5f7fb!important;
+  border:1px solid #dce2ef!important;color:#17233d!important;
+}
+.home-member-dashboard .atp-member-preferences strong,
+.home-member-dashboard .atp-theme-help{color:#34415a!important}
+.home-member-dashboard .atp-theme-toggle{
+  background:#fff!important;color:#17233d!important;border:1px solid #a9b8cc!important;
+}
+html[data-theme="dark"] .home-member-dashboard{
+  background:#0b1424!important;color:#e8eef9!important;
+}
+html[data-theme="dark"] .home-member-dashboard .account-copy h2,
+html[data-theme="dark"] .home-member-dashboard .member-profile-card h3{color:#f2f6ff!important}
+html[data-theme="dark"] .home-member-dashboard .account-copy>p{color:#b8c6dc!important}
+html[data-theme="dark"] .home-member-dashboard .member-shortcuts a{
+  background:#151f33!important;color:#f2f6ff!important;
+  border-color:#354761!important;box-shadow:none;
+}
+html[data-theme="dark"] .home-member-dashboard .member-shortcuts a span{color:#b8c6dc!important}
+html[data-theme="dark"] .home-member-dashboard .member-shortcuts a:hover{background:#1b2b45!important}
+html[data-theme="dark"] .home-member-dashboard .member-profile-card{
+  background:#151f33!important;color:#e8eef9!important;border-color:#354761!important;
+}
+html[data-theme="dark"] .home-member-dashboard .profile-details{
+  background:#101a2b!important;border-color:#354761!important;color:#e8eef9!important;
+}
+html[data-theme="dark"] .home-member-dashboard .profile-details p,
+html[data-theme="dark"] .home-member-dashboard .profile-details strong,
+html[data-theme="dark"] .home-member-dashboard .member-profile-note{color:#c4d0e2!important}
+html[data-theme="dark"] .home-member-dashboard .atp-member-preferences{
+  background:#101a2b!important;border-color:#354761!important;color:#e8eef9!important;
+}
+html[data-theme="dark"] .home-member-dashboard .atp-member-preferences strong,
+html[data-theme="dark"] .home-member-dashboard .atp-theme-help{color:#c4d0e2!important}
+html[data-theme="dark"] .home-member-dashboard .atp-theme-toggle{
+  background:#17243a!important;color:#edf4ff!important;border-color:#40516a!important;
+}
+@media(max-width:900px){
+  .home-member-dashboard .account-shell{grid-template-columns:minmax(0,1fr);max-width:720px}
+  .home-member-dashboard .member-profile-card{width:100%}
+}
+@media(max-width:600px){
+  .home-member-dashboard{padding:42px 0!important}
+  .home-member-dashboard .account-shell{width:calc(100% - 32px);gap:22px}
+  .home-member-dashboard .account-copy h2{font-size:clamp(27px,8vw,36px)!important;line-height:1.15}
+  .home-member-dashboard .member-shortcuts a{padding:14px;gap:6px}
+  .home-member-dashboard .member-profile-card{padding:20px!important}
+  .home-member-dashboard .profile-details{padding:14px;margin:14px 0}
+}
