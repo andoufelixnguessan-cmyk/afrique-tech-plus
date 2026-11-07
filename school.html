@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f3f7ff">
+  <meta name="theme-color" content="#f3fff8">
   <title>ATP SCHOOL | AFRIQUE TECH PLUS</title>
   <meta name="description" content="Ton espace scolaire numérique : cours, exercices, devoirs et préparation aux examens.">
 
   <style>
     :root {
-      --bg:#f3f7ff;
+      --bg:#f3fff8;
       --panel:#ffffff;
-      --blue:#2864d8;
-      --text:#17233d;
-      --muted:#61708c;
-      --border:#dce5f4;
+      --blue:#28d871;
+      --text:#173d27;
+      --muted:#618c73;
+      --border:#dcf4e6;
       --radius:18px;
     }
 
@@ -23,7 +23,7 @@
 
     body {
       margin:0;
-      background:linear-gradient(135deg,#f4f8ff,#edf3ff 55%,#f5f0ff);
+      background:linear-gradient(135deg,#f4fff9,#edfff5 55%,#fff6f0);
       color:var(--text);
       font-family:Arial,sans-serif;
       min-height:100vh;
@@ -45,14 +45,14 @@
       position:sticky;
       top:0;
       height:100vh;
-      box-shadow:3px 0 15px rgba(35,65,110,.04);
+      box-shadow:3px 0 15px rgba(35, 110, 66,.04);
     }
 
     .brand {
       font-size:21px;
       font-weight:900;
       letter-spacing:.5px;
-      color:#1b2c4d;
+      color:#1b4d30;
     }
 
     .brand span {color:var(--blue)}
@@ -67,7 +67,7 @@
 
     .nav-title {
       font-size:11px;
-      color:#8190aa;
+      color:#81aa92;
       margin:35px 10px 12px;
       text-transform:uppercase;
       letter-spacing:1.5px;
@@ -77,7 +77,7 @@
       width:100%;
       border:0;
       background:transparent;
-      color:#465673;
+      color:#467359;
       text-align:left;
       padding:13px 12px;
       border-radius:12px;
@@ -86,14 +86,14 @@
     }
 
     .nav button:hover,.nav button.active {
-      background:#eaf1ff;
-      color:#245bc1;
+      background:#eafff3;
+      color:#24c165;
     }
 
     .side-note {
       margin-top:35px;
       padding:15px;
-      background:#f5f8ff;
+      background:#f5fff9;
       border:1px solid var(--border);
       border-radius:14px;
       color:var(--muted);
@@ -136,31 +136,31 @@
       gap:8px;
       padding:11px 16px;
       border-radius:12px;
-      background:#2864d8;
+      background:#28d871;
       color:white;
       text-decoration:none;
       font-size:13px;
       font-weight:bold;
-      box-shadow:0 5px 12px rgba(40,100,216,.16);
+      box-shadow:0 5px 12px rgba(40, 216, 113,.16);
     }
 
-    .home-btn:hover {background:#1e50b4}
+    .home-btn:hover {background:#1eb45c}
 
     .hero {
       padding:35px;
-      border:1px solid #dce5fa;
+      border:1px solid #dcfae9;
       border-radius:25px;
-      background:linear-gradient(115deg,#e4efff,#eee7ff);
+      background:linear-gradient(115deg,#e4ffef,#fff1e7);
     }
 
     .hero h1 {
       font-size:clamp(28px,4vw,43px);
       margin:12px 0;
-      color:#192c50;
+      color:#195030;
     }
 
     .hero p {
-      color:#536582;
+      color:#538267;
       line-height:1.7;
       max-width:650px;
     }
@@ -168,12 +168,12 @@
     .hero-tag {
       display:inline-block;
       background:#fff;
-      color:#365c9c;
+      color:#369c61;
       padding:8px 12px;
       border-radius:30px;
       font-size:11px;
       font-weight:bold;
-      border:1px solid #dce6f8;
+      border:1px solid #dcf8e8;
     }
 
     .section {margin-top:35px}
@@ -189,7 +189,7 @@
     .section-head h2 {
       margin:0;
       font-size:22px;
-      color:#1c2d4c;
+      color:#1c4c30;
     }
 
     .section-head p {
@@ -202,7 +202,7 @@
       background:#fff;
       border:1px solid var(--border);
       border-radius:var(--radius);
-      box-shadow:0 4px 14px rgba(36,65,110,.04);
+      box-shadow:0 4px 14px rgba(36, 110, 67,.04);
     }
 
     .picker-panel {
@@ -221,9 +221,9 @@
     }
 
     .school-select,.search {
-      background:#f7f9ff;
-      color:#263754;
-      border:1px solid #cbd8ed;
+      background:#f7fffa;
+      color:#265439;
+      border:1px solid #cbedd9;
       border-radius:12px;
       padding:13px 15px;
       outline:none;
@@ -233,7 +233,7 @@
 
     .school-select:focus,.search:focus,.filter:focus {
       border-color:var(--blue);
-      box-shadow:0 0 0 3px rgba(40,100,216,.10);
+      box-shadow:0 0 0 3px rgba(40, 216, 113,.10);
     }
 
     .stats {
@@ -249,7 +249,7 @@
       display:block;
       font-size:25px;
       margin-bottom:5px;
-      color:#245bc1;
+      color:#24c165;
     }
 
     .stat span {
@@ -267,9 +267,9 @@
     .search {flex:1;min-width:190px}
 
     .filter {
-      background:#f7f9ff;
-      color:#263754;
-      border:1px solid #cbd8ed;
+      background:#f7fffa;
+      color:#265439;
+      border:1px solid #cbedd9;
       border-radius:12px;
       padding:12px;
     }
@@ -287,13 +287,13 @@
       border-radius:17px;
       min-height:145px;
       transition:.2s;
-      box-shadow:0 4px 12px rgba(36,65,110,.04);
+      box-shadow:0 4px 12px rgba(36, 110, 67,.04);
     }
 
     .subject-card:hover {
       transform:translateY(-3px);
-      border-color:#8bb1f5;
-      box-shadow:0 8px 20px rgba(36,65,110,.09);
+      border-color:#8bf5b7;
+      box-shadow:0 8px 20px rgba(36, 110, 67,.09);
     }
 
     .subject-icon {font-size:25px}
@@ -301,7 +301,7 @@
     .subject-card h3 {
       margin:14px 0 6px;
       font-size:16px;
-      color:#203452;
+      color:#205235;
     }
 
     .subject-card p {
@@ -315,33 +315,33 @@
       border:0;
       border-radius:9px;
       padding:9px 12px;
-      background:#2864d8;
+      background:#28d871;
       color:white;
       font-size:12px;
       font-weight:bold;
     }
 
-    .subject-card button:hover,.action-btn:hover {background:#1e50b4}
+    .subject-card button:hover,.action-btn:hover {background:#1eb45c}
 
     .category-card {
       padding:19px;
       background:#fff;
       border:1px solid var(--border);
       border-radius:15px;
-      color:#263754;
+      color:#265439;
       text-align:left;
-      box-shadow:0 4px 12px rgba(36,65,110,.04);
+      box-shadow:0 4px 12px rgba(36, 110, 67,.04);
     }
 
     .category-card:hover {
-      border-color:#9ab8f2;
-      background:#f1f6ff;
+      border-color:#9af2bf;
+      background:#f1fff7;
     }
 
     .category-card strong {
       display:block;
       margin:10px 0 5px;
-      color:#203452;
+      color:#205235;
     }
 
     .category-card span {
@@ -350,11 +350,11 @@
     }
 
     .workspace {padding:22px}
-    .workspace h2 {margin-top:0;color:#203452}
+    .workspace h2 {margin-top:0;color:#205235}
     .workspace p {color:var(--muted);line-height:1.6}
 
     .resource-item {
-      background:#f7f9ff;
+      background:#f7fffa;
       border:1px solid var(--border);
       padding:16px;
       border-radius:13px;
@@ -363,7 +363,7 @@
     .resource-item summary {
       cursor:pointer;
       font-weight:bold;
-      color:#203452;
+      color:#205235;
       line-height:1.5;
     }
 
@@ -373,8 +373,8 @@
       padding:25px;
       text-align:center;
       color:var(--muted);
-      background:#f8faff;
-      border:1px dashed #bdcce4;
+      background:#f8fffb;
+      border:1px dashed #bde4cd;
       border-radius:14px;
       grid-column:1/-1;
     }
@@ -385,7 +385,7 @@
     footer {
       margin:45px 0 15px;
       text-align:center;
-      color:#7b89a2;
+      color:#7ba28b;
       font-size:12px;
     }
 
@@ -421,7 +421,7 @@
       .home-btn {width:100%;justify-content:center}
     }
   </style>
-  <link rel="stylesheet" href="atp-theme.css?v=20261108-4">
+  <link rel="stylesheet" href="atp-theme.css?v=20261108-5">
 </head>
 
 <body class="school-page">
