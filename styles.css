@@ -1230,3 +1230,10 @@ body{background:#f4f7fc;color:#17233d}
 .home-member-dashboard .member-profile-note{color:#607187!important}
 @media(max-width:700px){.member-overview{gap:8px}.member-stat{padding:13px 9px}.member-stat strong{font-size:21px}.member-stat span{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.member-stat,.member-shortcuts a{transition:none!important}.member-stat:hover,.member-shortcuts a:hover{transform:none!important}}
+
+
+/* Header harmonisé avec le fond clair du site */
+.site-header{background:#f4f7fb!important;backdrop-filter:none!important;border-bottom:1px solid #e1e8ef!important}
+.nav-wrap{height:68px}
+#member-nav-link{color:#59617c!important}
+@media(max-width:700px){.main-nav{background:#f4f7fb!important;border-bottom:1px solid #e1e8ef!important}}
