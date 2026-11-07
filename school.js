@@ -1172,6 +1172,7 @@ function renderLesson(parent, lesson, lessonIndex) {
         )
       );
       details.appendChild(body);
+      if (lessonPage) details.open = true;
       parent.appendChild(details);
       return;
     }
@@ -1341,7 +1342,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     }
 
     let lessons = getLessons(currentSubject);
-    const requestedLesson = lessonPage ? Number(pageParams.get("lesson")) : -1;
+    const requestedLesson = lessonPage && pageParams.has("lesson") ? Number(pageParams.get("lesson")) : -1;
     const requestedIndex = Number.isInteger(requestedLesson) ? requestedLesson : -1;
     const allLessons = lessons;
     if (lessonPage && requestedIndex >= 0) lessons = allLessons.filter((lesson, index) => index === requestedIndex);
