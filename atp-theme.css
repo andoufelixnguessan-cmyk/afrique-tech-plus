@@ -67,3 +67,16 @@ html{scroll-behavior:smooth}body{background:#f7f5ee!important;color:#1d2b25!impo
 .store-card,.ai-card,.media-card,.services-card,.community-card{background:#fffefa!important;border-color:#e5e5d9!important;color:#1d2b25!important}
 .store-price,.product-price{color:#b85f3b!important}
 .store-footer,.ai-footer,.media-footer,.services-footer,.community-footer{background:#173b32!important;color:#f7f5ee!important}
+
+/* Accueil vivant, sans rajouter de rubriques ni de blocs */
+.hero-glow{animation:atp-glow-drift 11s ease-in-out infinite alternate}
+.glow-two{animation-delay:-5s}
+.orbit-a{animation:atp-orbit 32s linear infinite}
+.orbit-b{animation:atp-orbit 44s linear infinite reverse}
+.art-center{animation:atp-float 5s ease-in-out infinite}
+.orbit-chip{animation:atp-float 4.5s ease-in-out infinite}
+.chip-left{animation-delay:-1.2s}.chip-right{animation-delay:-2.1s}.chip-bottom{animation-delay:-3s}
+@keyframes atp-orbit{to{transform:rotate(360deg)}}
+@keyframes atp-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes atp-glow-drift{from{transform:translate3d(-10px,0,0) scale(.96)}to{transform:translate3d(18px,12px,0) scale(1.06)}}
+@media(prefers-reduced-motion:reduce){.hero-glow,.orbit-a,.orbit-b,.art-center,.orbit-chip{animation:none!important}}
