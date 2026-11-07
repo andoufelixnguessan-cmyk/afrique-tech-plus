@@ -8,6 +8,8 @@
   nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
 
   const account=$("account"), dashboard=$("member-dashboard"), forms=$("auth-forms");
+  const memberNav=$("member-nav-link");
+  let currentUser=null;
   if(window.location.hash==="#account" && account) account.hidden=false;
   const signup=$("signup-form"), login=$("login-form"), member=$("member-panel");
   const messageEl=$("auth-message"), logout=$("menu-logout"), navCta=document.querySelector(".nav-cta");
@@ -24,10 +26,21 @@
     say("");
   };
   $("switch-auth")?.addEventListener("click",()=>setMode(!modeLogin));
-  document.querySelectorAll('a[href="#account"]').forEach(link=>link.addEventListener("click",()=>{
+  document.querySelectorAll('a[href="#account"]:not(#member-nav-link)').forEach(link=>link.addEventListener("click",()=>{
     if(account)account.hidden=false;
     account?.scrollIntoView({behavior:"smooth",block:"start"});
   }));
+  memberNav?.addEventListener("click",event=>{
+    event.preventDefault();
+    nav?.classList.remove("open");
+    if(currentUser && dashboard){
+      dashboard.hidden=false;
+      dashboard.scrollIntoView({behavior:"smooth",block:"start"});
+    }else if(account){
+      account.hidden=false;
+      account.scrollIntoView({behavior:"smooth",block:"start"});
+    }
+  });
   document.querySelectorAll(".password-toggle").forEach(button=>{
     button.addEventListener("click",()=>{
       const input=$(button.dataset.passwordTarget); if(!input)return;
@@ -38,13 +51,14 @@
     });
   });
   const render=user=>{
+    currentUser=user||null;
     const connected=!!user;
     if(forms)forms.hidden=connected;
     if(member)member.hidden=!connected;
-    if(dashboard)dashboard.hidden=!connected;
+    if(dashboard)dashboard.hidden=true;
     if(logout)logout.hidden=!connected;
     if(navCta)navCta.hidden=connected;
-    document.querySelectorAll('a[href="#account"]').forEach(a=>{a.hidden=connected;});
+    document.querySelectorAll('a[href="#account"]:not(#member-nav-link)').forEach(a=>{a.hidden=connected;});
     if(connected && account)account.hidden=true;
     if(!connected){if(dashboard)dashboard.hidden=true;setMode(true);return;}
     const meta=user.user_metadata||{};
