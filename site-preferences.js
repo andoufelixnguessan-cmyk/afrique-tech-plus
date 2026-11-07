@@ -20,7 +20,7 @@
     html[data-theme="dark"] .video-course-info p{color:#b8c6dc!important}
     .atp-preferences{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
     .atp-preferences select,.atp-theme-toggle{border:1px solid #a9b8cc;border-radius:10px;padding:9px 11px;background:#fff;color:#17233d;font:600 12px Arial,sans-serif;cursor:pointer}
-    .atp-preferences select{min-width:76px}
+    .atp-preferences select{min-width:76px}.atp-language-label{font-size:11px;font-weight:700;color:inherit}
     .atp-member-preferences{margin-top:20px;padding:16px;border:1px solid #dfe7f1;border-radius:14px;background:rgba(40,100,216,.05)}
     .atp-member-preferences strong{display:block;margin-bottom:10px}
     html[data-theme="dark"] .atp-member-preferences{background:#101a2b!important;border-color:#354761!important}
@@ -31,7 +31,7 @@
   const language=document.createElement("div");
   language.className="atp-preferences";
   language.innerHTML='<label class="atp-language-label" for="atp-language">Langue</label><select id="atp-language" aria-label="Choisir la langue"><option value="fr">Français</option><option value="en">English</option></select><div id="google_translate_element" hidden></div>';
-  const host=document.querySelector(".nav-actions,.navigation,.nav-wrap,.services-topbar,.topbar .container,.topbar,.layout aside");
+  const host=document.querySelector(".nav-actions,.navigation,.nav-wrap,.services-topbar,.topbar .container,.topbar,.layout aside,header");
   if(host)host.appendChild(language);else document.body.prepend(language);
   const select=language.querySelector("select");
   const applyLanguage=lang=>{
