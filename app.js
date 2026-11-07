@@ -60,6 +60,25 @@
       button.textContent=visible?"◎":"◉";
     });
   });
+  async function loadMemberOverview(user){
+    const set=(id,value)=>{const el=$(id);if(el)el.textContent=value;};
+    set("member-stat-courses","…");set("member-stat-progress","…");set("member-stat-lessons","…");
+    if(!client||!user?.id)return;
+    const [enrollments,lessons]=await Promise.all([
+      client.from("academy_enrollments").select("id,progress_percent").eq("member_id",user.id).eq("enrollment_status","active"),
+      client.from("academy_lesson_progress").select("id",{count:"exact",head:true}).eq("member_id",user.id).eq("is_completed",true)
+    ]);
+    if(enrollments.error||lessons.error){
+      console.warn("Résumé membre indisponible",enrollments.error||lessons.error);
+      set("member-stat-courses","—");set("member-stat-progress","—");set("member-stat-lessons","—");
+      return;
+    }
+    const rows=enrollments.data||[];
+    const average=rows.length?Math.round(rows.reduce((sum,row)=>sum+Number(row.progress_percent||0),0)/rows.length):0;
+    set("member-stat-courses",String(rows.length));
+    set("member-stat-progress",average+" %");
+    set("member-stat-lessons",String(lessons.count||0));
+  }
   const render=user=>{
     currentUser=user||null;
     const connected=!!user;
@@ -77,6 +96,10 @@
     if($("dashboard-greeting"))$("dashboard-greeting").textContent="Bienvenue "+full+" !";
     if($("profile-name"))$("profile-name").textContent=full;
     if($("profile-email"))$("profile-email").textContent=user.email||"Non disponible";
+    const hour=new Date().getHours();
+    const greeting=hour<12?"Bonjour":hour<18?"Bon après-midi":"Bonsoir";
+    if($("dashboard-greeting"))$("dashboard-greeting").textContent=greeting+", "+full+" !";
+    loadMemberOverview(user);
   };
   if(!window.supabase?.createClient||!window.ATP_CONFIG?.supabaseUrl||!window.ATP_CONFIG?.supabasePublishableKey){
     say("Le module de connexion ne s'est pas chargé. Vérifie la configuration.", "error"); return;
