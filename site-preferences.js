@@ -40,7 +40,7 @@
     if(combo){combo.value=lang;combo.dispatchEvent(new Event("change"));return;}
     window.__atpPendingLanguage=lang;
   };
-  select.value="fr";
+  select.value=document.cookie.split(";").some(item=>item.trim()==="googtrans=/fr/en")?"en":"fr";
   select.addEventListener("change",()=>applyLanguage(select.value));
   window.googleTranslateElementInit=()=>{
     if(!window.google?.translate?.TranslateElement)return;
