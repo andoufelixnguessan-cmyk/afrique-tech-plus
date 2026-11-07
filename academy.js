@@ -676,7 +676,7 @@
       );
 
       button.type = "button";
-      button.addEventListener("click", () => openCourse(course));
+      button.addEventListener("click", () => { window.location.href = "academy-course.html?id=" + encodeURIComponent(course.id); });
 
       card.append(
         category,
