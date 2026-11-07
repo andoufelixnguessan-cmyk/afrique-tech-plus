@@ -206,3 +206,99 @@ html[data-theme="dark"] #academy-dynamic-catalogue :is(.atp-live-card p,.atp-mod
 html[data-theme="dark"] #academy-dynamic-catalogue .atp-lesson-content{color:#e8eef9!important}
 html[data-theme="dark"] .profile-details{background:#101a2b!important}
 @media(max-width:700px){.member-shortcuts a{align-items:flex-start;flex-direction:column;gap:4px}.member-profile-card{padding:22px!important}}
+
+
+/* ATP GLOBAL EXPERIENCE — immersive backgrounds, high contrast and clear reading surfaces */
+html{background:#edf3f7}
+body{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(ellipse at 8% 5%,rgba(48,116,145,.13),transparent 31%),
+    radial-gradient(ellipse at 92% 16%,rgba(201,154,83,.14),transparent 29%),
+    radial-gradient(ellipse at 70% 88%,rgba(91,139,119,.13),transparent 34%),
+    linear-gradient(145deg,#f5f8f7 0%,#edf3f7 48%,#f8f4ec 100%)!important;
+  color:#1b2d3b;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 22%,rgba(255,255,255,.82) 0 1px,transparent 2px),
+    radial-gradient(circle at 76% 65%,rgba(38,89,112,.12) 0 1px,transparent 2px),
+    repeating-linear-gradient(135deg,rgba(28,67,84,.018) 0 1px,transparent 1px 8px);
+  background-size:36px 36px,52px 52px,auto;
+  opacity:.72;
+}
+main>section:not(.hero),.home-featured,.home-account,.home-member-dashboard,
+.about-content,.about-values,.about-status-section,.services-section,
+.school-page main>.section:not(.workspace){
+  background:transparent!important;
+}
+.site-header,.topbar,.services-topbar,.school-page aside{
+  backdrop-filter:blur(18px);
+}
+:is(.auth-card,.service-card,.services-card,.video-course-card,.subject-card,
+.category-card,.workspace,.picker-panel,.toolbar,.stat,.atp-theme-group,
+.atp-learning-section,.atp-main-lesson,.atp-formula-card,.atp-question,
+.atp-session,.auth-panel,.profile-card,.member-profile-card,
+.atp-course-player,.atp-live-card,.atp-lesson-content){
+  background:rgba(255,255,255,.96)!important;
+  border-color:rgba(193,207,216,.78)!important;
+  box-shadow:0 12px 34px rgba(32,58,75,.055);
+  backdrop-filter:blur(12px);
+}
+:is(.section-head h2,.workspace h2,.subject-card h3,.category-card strong,
+.atp-theme-heading h3,.atp-main-lesson>summary,.atp-session summary,
+.atp-learning-section h4,.atp-course-player h2,.atp-course-player h3){
+  color:#18384b;
+}
+:is(.section-head p,.workspace p,.subject-card p,.category-card span,
+.atp-learning-section p,.atp-muted,.atp-list){
+  color:#536b7a;
+}
+.home-featured,.home-account,.home-member-dashboard,.about-content,
+.about-values,.about-status-section,.school-page main>.section{
+  position:relative;
+}
+.home-featured::before,.home-account::before,.home-member-dashboard::before,
+.about-content::before,.about-values::before,.about-status-section::before{
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;left:50%;transform:translateX(-50%);
+  width:min(92%,1100px);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(53,103,126,.18),transparent);
+}
+.school-page body{background:transparent}
+.school-page .hero{
+  background:radial-gradient(circle at 88% 12%,rgba(255,255,255,.34),transparent 28%),
+  linear-gradient(125deg,#173b50,#245b68 58%,#4b7b75)!important;
+  border-color:rgba(255,255,255,.35)!important;
+  box-shadow:0 18px 50px rgba(23,59,80,.16);
+}
+.school-page .subject-card,.school-page .category-card,.school-page .workspace,
+.school-page .picker-panel,.school-page .toolbar,.school-page .stat{
+  border-radius:17px;
+}
+.school-lesson-page .topbar{background:rgba(255,255,255,.94)!important}
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(ellipse at 8% 5%,rgba(43,103,137,.18),transparent 31%),
+    radial-gradient(ellipse at 92% 16%,rgba(167,118,57,.12),transparent 29%),
+    linear-gradient(145deg,#0b1424 0%,#101c2d 55%,#111d29 100%)!important;
+}
+html[data-theme="dark"] body::before{opacity:.24}
+html[data-theme="dark"] :is(.auth-card,.service-card,.services-card,.video-course-card,
+.subject-card,.category-card,.workspace,.picker-panel,.toolbar,.stat,.atp-theme-group,
+.atp-learning-section,.atp-main-lesson,.atp-formula-card,.atp-question,.atp-session,
+.auth-panel,.profile-card,.member-profile-card,.atp-course-player,.atp-live-card,
+.atp-lesson-content){background:#151f33!important;border-color:#2a3a55!important;color:#e8eef9!important}
+html[data-theme="dark"] :is(.section-head h2,.workspace h2,.subject-card h3,.category-card strong,
+.atp-theme-heading h3,.atp-main-lesson>summary,.atp-session summary,
+.atp-learning-section h4,.atp-course-player h2,.atp-course-player h3){color:#f2f6ff!important}
+html[data-theme="dark"] :is(.section-head p,.workspace p,.subject-card p,.category-card span,
+.atp-learning-section p,.atp-muted,.atp-list){color:#b8c6dc!important}
