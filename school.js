@@ -703,7 +703,18 @@ function addSection(parent, title, content) {
     $("workspaceTitle").textContent = name + " · " + currentClass;
     $("subjectWorkspace").classList.remove("hidden");
 
-    renderResources();
+    if (lessonPage) {
+      renderResources();
+    } else {
+      const list = $("resourceList");
+      list.replaceChildren();
+      list.appendChild(el(
+        "div",
+        "Choisis une rubrique ci-dessus (Cours, Exercices corrigés, Devoirs ou Préparation aux examens) pour ouvrir son espace de travail.",
+        "empty"
+      ));
+      $("workspaceDescription").textContent = "Sélectionne une rubrique pour continuer.";
+    }
     scrollToWorkspace();
   }
 
@@ -1403,9 +1414,20 @@ function renderLesson(parent, lesson, lessonIndex) {
     }
 
     currentCategory = category;
-    renderResources();
 
-    // Affiche clairement la zone de travail après le changement de rubrique.
+    // Depuis la liste des matières, chaque rubrique s'ouvre dans une page dédiée.
+    // Les leçons ne sont donc jamais injectées sous le menu des catégories.
+    if (!lessonPage) {
+      const params = new URLSearchParams({
+        class: currentClass,
+        subject: currentSubject,
+        category
+      });
+      window.location.href = "school-lesson.html?" + params.toString();
+      return;
+    }
+
+    renderResources();
     scrollToWorkspace();
   }
 
