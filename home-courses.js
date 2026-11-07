@@ -8,7 +8,7 @@
   if(!track||!status)return;
   let cards=[],active=0,timer=null;
   const escape=value=>String(value||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  const setStatus=msg=>{track.innerHTML='<p class="course-loading">'+escape(msg)+'</p>';status.textContent=msg;};
+  const setStatus=msg=>{track.innerHTML='<p class="course-loading">'+escape(msg)+'</p>';status.textContent=msg;status.hidden=false;};
   const render=course=>{
     const premium=course.access_type!=="free";
     const card=document.createElement("article");
@@ -38,14 +38,15 @@
       if(error)throw error;
       const all=data||[];
       const selected=[...all.filter(c=>c.access_type==="free").slice(0,2),...all.filter(c=>c.access_type!=="free").slice(0,2)];
-      if(selected.length!==4){
-        setStatus("Le catalogue des formations sera bientôt enrichi.");
+      if(!selected.length){
+        setStatus("Aucune formation n'est publiée pour le moment. Le catalogue sera bientôt enrichi.");
         return;
       }
       track.replaceChildren();selected.forEach(c=>track.appendChild(render(c)));
       cards=[...track.children];
       if(dots){dots.replaceChildren();cards.forEach((_,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Afficher la formation "+(i+1));b.addEventListener("click",()=>{show(i);start();});dots.appendChild(b);});}
-      status.textContent="Formations disponibles";
+      status.textContent=selected.length===1?"1 formation disponible":selected.length+" formations disponibles";
+      status.hidden=false;
       show(0);start();
     }catch(error){console.error("Chargement des formations à la une :",error);setStatus("Impossible de charger les formations pour le moment.");}
   }
