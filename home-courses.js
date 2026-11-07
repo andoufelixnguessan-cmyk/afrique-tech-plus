@@ -81,7 +81,7 @@
           duplicate.appendChild(copy);
         });
         const wrapper = document.createElement("div");
-        wrapper.className = "course-track-marquee";
+        wrapper.className = "course-track course-track-marquee is-moving";
         wrapper.style.display = "flex";
         wrapper.style.gap = "18px";
         wrapper.style.width = "max-content";
