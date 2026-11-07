@@ -44,7 +44,7 @@
     if(dashboard)dashboard.hidden=!connected;
     if(logout)logout.hidden=!connected;
     if(navCta)navCta.hidden=connected;
-    document.querySelectorAll('a[href="#account"]').forEach(a=>{if(a.classList.contains("button-ghost")||a.classList.contains("nav-cta"))a.hidden=connected;});
+    document.querySelectorAll('a[href="#account"]').forEach(a=>{a.hidden=connected;});
     if(connected && account)account.hidden=true;
     if(!connected){if(dashboard)dashboard.hidden=true;setMode(true);return;}
     const meta=user.user_metadata||{};
