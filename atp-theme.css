@@ -52,3 +52,18 @@ html{scroll-behavior:smooth}body{background:#f7f5ee!important;color:#1d2b25!impo
 }
 @media(max-width:390px){.values-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Harmonisation des interfaces internes des différents espaces */
+.academy-page .hero,.academy-page .academy-hero{background:linear-gradient(130deg,#eaf0df,#f7f5ee)!important}
+.academy-page .eyebrow,.academy-page .catalogue-label,.academy-page .benefit-icon{color:#27745b!important}
+.academy-page .hero h1 span,.academy-page h1 span{color:#d97850!important}
+.academy-page .academy-tab[aria-selected="true"],.academy-page .academy-tab.active{background:#27745b!important;color:#fffefa!important}
+.school-page .hero{background:linear-gradient(130deg,#eaf0df,#f7f5ee)!important}
+.school-page .hero-tag,.school-page .section-head h2{color:#27745b!important}
+.school-page .action-btn{background:linear-gradient(135deg,#27745b,#173b32)!important;color:#fffefa!important}
+.store-page,.ai-page,.media-page,.services-page,.community-page{background:#f7f5ee!important;color:#1d2b25!important}
+.store-page .store-hero,.ai-page .ai-hero,.media-page .media-hero,.services-page .services-hero,.community-page .community-hero{background:linear-gradient(130deg,#173b32,#214d40 68%,#2e6650)!important;color:#fffefa!important}
+.store-page .store-label,.ai-page .ai-label,.media-page .media-label,.services-page .services-label,.community-page .community-label{color:#d6ef78!important}
+.store-card,.ai-card,.media-card,.services-card,.community-card{background:#fffefa!important;border-color:#e5e5d9!important;color:#1d2b25!important}
+.store-price,.product-price{color:#b85f3b!important}
+.store-footer,.ai-footer,.media-footer,.services-footer,.community-footer{background:#173b32!important;color:#f7f5ee!important}
