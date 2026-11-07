@@ -647,3 +647,85 @@ body.community-page .community-comment p{margin:5px 0 0;color:#40566d!important;
 body.community-page .community-footer{background:transparent!important;color:#66798e!important;border-color:#dce5ee!important}
 body.community-page .community-footer a{color:#087b62!important}
 @media(max-width:600px){body.community-page .community-post{padding:15px}body.community-page .community-form-footer{align-items:stretch;flex-direction:column}}
+
+
+/* ACCESSIBILITE VISUELLE — correction ciblée des fonds violets et des en-têtes */
+:root{color-scheme:light!important}
+body.ai-page,body.media-page,body.services-page,body.community-page,body.store-page{
+  background:#f7f5ee!important;color:#26372e!important;
+}
+/* Tous les en-têtes de rubriques : bande sauge distincte, textes foncés */
+body :is(.site-header,.ai-topbar,.media-topbar,.services-topbar,.community-topbar,.store-topbar,.academy-page .navigation,.school-page .topbar){
+  background:#e8eee3!important;
+  color:#203b30!important;
+  border-bottom:1px solid #d4dfd0!important;
+  box-shadow:none!important;
+}
+body :is(.ai-logo,.media-logo,.services-logo,.community-logo,.store-logo,.ai-back,.media-back,.services-back,.community-back,.store-back,.brand-name,.main-nav a,.services-toggle){
+  color:#203b30!important;
+}
+body :is(.ai-logo span,.media-logo span,.services-logo span,.community-logo span,.store-logo span){
+  color:#a64f32!important;
+}
+body :is(.ai-back,.media-back,.services-back,.community-back,.store-back){
+  border-color:#b9cbbd!important;
+}
+body :is(.ai-back,.media-back,.services-back,.community-back,.store-back):hover{
+  background:#dce8d9!important;
+}
+/* Media : neutraliser les anciens aplats violet/bleu nuit, surtout le bandeau inférieur */
+body.media-page .media-hero{
+  background:linear-gradient(130deg,#e8eee3,#f4eadc)!important;
+  color:#203b30!important;
+}
+body.media-page .media-hero :is(h1,h2,h3,p,strong){
+  color:#203b30!important;
+}
+body.media-page .media-label{color:#a64f32!important}
+body.media-page .media-content{background:transparent!important;color:#26372e!important}
+body.media-page .media-content :is(h2,h3){color:#203b30!important}
+body.media-page .media-intro{color:#526258!important}
+body.media-page .media-card{
+  background:#fffefa!important;color:#26372e!important;
+  border:1px solid #dfe5d9!important;box-shadow:0 8px 24px rgba(35,58,43,.06)!important;
+}
+body.media-page .media-card :is(h3,p,summary){color:#34483b!important}
+body.media-page .media-card p{line-height:1.75}
+body.media-page .media-visual{background:linear-gradient(135deg,#e6eee2,#f1e6d9)!important;color:#34483b!important}
+body.media-page .media-status{color:#9b4d32!important}
+body.media-page .media-banner{
+  background:#e8eee3!important;color:#263b30!important;
+  border:1px solid #d3dfd0!important;box-shadow:none!important;
+}
+body.media-page .media-banner :is(h2,h3,p,strong,li){
+  color:#263b30!important;
+}
+body.media-page .media-footer{
+  background:#e8eee3!important;color:#526258!important;border-color:#d3dfd0!important;
+}
+body.media-page .media-footer a{color:#245b48!important}
+body.media-page .media-read-link a{
+  background:#dce9d8!important;color:#24533e!important;border:1px solid #c5d9c2!important;
+}
+body.media-page .media-read-link a:hover{background:#cfdfca!important}
+/* ATP AI : aucun panneau violet, texte foncé sur fonds clairs */
+body.ai-page .ai-hero{
+  background:linear-gradient(130deg,#e8eee3,#f4eadc)!important;color:#203b30!important;
+}
+body.ai-page .ai-hero :is(h1,h2,h3,p,strong){color:#203b30!important}
+body.ai-page .ai-label,body.ai-page .ai-status{color:#98502f!important}
+body.ai-page .ai-banner{
+  background:#e8eee3!important;color:#263b30!important;
+  border:1px solid #d3dfd0!important;box-shadow:none!important;
+}
+body.ai-page .ai-banner :is(h2,h3,p,li,strong){color:#263b30!important}
+body.ai-page .ai-card{
+  background:#fffefa!important;color:#26372e!important;border-color:#dfe5d9!important;
+}
+body.ai-page .ai-card :is(h2,h3,p){color:#34483b!important}
+body.ai-page .ai-footer{background:#e8eee3!important;color:#526258!important;border-color:#d3dfd0!important}
+body.ai-page .ai-footer a{color:#245b48!important}
+/* Le contenu des pages juridiques et de lecture garde le même contraste */
+body :is(.legal-content,.article-body){background:#fffefa!important;color:#26372e!important;border-color:#dfe5d9!important}
+body :is(.legal-content,.article-body) :is(h1,h2,h3,strong){color:#203b30!important}
+body :is(.legal-content,.article-body) :is(p,li){color:#43564a!important}
