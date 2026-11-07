@@ -688,6 +688,16 @@
 
       liveCourses.appendChild(card);
     }
+
+    const requestedCourseId = new URLSearchParams(window.location.search).get("id");
+    if (requestedCourseId) {
+      const requestedCourse = courses.find(course => course.id === requestedCourseId);
+      if (requestedCourse) {
+        openCourse(requestedCourse);
+      } else {
+        showStatus(liveCourses, "Cette formation est introuvable ou n'est plus publiée.");
+      }
+    }
   }
 
   // ==========================================
