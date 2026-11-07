@@ -749,3 +749,8 @@ body.services-page .services-banner :is(h2,h3,p,strong,li){color:#263b30!importa
 body.services-page .services-button{background:#24563e!important;color:#fff!important}
 body.services-page .services-footer{background:#e8eee3!important;color:#526258!important;border-color:#d3dfd0!important}
 body.services-page .services-footer a{color:#245b48!important}
+
+/* Emblème ATP partagé sur toutes les rubriques */
+.brand-logo{width:46px;height:46px;display:block;object-fit:contain;flex:0 0 46px}
+:is(.brand,.ai-logo,.media-logo,.services-logo,.community-logo,.store-logo){display:inline-flex!important;align-items:center!important;gap:10px!important}
+.school-brandline{display:flex;align-items:center;gap:12px}
