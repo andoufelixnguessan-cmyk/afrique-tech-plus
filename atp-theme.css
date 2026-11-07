@@ -185,3 +185,24 @@ body{background:#f5f7fb!important;color:#101a32!important}
  .services-menu{background:#f5f7fb!important}
  .mobile-menu{display:grid!important;place-items:center!important;width:42px!important;height:42px!important;font-size:22px!important}
 }
+
+
+/* Espace membre : tableau de bord plus structuré */
+.member-shortcuts{display:grid;gap:12px;margin-top:25px;max-width:520px}
+.member-shortcuts a{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:15px 17px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;font-weight:800;transition:transform .2s,background .2s}
+.member-shortcuts a:hover{transform:translateX(4px);background:rgba(255,255,255,.15)}
+.member-shortcuts a span{font-size:11px;font-weight:500;color:#cbd8ef}
+.member-profile-card{padding:30px!important;border-radius:22px!important}
+.member-profile-card h3{font-size:23px;margin:10px 0 20px}
+.member-profile-note{font-size:12px;color:#72819b;margin-top:18px}
+.profile-details{padding:17px;border-radius:14px;background:#f4f7fc;margin-top:15px}
+.profile-details p{margin:5px 0}
+.home-member-dashboard{padding:70px 0}
+.home-member-dashboard .account-shell{align-items:start}
+.home-member-dashboard .account-copy{padding-top:15px}
+html[data-theme="dark"] #academy-dynamic-catalogue :is(.atp-live-card,.atp-module,.atp-lesson,.atp-quiz,.atp-progress){background:#151f33!important;color:#e8eef9!important;border-color:#354761!important}
+html[data-theme="dark"] #academy-dynamic-catalogue :is(.atp-live-card h2,.atp-live-card h3,.atp-module h3,.atp-lesson h3,.atp-lesson h4){color:#f2f6ff!important}
+html[data-theme="dark"] #academy-dynamic-catalogue :is(.atp-live-card p,.atp-module p,.atp-lesson p,.atp-quiz p,.atp-status){color:#b8c6dc!important}
+html[data-theme="dark"] #academy-dynamic-catalogue .atp-lesson-content{color:#e8eef9!important}
+html[data-theme="dark"] .profile-details{background:#101a2b!important}
+@media(max-width:700px){.member-shortcuts a{align-items:flex-start;flex-direction:column;gap:4px}.member-profile-card{padding:22px!important}}
