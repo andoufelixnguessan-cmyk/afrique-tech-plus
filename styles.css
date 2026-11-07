@@ -1204,3 +1204,29 @@ body{background:#f4f7fc;color:#17233d}
 }
 @media(max-width:390px){.services-grid{grid-template-columns:1fr}.service-card{min-height:170px}}
 @media(prefers-reduced-motion:reduce){.course-track.is-moving{animation:none}.service-card{transition:none}}
+
+
+/* ATP — accueil épuré et espace membre vivant */
+#member-nav-link{color:#59617c!important;font-weight:800!important}
+#member-nav-link:hover{color:var(--purple)!important}
+.home-member-dashboard{background:linear-gradient(145deg,#f4f7fb 0%,#edf3f8 100%)!important}
+.home-member-dashboard .account-shell{gap:32px!important}
+.home-member-dashboard .account-copy{padding:25px 0!important}
+.home-member-dashboard .account-copy h2{color:#142b43!important}
+.home-member-dashboard .account-copy>p{color:#52647a!important}
+.member-overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:25px 0}
+.member-stat{min-width:0;padding:16px 14px;border:1px solid #dce5ee;border-radius:15px;background:#fff;box-shadow:0 8px 22px rgba(24,48,76,.055);transition:transform .2s ease,box-shadow .2s ease}
+.member-stat:hover{transform:translateY(-3px);box-shadow:0 13px 28px rgba(24,48,76,.10)}
+.member-stat strong{display:block;color:#173b62;font:900 25px Manrope,sans-serif;line-height:1.2}
+.member-stat span{display:block;margin-top:6px;color:#5d6d80;font-size:11px;font-weight:700;line-height:1.4}
+.member-shortcuts{gap:10px!important}
+.member-shortcuts a{background:#fff!important;color:#1e3d5d!important;border:1px solid #dce5ee!important;box-shadow:0 5px 16px rgba(24,48,76,.04);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease!important}
+.member-shortcuts a:hover{transform:translateY(-2px)!important;background:#f8fbff!important;border-color:#b9cce0!important;box-shadow:0 10px 22px rgba(24,48,76,.08)}
+.member-shortcuts a span{color:#5d6d80!important}
+.home-member-dashboard .member-profile-card{background:#fff!important;border:1px solid #dce5ee!important;box-shadow:0 16px 42px rgba(24,48,76,.08)!important}
+.home-member-dashboard .member-profile-card h3{color:#173b62!important}
+.home-member-dashboard .profile-details{padding:18px;margin:18px 0;border-radius:13px;background:#f5f8fc;color:#40536a!important}
+.home-member-dashboard .profile-details p,.home-member-dashboard .profile-details strong{color:#40536a!important}
+.home-member-dashboard .member-profile-note{color:#607187!important}
+@media(max-width:700px){.member-overview{gap:8px}.member-stat{padding:13px 9px}.member-stat strong{font-size:21px}.member-stat span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.member-stat,.member-shortcuts a{transition:none!important}.member-stat:hover,.member-shortcuts a:hover{transform:none!important}}
