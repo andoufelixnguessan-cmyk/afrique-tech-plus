@@ -21,7 +21,7 @@
         <span class="brand-name">AFRIQUE TECH PLUS<small>APPRENDRE · CRÉER · ÉVOLUER</small></span>
       </a>
 
-      <button class="mobile-menu" id="mobile-menu" aria-label="Ouvrir le menu">☰</button>
+      <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">☰</button>
 
       <nav class="main-nav" id="main-nav">
         <a href="index.html" aria-current="page">Accueil</a>
@@ -68,9 +68,8 @@
           </p>
 
           <div class="hero-actions">
-            <a class="button button-ghost" href="#account" data-i18n="hero_account">
-              Créer un compte gratuit
-            </a>
+            <a class="button button-primary" href="#account" data-i18n="hero_account">Créer un compte gratuit</a>
+            <a class="button button-ghost" href="#espaces">Explorer les espaces ↓</a>
           </div>
 
           <div class="hero-proof">
@@ -99,6 +98,26 @@
       </div>
     </section>
 
+
+
+    <section class="home-spaces" id="espaces" aria-labelledby="spaces-title">
+      <div class="container">
+        <div class="home-spaces-heading">
+          <span class="section-label">UN ÉCOSYSTÈME, SEPT ESPACES</span>
+          <h2 id="spaces-title">Tout pour apprendre, <span>créer et avancer.</span></h2>
+          <p>Choisis l'espace qui correspond à ton besoin et découvre les ressources proposées par AFRIQUE TECH PLUS.</p>
+        </div>
+        <div class="home-spaces-grid">
+          <a class="home-space-card space-academy" href="academy.html"><span class="home-space-icon">▤</span><span class="home-space-number">01</span><h3>ATP Academy</h3><p>Développe tes compétences grâce aux formations numériques.</p><span class="home-space-link">Explorer Academy ↗</span></a>
+          <a class="home-space-card space-school" href="school.html"><span class="home-space-icon">✎</span><span class="home-space-number">02</span><h3>ATP School</h3><p>Retrouve des cours et des ressources pour accompagner tes études.</p><span class="home-space-link">Accéder à School ↗</span></a>
+          <a class="home-space-card space-store" href="store.html"><span class="home-space-icon">▣</span><span class="home-space-number">03</span><h3>Boutique</h3><p>Découvre les guides pratiques et les ressources numériques.</p><span class="home-space-link">Voir la boutique ↗</span></a>
+          <a class="home-space-card space-ai" href="ai.html"><span class="home-space-icon">✧</span><span class="home-space-number">04</span><h3>ATP AI</h3><p>Explore les outils et usages de l'intelligence artificielle.</p><span class="home-space-link">Découvrir ATP AI ↗</span></a>
+          <a class="home-space-card space-media" href="media.html"><span class="home-space-icon">▶</span><span class="home-space-number">05</span><h3>ATP Media</h3><p>Consulte des articles, tutoriels et contenus utiles.</p><span class="home-space-link">Voir les contenus ↗</span></a>
+          <a class="home-space-card space-services" href="services.html"><span class="home-space-icon">⌘</span><span class="home-space-number">06</span><h3>Prestations</h3><p>Découvre les services et accompagnements numériques proposés.</p><span class="home-space-link">Nos prestations ↗</span></a>
+          <a class="home-space-card space-community" href="community.html"><span class="home-space-icon">◎</span><span class="home-space-number">07</span><h3>Community</h3><p>Un espace pour échanger, partager et progresser ensemble.</p><span class="home-space-link">Rejoindre la communauté ↗</span></a>
+        </div>
+      </div>
+    </section>
 
     <section class="home-featured" id="formations-a-la-une" aria-label="Formations à la une">
       <div class="container">
@@ -132,7 +151,7 @@
 
       <div class="footer-links">
         <a href="#home">Accueil</a>
-        <a href="academy.html">Services</a>
+        <a href="#espaces">Nos espaces</a>
         <a href="about.html">À propos</a>
         <a href="#account" data-i18n="nav_join">Rejoindre</a>
       </div>
