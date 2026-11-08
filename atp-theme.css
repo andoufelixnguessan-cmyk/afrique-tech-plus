@@ -999,3 +999,53 @@ body :is(.footer,.site-footer,.services-footer,.ai-footer,.media-footer,.communi
 .atp-film-player[data-scene="4"] .atp-film-emblem{background:#fff6df;color:#76502e}
 .atp-film-player[data-scene="5"] .atp-film-emblem{background:#e9f5ef;color:#234d49}
 .atp-film-player[data-scene="6"] .atp-film-emblem{background:#fff1e2;color:#60452f}
+
+
+/* ATP — verrouillage du style du bouton Accueil de Prestations sur TOUS les retours */
+html body :is(a,button).atp-back-control,
+html body :is(a,button).services-back,
+html body :is(a,button).store-back,
+html body :is(a,button).ai-back,
+html body :is(a,button).media-back,
+html body :is(a,button).community-back,
+html body :is(a,button).home-btn{
+  appearance:none!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;
+  min-height:44px!important;padding:11px 18px!important;
+  background-color:#a45132!important;background-image:none!important;
+  color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;
+  border:1px solid #a45132!important;border-radius:999px!important;
+  font-family:inherit!important;font-size:13px!important;font-weight:900!important;line-height:1.2!important;
+  text-decoration:none!important;text-shadow:none!important;opacity:1!important;
+  box-shadow:0 5px 14px rgba(164,81,50,.18)!important;
+  filter:none!important;transform:none;
+}
+html body :is(a,button).atp-back-control *,
+html body :is(a,button).services-back *,
+html body :is(a,button).store-back *,
+html body :is(a,button).ai-back *,
+html body :is(a,button).media-back *,
+html body :is(a,button).community-back *,
+html body :is(a,button).home-btn *{
+  color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;
+  fill:#fffefa!important;stroke:#fffefa!important;text-shadow:none!important;
+}
+html body :is(a,button).atp-back-control:hover,
+html body :is(a,button).services-back:hover,
+html body :is(a,button).store-back:hover,
+html body :is(a,button).ai-back:hover,
+html body :is(a,button).media-back:hover,
+html body :is(a,button).community-back:hover,
+html body :is(a,button).home-btn:hover,
+html body :is(a,button).atp-back-control:focus-visible,
+html body :is(a,button).services-back:focus-visible,
+html body :is(a,button).store-back:focus-visible,
+html body :is(a,button).ai-back:focus-visible,
+html body :is(a,button).media-back:focus-visible,
+html body :is(a,button).community-back:focus-visible,
+html body :is(a,button).home-btn:focus-visible{
+  background-color:#843d27!important;background-image:none!important;
+  color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;
+  border-color:#843d27!important;box-shadow:0 7px 18px rgba(132,61,39,.24)!important;
+  transform:translateY(-1px);
+}
