@@ -180,6 +180,17 @@
     }
   };
 
+  ["4e","3e"].forEach(grade => {
+    cycle[grade]["TICE"] = makeUnits([
+      "Recherche d’information et vérification des sources",
+      "Traitement de texte : mise en forme et document structuré",
+      "Tableur : tableaux, formules simples et graphiques",
+      "Citoyenneté numérique, sécurité et protection des données"
+    ],"TICE",grade);
+    cycle[grade]["Allemand"] = makeUnits(["Se présenter et présenter sa famille","École, horaires et activités quotidiennes","Décrire un lieu et exprimer ses goûts"],"Allemand",grade);
+    cycle[grade]["Espagnol"] = makeUnits(["Saludar, presentarse y hablar de la familia","La escuela y las actividades cotidianas","Describir personas, lugares y preferencias"],"Espagnol",grade);
+  });
+
   Object.entries(cycle).forEach(([grade, subjects]) => {
     window["ATP_CURRICULUM_" + grade.toUpperCase()] = subjects;
   });
@@ -256,7 +267,7 @@
       if (!grade && !isFive) return result;
       const subjects = raw || {};
       Object.entries(subjects).forEach(([subject, items]) => {
-        const note = subjectNotes[subject] || subjectNotes["Français"];
+        if (isFive && ["Mathématiques", "Français", "Anglais", "Physique-Chimie", "SVT"].includes(subject)) return;\n        const note = subjectNotes[subject] || subjectNotes["Français"];
         const target = result[subject];
         if (!target || !Array.isArray(target.lessons)) return;
         target.goal = "Programme de " + (grade || "5e") + " — " + subject + ". Les fiches ATP servent à apprendre les notions, appliquer une méthode et s’entraîner.";
