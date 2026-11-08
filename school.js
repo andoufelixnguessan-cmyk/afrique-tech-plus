@@ -96,7 +96,10 @@
   if (!SUBJECTS[currentClass]) currentClass = "6e";
 
   const CONTENT = window.ATP_LEARNING_CONTENT_6E;
-  const RAW_CURRICULUM = window.ATP_CURRICULUM_6E || {};
+  const requestedCurriculumClass = new URLSearchParams(window.location.search).get("class") || currentClass;
+  const RAW_CURRICULUM = requestedCurriculumClass === "5e"
+    ? (window.ATP_CURRICULUM_5E || {})
+    : (window.ATP_CURRICULUM_6E || {});
 
   const styles = document.createElement("style");
 
@@ -1342,11 +1345,12 @@ function renderLesson(parent, lesson, lessonIndex) {
     $("workspaceDescription").textContent =
       CATEGORIES[currentCategory] + " de " + currentSubject;
 
-    if (currentClass !== "6e") {
+    const hasPublishedCurriculum = currentClass === "6e" || (currentClass === "5e" && curriculumName(currentSubject) === "Mathématiques");
+    if (!hasPublishedCurriculum) {
       list.appendChild(
         el(
           "div",
-          "Les ressources détaillées de cette classe seront intégrées après la finalisation du programme de 6e.",
+          "Le programme détaillé de cette matière et de cette classe n’est pas encore publié dans ATP School. Les leçons seront affichées après vérification de la progression officielle et rédaction de leurs contenus spécifiques.",
           "empty"
         )
       );
@@ -1376,7 +1380,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     const percentage = total ? Math.round((finished / total) * 100) : 0;
     if (!lessonReader) {
       const header = el("div", "", "atp-learning-section");
-      header.appendChild(el("h3", currentSubject + " — Programme de 6e"));
+      header.appendChild(el("h3", currentSubject + " — Programme de " + currentClass));
       if (subjectContent && subjectContent.goal) header.appendChild(el("p", "Objectif général : " + subjectContent.goal));
       list.appendChild(header);
     }
