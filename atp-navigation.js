@@ -1,6 +1,6 @@
 (()=>{
  const current=(location.pathname.split("/").pop()||"index.html").toLowerCase();
- const items=[["academy.html","Academy","Formations numériques"],["school.html","ATP School","Cours scolaires"],["store.html","Boutique","Guides et produits"],["ai.html","ATP AI","Outils intelligents"],["media.html","ATP Media","Articles et tutoriels"],["services.html","Prestations","Services numériques"],["community.html","Community","Échanges et entraide"]];
+ const items=[["academy.html","Academy","Formations numériques"],["resources.html","Ressources scolaires","Cours, manuels et PDF"],["store.html","Boutique","Guides et produits"],["ai.html","ATP AI","Outils intelligents"],["media.html","ATP Media","Articles et tutoriels"],["services.html","Prestations","Services numériques"],["community.html","Community","Échanges et entraide"]];
  const markReturns=()=>{document.querySelectorAll("a,button").forEach(el=>{const t=(el.textContent||"").trim().toLowerCase();const href=(el.getAttribute("href")||"").toLowerCase();if((/retour|accueil/.test(t)||href==="index.html"||href==="./index.html")&&!el.closest(".atp-global-menu"))el.classList.add("atp-back-control");});document.querySelectorAll("header .services-toggle,header .atp-global-toggle").forEach(el=>el.classList.add("atp-services-control"));};
  const observer=new MutationObserver(()=>markReturns());
  observer.observe(document.body,{childList:true,subtree:true});
