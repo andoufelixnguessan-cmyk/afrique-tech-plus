@@ -12,8 +12,31 @@
  const wrap=document.createElement("div");wrap.className="atp-global-dropdown";
  const btn=document.createElement("button");btn.type="button";btn.className="atp-global-toggle";btn.textContent="Services  ⌄";btn.setAttribute("aria-expanded","false");
  const menu=document.createElement("div");menu.className="atp-global-menu";menu.hidden=true;
+ const placeMenu=()=>{
+  if(menu.hidden)return;
+  if(window.innerWidth<=760){
+   const rect=btn.getBoundingClientRect();
+   const width=Math.min(290,window.innerWidth-24);
+   const left=Math.max(12,Math.min(rect.left,window.innerWidth-width-12));
+   const maxHeight=Math.max(180,window.innerHeight-rect.bottom-24);
+   menu.style.setProperty("position","fixed","important");
+   menu.style.setProperty("top",Math.max(8,Math.min(rect.bottom+7,window.innerHeight-120))+"px","important");
+   menu.style.setProperty("left",left+"px","important");
+   menu.style.setProperty("right","auto","important");
+   menu.style.setProperty("width",width+"px","important");
+   menu.style.setProperty("max-width",width+"px","important");
+   menu.style.setProperty("max-height",Math.min(620,maxHeight)+"px","important");
+   menu.style.setProperty("overflow-y","auto","important");
+   menu.style.setProperty("transform","none","important");
+   menu.style.setProperty("z-index","10050","important");
+  }else{
+   ["position","top","left","right","width","max-width","max-height","overflow-y","transform","z-index"].forEach(k=>menu.style.removeProperty(k));
+  }
+ };
  items.filter(([href])=>href!==current).forEach(([href,label,desc])=>{const a=document.createElement("a");a.href=href;a.innerHTML="<strong></strong><small></small>";a.querySelector("strong").textContent=label;a.querySelector("small").textContent=desc;menu.appendChild(a);});
- btn.addEventListener("click",e=>{e.stopPropagation();menu.hidden=!menu.hidden;btn.setAttribute("aria-expanded",String(!menu.hidden));});
+ btn.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();menu.hidden=!menu.hidden;btn.setAttribute("aria-expanded",String(!menu.hidden));if(!menu.hidden)placeMenu();});
+ window.addEventListener("resize",placeMenu);
+ window.addEventListener("scroll",placeMenu,true);
  document.addEventListener("click",e=>{if(!wrap.contains(e.target)){menu.hidden=true;btn.setAttribute("aria-expanded","false");}});
  document.addEventListener("keydown",e=>{if(e.key==="Escape"){menu.hidden=true;btn.setAttribute("aria-expanded","false");}});
  wrap.append(btn,menu);const nav=host.querySelector("nav");
