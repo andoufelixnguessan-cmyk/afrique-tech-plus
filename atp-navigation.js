@@ -35,7 +35,10 @@
   const brand=document.createElement("a");brand.className="atp-injected-brand";brand.href="index.html";
   const img=document.createElement("img");img.className="brand-logo";img.src="assets/atp-emblem.svg";img.alt="";
   const name=document.createElement("span");name.textContent="AFRIQUE TECH PLUS";
-  brand.append(img,name);host.appendChild(brand);document.body.prepend(host);
+  const tagline=document.createElement("small");tagline.textContent="APPRENDRE · CRÉER · ÉVOLUER";name.appendChild(tagline);
+  brand.append(img,name);host.appendChild(brand);
+  const home=document.createElement("a");home.className="atp-back-control";home.href="index.html";home.textContent="← Accueil";host.appendChild(home);
+  document.body.prepend(host);
  }
  let dropdown=host.querySelector(".nav-dropdown,.atp-global-dropdown");
  let menu=dropdown?.querySelector(".services-menu,.atp-global-menu");
