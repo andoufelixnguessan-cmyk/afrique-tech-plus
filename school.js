@@ -100,7 +100,17 @@
     "6e": window.ATP_CURRICULUM_6E || {},
     "5e": window.ATP_CURRICULUM_5E || {},
     "4e": window.ATP_CURRICULUM_4E || {},
-    "3e": window.ATP_CURRICULUM_3E || {}
+    "3e": window.ATP_CURRICULUM_3E || {},
+    "Seconde A": window.ATP_CURRICULUM_SECONDE_A || {},
+    "Seconde C": window.ATP_CURRICULUM_SECONDE_C || {},
+    "Première A1": window.ATP_CURRICULUM_PREMIÈRE_A1 || {},
+    "Première A2": window.ATP_CURRICULUM_PREMIÈRE_A2 || {},
+    "Première C": window.ATP_CURRICULUM_PREMIÈRE_C || {},
+    "Première D": window.ATP_CURRICULUM_PREMIÈRE_D || {},
+    "Terminale A1": window.ATP_CURRICULUM_TERMINALE_A1 || {},
+    "Terminale A2": window.ATP_CURRICULUM_TERMINALE_A2 || {},
+    "Terminale C": window.ATP_CURRICULUM_TERMINALE_C || {},
+    "Terminale D": window.ATP_CURRICULUM_TERMINALE_D || {}
   };
   const getRawCurriculum = () => CURRICULA[currentClass] || {};
 
@@ -677,7 +687,7 @@ function addSection(parent, title, content) {
       top.append(icon, favoriteButton);
 
       const title = el("h3", name);
-      const count = currentClass === "6e" ? getLessons(name).length : 0;
+      const count = getLessons(name).length;
 
       const info = el(
         "p",
