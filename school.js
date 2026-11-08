@@ -52,8 +52,8 @@
     "Première A2": LYCEE,
     "Première C": LYCEE,
     "Première D": LYCEE,
-    "Terminale A1": LYCEE,
-    "Terminale A2": LYCEE,
+    "Terminale A1": LYCEE.filter(x => x[0] !== "Physique-Chimie"),
+    "Terminale A2": LYCEE.filter(x => x[0] !== "Physique-Chimie"),
     "Terminale C": LYCEE,
     "Terminale D": LYCEE
   };
@@ -1398,6 +1398,15 @@ function renderLesson(parent, lesson, lessonIndex) {
         header.appendChild(el("p", "Progression de référence : Programme éducatif et guide d’exécution de Mathématiques 5e — DPFC Côte d’Ivoire. Les explications et exercices ATP sont des rédactions pédagogiques originales."));
       }
       if (subjectContent && subjectContent.goal) header.appendChild(el("p", "Objectif général : " + subjectContent.goal));
+      if (currentClass !== "6e") {
+        header.appendChild(el("p", "Les intitulés constituent une trame de progression. Pour un cours complet, vérifie les habiletés, contenus, activités et évaluations dans le guide d’exécution officiel de la discipline."));
+        const source = el("a", "Consulter les programmes et guides officiels DPFC");
+        source.href = "https://dpfc-ci.net/documents/programmes-educatifs-et-guides-dexecution/programmes-educatifs-et-guides-dexecution-du-secondaire/";
+        source.target = "_blank";
+        source.rel = "noopener noreferrer";
+        source.style.cssText = "display:inline-flex;margin-top:8px;color:#24563e;font-weight:700;text-decoration:underline";
+        header.appendChild(source);
+      }
       list.appendChild(header);
     }
 
