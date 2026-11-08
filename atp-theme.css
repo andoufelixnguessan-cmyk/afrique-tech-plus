@@ -843,3 +843,45 @@ body :is(.site-footer,.footer,.services-footer,.ai-footer,.media-footer,.communi
  .atp-global-menu{right:0;left:auto;width:min(245px,calc(100vw - 34px))}
  header .atp-global-dropdown{align-self:flex-start}
 }
+
+
+/* CORRECTION VISIBILITÉ SERVICES — numéro affiché en clair, sans clic */
+body.services-page .services-topbar{
+  background:#f4eadc!important;color:#26372e!important;
+  border-bottom:1px solid #e3d2bf!important;
+}
+body.services-page .services-logo,body.services-page .services-logo span{
+  color:#26372e!important;
+}
+body.services-page .services-back,
+body.services-page .atp-back-control,
+body.services-page .services-topbar .atp-back-control{
+  background:#a45132!important;color:#fffefa!important;border-color:#a45132!important;
+}
+body.services-page .services-back:hover,
+body.services-page .atp-back-control:hover{
+  background:#843d27!important;color:#fffefa!important;
+}
+body.services-page .services-banner{
+  background:#f4eadc!important;color:#26372e!important;border-color:#e3d2bf!important;
+}
+body.services-page .services-banner :is(h2,h3,p,strong,li){color:#26372e!important}
+body.services-page .services-contact{
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  margin-top:22px;padding:18px 20px;background:#fffefa;
+  border:1px solid #dfc8b8;border-left:5px solid #a45132;border-radius:14px;
+}
+body.services-page .services-contact-label{
+  margin:0!important;color:#6a6259!important;font-size:12px!important;
+  font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+}
+body.services-page .services-phone-number{
+  display:inline-block!important;color:#843d27!important;
+  font-size:clamp(24px,4vw,32px)!important;font-weight:900!important;
+  letter-spacing:1px;text-decoration:none!important;line-height:1.25;
+}
+body.services-page .services-contact .services-button{
+  margin-top:5px;background:#a45132!important;color:#fffefa!important;
+  border-color:#a45132!important;
+}
+body.services-page .services-contact .services-button:hover{background:#843d27!important}
