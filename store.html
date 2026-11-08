@@ -77,6 +77,31 @@
     body.store-page .store-card{background:#fffefa!important;color:#26372e!important}
     body.store-page .store-card-body{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important}
     @media(max-width:600px){body.store-page .store-price{font-size:24px!important;margin-bottom:13px!important}}
+    /* Contraste renforcé pour les étiquettes et boutons de la boutique */
+    body.store-page .store-tag{
+      background:#e8eee3!important;
+      color:#203b30!important;
+      border:1px solid #cbd8c7!important;
+      font-weight:900!important
+    }
+    body.store-page a.store-button,
+    body.store-page a.store-button:visited{
+      background:#24563e!important;
+      color:#ffffff!important;
+      border:1px solid #24563e!important;
+      text-shadow:none!important;
+      opacity:1!important
+    }
+    body.store-page a.store-button *,
+    body.store-page a.store-button:visited *{
+      color:#ffffff!important
+    }
+    body.store-page a.store-button:hover,
+    body.store-page a.store-button:focus-visible{
+      background:#203b30!important;
+      color:#ffffff!important;
+      border-color:#203b30!important
+    }
   </style>
 </head>
 <body class="store-page">
