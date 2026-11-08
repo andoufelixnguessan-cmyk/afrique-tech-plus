@@ -885,3 +885,35 @@ body.services-page .services-contact .services-button{
   border-color:#a45132!important;
 }
 body.services-page .services-contact .services-button:hover{background:#843d27!important}
+
+
+/* ATP — harmonisation GLOBALE des barres latérales et contrôles de retour */
+body :is(.atp-back-control,.services-back,.store-back,.ai-back,.media-back,.community-back,.home-btn){
+  background:#a45132!important;color:#fffefa!important;border:1px solid #a45132!important;
+  box-shadow:0 5px 14px rgba(164,81,50,.16)!important;
+}
+body :is(.atp-back-control,.services-back,.store-back,.ai-back,.media-back,.community-back,.home-btn):hover{
+  background:#843d27!important;color:#fffefa!important;border-color:#843d27!important;
+}
+body :is(.atp-global-dropdown,.atp-global-toggle){color:#26372e!important}
+body .atp-global-toggle{
+  background:#f4eadc!important;color:#26372e!important;border:1px solid #dfc8b8!important;
+}
+body .atp-global-toggle:hover{background:#ead9c7!important}
+body .atp-global-menu{
+  background:#fffefa!important;border:1px solid #dfc8b8!important;
+  box-shadow:0 16px 40px rgba(67,49,35,.14)!important;
+}
+body .atp-global-menu a,body .atp-global-menu strong{color:#26372e!important}
+body .atp-global-menu small{color:#665b50!important}
+body .atp-global-menu a:hover{background:#f4eadc!important}
+body :is(.school-page aside,.sidebar,.side-column,.side-panel,.workspace-sidebar){
+  background:#f4eadc!important;color:#26372e!important;
+  border-color:#dfc8b8!important;box-shadow:0 8px 24px rgba(67,49,35,.07)!important;
+}
+body :is(.school-page aside,.sidebar,.side-column,.side-panel,.workspace-sidebar) :is(a,button,h1,h2,h3,h4,p,span,label,strong){
+  color:#26372e!important;
+}
+body :is(.school-page aside,.sidebar,.side-column,.side-panel,.workspace-sidebar) :is(a,button):hover{
+  background:#ead9c7!important;color:#843d27!important;
+}
