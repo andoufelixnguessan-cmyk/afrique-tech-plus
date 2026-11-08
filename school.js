@@ -98,7 +98,9 @@
   const CONTENT = window.ATP_LEARNING_CONTENT_6E;
   const CURRICULA = {
     "6e": window.ATP_CURRICULUM_6E || {},
-    "5e": window.ATP_CURRICULUM_5E || {}
+    "5e": window.ATP_CURRICULUM_5E || {},
+    "4e": window.ATP_CURRICULUM_4E || {},
+    "3e": window.ATP_CURRICULUM_3E || {}
   };
   const getRawCurriculum = () => CURRICULA[currentClass] || {};
 
