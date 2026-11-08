@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f5ee">
+<title>Ressources scolaires | AFRIQUE TECH PLUS</title>
+<meta name="description" content="Bibliothèque de ressources scolaires de la 6e à la Terminale : programmes officiels, cours, manuels et exercices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261108-1">
+<link rel="stylesheet" href="atp-theme.css?v=20261108-21">
+<style>
+:root{--lib-bg:#f7f5ee;--lib-card:#fffefa;--lib-ink:#26372e;--lib-muted:#68756b;--lib-green:#24563e;--lib-line:#e5e5d9;--lib-orange:#a45132}
+*{box-sizing:border-box}body{margin:0;background:var(--lib-bg);color:var(--lib-ink);font-family:"DM Sans",sans-serif}
+.lib-main{max-width:1180px;margin:0 auto;padding:46px 22px 80px}
+.lib-hero{padding:clamp(28px,5vw,58px);border-radius:28px;background:linear-gradient(125deg,#173b32,#24563e 72%,#397455);color:#fffefa;position:relative;overflow:hidden}
+.lib-kicker{font-size:12px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#d6ef78}
+.lib-hero h1{font:900 clamp(30px,5vw,52px)/1.08 Manrope,sans-serif;max-width:720px;margin:14px 0}
+.lib-hero p{max-width:720px;line-height:1.7;color:#e5eee5;margin:0}
+.lib-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}
+.lib-field{background:var(--lib-card);border:1px solid var(--lib-line);border-radius:16px;padding:14px 16px}
+.lib-field label{display:block;font-size:12px;font-weight:800;color:var(--lib-muted);margin-bottom:8px}
+.lib-field select,.lib-field input{width:100%;border:0;outline:0;background:transparent;color:var(--lib-ink);font:700 16px "DM Sans",sans-serif;min-height:30px}
+.lib-section-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin:32px 0 16px}
+.lib-section-head h2{font:800 24px Manrope,sans-serif;margin:0}
+.lib-section-head p{margin:5px 0 0;color:var(--lib-muted);font-size:14px}
+.lib-subjects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.lib-subject{background:var(--lib-card);border:1px solid var(--lib-line);border-radius:18px;padding:19px;box-shadow:0 8px 24px rgba(35,59,45,.04)}
+.lib-subject-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.lib-subject-icon{width:42px;height:42px;border-radius:13px;background:#e8eee3;display:grid;place-items:center;font-size:21px}
+.lib-subject h3{font:800 17px Manrope,sans-serif;margin:0}
+.lib-links{display:flex;flex-wrap:wrap;gap:8px}
+.lib-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border:1px solid #dfe7dc;border-radius:999px;padding:9px 12px;color:var(--lib-green);font-size:12px;font-weight:800;background:#f8faf5}
+.lib-link:hover{background:#e8eee3;border-color:#b9cbb9}
+.lib-note{margin-top:24px;padding:17px 19px;border-left:4px solid var(--lib-orange);border-radius:12px;background:#f2e6dc;color:#594536;line-height:1.6;font-size:13px}
+.lib-empty{padding:28px;text-align:center;background:var(--lib-card);border:1px dashed #bdcbbd;border-radius:18px;color:var(--lib-muted);grid-column:1/-1}
+.lib-source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.lib-source{display:block;padding:17px;border-radius:16px;background:#fffefa;border:1px solid var(--lib-line);text-decoration:none;color:var(--lib-ink)}
+.lib-source strong{display:block;font-size:14px;margin-bottom:5px}.lib-source span{font-size:12px;color:var(--lib-muted);line-height:1.5}
+@media(max-width:700px){.lib-main{padding:22px 14px 54px}.lib-controls,.lib-subjects,.lib-source-grid{grid-template-columns:1fr}.lib-section-head{display:block}.lib-hero{border-radius:20px}}
+</style>
+</head>
+<body>
+<header class="site-header">
+ <div class="container nav-wrap">
+  <a class="brand" href="index.html" aria-label="AFRIQUE TECH PLUS accueil"><img class="brand-logo" src="assets/atp-emblem.svg" alt=""><span class="brand-name">AFRIQUE TECH PLUS<small>APPRENDRE · CRÉER · ÉVOLUER</small></span></a>
+  <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+  <nav class="main-nav" id="main-nav">
+   <a href="index.html">Accueil</a>
+   <div class="nav-dropdown" id="services-dropdown"><button class="services-toggle" id="services-toggle" type="button" aria-expanded="false" aria-controls="services-menu">Services <span aria-hidden="true">⌄</span></button>
+    <div class="services-menu" id="services-menu" hidden>
+     <a href="academy.html">Academy <small>Formations numériques</small></a>
+     <a href="resources.html" aria-current="page">Ressources scolaires <small>Bibliothèque de documents</small></a>
+     <a href="store.html">Boutique <small>Guides et produits</small></a><a href="ai.html">AI <small>Outils intelligents</small></a><a href="media.html">Media <small>Articles et tutoriels</small></a><a href="services.html">Prestations <small>Services numériques</small></a><a href="community.html">Community <small>Échanges et entraide</small></a>
+    </div>
+   </div>
+   <a href="about.html">À propos</a><a href="index.html#account" id="member-nav-link">Espace membre</a>
+  </nav>
+ </div>
+</header>
+<main class="lib-main">
+ <section class="lib-hero"><div class="lib-kicker">Bibliothèque pédagogique · Côte d’Ivoire</div><h1>Toutes les ressources pour ton parcours scolaire.</h1><p>Choisis ta classe et ta matière pour retrouver des programmes officiels, des cours, des manuels, des exercices et des documents utiles. Les ressources s’ouvrent sur leurs sites d’origine.</p></section>
+ <section aria-label="Choisir une classe">
+  <div class="lib-controls">
+   <div class="lib-field"><label for="classSelect">1. Choisir une classe ou une série</label><select id="classSelect"><option value="6e">6e</option></select></div>
+   <div class="lib-field"><label for="subjectSearch">2. Rechercher une matière</label><input id="subjectSearch" type="search" placeholder="Ex. Mathématiques, Français…"></div>
+  </div>
+  <div class="lib-section-head"><div><h2 id="subjectTitle">Ressources de 6e</h2><p id="subjectCount">Sélectionne une matière pour accéder aux documents.</p></div></div>
+  <div class="lib-subjects" id="subjectGrid" aria-live="polite"></div>
+ </section>
+ <section><div class="lib-section-head"><div><h2>Autres bibliothèques utiles</h2><p>Des portails externes pour compléter les ressources par classe.</p></div></div>
+  <div class="lib-source-grid">
+   <a class="lib-source" href="https://dpfc-ci.net/documents/programmes-educatifs-et-guides-dexecution/programmes-educatifs-et-guides-dexecution-du-secondaire/" target="_blank" rel="noopener"><strong>DPFC — Documents officiels ↗</strong><span>Programmes éducatifs et guides d’exécution du secondaire par discipline et niveau.</span></a>
+   <a class="lib-source" href="https://ecoleivoire.site/" target="_blank" rel="noopener"><strong>École Ivoire — Cours et leçons ↗</strong><span>Ressources de la 6e à la Terminale, cours, exercices et vidéos.</span></a>
+   <a class="lib-source" href="https://www.fomesoutra.com/cours/secondaire" target="_blank" rel="noopener"><strong>Fomesoutra — Cours du secondaire ↗</strong><span>Dossiers de cours, exercices et documents classés par niveau.</span></a>
+  </div>
+ </section>
+ <div class="lib-note"><strong>À savoir :</strong> les liens conduisent vers des plateformes externes. Vérifie le niveau, la série, l’année et les indications du professeur avant d’utiliser un document. Les ressources restent hébergées par leurs éditeurs d’origine.</div>
+</main>
+<footer class="site-footer"><div class="container">© AFRIQUE TECH PLUS — Apprendre · Créer · Évoluer</div></footer>
+<script src="script.js?v=20261108-1"></script>
+<script src="resources.js?v=20261108-1"></script>
+<script src="atp-navigation.js?v=20261108-22"></script>
+</body></html>
