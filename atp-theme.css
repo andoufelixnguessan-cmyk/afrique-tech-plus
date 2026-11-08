@@ -941,3 +941,61 @@ body :is(.atp-back-control,.services-back,.store-back,.ai-back,.media-back,.comm
 body :is(.atp-back-control,.services-back,.store-back,.ai-back,.media-back,.community-back,.home-btn):hover :is(span,strong,i,svg){
   color:#fffefa!important;fill:#fffefa!important;stroke:#fffefa!important;
 }
+
+
+/* ATP — typographie lisible et cohérente sur les pages du site */
+body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body :is(p,li,.description,.subtitle,.subheading,.helper-text,.form-text,.card-description,.service-description,.course-description,.media-description,.muted,.text-muted){
+  font-size:16px!important;
+  line-height:1.7!important;
+}
+body :is(small,.small,.meta,.eyebrow,.section-label,.kicker,.status,.badge,.tag,.caption,.hint,.top-label){
+  font-size:13px!important;
+  line-height:1.5!important;
+}
+body :is(label,legend,.field-label,.form-label){
+  font-size:14px!important;
+  line-height:1.5!important;
+  font-weight:700!important;
+}
+body :is(button,.button,.btn,input[type=button],input[type=submit]){
+  font-size:14px!important;
+  line-height:1.35!important;
+}
+body :is(.card,.service-card,.course-card,.media-card,.ai-card,.community-card,.store-card,.lesson-card,.subject-card) :is(p,li){
+  font-size:15.5px!important;
+  line-height:1.65!important;
+}
+body :is(.footer,.site-footer,.services-footer,.ai-footer,.media-footer,.community-footer) :is(p,a,li,span){
+  font-size:14px!important;
+  line-height:1.6!important;
+}
+@media(max-width:760px){
+  body :is(p,li,.description,.subtitle,.subheading,.helper-text,.form-text,.card-description,.service-description,.course-description,.media-description,.muted,.text-muted){
+    font-size:15px!important;line-height:1.7!important;
+  }
+  body :is(small,.small,.meta,.eyebrow,.section-label,.kicker,.status,.badge,.tag,.caption,.hint,.top-label){
+    font-size:12.5px!important;line-height:1.5!important;
+  }
+  body :is(label,legend,.field-label,.form-label){font-size:13.5px!important}
+}
+
+/* Présentation d'accueil : chaque scène possède son propre univers visuel */
+.atp-film-progress,.atp-film-controls,.atp-film-note{display:none!important}
+.atp-film-visual{transition:background .65s ease,filter .65s ease}
+.atp-film-emblem{transition:transform .55s ease,background .55s ease}
+.atp-film-floating{transition:background .55s ease,color .55s ease,transform .55s ease}
+.atp-film-player[data-scene="1"] .atp-film-visual{background:radial-gradient(circle at 50% 50%,#dce9c7 0,transparent 42%),linear-gradient(140deg,#173b32,#315b45 70%,#a45132)!important}
+.atp-film-player[data-scene="2"] .atp-film-visual{background:radial-gradient(circle at 50% 50%,#f5d9b9 0,transparent 44%),linear-gradient(140deg,#9b512f,#d58c4d 65%,#e8c58a)!important}
+.atp-film-player[data-scene="3"] .atp-film-visual{background:radial-gradient(circle at 50% 50%,#e5efcf 0,transparent 44%),linear-gradient(140deg,#254f3b,#477b55 65%,#9ab98b)!important}
+.atp-film-player[data-scene="4"] .atp-film-visual{background:radial-gradient(circle at 50% 50%,#f4e2bd 0,transparent 44%),linear-gradient(140deg,#76502e,#b77b3c 65%,#e0b66f)!important}
+.atp-film-player[data-scene="5"] .atp-film-visual{background:radial-gradient(circle at 50% 50%,#d6e9dc 0,transparent 44%),linear-gradient(140deg,#234d49,#397b70 65%,#b16a43)!important}
+.atp-film-player[data-scene="6"] .atp-film-visual{background:radial-gradient(circle at 50% 50%,#f2dfc8 0,transparent 44%),linear-gradient(140deg,#60452f,#9c6844 65%,#557b58)!important}
+.atp-film-player[data-scene="2"] .atp-film-emblem{background:#fff4e7;color:#9b512f}
+.atp-film-player[data-scene="3"] .atp-film-emblem{background:#f2f7e9;color:#315b45}
+.atp-film-player[data-scene="4"] .atp-film-emblem{background:#fff6df;color:#76502e}
+.atp-film-player[data-scene="5"] .atp-film-emblem{background:#e9f5ef;color:#234d49}
+.atp-film-player[data-scene="6"] .atp-film-emblem{background:#fff1e2;color:#60452f}
