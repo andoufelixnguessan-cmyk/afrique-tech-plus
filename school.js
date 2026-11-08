@@ -1346,7 +1346,7 @@ function renderLesson(parent, lesson, lessonIndex) {
     $("workspaceDescription").textContent =
       CATEGORIES[currentCategory] + " de " + currentSubject;
 
-    const hasPublishedCurriculum = currentClass === "6e" || (currentClass === "5e" && ["Mathématiques", "Français", "Anglais", "Physique-Chimie", "SVT"].includes(curriculumName(currentSubject)));
+    const hasPublishedCurriculum = currentClass === "6e" || getLessons(currentSubject).length > 0;
     if (!hasPublishedCurriculum) {
       list.appendChild(
         el(
