@@ -1382,6 +1382,9 @@ function renderLesson(parent, lesson, lessonIndex) {
     if (!lessonReader) {
       const header = el("div", "", "atp-learning-section");
       header.appendChild(el("h3", currentSubject + " — Programme de " + currentClass));
+      if (currentClass === "5e" && curriculumName(currentSubject) === "Mathématiques") {
+        header.appendChild(el("p", "Progression de référence : Programme éducatif et guide d’exécution de Mathématiques 5e — DPFC Côte d’Ivoire. Les explications et exercices ATP sont des rédactions pédagogiques originales."));
+      }
       if (subjectContent && subjectContent.goal) header.appendChild(el("p", "Objectif général : " + subjectContent.goal));
       list.appendChild(header);
     }
