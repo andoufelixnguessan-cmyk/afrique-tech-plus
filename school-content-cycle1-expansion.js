@@ -71,6 +71,12 @@
       ["Organiser une activité physique et respecter les règles de sécurité","Méthodologie"]
     ]
   };
+  five["TICE"] = [
+    ["Découvrir l’ordinateur, ses composants et les règles d’utilisation","Environnement numérique"],
+    ["Organiser les fichiers, dossiers et supports de stockage","Gestion des documents"],
+    ["Rechercher une information et vérifier la fiabilité d’une source","Recherche documentaire"],
+    ["Sécurité numérique : mots de passe, données personnelles et cyberrespect","Citoyenneté numérique"]
+  ];
   Object.entries(five).forEach(([subject, items]) => {
     curriculum[subject] = items.map((item) => Array.isArray(item)
       ? ({ title:item[0], section:item[1] })
