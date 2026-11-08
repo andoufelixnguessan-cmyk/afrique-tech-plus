@@ -111,24 +111,24 @@
       margin:18px 0;
       padding:17px;
       background:#fff;
-      border:1px solid #dce5f4;
+      border:1px solid #dce5dc;
       border-radius:15px;
     }
 
     .atp-learning-section h4 {
-      color:#245bc1;
+      color:#24563e;
       margin:0 0 12px;
     }
 
     .atp-learning-section p {
       line-height:1.8;
-      color:#40516d;
+      color:#526256;
     }
 
     .atp-learning-tag {
       display:inline-block;
-      background:#eaf1ff;
-      color:#245bc1;
+      background:#e8eee3;
+      color:#24563e;
       padding:6px 10px;
       border-radius:20px;
       font-size:12px;
@@ -137,7 +137,7 @@
 
     .atp-session {
       margin:12px 0;
-      border:1px solid #dce5f4;
+      border:1px solid #dce5dc;
       border-radius:13px;
       background:#fff;
       overflow:hidden;
@@ -147,8 +147,8 @@
       padding:16px;
       cursor:pointer;
       font-weight:bold;
-      color:#203452;
-      background:#f6f9ff;
+      color:#26372e;
+      background:#f7f5ee;
       line-height:1.6;
     }
 
@@ -158,15 +158,15 @@
 
     .atp-list {
       padding-left:22px;
-      color:#40516d;
+      color:#526256;
       line-height:1.9;
     }
 
     .atp-question {
       padding:15px;
       margin:12px 0;
-      background:#f6f9ff;
-      border:1px solid #dce5f4;
+      background:#f7f5ee;
+      border:1px solid #dce5dc;
       border-radius:11px;
     }
 
@@ -174,9 +174,9 @@
       display:none;
       margin-top:10px;
       padding:13px;
-      background:#eaf7ef;
+      background:#e8eee3;
       border-radius:9px;
-      color:#205c39;
+      color:#24563e;
       line-height:1.7;
       white-space:pre-wrap;
     }
@@ -189,7 +189,7 @@
       border:0;
       border-radius:9px;
       padding:11px 14px;
-      background:#2864d8;
+      background:#24563e;
       color:white;
       font-weight:bold;
       cursor:pointer;
@@ -197,13 +197,13 @@
     }
 
     .atp-small-btn.secondary {
-      background:#eaf1ff;
-      color:#245bc1;
+      background:#e8eee3;
+      color:#24563e;
     }
 
     .atp-progress {
       height:10px;
-      background:#e8edf6;
+      background:#e8eee3;
       border-radius:20px;
       overflow:hidden;
       margin:12px 0;
@@ -212,15 +212,15 @@
     .atp-progress span {
       display:block;
       height:100%;
-      background:#2864d8;
+      background:#24563e;
       border-radius:20px;
       transition:width .3s;
     }
 
     .atp-score {
       padding:13px;
-      background:#eaf1ff;
-      color:#245bc1;
+      background:#e8eee3;
+      color:#24563e;
       border-radius:10px;
       font-weight:bold;
       margin-top:12px;
@@ -228,7 +228,7 @@
 
     .atp-muted {
       font-size:13px;
-      color:#71809a;
+      color:#68756b;
     }
 
     .atp-lesson-actions {
@@ -262,7 +262,7 @@
       margin:0 !important;
       border:0 !important;
       border-radius:0 !important;
-      background:#f3f7ff !important;
+      background:#f7f5ee !important;
       overflow-y:auto !important;
       overflow-x:hidden !important;
       overscroll-behavior:contain;
@@ -274,7 +274,7 @@
       z-index:5;
       padding:20px;
       background:#fff;
-      border-bottom:1px solid #dce5f4;
+      border-bottom:1px solid #dce5dc;
       font-size:19px;
       box-shadow:0 3px 12px rgba(0,0,0,.05);
     }
@@ -313,14 +313,14 @@
       display:flex;
       justify-content:flex-start;
       padding:10px 0 16px;
-      background:#f3f7ff;
+      background:#f7f5ee;
     }
 
     .atp-close-reading button {
       border:0;
       border-radius:12px;
       padding:13px 18px;
-      background:#173f86;
+      background:#203b30;
       color:#fff;
       font-size:14px;
       font-weight:bold;
