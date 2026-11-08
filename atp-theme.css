@@ -1433,3 +1433,63 @@ body img,body video,body iframe,body canvas{
     grid-template-columns:minmax(0,1fr)!important;
   }
 }
+
+
+/* Correctif mobile global — boutons Services et navigation toujours entièrement visibles */
+header .atp-global-dropdown,
+header .nav-dropdown{
+  flex:0 0 auto!important;
+  min-width:max-content!important;
+  max-width:100%!important;
+}
+header .atp-global-toggle,
+header .services-toggle{
+  flex:0 0 auto!important;
+  flex-shrink:0!important;
+  min-width:max-content!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  box-sizing:border-box!important;
+  position:relative!important;
+  z-index:10040!important;
+}
+@media(max-width:760px){
+  header .atp-global-toggle,
+  header .services-toggle{
+    min-height:46px!important;
+    padding:11px 17px!important;
+    font-size:15px!important;
+    line-height:1.25!important;
+    justify-content:center!important;
+    overflow:visible!important;
+  }
+  header .atp-global-dropdown{
+    width:max-content!important;
+    max-width:calc(100vw - 24px)!important;
+  }
+  header .atp-global-menu{
+    box-sizing:border-box!important;
+    left:max(12px, min(var(--atp-menu-left, 12px), calc(100vw - 302px)))!important;
+  }
+  html body :is(a,button).atp-back-control,
+  html body :is(a,button).services-back,
+  html body :is(a,button).store-back,
+  html body :is(a,button).ai-back,
+  html body :is(a,button).media-back,
+  html body :is(a,button).community-back,
+  html body :is(a,button).home-btn{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex:0 0 auto!important;
+    flex-shrink:0!important;
+    min-width:92px!important;
+    min-height:46px!important;
+    padding:11px 17px!important;
+    font-size:15px!important;
+    font-weight:900!important;
+    line-height:1.25!important;
+    white-space:nowrap!important;
+    box-sizing:border-box!important;
+  }
+}
