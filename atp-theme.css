@@ -1319,3 +1319,69 @@ html body :is(button,input[type=button],input[type=submit]):focus-visible,
 html body a:focus-visible{
   outline:3px solid rgba(164,81,50,.45)!important;outline-offset:2px!important;
 }
+
+
+/* ATP — menus Services toujours au-dessus du contenu et des images */
+html body>header,
+html body>header.ai-topbar,
+html body>header.store-topbar,
+html body>header.media-topbar,
+html body>header.community-topbar,
+html body>header.services-topbar,
+html body>header.about-header,
+html body>.topbar,
+html body>.school-page .topbar{
+  position:relative!important;z-index:10000!important;overflow:visible!important;
+}
+html body header nav,
+html body header .main-nav,
+html body header .nav,
+html body .ai-topbar,
+html body .store-topbar,
+html body .media-topbar,
+html body .community-topbar{
+  overflow:visible!important;
+}
+html body .atp-global-dropdown,
+html body .nav-dropdown,
+html body .services-menu-wrap{
+  position:relative!important;z-index:10010!important;overflow:visible!important;
+}
+html body .atp-global-menu,
+html body .services-menu,
+html body #services-menu,
+html body #services-dropdown{
+  position:absolute!important;z-index:10020!important;
+  top:calc(100% + 10px)!important;right:0!important;left:auto!important;
+  max-height:min(75vh,620px)!important;overflow-y:auto!important;
+  isolation:isolate!important;
+}
+html body main,html body .ai-hero,html body .ai-content,
+html body .store-main,html body .media-main,html body .community-main{
+  position:relative;z-index:1;
+}
+
+/* ATP — boutons de retour lisibles sur ordinateur et mobile */
+html body :is(a,button).atp-back-control,
+html body :is(a,button).services-back,
+html body :is(a,button).store-back,
+html body :is(a,button).ai-back,
+html body :is(a,button).media-back,
+html body :is(a,button).community-back,
+html body :is(a,button).home-btn{
+  min-height:40px!important;padding:9px 15px!important;
+  font-size:13px!important;font-weight:900!important;line-height:1.25!important;
+  white-space:nowrap!important;
+}
+@media(max-width:700px){
+  html body :is(a,button).atp-back-control,
+  html body :is(a,button).services-back,
+  html body :is(a,button).store-back,
+  html body :is(a,button).ai-back,
+  html body :is(a,button).media-back,
+  html body :is(a,button).community-back,
+  html body :is(a,button).home-btn{
+    min-height:42px!important;padding:10px 16px!important;
+    font-size:14px!important;letter-spacing:.1px!important;
+  }
+}
