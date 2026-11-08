@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f3fff8">
+  <meta name="theme-color" content="#f7f5ee">
   <title>Lecture de leçon | ATP SCHOOL</title>
   <meta name="description" content="Ton espace scolaire numérique : cours, exercices, devoirs et préparation aux examens.">
 
   <style>
     :root {
-      --bg:#f3fff8;
-      --panel:#ffffff;
-      --blue:#28d871;
-      --text:#173d27;
-      --muted:#618c73;
-      --border:#dcf4e6;
+      --bg:#f7f5ee;
+      --panel:#fffefaefa;
+      --blue:#24563e;
+      --text:#26372e;
+      --muted:#68756b;
+      --border:#e8eee3;
       --radius:18px;
     }
 
@@ -23,7 +23,7 @@
 
     body {
       margin:0;
-      background:linear-gradient(135deg,#f4fff9,#edfff5 55%,#fff6f0);
+      background:linear-gradient(135deg,#f7f5ee,#e8eee3 55%,#f2e6dc);
       color:var(--text);
       font-family:Arial,sans-serif;
       min-height:100vh;
@@ -39,7 +39,7 @@
     }
 
     aside {
-      background:#fff;
+      background:#fffefa;
       border-right:1px solid var(--border);
       padding:25px 17px;
       position:sticky;
@@ -52,7 +52,7 @@
       font-size:21px;
       font-weight:900;
       letter-spacing:.5px;
-      color:#1b4d30;
+      color:#203b30;
     }
 
     .brand span {color:var(--blue)}
@@ -67,7 +67,7 @@
 
     .nav-title {
       font-size:11px;
-      color:#81aa92;
+      color:#68756b;
       margin:35px 10px 12px;
       text-transform:uppercase;
       letter-spacing:1.5px;
@@ -77,7 +77,7 @@
       width:100%;
       border:0;
       background:transparent;
-      color:#467359;
+      color:#526256;
       text-align:left;
       padding:13px 12px;
       border-radius:12px;
@@ -86,8 +86,8 @@
     }
 
     .nav button:hover,.nav button.active {
-      background:#eafff3;
-      color:#24c165;
+      background:#e8eee3;
+      color:#24563e;
     }
 
     .side-note {
@@ -136,7 +136,7 @@
       gap:8px;
       padding:11px 16px;
       border-radius:12px;
-      background:#28d871;
+      background:#24563e;
       color:white;
       text-decoration:none;
       font-size:13px;
@@ -144,36 +144,36 @@
       box-shadow:0 5px 12px rgba(40, 216, 113,.16);
     }
 
-    .home-btn:hover {background:#1eb45c}
+    .home-btn:hover {background:#24563e}
 
     .hero {
       padding:35px;
-      border:1px solid #dcfae9;
+      border:1px solid #e8eee3;
       border-radius:25px;
-      background:linear-gradient(115deg,#e4ffef,#fff1e7);
+      background:linear-gradient(115deg,#e8eee3,#f2e6dc);
     }
 
     .hero h1 {
       font-size:clamp(28px,4vw,43px);
       margin:12px 0;
-      color:#195030;
+      color:#203b30;
     }
 
     .hero p {
-      color:#538267;
+      color:#526256;
       line-height:1.7;
       max-width:650px;
     }
 
     .hero-tag {
       display:inline-block;
-      background:#fff;
-      color:#369c61;
+      background:#fffefa;
+      color:#24563e;
       padding:8px 12px;
       border-radius:30px;
       font-size:11px;
       font-weight:bold;
-      border:1px solid #dcf8e8;
+      border:1px solid #e8eee3;
     }
 
     .section {margin-top:35px}
@@ -189,7 +189,7 @@
     .section-head h2 {
       margin:0;
       font-size:22px;
-      color:#1c4c30;
+      color:#203b30;
     }
 
     .section-head p {
@@ -199,7 +199,7 @@
     }
 
     .picker-panel,.toolbar,.workspace,.stat {
-      background:#fff;
+      background:#fffefa;
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:0 4px 14px rgba(36, 110, 67,.04);
@@ -221,9 +221,9 @@
     }
 
     .school-select,.search {
-      background:#f7fffa;
-      color:#265439;
-      border:1px solid #cbedd9;
+      background:#f7f5ee;
+      color:#203b30;
+      border:1px solid #e8eee3;
       border-radius:12px;
       padding:13px 15px;
       outline:none;
@@ -249,7 +249,7 @@
       display:block;
       font-size:25px;
       margin-bottom:5px;
-      color:#24c165;
+      color:#24563e;
     }
 
     .stat span {
@@ -267,9 +267,9 @@
     .search {flex:1;min-width:190px}
 
     .filter {
-      background:#f7fffa;
-      color:#265439;
-      border:1px solid #cbedd9;
+      background:#f7f5ee;
+      color:#203b30;
+      border:1px solid #e8eee3;
       border-radius:12px;
       padding:12px;
     }
@@ -281,7 +281,7 @@
     }
 
     .subject-card {
-      background:#fff;
+      background:#fffefa;
       border:1px solid var(--border);
       padding:20px;
       border-radius:17px;
@@ -292,7 +292,7 @@
 
     .subject-card:hover {
       transform:translateY(-3px);
-      border-color:#8bf5b7;
+      border-color:#e8eee3;
       box-shadow:0 8px 20px rgba(36, 110, 67,.09);
     }
 
@@ -301,7 +301,7 @@
     .subject-card h3 {
       margin:14px 0 6px;
       font-size:16px;
-      color:#205235;
+      color:#203b30;
     }
 
     .subject-card p {
@@ -315,33 +315,33 @@
       border:0;
       border-radius:9px;
       padding:9px 12px;
-      background:#28d871;
+      background:#24563e;
       color:white;
       font-size:12px;
       font-weight:bold;
     }
 
-    .subject-card button:hover,.action-btn:hover {background:#1eb45c}
+    .subject-card button:hover,.action-btn:hover {background:#24563e}
 
     .category-card {
       padding:19px;
-      background:#fff;
+      background:#fffefa;
       border:1px solid var(--border);
       border-radius:15px;
-      color:#265439;
+      color:#203b30;
       text-align:left;
       box-shadow:0 4px 12px rgba(36, 110, 67,.04);
     }
 
     .category-card:hover {
-      border-color:#9af2bf;
-      background:#f1fff7;
+      border-color:#e8eee3;
+      background:#f7f5ee;
     }
 
     .category-card strong {
       display:block;
       margin:10px 0 5px;
-      color:#205235;
+      color:#203b30;
     }
 
     .category-card span {
@@ -350,11 +350,11 @@
     }
 
     .workspace {padding:22px}
-    .workspace h2 {margin-top:0;color:#205235}
+    .workspace h2 {margin-top:0;color:#203b30}
     .workspace p {color:var(--muted);line-height:1.6}
 
     .resource-item {
-      background:#f7fffa;
+      background:#f7f5ee;
       border:1px solid var(--border);
       padding:16px;
       border-radius:13px;
@@ -363,7 +363,7 @@
     .resource-item summary {
       cursor:pointer;
       font-weight:bold;
-      color:#205235;
+      color:#203b30;
       line-height:1.5;
     }
 
@@ -373,8 +373,8 @@
       padding:25px;
       text-align:center;
       color:var(--muted);
-      background:#f8fffb;
-      border:1px dashed #bde4cd;
+      background:#fffefaefa;
+      border:1px dashed #e8eee3;
       border-radius:14px;
       grid-column:1/-1;
     }
@@ -385,7 +385,7 @@
     footer {
       margin:45px 0 15px;
       text-align:center;
-      color:#7ba28b;
+      color:#68756b;
       font-size:12px;
     }
 
@@ -428,14 +428,14 @@
 .school-lesson-page main{max-width:1120px!important;margin:0 auto!important;padding:clamp(16px,4vw,48px)!important}
 .school-lesson-page main>.hero,.school-lesson-page main>section:not(#subjectWorkspace),.school-lesson-page main>footer{display:none!important}
 .school-lesson-page .topbar{margin-bottom:22px;padding:15px 18px;border:1px solid rgba(255,255,255,.75);border-radius:16px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(24, 80, 47,.08)}
-.school-lesson-page #subjectWorkspace{display:block!important;margin:0!important;padding:clamp(16px,3vw,34px)!important;border:1px solid #dcf4e6;border-radius:24px;background:rgba(255,255,255,.96);box-shadow:0 18px 55px rgba(35, 110, 66,.09)}
+.school-lesson-page #subjectWorkspace{display:block!important;margin:0!important;padding:clamp(16px,3vw,34px)!important;border:1px solid #e8eee3;border-radius:24px;background:rgba(255,255,255,.96);box-shadow:0 18px 55px rgba(35, 110, 66,.09)}
 .school-lesson-page #categoryGridWorkspace{display:none!important}
 .school-lesson-page #backSubjects{display:none!important}
 .school-lesson-page #resourceList{display:block!important;margin-top:22px!important}
 .school-lesson-page .atp-main-lesson{display:block!important;border:0!important;background:transparent!important}
-.school-lesson-page .atp-main-lesson>summary{font-size:clamp(20px,3vw,30px)!important;line-height:1.35!important;padding:18px 0!important;background:transparent!important;color:#186337!important;border-bottom:1px solid #e2f4ea}
+.school-lesson-page .atp-main-lesson>summary{font-size:clamp(20px,3vw,30px)!important;line-height:1.35!important;padding:18px 0!important;background:transparent!important;color:#203b30!important;border-bottom:1px solid #e8eee3}
 .school-lesson-page .atp-main-lesson>.atp-session-body{padding:20px 0!important}
-.school-lesson-page .atp-session{background:#f8fffb!important}
+.school-lesson-page .atp-session{background:#fffefaefa!important}
 @media(max-width:700px){.school-lesson-page main{padding:12px!important}.school-lesson-page #subjectWorkspace{padding:16px!important;border-radius:16px}.school-lesson-page .topbar{padding:12px}}
 </style>
 </head>
@@ -570,7 +570,7 @@
 <script src="school-content-5e-anglais.js?v=20261108-1"></script>
 <script src="school-content-cycle1-expansion.js?v=20261108-2"></script>
 <script src="school-content-lycee.js?v=20261108-1"></script>
-<script src="school.js?v=20261108-11"></script>
+<script src="school.js?v=20261108-12"></script>
 <script src="school-professional-layout.js?v=20261107-1"></script>
   <script src="site-preferences.js?v=20261107-10"></script>
   <script src="atp-navigation.js?v=20261108-4"></script>
