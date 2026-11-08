@@ -1721,3 +1721,13 @@ body>.site-header .nav-dropdown{position:relative;z-index:10020}
 body>.site-header .services-menu{top:100%;margin-top:5px;z-index:10050;max-height:min(65vh,520px);overflow-y:auto}
 body>.site-header .services-menu[hidden]{display:none!important}
 body>.site-header .services-menu:before{content:"";position:absolute;left:0;right:0;top:-7px;height:8px}
+
+/* Priorité finale : empêcher les anciennes règles mobiles de rétrécir le menu Services. */
+@media(max-width:760px){
+ html body .atp-unified-header #services-dropdown #services-menu{
+  top:100%!important;left:0!important;right:auto!important;
+  width:min(290px,calc(100vw - 24px))!important;
+  max-width:calc(100vw - 24px)!important;max-height:60vh!important;
+  margin-top:5px!important;overflow-y:auto!important;
+ }
+}
