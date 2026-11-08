@@ -1495,7 +1495,7 @@ header .services-toggle{
 }
 
 
-/* ATP — alignement du logo et du nom sur le gabarit de l'accueil */
+/* ATP — en-têtes internes alignés sur les dimensions de l'accueil */
 header.topbar .brand-logo,
 header.ai-topbar .brand-logo,
 header.media-topbar .brand-logo,
@@ -1503,8 +1503,8 @@ header.services-topbar .brand-logo,
 header.community-topbar .brand-logo,
 header.store-topbar .brand-logo{
   display:block!important;
-  width:46px!important;height:46px!important;min-width:46px!important;
-  max-width:46px!important;flex:0 0 46px!important;object-fit:contain!important;
+  width:62px!important;height:62px!important;min-width:62px!important;
+  max-width:62px!important;flex:0 0 62px!important;object-fit:contain!important;
 }
 header.topbar .brand,
 header.ai-topbar .ai-logo,
@@ -1512,9 +1512,9 @@ header.media-topbar .media-logo,
 header.services-topbar .services-logo,
 header.community-topbar .community-logo,
 header.store-topbar .store-logo{
-  display:inline-flex!important;align-items:center!important;gap:10px!important;
-  font:900 12px/1.2 Manrope,Arial,sans-serif!important;
-  letter-spacing:.4px!important;text-decoration:none!important;
+  display:inline-flex!important;align-items:center!important;gap:13px!important;
+  font:900 19px/1.12 Manrope,Arial,sans-serif!important;
+  letter-spacing:.1px!important;text-decoration:none!important;
 }
 header.topbar .brand span,
 header.ai-topbar .ai-logo span,
@@ -1537,6 +1537,20 @@ header.topbar .container.navigation{
   width:min(1160px,calc(100% - 44px))!important;
   min-height:78px!important;margin:0 auto!important;
 }
+@media(max-width:900px){
+  header.topbar .brand-logo,
+  header.ai-topbar .brand-logo,
+  header.media-topbar .brand-logo,
+  header.services-topbar .brand-logo,
+  header.community-topbar .brand-logo,
+  header.store-topbar .brand-logo{
+    width:56px!important;height:56px!important;min-width:56px!important;
+    max-width:56px!important;flex-basis:56px!important;
+  }
+  header.topbar .brand,header.ai-topbar .ai-logo,header.media-topbar .media-logo,
+  header.services-topbar .services-logo,header.community-topbar .community-logo,
+  header.store-topbar .store-logo{font-size:17px!important}
+}
 @media(max-width:700px){
   header.topbar .brand-logo,
   header.ai-topbar .brand-logo,
@@ -1544,9 +1558,12 @@ header.topbar .container.navigation{
   header.services-topbar .brand-logo,
   header.community-topbar .brand-logo,
   header.store-topbar .brand-logo{
-    width:46px!important;height:46px!important;min-width:46px!important;
-    max-width:46px!important;flex-basis:46px!important;
+    width:52px!important;height:52px!important;min-width:52px!important;
+    max-width:52px!important;flex-basis:52px!important;
   }
+  header.topbar .brand,header.ai-topbar .ai-logo,header.media-topbar .media-logo,
+  header.services-topbar .services-logo,header.community-topbar .community-logo,
+  header.store-topbar .store-logo{font-size:16px!important}
   header.ai-topbar,header.media-topbar,header.services-topbar,header.community-topbar{
     min-height:68px!important;padding:0 16px!important;
   }
