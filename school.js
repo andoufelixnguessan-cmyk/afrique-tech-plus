@@ -96,10 +96,11 @@
   if (!SUBJECTS[currentClass]) currentClass = "6e";
 
   const CONTENT = window.ATP_LEARNING_CONTENT_6E;
-  const requestedCurriculumClass = new URLSearchParams(window.location.search).get("class") || currentClass;
-  const RAW_CURRICULUM = requestedCurriculumClass === "5e"
-    ? (window.ATP_CURRICULUM_5E || {})
-    : (window.ATP_CURRICULUM_6E || {});
+  const CURRICULA = {
+    "6e": window.ATP_CURRICULUM_6E || {},
+    "5e": window.ATP_CURRICULUM_5E || {}
+  };
+  const getRawCurriculum = () => CURRICULA[currentClass] || {};
 
   const styles = document.createElement("style");
 
@@ -484,7 +485,7 @@ function addSection(parent, title, content) {
   }
 
   function getLessons(subject) {
-    return normalizeLessons(RAW_CURRICULUM[curriculumName(subject)]);
+    return normalizeLessons(getRawCurriculum()[curriculumName(subject)]);
   }
 
   // Le programme complet est construit une seule fois.
@@ -500,7 +501,7 @@ function addSection(parent, title, content) {
 
     if (!learningContentCacheReady) {
       try {
-        learningContentCache = CONTENT.buildAll(RAW_CURRICULUM);
+        learningContentCache = CONTENT.buildAll(getRawCurriculum());
         learningContentCacheReady = true;
       } catch (error) {
         console.error("Erreur du moteur pédagogique :", error);
@@ -1459,6 +1460,8 @@ function renderLesson(parent, lesson, lessonIndex) {
     closeFullscreenLesson();
 
     currentClass = event.target.value;
+    learningContentCache = null;
+    learningContentCacheReady = false;
     currentSubject = "";
     favoritesOnly = false;
 
