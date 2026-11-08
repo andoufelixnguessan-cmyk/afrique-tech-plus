@@ -2,6 +2,8 @@
  const current=(location.pathname.split("/").pop()||"index.html").toLowerCase();
  const items=[["academy.html","Academy","Formations numériques"],["school.html","ATP School","Cours scolaires"],["store.html","Boutique","Guides et produits"],["ai.html","ATP AI","Outils intelligents"],["media.html","ATP Media","Articles et tutoriels"],["services.html","Prestations","Services numériques"],["community.html","Community","Échanges et entraide"]];
  const markReturns=()=>document.querySelectorAll("a,button").forEach(el=>{const t=(el.textContent||"").trim().toLowerCase();if(/retour|accueil/.test(t)&&!el.closest(".atp-global-menu"))el.classList.add("atp-back-control");});
+ const observer=new MutationObserver(()=>markReturns());
+ observer.observe(document.body,{childList:true,subtree:true});
  const host=document.querySelector("header")||document.querySelector(".topbar")||document.querySelector("aside");
  if(!host)return;
  const existing=host.querySelector(".services-menu");
