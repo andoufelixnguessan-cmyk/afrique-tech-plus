@@ -1400,3 +1400,36 @@ html body :is(a,button).home-btn{
     font-size:14px!important;letter-spacing:.1px!important;
   }
 }
+
+
+/* ATP — cohérence mobile globale et menus toujours dans la zone visible */
+html,body{
+  width:100%!important;
+  max-width:100%!important;
+  overflow-x:hidden!important;
+}
+body{
+  margin-left:0!important;
+  margin-right:0!important;
+}
+body img,body video,body iframe,body canvas{
+  max-width:100%;
+}
+@media(max-width:760px){
+  html,body{overscroll-behavior-x:none!important}
+  body>*{max-width:100%}
+  header .atp-global-dropdown{position:relative!important;z-index:10030!important}
+  header .atp-global-menu{
+    max-width:calc(100vw - 24px)!important;
+    min-width:0!important;
+  }
+  .layout,.container,.navigation,.nav-wrap,
+  .store-content,.services-content,.media-content,.community-content,
+  .ai-content{
+    min-width:0!important;
+    max-width:100%!important;
+  }
+  .store-grid,.services-grid,.media-grid,.community-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+}
