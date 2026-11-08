@@ -267,7 +267,8 @@
       if (!grade && !isFive) return result;
       const subjects = raw || {};
       Object.entries(subjects).forEach(([subject, items]) => {
-        if (isFive && ["Mathématiques", "Français", "Anglais", "Physique-Chimie", "SVT"].includes(subject)) return;\n        const note = subjectNotes[subject] || subjectNotes["Français"];
+        if (isFive && ["Mathématiques", "Français", "Anglais", "Physique-Chimie", "SVT"].includes(subject)) return;
+        const note = subjectNotes[subject] || subjectNotes["Français"];
         const target = result[subject];
         if (!target || !Array.isArray(target.lessons)) return;
         target.goal = "Programme de " + (grade || "5e") + " — " + subject + ". Les fiches ATP servent à apprendre les notions, appliquer une méthode et s’entraîner.";
