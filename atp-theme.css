@@ -1166,3 +1166,19 @@ header .mobile-menu{
   header.topbar,header.services-topbar,header.store-topbar,header.ai-topbar,
   header.media-topbar,header.community-topbar{min-height:72px!important;padding:10px 16px!important}
 }
+
+/* ATP School : identité et navigation de la barre latérale */
+body .layout aside .brand{
+  color:#26372e!important;font-size:23px!important;font-weight:900!important;line-height:1.15!important;
+}
+body .layout aside .brand small{
+  color:#665b50!important;font-size:10px!important;letter-spacing:1.5px!important;
+}
+body .layout aside .nav button{
+  color:#3e4c42!important;font-size:14px!important;font-weight:800!important;
+  padding:14px 13px!important;border:1px solid transparent!important;
+}
+body .layout aside .nav button:hover,body .layout aside .nav button.active{
+  background:#ead9c7!important;color:#843d27!important;border-color:#dfc8b8!important;
+}
+body .layout .topbar p{color:#514b43!important;font-size:14px!important}
