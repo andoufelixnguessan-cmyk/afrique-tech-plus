@@ -57,7 +57,7 @@
  const markReturns=()=>{
   document.querySelectorAll("a,button").forEach(el=>{
    const t=(el.textContent||"").trim().toLowerCase(),href=(el.getAttribute("href")||"").toLowerCase();
-   if((/retour|accueil/.test(t)||href==="index.html"||href==="./index.html")&&!el.closest(".atp-global-menu"))el.classList.add("atp-back-control");
+   if((/retour/.test(t)||((href==="index.html"||href==="./index.html")&&el.closest("header")&&!el.closest("nav,.main-nav,.nav-links,.atp-global-menu")))&&!el.closest(".atp-global-menu"))el.classList.add("atp-back-control");
   });
  };
  markReturns();
