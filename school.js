@@ -1432,7 +1432,12 @@ function renderLesson(parent, lesson, lessonIndex) {
     scrollToWorkspace();
   }
 
+  function setSchoolNavActive(id) {
+    document.querySelectorAll(".school-page .nav button").forEach(item => item.classList.toggle("active", item.id === id));
+  }
+
   function showFavorites() {
+    setSchoolNavActive("showFavorites");
     favoritesOnly = true;
 
     $("viewFilter").value = "favorites";
@@ -1499,6 +1504,7 @@ function renderLesson(parent, lesson, lessonIndex) {
   $("showFavorites").addEventListener("click", showFavorites);
 
   $("openCours")?.addEventListener("click", () => {
+    setSchoolNavActive("openCours");
     if (!currentSubject) {
       openSubject(SUBJECTS[currentClass][0][0]);
     }
@@ -1507,6 +1513,7 @@ function renderLesson(parent, lesson, lessonIndex) {
   });
 
   $("openExos")?.addEventListener("click", () => {
+    setSchoolNavActive("openExos");
     if (!currentSubject) {
       openSubject(SUBJECTS[currentClass][0][0]);
     }
@@ -1514,12 +1521,25 @@ function renderLesson(parent, lesson, lessonIndex) {
     showCategory("exercices");
   });
 
+  $("showDashboard")?.addEventListener("click", () => {
+    setSchoolNavActive("showDashboard");
+    $("dashboard").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
   $("showSubjects").addEventListener("click", () => {
+    setSchoolNavActive("showSubjects");
     $("subjectsSection").scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
   });
+
+  if (lessonPage) {
+    const selectedCategory = pageParams.get("category") || "cours";
+    if (selectedCategory === "exercices") setSchoolNavActive("openExos");
+    else if (selectedCategory === "cours") setSchoolNavActive("openCours");
+    else setSchoolNavActive("showSubjects");
+  }
 
   // Le lecteur individuel revient vers la liste des leçons de la rubrique choisie.
   const pageBackLink = document.querySelector(".school-lesson-page .home-btn");
