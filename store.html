@@ -70,6 +70,13 @@
       .store-info{padding:15px!important}
     }
     @media(prefers-reduced-motion:reduce){.store-card,.store-button{transition:none}}
+
+    /* Prix boutique : affichage prioritaire et toujours lisible sur mobile et ordinateur. */
+    body.store-page .store-card-bottom{display:flex!important;flex-direction:column!important;align-items:stretch!important;visibility:visible!important;opacity:1!important;min-height:82px!important;position:relative!important;z-index:2!important}
+    body.store-page .store-price{display:block!important;visibility:visible!important;opacity:1!important;position:relative!important;width:100%!important;height:auto!important;min-height:30px!important;margin:0 0 14px!important;padding:0!important;overflow:visible!important;clip:auto!important;white-space:normal!important;color:#a45132!important;font:900 25px/1.25 Manrope,Arial,sans-serif!important;letter-spacing:.1px!important;text-align:left!important}
+    body.store-page .store-card{background:#fffefa!important;color:#26372e!important}
+    body.store-page .store-card-body{display:flex!important;flex-direction:column!important;visibility:visible!important;opacity:1!important}
+    @media(max-width:600px){body.store-page .store-price{font-size:24px!important;margin-bottom:13px!important}}
   </style>
 </head>
 <body class="store-page">
@@ -101,7 +108,7 @@
             <span class="store-tag">Design graphique</span>
             <h3>Canva et design graphique</h3>
             <p>Apprends à créer des visuels soignés : affiches, flyers, publications, catalogues et identité visuelle.</p>
-            <div class="store-card-bottom"><div class="store-price">2 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/vqdrcpz6p" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
+            <div class="store-card-bottom"><div class="store-price" role="text" aria-label="Prix : 2 000 FCFA">2 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/vqdrcpz6p" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
@@ -111,7 +118,7 @@
             <span class="store-tag">Programmation</span>
             <h3>Maîtriser les bases de la programmation</h3>
             <p>Découvre les algorithmes, les variables, les conditions, les boucles, les fonctions et les premiers projets web.</p>
-            <div class="store-card-bottom"><div class="store-price">4 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/j99qjmm7g" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
+            <div class="store-card-bottom"><div class="store-price" role="text" aria-label="Prix : 4 000 FCFA">4 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/j99qjmm7g" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
@@ -121,7 +128,7 @@
             <span class="store-tag">Création web</span>
             <h3>Créer son premier site web</h3>
             <p>Construis un site étape par étape avec HTML, CSS et JavaScript, puis prépare sa mise en ligne.</p>
-            <div class="store-card-bottom"><div class="store-price">5 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/c7xuw5fzu" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
+            <div class="store-card-bottom"><div class="store-price" role="text" aria-label="Prix : 5 000 FCFA">5 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/c7xuw5fzu" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
@@ -131,7 +138,7 @@
             <span class="store-tag">Intelligence artificielle</span>
             <h3>L'intelligence artificielle au service de ton activité</h3>
             <p>Comprends les outils d'IA, rédige de meilleurs prompts et utilise-les avec méthode pour tes projets.</p>
-            <div class="store-card-bottom"><div class="store-price">1 500 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/x6nx8kk4e" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
+            <div class="store-card-bottom"><div class="store-price" role="text" aria-label="Prix : 1 500 FCFA">1 500 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/x6nx8kk4e" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
@@ -141,7 +148,7 @@
             <span class="store-tag">Freelance</span>
             <h3>Démarrer en freelance sans expérience</h3>
             <p>Un guide pour choisir un service, préparer ton profil, trouver tes premiers prospects et démarrer sans expérience préalable.</p>
-            <div class="store-card-bottom"><div class="store-price">3 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/asenb8c5s" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
+            <div class="store-card-bottom"><div class="store-price" role="text" aria-label="Prix : 3 000 FCFA">3 000 FCFA</div><a class="store-button" href="https://afrique-tech-plus.myficsell.com/asenb8c5s" target="_blank" rel="noopener noreferrer">Voir le guide et acheter <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
       </div>
