@@ -1406,7 +1406,7 @@ html body :is(a,button).home-btn{
 html,body{
   width:100%!important;
   max-width:100%!important;
-  overflow-x:hidden!important;
+  overflow-x:clip!important;
 }
 body{
   margin-left:0!important;
