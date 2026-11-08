@@ -1294,3 +1294,28 @@ html body>*{position:relative;z-index:0}
   html body::before{background-size:min(72vw,360px) auto;opacity:.035}
   .school-page .layout aside .brand{font-size:18px!important}
 }
+
+
+/* ATP — contraste renforcé et lisibilité cohérente sur toutes les pages */
+html body{color:#26372e}
+html body :is(p,li,dd,dt,figcaption,.description,.subtitle,.helper-text,.form-text,.card-description,.service-description,.course-description,.media-description,.muted,.text-muted){
+  color:#3d4b42;
+}
+html body :is(small,.small,.meta,.eyebrow,.section-label,.kicker,.caption,.hint,.top-label){
+  color:#5b5148;
+}
+html body :is(h1,h2,h3,h4,h5,h6){color:#203b30}
+html body :is(input,select,textarea){
+  color:#26372e;border-color:#b8c7b9;
+}
+html body :is(input,select,textarea)::placeholder{color:#71675e;opacity:1}
+html body :is(a:not(.atp-back-control):not(.services-back):not(.home-btn)){
+  text-decoration-thickness:1px;
+}
+html body :is(.card,.service-card,.course-card,.media-card,.ai-card,.community-card,.store-card,.lesson-card,.subject-card){
+  border-color:#d4ddd2;
+}
+html body :is(button,input[type=button],input[type=submit]):focus-visible,
+html body a:focus-visible{
+  outline:3px solid rgba(164,81,50,.45)!important;outline-offset:2px!important;
+}
