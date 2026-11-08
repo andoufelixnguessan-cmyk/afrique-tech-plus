@@ -42,11 +42,12 @@
           explanation:item.explanation,example:item.example,method:item.method,
           vocabulary:item.vocabulary,essential:item.essential,
           exercises:item.exercises.map(([level,instruction,correction])=>({level,instruction,correction})),
-          quiz:item.quiz.map(([question,options,correct,explanation])=>({question,options,correctAnswer:correct,explanation}))
+          quiz:item.quiz.map(([question,options,correct,explanation])=>({question:question+" A) "+options[0]+" · B) "+options[1]+" · C) "+options[2],answer:"Réponse "+["A","B","C"][correct]+" : "+options[correct]+". "+explanation,explanation}))
         }],
         exercises:item.exercises.map(([level,instruction,correction])=>({level,instruction,correction})),
         quiz:item.quiz.map(([question,options,correct,explanation])=>({question,options,correctAnswer:correct,explanation})),
-        revision:item.essential
+        revision:item.essential,
+        finalAssessment:{instructions:["Réponds sans consulter le cours, puis vérifie chaque correction.","Présente les calculs et les unités lorsque cela est nécessaire."],questions:item.exercises.map(([level,instruction,correction])=>({question:instruction,points:5,expected:correction}))}
       }));
       return built;
     };
