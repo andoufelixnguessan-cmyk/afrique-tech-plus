@@ -1049,3 +1049,120 @@ html body :is(a,button).home-btn:focus-visible{
   border-color:#843d27!important;box-shadow:0 7px 18px rgba(132,61,39,.24)!important;
   transform:translateY(-1px);
 }
+
+
+/* ATP — en-tête, identité et navigation : harmonisation sur les 11 pages */
+:root{
+  --atp-header-ink:#26372e;
+  --atp-header-muted:#514b43;
+  --atp-header-accent:#a45132;
+  --atp-header-paper:#fffefa;
+  --atp-header-line:#dfc8b8;
+}
+/* Emblème volontairement plus grand que le nom de la marque */
+header .brand-logo,.topbar .brand-logo,.services-topbar .brand-logo,
+.store-topbar .brand-logo,.ai-topbar .brand-logo,.media-topbar .brand-logo,
+.community-topbar .brand-logo{
+  display:inline-block!important;width:62px!important;height:62px!important;
+  max-width:none!important;object-fit:contain!important;flex:0 0 62px!important;
+}
+header .brand,.topbar .brand,.services-logo,.store-logo,.ai-logo,.media-logo,.community-logo{
+  display:flex!important;align-items:center!important;gap:13px!important;
+  color:var(--atp-header-ink)!important;font-size:19px!important;
+  font-weight:900!important;line-height:1.12!important;letter-spacing:.15px!important;
+  text-decoration:none!important;
+}
+header .brand-name{
+  display:flex!important;flex-direction:column!important;
+  color:var(--atp-header-ink)!important;font:900 19px/1.12 Manrope,Arial,sans-serif!important;
+  letter-spacing:.1px!important;
+}
+header .brand-name small{
+  display:block!important;margin-top:4px!important;
+  color:#665b50!important;font:800 10px/1.35 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:1.15px!important;
+}
+/* Les rubriques principales sont plus grandes et plus contrastées */
+header .main-nav,header .nav-links{
+  align-items:center!important;gap:clamp(14px,1.7vw,24px)!important;
+}
+header .main-nav>a,header .main-nav>button,
+header .nav-links>a{
+  color:#26372e!important;font-size:14px!important;font-weight:800!important;
+  line-height:1.35!important;text-decoration:none!important;
+}
+header .main-nav>a:hover,header .nav-links>a:hover,
+header .main-nav>a[aria-current="page"]{
+  color:#a45132!important;
+}
+header .services-toggle,header .atp-global-toggle{
+  min-height:43px!important;padding:10px 16px!important;
+  background:#f4eadc!important;color:#26372e!important;
+  border:1px solid #cdb39f!important;border-radius:999px!important;
+  font:900 14px/1.3 "DM Sans",Arial,sans-serif!important;
+  box-shadow:0 4px 12px rgba(67,49,35,.09)!important;
+}
+header .services-toggle:hover,header .atp-global-toggle:hover{
+  background:#ead9c7!important;color:#843d27!important;
+}
+/* Menus déroulants plus spacieux, avec séparation et contraste renforcés */
+header .services-menu,header .atp-global-menu{
+  min-width:270px!important;width:270px!important;padding:10px!important;
+  background:#fffefa!important;border:1px solid #cdb39f!important;
+  border-radius:16px!important;box-shadow:0 18px 42px rgba(45,37,29,.2)!important;
+  gap:4px!important;
+}
+header .services-menu a,header .atp-global-menu a{
+  display:flex!important;flex-direction:column!important;gap:4px!important;
+  padding:12px 13px!important;border-radius:11px!important;
+  color:#26372e!important;background:transparent!important;
+  font-size:15px!important;font-weight:900!important;line-height:1.35!important;
+  border-bottom:1px solid #eee2d7!important;
+}
+header .services-menu a:last-child,header .atp-global-menu a:last-child{border-bottom:0!important}
+header .services-menu a small,header .atp-global-menu a small{
+  color:#665b50!important;font-size:12px!important;font-weight:700!important;line-height:1.4!important;
+}
+header .services-menu a:hover,header .atp-global-menu a:hover{
+  background:#f4eadc!important;color:#843d27!important;
+}
+header .services-menu[hidden],header .atp-global-menu[hidden]{display:none!important}
+/* Barres d'en-tête des pages internes : même présence visuelle */
+header.topbar,header.services-topbar,header.store-topbar,header.ai-topbar,
+header.media-topbar,header.community-topbar{
+  min-height:82px!important;padding:12px clamp(16px,4vw,48px)!important;
+  background:#fffefa!important;color:#26372e!important;
+  border-bottom:1px solid #dfc8b8!important;
+  box-shadow:0 5px 20px rgba(67,49,35,.06)!important;
+}
+header.topbar .navigation{min-height:66px!important;gap:20px!important}
+header.topbar .nav-links{display:flex!important;flex-wrap:wrap!important;gap:14px!important}
+header.topbar .nav-links a{font-size:14px!important;font-weight:800!important;color:#26372e!important}
+header.topbar .nav-links a:hover{color:#a45132!important}
+header .mobile-menu{
+  min-width:44px!important;min-height:44px!important;
+  color:#26372e!important;background:#f4eadc!important;border:1px solid #dfc8b8!important;
+  font-size:22px!important;
+}
+@media(max-width:900px){
+  header .brand-logo,.topbar .brand-logo,header .services-topbar .brand-logo,
+  header .store-topbar .brand-logo,header .ai-topbar .brand-logo,
+  header .media-topbar .brand-logo,header .community-topbar .brand-logo{
+    width:56px!important;height:56px!important;flex-basis:56px!important;
+  }
+  header .brand-name{font-size:17px!important}
+  header .main-nav>a,header .main-nav>button,header .nav-links>a{font-size:13px!important}
+}
+@media(max-width:700px){
+  header .brand-logo,.topbar .brand-logo,header .services-topbar .brand-logo,
+  header .store-topbar .brand-logo,header .ai-topbar .brand-logo,
+  header .media-topbar .brand-logo,header .community-topbar .brand-logo{
+    width:52px!important;height:52px!important;flex-basis:52px!important;
+  }
+  header .brand-name{font-size:16px!important}
+  header .brand-name small{font-size:9px!important;letter-spacing:.8px!important}
+  header .main-nav>a,header .main-nav>button{font-size:14px!important}
+  header .services-menu,header .atp-global-menu{width:min(290px,calc(100vw - 32px))!important;min-width:0!important}
+  header.topbar,header.services-topbar,header.store-topbar,header.ai-topbar,
+  header.media-topbar,header.community-topbar{min-height:72px!important;padding:10px 16px!important}
+}
