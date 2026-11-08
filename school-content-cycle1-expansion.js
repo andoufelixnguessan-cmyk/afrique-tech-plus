@@ -256,6 +256,25 @@
       vocabulary:["organisme","cellule","milieu","écosystème","fonction","prévention"],
       method:["Observer le document ou le phénomène.","Décrire précisément les éléments observés.","Relier les observations aux connaissances scientifiques.","Rédiger une explication et proposer une mesure de prévention si nécessaire."]
     }
+,
+    "TICE": {
+      definition:"Les TICE regroupent les outils numériques utilisés pour rechercher, produire, organiser et partager l’information de manière responsable.",
+      example:"Pour préparer un exposé, l’élève recherche plusieurs sources, compare les informations, rédige un document et cite les ressources consultées.",
+      vocabulary:["fichier","dossier","navigateur","source","mot de passe","donnée personnelle"],
+      method:["Définir le besoin et choisir l’outil adapté.","Rechercher des informations en croisant plusieurs sources.","Organiser les fichiers et sauvegarder le travail.","Protéger les données personnelles et respecter les droits d’auteur."]
+    },
+    "Allemand": {
+      definition:"L’apprentissage de l’allemand développe la compréhension et l’expression dans des situations simples de la vie quotidienne.",
+      example:"Guten Tag! Ich heiße Awa. Ich wohne in Abidjan und ich gehe zur Schule.",
+      vocabulary:["Guten Tag","ich heiße","ich wohne","die Schule","die Familie","danke"],
+      method:["Mémoriser les expressions utiles et leur prononciation.","Repérer le sujet et le verbe dans une phrase simple.","Construire des phrases courtes en respectant l’ordre des mots.","S’entraîner à écouter, lire et parler régulièrement."]
+    },
+    "Espagnol": {
+      definition:"L’espagnol permet de communiquer dans des situations courantes en mobilisant le vocabulaire, la grammaire et la prononciation.",
+      example:"Hola, me llamo Awa. Vivo en Abiyán y estudio en el colegio.",
+      vocabulary:["hola","me llamo","vivo","estudio","la familia","el colegio"],
+      method:["Identifier le thème et apprendre le vocabulaire essentiel.","Construire une phrase avec le sujet et le verbe adaptés.","Faire attention aux accords et à la conjugaison.","Lire à voix haute et réutiliser les expressions dans un dialogue."]
+    }
   };
 
   const originalBuildAll = window.ATP_LEARNING_CONTENT_6E?.buildAll;
