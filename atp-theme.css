@@ -1184,25 +1184,26 @@ body .layout aside .nav button:hover,body .layout aside .nav button.active{
 body .layout .topbar p{color:#514b43!important;font-size:14px!important}
 
 
-/* ATP — style définitif et uniforme des retours et accès Accueil */
+
+/* ATP — boutons de retour compacts, jamais en pleine largeur */
 html body :is(a,button).atp-back-control,
 html body :is(a,button).services-back,
 html body :is(a,button).store-back,
 html body :is(a,button).ai-back,
 html body :is(a,button).media-back,
 html body :is(a,button).community-back,
-html body :is(a,button).home-btn,
-html body .layout aside .nav button.active{
-  appearance:none!important;
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  gap:9px!important;min-height:50px!important;padding:13px 24px!important;
+html body :is(a,button).home-btn{
+  appearance:none!important;display:inline-flex!important;
+  width:auto!important;max-width:max-content!important;min-width:0!important;
+  min-height:34px!important;height:auto!important;
+  align-items:center!important;justify-content:center!important;gap:6px!important;
+  padding:7px 12px!important;margin:0!important;
   background:#a45132!important;background-image:none!important;
   color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;
   border:1px solid #a45132!important;border-radius:999px!important;
-  font-family:inherit!important;font-size:16px!important;font-weight:900!important;
-  line-height:1.25!important;letter-spacing:.1px!important;
-  text-decoration:none!important;text-shadow:none!important;opacity:1!important;
-  box-shadow:0 5px 15px rgba(164,81,50,.2)!important;filter:none!important;
+  font-family:inherit!important;font-size:11px!important;font-weight:800!important;
+  line-height:1.2!important;letter-spacing:0!important;text-decoration:none!important;
+  text-shadow:none!important;opacity:1!important;box-shadow:0 2px 7px rgba(80,40,25,.13)!important;
 }
 html body :is(a,button).atp-back-control *,
 html body :is(a,button).services-back *,
@@ -1210,10 +1211,8 @@ html body :is(a,button).store-back *,
 html body :is(a,button).ai-back *,
 html body :is(a,button).media-back *,
 html body :is(a,button).community-back *,
-html body :is(a,button).home-btn *,
-html body .layout aside .nav button.active *{
-  color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;
-  fill:#fffefa!important;stroke:#fffefa!important;text-shadow:none!important;
+html body :is(a,button).home-btn *{
+  color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;fill:#fffefa!important;
 }
 html body :is(a,button).atp-back-control:hover,
 html body :is(a,button).services-back:hover,
@@ -1221,21 +1220,77 @@ html body :is(a,button).store-back:hover,
 html body :is(a,button).ai-back:hover,
 html body :is(a,button).media-back:hover,
 html body :is(a,button).community-back:hover,
-html body :is(a,button).home-btn:hover,
-html body .layout aside .nav button.active:hover{
-  background:#843d27!important;color:#fffefa!important;
-  -webkit-text-fill-color:#fffefa!important;border-color:#843d27!important;
-  box-shadow:0 7px 18px rgba(132,61,39,.25)!important;
+html body :is(a,button).home-btn:hover{
+  background:#843d27!important;color:#fffefa!important;-webkit-text-fill-color:#fffefa!important;
+  border-color:#843d27!important;
 }
-@media(max-width:700px){
-  html body :is(a,button).atp-back-control,
-  html body :is(a,button).services-back,
-  html body :is(a,button).store-back,
-  html body :is(a,button).ai-back,
-  html body :is(a,button).media-back,
-  html body :is(a,button).community-back,
-  html body :is(a,button).home-btn,
-  html body .layout aside .nav button.active{
-    min-height:48px!important;padding:12px 20px!important;font-size:15px!important;
-  }
+.school-page .topbar{align-items:flex-start!important}
+.school-page .topbar>.home-btn{margin-left:auto!important;flex:0 0 auto!important}
+@media(max-width:600px){
+  .school-page .topbar{align-items:flex-start!important;gap:10px!important}
+  .school-page .topbar>.home-btn{width:auto!important;max-width:max-content!important}
+}
+
+/* Emblème ATP en filigrane : présent mais suffisamment léger pour préserver la lecture */
+html body{position:relative!important;isolation:isolate}
+html body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:url("assets/atp-emblem.svg");
+  background-repeat:no-repeat;background-position:center center;
+  background-size:min(48vw,520px) auto;opacity:.045;
+}
+html body>*{position:relative;z-index:0}
+
+/* Identité ATP School : titres qui restent dans leur colonne */
+.school-page .layout{grid-template-columns:minmax(0,245px) minmax(0,1fr)!important}
+.school-page .layout aside{min-width:0!important;overflow:hidden}
+.school-page .layout aside .brand{
+  display:block!important;max-width:100%!important;width:100%!important;
+  font-size:clamp(16px,1.45vw,20px)!important;line-height:1.2!important;
+  letter-spacing:0!important;white-space:normal!important;overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+.school-page .layout aside .brand span{display:inline!important;color:#24563e!important}
+.school-page .layout aside .brand small{
+  display:block!important;margin-top:5px!important;letter-spacing:1.2px!important;
+  color:#514b43!important;font-size:11px!important;overflow-wrap:anywhere!important;
+}
+.school-page .topbar>div{min-width:0!important;max-width:100%!important}
+.school-page .topbar .brand-logo{
+  display:block!important;width:44px!important;height:44px!important;
+  max-width:100%!important;object-fit:contain!important;margin-bottom:8px!important;
+}
+.school-page .topbar .top-label{
+  color:#843d27!important;font-weight:900!important;letter-spacing:1.1px!important;
+  line-height:1.4!important;overflow-wrap:anywhere!important;
+}
+.school-page .topbar p{color:#3e4c42!important}
+.school-page .layout aside .nav button{
+  width:100%!important;max-width:100%!important;white-space:normal!important;
+  overflow-wrap:anywhere!important;color:#34483b!important;font-weight:800!important;
+  background:transparent!important;border:1px solid transparent!important;
+  padding:11px 12px!important;border-radius:11px!important;
+}
+.school-page .layout aside .nav button.active{
+  background:#e8eee3!important;color:#24563e!important;
+  border-color:#cbd8c8!important;box-shadow:inset 3px 0 #a45132!important;
+}
+.school-page .layout aside .nav button:hover{
+  background:#f1e8dc!important;color:#843d27!important;
+}
+.school-page .hero h1,.school-page h1,.school-page h2,.school-page h3{
+  color:#203b30!important;
+}
+.school-page p,.school-page li,.school-page label,.school-page .muted{
+  color:#35483c;
+}
+@media(max-width:900px){
+  .school-page .layout{grid-template-columns:minmax(0,1fr)!important}
+  .school-page .layout aside .brand{font-size:19px!important}
+  .school-page .layout aside .nav{min-width:0!important;max-width:100%!important}
+  .school-page .layout aside .nav button{flex:0 0 auto!important;width:auto!important}
+}
+@media(max-width:600px){
+  html body::before{background-size:min(72vw,360px) auto;opacity:.035}
+  .school-page .layout aside .brand{font-size:18px!important}
 }
