@@ -10,6 +10,18 @@
   ["services.html","Prestations","Services numériques"],
   ["community.html","Community","Échanges et entraide"]
  ];
+ function ensureSkipLink(){
+  const main=document.querySelector("main");
+  if(!main)return;
+  if(!main.id)main.id="main-content";
+  if(!main.hasAttribute("tabindex"))main.setAttribute("tabindex","-1");
+  if(document.querySelector(".atp-skip-link"))return;
+  const link=document.createElement("a");
+  link.className="atp-skip-link";
+  link.href="#"+main.id;
+  link.textContent="Aller au contenu principal";
+  document.body.insertBefore(link,document.body.firstChild);
+ }
  function activateDropdown(header){
   if(!header)return;
   const dropdown=header.querySelector(".nav-dropdown");
@@ -22,19 +34,21 @@
   button.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();menu.hidden?open():close();});
   menu.addEventListener("click",event=>{if(event.target.closest("a"))close();});
   document.addEventListener("click",event=>{if(!dropdown.contains(event.target))close();});
-  document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
+  document.addEventListener("keydown",event=>{if(event.key==="Escape"){close();button.focus();}});
  }
- // L'accueil reste intact et sert de modèle visuel.
+ ensureSkipLink();
+ // L'accueil conserve son en-tête d'origine.
  if(path==="index.html"){activateDropdown(document.querySelector("body > .site-header"));return;}
- // Supprime uniquement les anciens en-têtes de navigation, jamais les titres d'articles.
+ // Supprime uniquement les anciens en-têtes, jamais les titres d'articles.
  document.querySelectorAll("body header.site-header,body header.topbar,body header.ai-topbar,body header.community-topbar,body header.media-topbar,body header.services-topbar,body header.store-topbar").forEach(el=>el.remove());
  const header=document.createElement("header");
  header.className="site-header atp-unified-header";
  header.innerHTML='<div class="container nav-wrap">'+
-  '<a class="brand" href="index.html" aria-label="AFRIQUE TECH PLUS accueil"><img class="brand-logo" src="assets/atp-emblem.svg" alt="Emblème AFRIQUE TECH PLUS"><span class="brand-name">AFRIQUE TECH PLUS<small>APPRENDRE · CRÉER · ÉVOLUER</small></span></a>'+
+  '<a class="brand" href="index.html" aria-label="AFRIQUE TECH PLUS accueil"><img class="brand-logo" src="assets/atp-emblem.svg" width="44" height="44" alt=""><span class="brand-name">AFRIQUE TECH PLUS<small>APPRENDRE · CRÉER · ÉVOLUER</small></span></a>'+
   '<nav class="main-nav atp-unified-nav" aria-label="Navigation principale"><a href="index.html">Accueil</a>'+
   '<div class="nav-dropdown" id="services-dropdown"><button class="services-toggle" id="services-toggle" type="button" aria-expanded="false" aria-controls="services-menu">Services <span aria-hidden="true">⌄</span></button>'+
   '<div class="services-menu" id="services-menu" hidden>'+pages.map(([href,label,desc])=>'<a href="'+href+'"'+(path===href?' aria-current="page"':'')+'>'+label+' <small>'+desc+'</small></a>').join("")+'</div></div></nav></div>';
- document.body.insertBefore(header,document.body.firstChild);
+ const skip=document.querySelector(".atp-skip-link");
+ if(skip)skip.after(header);else document.body.insertBefore(header,document.body.firstChild);
  activateDropdown(header);
 })();
