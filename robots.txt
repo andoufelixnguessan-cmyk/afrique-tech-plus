@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andoufelixnguessan-cmyk.github.io/afrique-tech-plus/sitemap.xml
