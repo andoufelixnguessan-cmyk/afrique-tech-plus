@@ -1,6 +1,6 @@
 # Skills AFRIQUE TECH PLUS
 
-Ce dossier contient six compétences réutilisables au format **Claude Code**. Chaque compétence possède son propre fichier `SKILL.md`.
+Ce dossier contient sept compétences réutilisables au format **Claude Code**. Chaque compétence possède son propre fichier `SKILL.md`.
 
 ## Compétences
 1. [Web Design](./atp-web-design/SKILL.md) — identité visuelle, UX et responsive.
@@ -9,6 +9,7 @@ Ce dossier contient six compétences réutilisables au format **Claude Code**. C
 4. [Security Auditor](./atp-security-auditor/SKILL.md) — sécurité, permissions et paiements.
 5. [Quality Assurance](./atp-qa/SKILL.md) — tests, recettes et non-régression.
 6. [E-commerce](./atp-ecommerce/SKILL.md) — catalogue, Ficsell, prix et livraison numérique.
+7. [Interface Audit](./atp-interface-audit/SKILL.md) — audit Vercel, accessibilité, responsive et identité ATP.
 
 ## Utilisation
 Dans Claude Code, ces compétences peuvent être découvertes depuis le dépôt sous `.claude/skills/`. Ouvrir une nouvelle session dans le projet et demander une tâche correspondant à la compétence, ou invoquer le nom de la compétence si l'interface le permet.
@@ -21,3 +22,13 @@ Ces fichiers sont des instructions de travail. Ils ne constituent pas des tests 
 - Ne pas inventer de données ni de résultats de tests.
 - Protéger les secrets et les données personnelles.
 - Documenter les changements et les limites de vérification.
+
+
+## Compétence officielle Vercel à installer localement
+Le Skill officiel `web-design-guidelines` n'est pas copié ici. Pour l'installer dans un dossier de projet avec Claude Code, exécuter :
+
+```powershell
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines -a claude-code
+```
+
+Source : https://github.com/vercel-labs/agent-skills
