@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
+  <title id="title">FILNEXIA Digital — concept de logo</title>
+  <desc id="desc">Monogramme géométrique FN vert profond accompagné du mot FILNEXIA et du descripteur DIGITAL.</desc>
+  <rect width="900" height="220" rx="24" fill="#F7F5EE"/>
+  <g transform="translate(34 30)">
+    <rect x="0" y="0" width="160" height="160" rx="34" fill="#203B30"/>
+    <path d="M42 119V41h76M42 79h62" fill="none" stroke="#F7F5EE" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M83 119V41l42 78V41" fill="none" stroke="#A8C1A9" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="125" cy="41" r="7" fill="#A45132"/>
+  </g>
+  <g fill="#203B30" font-family="Arial, Helvetica, sans-serif">
+    <text x="232" y="119" font-size="76" font-weight="700" letter-spacing="1">FILNEXIA</text>
+    <text x="238" y="160" font-size="22" font-weight="600" letter-spacing="9" fill="#A45132">DIGITAL</text>
+    <text x="238" y="190" font-size="15" letter-spacing="1.2" fill="#52665A">L'innovation ouvre de nouveaux horizons.</text>
+  </g>
+</svg>
