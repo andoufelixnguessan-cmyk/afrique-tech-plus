@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">FILNEXIA — favicon concept</title>
+  <rect width="64" height="64" rx="15" fill="#203B30"/>
+  <path d="M15 49V15h34M15 31h27" fill="none" stroke="#F7F5EE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M31 49V15l19 34V15" fill="none" stroke="#A8C1A9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50" cy="15" r="4" fill="#A45132"/>
+</svg>
