@@ -83,13 +83,7 @@ block(vehicle,'Tableau de bord',half-1.15,1.8,0,.85,.38,W*.68,M.black);
 block(vehicle,'Pare-brise intérieur',half-.72,2.1,0,.08,.48,W*.7,M.black);
 block(vehicle,'Volant',half-1.35,2.03,-W*.22,.12,.12,.12,M.rim);
 block(vehicle,'Siège conducteur',half-1.7,1.6,-W*.22,.48,.72,.48,M.seat);
-const rows=Math.max(isCity?5:6,Math.floor((N-2)/(isCity?2:4)));for(let r=0;r<rows;r++){const x=-half+2.1+(L-4.9)*r/Math.max(1,rows-1);for(const z of (isCity?[-.52,.52]:[-.48,.48])){
-block(vehicle,'Assise passager',x,1.52,z,.7,.16,.38,M.seat);
-block(vehicle,'Dossier passager',x-.27,1.88,z,.15,.62,.38,M.seat,-.08);
-block(vehicle,'Appuie-tête',x-.29,2.22,z,.14,.18,.3,M.stripe);
-if(isVip)block(vehicle,'Accoudoir VIP',x,1.68,z+(z>0?.25:-.25),.55,.08,.09,M.rim);
-}
-}
+const rows=Math.ceil(N/4),seatPositions=isCity?[-.78,-.38,.38,.78]:[-.78,-.38,.38,.78];let seatIndex=0;for(let r=0;r<rows&&seatIndex<N;r++){const x=-half+2.05+(L-4.55)*r/Math.max(1,rows-1);for(const z of seatPositions){if(seatIndex>=N)break;const seat=new THREE.Group();seat.name='Siège passager '+(seatIndex+1);vehicle.add(seat);block(seat,'Coussin rembourré',x,1.52,z,.62,.16,.34,M.seat);block(seat,'Dossier ergonomique',x-.25,1.86,z,.14,.58,.34,M.seat,-.08);block(seat,'Appuie-tête',x-.28,2.2,z,.13,.18,.27,M.stripe);block(seat,'Accoudoir gauche',x,1.66,z-.2,.5,.07,.055,M.rim);block(seat,'Accoudoir droit',x,1.66,z+.2,.5,.07,.055,M.rim);if(isVip)block(seat,'Finition VIP',x-.02,1.96,z,.035,.38,.29,M.rim);seatIndex++}}
 if(isCity){
 for(let x=-half+1.2;x<half-1;x+=2.1)block(vehicle,'Barre de maintien',x,2.35,0,.035,.035,W*.7,M.rim);
 }
