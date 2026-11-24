@@ -54,7 +54,7 @@ function wheel(parent,name,x,y,z,r,depth,mat){const o=new THREE.Mesh(new THREE.C
 function rebuild(){const L=+$('length').value,W=+ $('width').value,H=+ $('height').value,N=+$('seats').value,doorN=+$('doors').value;M.body.color.set($('paint').value);M.stripe.color.set($('stripe').value);M.seat.color.set($('seatpaint').value);M.glass.color.set($('glass').value==='blue'?'#294f70':$('glass').value==='clear'?'#7897ad':'#10243a');
 scene.remove(vehicle);vehicle.traverse(o=>{if(o.geometry)o.geometry.dispose()});vehicle=new THREE.Group();scene.add(vehicle);const half=L/2, kind=$('kind').value;
 const isCity=kind==='city', isVip=kind==='premium';
-const bodyHeight=H-(isCity?.18:0);
+const bodyHeight=H-(isCity ? .18 : 0);
 block(vehicle,'Châssis',0,.47,0,L-.4,.3,W-.2,M.black);
 block(vehicle,'Réservoir et soubassement',-.15,.34,0,L*.58,.16,W*.62,material('#293747',.75));
 for(const side of [-1,1]){
@@ -66,7 +66,7 @@ for(const side of [-1,1])block(vehicle,'Bande de livrée',0,1.18,side*(W/2+.02),
 block(vehicle,'Pare-brise panoramique',half-.19,H-.82,0,.045,1.05,W-.28,M.glass,-.1);block(vehicle,'Vitre arrière',-half+.19,H-.83,0,.045,.95,W-.32,M.glass);
 block(vehicle,'Afficheur avant',half-.22,H-.2,0,.05,.22,W*.62,M.black);block(vehicle,'Calandre',half+.005,.75,0,.04,.18,W*.42,M.black);
 for(const z of [-W*.34,W*.34]){block(vehicle,'Phare LED',half+.025,1.02,z,.06,.18,.32,M.white);block(vehicle,'Feu arrière',-half-.02,1.1,z,.06,.4,.18,M.red);block(vehicle,'Bras rétroviseur',half-.12,H-1.12,z*1.28,.52,.045,.045,M.black,-.3);block(vehicle,'Rétroviseur',half-.34,H-1.02,z*1.43,.22,.14,.27,M.black)}
-const windows=Math.max(isCity?5:7,Math.round(L*(isCity?.62:.78))),start=-half+(isCity?1.05:.85),end=half-(isCity?1.45:1.15);
+const windows=Math.max(isCity?5:7,Math.round(L*(isCity ? .62 : .78))),start=-half+(isCity?1.05:.85),end=half-(isCity?1.45:1.15);
 for(let i=0;i<windows;i++){const x=start+(end-start)*i/(windows-1);if(x>half-1.5)continue;for(const s of [-1,1]){block(vehicle,'Vitre passager',x,H-.9,s*(W/2+.025),(end-start)/(windows-1)-.085,.76,.035,M.glass);block(vehicle,'Montant de vitre',x-(end-start)/(windows-1)/2,H-.9,s*(W/2+.05),.055,.83,.05,M.body)}}
 const doors=doorN===1?[half-1.5]:[half-1.5,-half+2.05];for(const x of doors){
 const doorWidth=isCity?.98:.83,doorHeight=isCity?1.95:1.82;
